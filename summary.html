@@ -67,14 +67,10 @@
             padding: 20px;
             width: 170px;
             cursor: pointer;
+            color: black;
+            transition: transform 225ms ease-in-out,
+            background-color 225ms ease-in-out;
             transform: scale(1);
-
-        }
-
-        .task:hover {
-            background-color: #2A3647;
-            color: white;
-            transform: scale(1.10);
         }
 
         .task h2 {
@@ -89,9 +85,16 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            color: #2A3647;
             font-size: 21px;
+            color: #2A3647;
             margin: 0;
+            transition: background-color 225ms ease-in-out,
+        }
+
+        .task:hover p, .task:hover {
+            background-color: #2A3647;
+            color: white;
+            transform: scale(1.05);
         }
 
         .middle-board {
@@ -107,6 +110,14 @@
             justify-content: space-evenly;
             cursor: pointer;
             width: 580px;
+        }
+
+        .middle-board-inner:hover h2,
+        .middle-board-inner:hover p,
+        .middle-board-inner:hover {
+            background-color: #2A3647;
+            color: white;
+            transform: scale(1.05);
         }
 
         .urgent-container,
@@ -267,9 +278,6 @@
 
             </div>
         </div>
-
-
-
 
     </section>
 
