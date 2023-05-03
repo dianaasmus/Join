@@ -88,7 +88,8 @@
             font-size: 21px;
             color: #2A3647;
             margin: 0;
-            transition: background-color 225ms ease-in-out,
+            background-color: #fff;
+            transition: background-color 225ms ease-in-out;
         }
 
         .task:hover p, .task:hover {
@@ -110,10 +111,18 @@
             justify-content: space-evenly;
             cursor: pointer;
             width: 580px;
+            transition: transform 225ms ease-in-out,
+            background-color 225ms ease-in-out;
         }
 
-        .middle-board-inner:hover h2,
+        .middle-board-inner p,
+        .middle-board-inner h2 {
+            background-color: #fff;
+            transition: background-color 225ms ease-in-out;
+        }
+
         .middle-board-inner:hover p,
+        .middle-board-inner:hover h2,
         .middle-board-inner:hover {
             background-color: #2A3647;
             color: white;
@@ -167,6 +176,8 @@
         .done-inner-container p {
             margin: 0;
             color: #2A3647;
+            background-color: #fff;
+            transition: background-color 225ms ease-in-out;
         }
 
         .vertical-line {
@@ -206,6 +217,17 @@
             background-color: #fff;
             border-radius: 20px;
             height: 150px;
+            transition: transform 225ms ease-in-out,
+            background-color 225ms ease-in-out;
+        }
+
+        .to-do:hover,
+        .to-do:hover p,
+        .done:hover p,
+        .done:hover {
+            color: #fff;
+            background-color: #2A3647;
+            transform: scale(1.05);
         }
     </style>
 </head>
