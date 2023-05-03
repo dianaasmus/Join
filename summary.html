@@ -6,23 +6,195 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Summary</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
     <style>
         body {
+            background-color: #F5F5F5;
             margin: 0;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Open-sans', sans-serif;
+            font-weight: 400;
+        }
+
+        section {
+            display: flex;
+            margin-left: 10%;
+        }
+
+        .summary-board {
+            gap: 35px;
+            display: flex;
+            flex-direction: column;
+            margin-top: 5%;
         }
 
         .summary-headline {
             display: flex;
             align-items: center;
+            justify-content: flex-start;
         }
 
         .summary-headline h1 {
-            padding-right: 10px;
-            margin-right: 10px;
-            border-right: 2px solid blue;
-            font-weight: 800;
+            font-weight: 700;
+            font-size: 61px;
+        }
+
+        .summary-headline hr {
+            background-color: #29ABE2;
+            height: 50px;
+            border: none;
+            width: 2px;
+            margin: 0 30px 0 50px;
+        }
+
+        .summary-headline p {
+            font-size: 27px;
+            color: #2A3647;
+        }
+
+        .top-board {
+            display: flex;
+            gap: 35px;
+            width: 580px;
+        }
+
+        .task {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            width: 170px;
+            cursor: pointer;
+            transform: scale(1);
+
+        }
+
+        .task:hover {
+            background-color: #2A3647;
+            color: white;
+            transform: scale(1.10);
+        }
+
+        .task h2 {
+            font-size: 64px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .task p {
+            display: flex;
+            align-items: center;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #2A3647;
+            font-size: 21px;
+            margin: 0;
+        }
+
+        .middle-board {
+            display: flex;
+        }
+
+        .middle-board-inner {
+            background-color: #fff;
+            border-radius: 20px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            cursor: pointer;
+            width: 580px;
+        }
+
+        .urgent-container,
+        .done,
+        .to-do {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            cursor: pointer;
+        }
+
+        .urgent-inner-container,
+        .done-inner-container,
+        .todo-inner-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 0 0 10px;
+        }
+
+        #urgent-number {
+            font-size: 47px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .welcoming {
+            padding-left: 70px;
+        }
+
+        .welcoming h3{
+            font-size: 47px;
+            font-weight: 500;
+            color: #2A3647;
+        }
+
+        #todo-number,
+        #done-number {
+            font-size: 64px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .urgent-inner-container p,
+        .todo-inner-container p,
+        .done-inner-container p {
+            margin: 0;
+            color: #2A3647;
+        }
+
+        .vertical-line {
+            height: 100px;
+            background-color: #d1d1d1;
+            margin: 0;
+            border: none;
+            width: 2.5px;
+        }
+
+        .upcoming-date h2 {
+            color: #2A3647;
+            margin-bottom: 0;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .upcoming-date p {
+            color: #2A3647;
+            font-size: 16px;
+        }
+
+        .bottom-board {
+            display: flex;
+            gap: 35px;
+            width: 580px;
+        }
+
+        .box-shadow {
+            -webkit-box-shadow: 0px 0px 8px 5px rgba(209, 209, 209, 0.39);
+            box-shadow: 0px 0px 8px 5px rgba(209, 209, 209, 0.39);
+        }
+
+        .to-do,
+        .done {
+            width: 273.5px;
+            background-color: #fff;
+            border-radius: 20px;
+            height: 150px;
         }
     </style>
 </head>
@@ -30,10 +202,76 @@
 <body>
     <div w3-include-html="includes/sideBar.html"></div>
     <div w3-include-html="includes/header.html"></div>
-    <div class="summary-headline">
-        <h1>Summary</h1>
-        <p>Everything in a nutshell!</p>
-    </div>
+    <section>
+        <div>
+            <div class="summary-headline">
+                <h1>Summary</h1>
+                <hr>
+                <p>Everything in a nutshell!</p>
+            </div>
+
+            <div class="summary-board">
+
+                <div class="top-board">
+                    <div class="task box-shadow">
+                        <h2>5</h2>
+                        <p>Tasks in <span>Board</span></p>
+                    </div>
+                    <div class="task box-shadow">
+                        <h2>2</h2>
+                        <p>Tasks in <span>Progress</span></p>
+                    </div>
+                    <div class="task box-shadow">
+                        <h2>2</h2>
+                        <p>Awaiting <span>Feedback</span></p>
+                    </div>
+                </div>
+
+                <div class="middle-board">
+                    <div class="middle-board-inner box-shadow">
+                        <div class="urgent-container">
+                            <img src="assets/img/urgent-icon.png" id="urgent-icon">
+                            <div class="urgent-inner-container">
+                                <h2 id="urgent-number">1</h2>
+                                <p>Urgent</p>
+                            </div>
+                        </div>
+                        <hr class="vertical-line">
+                        <div class="upcoming-date">
+                            <h2>October 16, 2023</h2>
+                            <p>Upcoming Deadline</p>
+                        </div>
+                    </div>
+                    <div class="welcoming">
+                        <h3>Good morning</h3>
+                    </div>
+                </div>
+
+
+                <div class="bottom-board">
+                    <div class="to-do box-shadow">
+                        <img src="assets/img/todo-icon.png">
+                        <div class="todo-inner-container">
+                            <h2 id="todo-number">1</h2>
+                            <p>To-do</p>
+                        </div>
+                    </div>
+                    <div class="done box-shadow">
+                        <img src="assets/img/done-icon.png" id="urgent-icon">
+                        <div class="done-inner-container">
+                            <h2 id="done-number">1</h2>
+                            <p>Done</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    </section>
 
 </body>
 
