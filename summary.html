@@ -37,7 +37,6 @@
         .summary-headline h1 {
             font-weight: 700;
             font-size: 61px;
-            /* margin-bottom: 0; */
         }
 
         .summary-headline hr {
@@ -229,10 +228,34 @@
         .done:hover p,
         .done:hover {
             color: #fff;
-            background-color: #2A3647;
             transform: scale(1.05);
+            background-color: #2A3647;
         }
+
     </style>
+    <script>
+        function hoverFunctionOn(x) {
+            document.getElementById('to-do-container').addEventListener('mouseover', () => {
+                document.getElementById('todo-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
+            })
+            document.getElementById('done-container').addEventListener('mouseover', () => {
+                document.getElementById('done-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
+            })
+        }
+
+        function hoverTodoOn() {
+            document.getElementById('todo-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
+        }
+
+        function hoverDoneOn() {
+            document.getElementById('done-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
+        }
+
+        function hoverOff() {
+            document.getElementById('todo-icon').style = "filter: none;";
+            document.getElementById('done-icon').style = "filter: none;";
+        }
+    </script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="assets/templates/style_templates.css">
 </head>
@@ -285,20 +308,22 @@
                     </div>
                 </div>
 
-
                 <div class="bottom-board">
-                    <div class="to-do box-shadow">
-                        <img src="assets/img/todo-icon.png">
+                    <div id="to-do-container" class="to-do box-shadow" onmouseover="hoverTodoOn()"
+                        onmouseout="hoverOff()">
+                        <img src="assets/img/todo-icon.png" id="todo-icon">
                         <div class="todo-inner-container">
                             <h2 id="todo-number">1</h2>
-                            <p>To-do</p>
+                            <p id="todo-p">To-do</p>
                         </div>
                     </div>
-                    <div class="done box-shadow">
-                        <img src="assets/img/done-icon.png" id="urgent-icon">
+
+                    <div id="done-container" class="done box-shadow" onmouseover="hoverDoneOn()"
+                        onmouseout="hoverOff()">
+                        <img src="assets/img/done-icon.png" id="done-icon">
                         <div class="done-inner-container">
                             <h2 id="done-number">1</h2>
-                            <p>Done</p>
+                            <p id="done-p">Done</p>
                         </div>
                     </div>
                 </div>
