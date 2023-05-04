@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+
+    <link rel="stylesheet" href="fonts.css">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="assets/templates/style_templates.css">
+    <script>
+        function openTask() {
+            document.getElementById('dialogFullCard').classList.remove('displayNone')
+        }
+        function closeTask() {
+            document.getElementById('dialogFullCard').classList.add('displayNone')
+        }
+    </script>
+    <style>
+        body {
+            background-color: black;
+            height: 100vh;
+            display: flex;
+            justify-content: end;
+            align-items: end;
+            margin: 0;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            background-color: #F6F7F8;
+            height: calc(100vh - 90px);
+            width: calc(100% - 232px);
+            overflow-y: scroll;
+
+        }
+
+        .board h1 {
+            font-size: 61px;
+        }
+
+        .boardHeader {
+            height: 300px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-right: 75px;
+            padding-left: 75px;
+        }
+
+        .inputContainer {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .boardInput {
+
+            height: 51px;
+            border-radius: 10px;
+            border-color: #D1D1D1;
+            outline: none;
+            padding: 0 16px;
+            font-size: 16px;
+            margin-right: 30px;
+            padding-right: 30px;
+        
+
+        }
+        .boardInput input{
+           padding-right: 200px;
+        }
+
+        input::-webkit-search-cancel-button {
+            display: none;
+        }
+
+
+        .searchIconInput {
+            position: absolute;
+            top: 18px;
+            right: 177px
+        }
+
+        .searchIconInput:hover {
+            cursor: pointer;
+        }
+
+        .vertLineInput {
+            position: absolute;
+            top: 13px;
+            right: 213px
+        }
+
+
+        .boardSubsections {
+            display: flex;
+            justify-content: space-evenly;
+            padding-right: 35px;
+            padding-left: 75px;
+        }
+
+        .boardSubsection {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            align-items: space-between;
+            align-items: center;
+            margin-right: 20px;
+            font-size: 21px;
+
+        }
+
+
+        .boardSubsectionHeader {
+            width: 95%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        .addTaskButton {
+            display: flex;
+            align-items: center;
+            width: 110px;
+            position: relative;
+            height: 18px;
+            background-color: #2A3647;
+            color: white;
+            Padding: 18px 10px;
+            border: 1px solid #2A3647;
+            border-radius: 10px;
+            font-size: 21px;
+            border: none
+        }
+
+        .addTaskButton:hover {
+            cursor: pointer;
+            background-color: #29ABE2;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            transition: 0.1s ease-in-out;
+        }
+
+        .vertLine {
+            position: absolute;
+            top: 18px;
+            right: 20px
+        }
+
+        .vertTransform {
+            transform: rotate(90deg);
+        }
+
+
+        .category {
+            width: auto;
+            height: 25px;
+            color: white;
+            padding: 4px 25px;
+            border-radius: 8px;
+        }
+
+        .plusButton:hover {
+            cursor: pointer;
+            content: url('./assets/img/Property\ 1=Variant2.png');
+
+        }
+
+        .design {
+            background-color: #FF7A00;
+        }
+
+        .sales {
+            background-color: #FC71FF;
+        }
+
+        .backoffice {
+            background-color: #1FD7C1
+        }
+
+        .marketing {
+            background-color: #0038FF;
+        }
+
+        .boardCards {
+            display: flex;
+            justify-content: space-evenly;
+            margin-left: 40px;
+
+
+        }
+
+        .boardCard {
+            border-radius: 30px;
+            background-color: white;
+            padding: 18px 19px 18px 19px;
+            box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+        }
+
+        .boardCard:hover {
+            cursor: pointer;
+        }
+
+        .task {
+            color: #9e9d9d;
+            font-size: smaller;
+        }
+
+        .dialogFullCard {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.25);
+            z-index: 55;
+        }
+
+        .dialogFullCardContent {
+            position: relative;
+            height: 100vh;
+            width: 40%;
+            background-color: #F6F7F8;
+            border-radius: 30px;
+            
+
+        }
+
+        .categoryDialog {
+            width: fit-content;
+            height: 35px;
+            color: white;
+            padding: 4px 25px;
+            border-radius: 8px;
+            font-size: 30px;
+            margin-top: 40px;
+
+        }
+
+        .closeButtondialogFullCard:hover {
+            cursor: pointer;
+        }
+
+        .closeButtondialogFullCard {
+            position: absolute;
+            top: 50px;
+            right: 50px
+        }
+
+        .wrapperDialog {
+            width: 80%;
+            margin: auto;
+        }
+
+        .wrapperDialog h1 {
+            font-size: 61px;
+        }
+
+        .taskDescript {
+            font-size: 21px;
+        }
+
+        .dueDate {
+            display: flex;
+            align-items: center;
+        }
+
+        .dueDate p {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .dueDate span {
+            font-size: 20px;
+            margin-left: 10px;
+            padding-top: 4px;
+
+        }
+
+        .priority {
+            display: flex;
+            align-items: center;
+        }
+
+        .priority p {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .priority span {
+            font-size: 20px;
+            margin-left: 10px;
+            padding-top: 4px;
+
+        }
+
+        .assignedTo p {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .displayNone {
+            display: none;
+        }
+
+        .progressBarSection {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+    
+        .progressBar {
+
+            height: 5px;
+            width: 70%;
+            background: linear-gradient(to right, #29ABE2 50%, #e9e7e7 50%);
+
+        }
+        .assignedToBoard{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+           
+        }
+
+        .assignedToAvatars {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 35px;
+            width: 35px;
+            border-radius: 100%;
+            font-size: 16px;
+            background-color: #ef65f1;
+            color: white;
+            border: 1px solid white;
+           }
+    </style>
+
+
+</head>
+
+<body onload="init()">
+    <div w3-include-html="assets/templates/Sidebar.html"></div>
+    <div w3-include-html="assets/templates/header.html"></div>
+    <div class="wrapper">
+        <div class="board">
+            <div class="boardHeader">
+                <h1>Board</h1>
+                <div class="inputContainer">
+                    <img class="searchIconInput" src="./assets/img/search.png">
+                    <img class="vertLineInput" src="./assets/img/lineInput.png">
+                    <input required class="boardInput" type="search" placeholder="Find Task" maxlength="21">
+                    <span class="addTaskButton">Add task <img class="vertLine vertTransform"
+                            src="./assets/img/verticLine.png"><img class="vertLine"
+                            src="./assets/img/verticLine.png"></span>
+                </div>
+            </div>
+        </div><!--board Header closes-->
+
+        <div class="boardSubsections">
+            <div class="boardSubsection">
+                <div class="boardSubsectionHeader">
+                    <h3>To do</h3>
+                    <img class="plusButton" src="./assets/img/plus button v1.png">
+                </div>
+                <div id="inProgressBoard" class="boardCard" onclick="openTask()">
+                    <span class="category sales">Sales</span>
+                    <h4>Call potential clients</h4>
+                    <span class="task">Make the product presentation.</span>
+                </div>
+            </div>
+
+            <div class="boardSubsection">
+                <div class="boardSubsectionHeader">
+                    <h3>In progress</h3>
+                    <img class="plusButton" src="./assets/img/plus button v1.png">
+                </div>
+                <div id="awaitFeedbackBoard" class="boardCard" onclick="openTask()">
+                    <span class="category backoffice">Backoffice</span>
+                    <h4>Website redesign</h4>
+                    <span class="task">Modify the content of the main website</span>
+                    <div class="progressBarSection">
+                        <div id="" class="progressBar"></div>
+                        <div>1/2 Done</div>
+                    </div>
+                    <div class="assignedToBoard">
+                        <span  class="assignedToAvatars" id="">HS</span>
+                        <img id="urgencyBoard" src="./assets/img/urgent.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="boardSubsection">
+                <div class="boardSubsectionHeader">
+                    <h3>Awaiting Feedback</h3>
+                    <img class="plusButton" src="./assets/img/plus button v1.png">
+                </div>
+                <div id="doneBoard" class="boardCard" onclick="openTask()">
+                    <span class="category marketing">Marketing</span>
+                    <h4>Accounting invoices</h4>
+                    <span class="task">Modify the content of the main website</span>
+                    <div class="progressBarSection">
+                        <div id="" class="progressBar"></div>
+                        <div>1/2 Done</div>
+                    </div>
+                    <div class="assignedToBoard">
+                        <span  class="assignedToAvatars" id="">HS</span>
+                        <img id="urgencyBoard" src="./assets/img/urgent.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="boardSubsection">
+                <div class="boardSubsectionHeader">
+                    <h3>Done</h3>
+                    <img class="plusButton" src="./assets/img/plus button v1.png">
+                </div>
+                <div id="doneBoard" class="boardCard" onclick="openTask()">
+                    <span class="category design">Design</span>
+                    <h4>Website redesign</h4>
+                    <span class="task">Modify the content of the main website</span>
+                    <div class="progressBarSection">
+                        <div id="" class="progressBar"></div>
+                        <div>1/2 Done</div>
+                    </div>
+                    <div class="assignedToBoard">
+                        <span  class="assignedToAvatars" id="">HS</span>
+                        <img id="urgencyBoard" src="./assets/img/urgent.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dialogFullCard" class="dialogFullCard displayNone"><!--dialogFullCard-->
+        <div class="dialogFullCardContent">
+            <div class="wrapperDialog">
+                <div id="" class="categoryDialog design">Design</div>
+                <div class="closeDialogButton" onclick="closeTask()">
+                    <img class="closeButtondialogFullCard" src="./assets/img/closeButtonBoard.png">
+                </div>
+                <h1 id="">Website redesign</h1><!--Header Task-->
+                <div id="" class="taskDescript">Modify the content of the main website</div><!--task descript-->
+                <div id="" class="dueDate">
+                    <p>Due Date:</p> <span>05-08-2023</span>
+                </div>
+                <div id="" class="priority">
+                    <p>Priority:</p> <span><img src="./assets/img/Priority for overlay buttons v1.png"></span>
+                </div>
+                <div id="" class="assignedTo">
+                    <p>Assigned to:</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+</body>
+
+</html>
