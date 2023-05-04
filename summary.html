@@ -15,6 +15,10 @@
             font-weight: 400;
         }
 
+        .d-none {
+            display: none;
+        }
+
         section {
             display: flex;
             margin-left: 350px;
@@ -164,6 +168,14 @@
             font-size: 47px;
             font-weight: 500;
             color: #2A3647;
+            margin-bottom: 0;
+        }
+
+        .welcoming h4 {
+            color: #29ABE2;
+            font-size: 64px;
+            font-weight: 700;
+            margin: 0;
         }
 
         #todo-number,
@@ -234,15 +246,6 @@
 
     </style>
     <script>
-        function hoverFunctionOn(x) {
-            document.getElementById('to-do-container').addEventListener('mouseover', () => {
-                document.getElementById('todo-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
-            })
-            document.getElementById('done-container').addEventListener('mouseover', () => {
-                document.getElementById('done-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
-            })
-        }
-
         function hoverTodoOn() {
             document.getElementById('todo-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
         }
@@ -304,7 +307,8 @@
                         </div>
                     </div>
                     <div class="welcoming">
-                        <h3>Good morning</h3>
+                        <h3>Good morning<span class="d-none">,</span></h3>
+                        <h4 class="d-none">Sofia Müller</h4>
                     </div>
                 </div>
 
