@@ -20,6 +20,8 @@
     </script>
     <style>
         body {
+            font-family: 'Open-sans', sans-serif;
+            font-weight: 400;
             background-color: black;
             height: 100vh;
             display: flex;
@@ -83,7 +85,7 @@
         .searchIconInput {
             position: absolute;
             top: 18px;
-            right: 177px
+            right: 185px
         }
 
         .searchIconInput:hover {
@@ -121,13 +123,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            color:#2A3647
 
         }
 
         .addTaskButton {
             display: flex;
             align-items: center;
-            width: 110px;
+            width: 125px;
             position: relative;
             height: 18px;
             background-color: #2A3647;
@@ -136,6 +139,7 @@
             border: 1px solid #2A3647;
             border-radius: 10px;
             font-size: 21px;
+            font-weight: 700;
             border: none
         }
 
@@ -149,7 +153,7 @@
         .vertLine {
             position: absolute;
             top: 18px;
-            right: 20px
+            right: 20px;
         }
 
         .vertTransform {
@@ -163,6 +167,8 @@
             color: white;
             padding: 4px 25px;
             border-radius: 8px;
+            font-size: 16px;
+            font-weight: 400;
         }
 
         .plusButton:hover {
@@ -204,6 +210,11 @@
 
         .boardCard:hover {
             cursor: pointer;
+        }
+        .boardCard h4{
+            color:#2A3647;
+            font-size: 16px;
+            font-weight:700;
         }
 
         .task {
