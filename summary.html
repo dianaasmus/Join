@@ -17,25 +17,27 @@
 
         section {
             display: flex;
-            margin-left: 10%;
+            margin-left: 350px;
         }
 
         .summary-board {
             gap: 35px;
             display: flex;
             flex-direction: column;
-            margin-top: 5%;
+            margin-top: 30px;
         }
 
         .summary-headline {
             display: flex;
             align-items: center;
             justify-content: flex-start;
+            margin-top: 100px;
         }
 
         .summary-headline h1 {
             font-weight: 700;
             font-size: 61px;
+            /* margin-bottom: 0; */
         }
 
         .summary-headline hr {
@@ -69,7 +71,7 @@
             cursor: pointer;
             color: black;
             transition: transform 225ms ease-in-out,
-            background-color 225ms ease-in-out;
+                background-color 225ms ease-in-out;
             transform: scale(1);
         }
 
@@ -92,7 +94,8 @@
             transition: background-color 225ms ease-in-out;
         }
 
-        .task:hover p, .task:hover {
+        .task:hover p,
+        .task:hover {
             background-color: #2A3647;
             color: white;
             transform: scale(1.05);
@@ -112,7 +115,7 @@
             cursor: pointer;
             width: 580px;
             transition: transform 225ms ease-in-out,
-            background-color 225ms ease-in-out;
+                background-color 225ms ease-in-out;
         }
 
         .middle-board-inner p,
@@ -158,7 +161,7 @@
             padding-left: 70px;
         }
 
-        .welcoming h3{
+        .welcoming h3 {
             font-size: 47px;
             font-weight: 500;
             color: #2A3647;
@@ -218,7 +221,7 @@
             border-radius: 20px;
             height: 150px;
             transition: transform 225ms ease-in-out,
-            background-color 225ms ease-in-out;
+                background-color 225ms ease-in-out;
         }
 
         .to-do:hover,
@@ -230,11 +233,13 @@
             transform: scale(1.05);
         }
     </style>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="assets/templates/style_templates.css">
 </head>
 
-<body>
-    <div w3-include-html="includes/sideBar.html"></div>
-    <div w3-include-html="includes/header.html"></div>
+<body onload="init()">
+    <div w3-include-html="assets/templates/Sidebar.html"></div>
+    <div w3-include-html="assets/templates/header.html"></div>
     <section>
         <div>
             <div class="summary-headline">
