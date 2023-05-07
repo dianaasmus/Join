@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add task</title>
+
+    <link rel="stylesheet" href="fonts.css">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="assets/templates/style_templates.css">
+    <style>
+        body {
+            background-color: black;
+            height: 100vh;
+            display: flex;
+            justify-content: end;
+            align-items: end;
+            margin: 0;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            background-color: #F6F7F8;
+            height: calc(100vh - 90px);
+            width: calc(100% - 232px);
+            overflow-y: scroll;
+
+        }
+
+        .content {
+            margin: 50px 85px 0 135px;
+
+        }
+
+        h1 {
+            font-size: 61px;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+
+        .taskBoard {
+            display: flex;
+
+        }
+
+        .taskBoardLeft {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            font-size: 21px;
+            font-weight: 400;
+            border-right: 1px solid #D1D1D1;
+            margin-right: 45px;
+        }
+
+        .taskBoardLeft textarea {
+            height: 119px;
+            width: 422px;
+            border-radius: 10px;
+            padding: 13px 21px 13px 21px;
+            color: #D1D1D1;
+            border: 1px solid #D1D1D1;
+            font-size: 21px;
+            line-height: 120%;
+            outline: none;
+            resize: none;
+        }
+
+        .taskBoardRight {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            font-size: 21px;
+            font-weight: 400;
+        }
+
+        form div {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 33px;
+
+        }
+
+        select {
+            border: none;
+
+            width: 464px;
+            border-radius: 10px;
+            padding: 13px 21px 13px 21px;
+            color: black;
+            border: 1px solid #D1D1D1;
+            font-size: 21px;
+            outline: none;
+        }
+
+
+        form span {
+            margin-bottom: 5px;
+            line-height: 120%;
+
+        }
+
+        input {
+            width: 422px;
+            border-radius: 10px;
+            padding: 13px 21px 13px 21px;
+            color: #000000;
+            border: 1px solid #D1D1D1;
+            font-size: 21px;
+            line-height: 120%;
+            outline: none;
+            resize: none;
+
+        }
+
+        .priorities {
+            display: flex;
+            flex-direction: row;
+            width: auto;
+            margin-bottom: 0 !important;
+        }
+
+        .priority {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-color: white;
+            margin-right: 10px;
+            padding: 8px;
+            border-radius: 10px;
+            font-size: 21px;
+            font-weight: 400;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0 !important;
+
+        }
+
+        .priority:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+            box-shadow: 0px 6px 7px -3px #6d6969;
+
+        }
+
+        .arrDown {
+            height: 9px;
+            width: 13px;
+
+        }
+
+        .newContactImg {
+            height: 7px;
+            width: 7px
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 422px;
+            height: 26px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            padding: 13px 21px;
+            color: #000000;
+            border: 1px solid #D1D1D1;
+            margin-bottom: 0 !important;
+
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: -1px;
+            width: 464px;
+            background-color: #ffffff;
+            color: #D1D1D1;
+            border: 1px solid;
+            border-radius: 10px;
+            z-index: 1;
+            padding-top: 10px;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: #000000;
+
+
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            border-top: none;
+        }
+
+        .headerForSelectionField {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .addSubtaskButton {
+            height: 20px;
+            width: 20px;
+            position: absolute;
+            top: 17px;
+            right: 60px
+        }
+
+        .addSubTask {
+            position: relative;
+
+        }
+
+        .buttonsCreateTask {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            font-size: 21px;
+            font-weight: 400;
+            margin: 0 90px 90px 0
+        }
+
+        .buttonCreateTask {
+            display: flex;
+            align-items: center;
+            background-color: rgba(42, 54, 71, 1);
+            color: white;
+            border-radius: 10px;
+            padding: 15px 20px;
+        }
+
+        .buttonCreateTask:hover {
+            cursor: pointer;
+            background-color: #29ABE2;
+            transition: 0.1s ease-in-out;
+        }
+
+        .buttonClearTask {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 2px solid rgba(42, 54, 71, 1)
+        }
+
+        .buttonClearTask:hover {
+            cursor: pointer;
+        }
+
+        .createTaskPageImg {
+            margin-left: 15px;
+        }
+
+        .clearTaskPageImg {
+            margin-left: 15px;
+        }
+    </style>
+
+</head>
+
+<body onload="init()">
+    <div w3-include-html="assets/templates/Sidebar.html"></div>
+    <div w3-include-html="assets/templates/header.html"></div>
+    <div class="wrapper">
+        <div class="content">
+            <h1>Add Task</h1>
+            <div class="taskBoard">
+
+                <div class="taskBoardLeft">
+                    <form>
+                        <div>
+                            <span>Title</span>
+                            <input required type="text" placeholder="Enter a title">
+                        </div>
+
+                        <div>
+                            <span>Description</span>
+                            <textarea required type="text" placeholder="Enter a description"></textarea>
+                        </div>
+
+                        <div>
+                            <span>Category</span>
+                            <div class="dropdown">
+                                <div class="headerForSelectionField">
+                                    <span>Select task category</span>
+                                    <img class="arrDown" src="./assets/img/arrDown.png">
+                                </div>
+                                <div class="dropdown-content">
+                                    <a href="#">Option 1</a>
+                                    <a href="#">Option 2</a>
+                                    <a href="#">Option 3</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span>Assigned to</span>
+                            <div class="dropdown">
+                                <div class="headerForSelectionField">
+                                    <span>Select contacts to assign</span>
+                                    <img class="arrDown" src="./assets/img/arrDown.png">
+                                </div>
+                                <div class="dropdown-content">
+                                    <a href="#">Option 1</a>
+                                    <a href="#">Option 2</a>
+                                    <a href="#">Option 3</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="taskBoardRight">
+                    <form>
+                        <div>
+                            <span>Due date</span>
+                            <input style="color: #757575;" id="datePicker" required type="date">
+                        </div>
+
+                        <div>
+                            <span>Prio</span>
+                            <div class="priorities">
+                                <div class="priority"><span>Urgent</span> <img src="./assets/img/urgent.png"></div>
+                                <div class="priority"><span>Medium </span><img src="./assets/img/medium.png"></div>
+                                <div class="priority"><span>Low</span> <img src="./assets/img/low.png"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span>Subtasks</span>
+                            <div class="addSubTask">
+                                <input placeholder="Add new subtask">
+                                <img class="addSubtaskButton" src="./assets/img/addSubtaskButton.png">
+                            </div>
+                        </div>
+
+                        <div>
+                            <span></span>
+                        </div>
+                    </form>
+                </div>
+
+            </div><!--taskBoard closed-->
+
+            <div class="buttonsCreateTask">
+                <div class="buttonClearTask">
+                    <span>Clear</span>
+                    <img class="clearTaskPageImg" src="./assets/img/clearTaskPage.png">
+                </div>
+                <div class="buttonCreateTask">
+                    <span>Create Task</span>
+                    <img class="createTaskPageImg" src="./assets/img/createTaskPage.png">
+                </div>
+            </div>
+
+        </div><!--content closed-->
+    </div><!--wrapper closed-->
+
+</body>
+
+</html>
