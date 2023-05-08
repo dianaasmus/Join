@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="fonts.css">
     <script src="script.js"></script>
     <link rel="stylesheet" href="assets/templates/style_templates.css">
+    <link rel="stylesheet" href="assets/templates/addTaskPopUp.css">
     <script>
         function openTask() {
             document.getElementById('dialogFullCard').classList.remove('displayNone')
@@ -17,17 +18,22 @@
         function closeTask() {
             document.getElementById('dialogFullCard').classList.add('displayNone')
         }
+        function openPopUpAddTask() {
+            document.getElementById('addTaskPopUp').classList.add('openPopUp')
+        }
+        function closePopUpAddTask() {
+            document.getElementById('addTaskPopUp').classList.remove('openPopUp')
+        }
     </script>
     <style>
         body {
-            font-family: 'Open-sans', sans-serif;
-            font-weight: 400;
-            background-color:#F6F7F8;
-            height: 100vh;
+            background-color: #F6F7F8;
+            min-height: 100vh;
             display: flex;
             justify-content: end;
             align-items: end;
             margin: 0;
+            overflow-x: hidden;
         }
 
         .wrapper {
@@ -37,16 +43,16 @@
             background-color: #F6F7F8;
             height: calc(100vh - 90px);
             width: calc(100% - 232px);
-            overflow-y: scroll;
+
 
         }
 
-        .board h1 {
+        .boardHeader h1 {
             font-size: 61px;
         }
 
         .boardHeader {
-            height: 260px;
+            height: 300px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -70,12 +76,10 @@
             font-size: 16px;
             margin-right: 30px;
             padding-right: 30px;
-        
+
 
         }
-        .boardInput input{
-           padding-right: 200px;
-        }
+
 
         input::-webkit-search-cancel-button {
             display: none;
@@ -85,7 +89,7 @@
         .searchIconInput {
             position: absolute;
             top: 18px;
-            right: 185px
+            right: 177px
         }
 
         .searchIconInput:hover {
@@ -100,10 +104,13 @@
 
 
         .boardSubsections {
+
             display: flex;
+            align-items: flex-start;
             justify-content: space-evenly;
             padding-right: 35px;
             padding-left: 75px;
+            padding-bottom: 25px;
         }
 
         .boardSubsection {
@@ -111,7 +118,6 @@
             display: flex;
             flex-direction: column;
             align-items: space-between;
-            align-items: center;
             margin-right: 20px;
             font-size: 21px;
 
@@ -120,17 +126,17 @@
 
         .boardSubsectionHeader {
             width: 95%;
+            height: 90px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color:#2A3647
-
+            margin: 30px
         }
 
         .addTaskButton {
             display: flex;
             align-items: center;
-            width: 125px;
+            width: 110px;
             position: relative;
             height: 18px;
             background-color: #2A3647;
@@ -139,7 +145,6 @@
             border: 1px solid #2A3647;
             border-radius: 10px;
             font-size: 21px;
-            font-weight: 700;
             border: none
         }
 
@@ -150,16 +155,11 @@
             transition: 0.1s ease-in-out;
         }
 
-        .vertLine {
-            position: absolute;
-            top: 18px;
-            right: 20px;
+        .buttonPlus {
+            font-size: 30px;
+            font-weight: lighter;
+            margin-left: 10px;
         }
-
-        .vertTransform {
-            transform: rotate(90deg);
-        }
-
 
         .category {
             width: auto;
@@ -167,8 +167,6 @@
             color: white;
             padding: 4px 25px;
             border-radius: 8px;
-            font-size: 16px;
-            font-weight: 400;
         }
 
         .plusButton:hover {
@@ -204,17 +202,12 @@
         .boardCard {
             border-radius: 30px;
             background-color: white;
-            padding: 18px 19px 18px 19px;
+            padding: 18px 19px;
             box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
         }
 
         .boardCard:hover {
             cursor: pointer;
-        }
-        .boardCard h4{
-            color:#2A3647;
-            font-size: 16px;
-            font-weight:700;
         }
 
         .task {
@@ -223,15 +216,16 @@
         }
 
         .dialogFullCard {
-            position: absolute;
+            position: fixed;
             top: 0;
             right: 0;
-            bottom: 0;
             left: 0;
+            bottom: 0;
+            height:auto;
             display: flex;
             justify-content: center;
             background-color: rgba(0, 0, 0, 0.25);
-            z-index: 55;
+            z-index: 80;
         }
 
         .dialogFullCardContent {
@@ -240,7 +234,6 @@
             width: 40%;
             background-color: #F6F7F8;
             border-radius: 30px;
-            
 
         }
 
@@ -272,7 +265,6 @@
 
         .wrapperDialog h1 {
             font-size: 61px;
-            color:#2A3647;
         }
 
         .taskDescript {
@@ -285,7 +277,7 @@
         }
 
         .dueDate p {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
         }
 
@@ -302,7 +294,7 @@
         }
 
         .priority p {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
         }
 
@@ -314,7 +306,7 @@
         }
 
         .assignedTo p {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
         }
 
@@ -329,7 +321,7 @@
             justify-content: space-between;
             font-size: 14px;
         }
-    
+
         .progressBar {
 
             height: 5px;
@@ -337,12 +329,13 @@
             background: linear-gradient(to right, #29ABE2 50%, #e9e7e7 50%);
 
         }
-        .assignedToBoard{
+
+        .assignedToBoard {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: 15px;
-           
+
         }
 
         .assignedToAvatars {
@@ -356,7 +349,115 @@
             background-color: #ef65f1;
             color: white;
             border: 1px solid white;
-           }
+        }
+
+
+
+
+
+
+        @media(max-width:1000px) {
+
+            .boardHeader {
+                flex-direction: column;
+                width: 90%;
+                padding: 0;
+                margin: 10px
+            }
+
+            h1 {
+                align-self: flex-start;
+            }
+
+            .boardSubsections {
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                padding: 10px
+            }
+
+            .boardSubsection {
+                width: 90%;
+                margin: 0;
+
+            }
+
+
+            .wrapper {
+                width: 100%;
+                align-items: center;
+            }
+
+
+            .addTaskButton {
+                width: 30px;
+                display: flex !important;
+                justify-content: center;
+                margin-top: -190px;
+            }
+
+            .addTaskButton span {
+                display: none;
+            }
+
+            .buttonPlus {
+                font-size: 50px;
+            }
+
+            .buttonPlus {
+                display: flex !important;
+                justify-content: center;
+                margin: 0
+            }
+
+            .searchIconInput {
+                position: absolute;
+                top: 18px;
+                right: 100px
+            }
+
+            .vertLineInput {
+                position: absolute;
+                top: 13px;
+                right: 130px;
+            }
+        }
+
+        @media (min-width: 300px) and (max-width: 1000px) {
+            .boardHeader h1 {
+                font-size: 40px;
+            }
+
+            .boardInput {
+                padding: 0 5px;
+            }
+
+            .addTaskButton {
+                width: 30px;
+                display: flex !important;
+                justify-content: center;
+                margin-top: -140px;
+            }
+        }
+
+        @media(min-width:500px) and (max-width: 1000px) {
+            .boardHeader h1 {
+                font-size: 60px;
+            }
+
+            .boardInput {
+                padding: 0 5px
+            }
+
+            .addTaskButton {
+                width: 30px;
+                display: flex !important;
+                justify-content: center;
+                margin-top: 0;
+            }
+
+
+        }
     </style>
 
 
@@ -365,26 +466,28 @@
 <body onload="init()">
     <div w3-include-html="assets/templates/Sidebar.html"></div>
     <div w3-include-html="assets/templates/header.html"></div>
+    <div w3-include-html="assets/templates/addTaskPopUp.html"></div>
     <div class="wrapper">
-        <div class="board">
-            <div class="boardHeader">
-                <h1>Board</h1>
-                <div class="inputContainer">
-                    <img class="searchIconInput" src="./assets/img/search.png">
-                    <img class="vertLineInput" src="./assets/img/lineInput.png">
-                    <input required class="boardInput" type="search" placeholder="Find Task" maxlength="21">
-                    <span class="addTaskButton">Add task <img class="vertLine vertTransform"
-                            src="./assets/img/verticLine.png"><img class="vertLine"
-                            src="./assets/img/verticLine.png"></span>
+
+        <div class="boardHeader">
+            <h1>Board</h1>
+            <div class="inputContainer">
+                <img class="searchIconInput" src="./assets/img/search.png">
+                <img class="vertLineInput" src="./assets/img/lineInput.png">
+                <input required class="boardInput" type="search" placeholder="Find Task" maxlength="21">
+                <div class="addTaskButton">
+                    <span>Add task</span> <span class="buttonPlus">+</span>
                 </div>
             </div>
         </div><!--board Header closes-->
+
+
 
         <div class="boardSubsections">
             <div class="boardSubsection">
                 <div class="boardSubsectionHeader">
                     <h3>To do</h3>
-                    <img class="plusButton" src="./assets/img/plus button v1.png">
+                    <img class="plusButton" onclick="openPopUpAddTask()" src="./assets/img/plus button v1.png">
                 </div>
                 <div id="inProgressBoard" class="boardCard" onclick="openTask()">
                     <span class="category sales">Sales</span>
@@ -396,7 +499,7 @@
             <div class="boardSubsection">
                 <div class="boardSubsectionHeader">
                     <h3>In progress</h3>
-                    <img class="plusButton" src="./assets/img/plus button v1.png">
+                    <img class="plusButton" onclick="openPopUpAddTask()" src="./assets/img/plus button v1.png">
                 </div>
                 <div id="awaitFeedbackBoard" class="boardCard" onclick="openTask()">
                     <span class="category backoffice">Backoffice</span>
@@ -407,7 +510,7 @@
                         <div>1/2 Done</div>
                     </div>
                     <div class="assignedToBoard">
-                        <span  class="assignedToAvatars" id="">HS</span>
+                        <span class="assignedToAvatars" id="">HS</span>
                         <img id="urgencyBoard" src="./assets/img/urgent.png">
                     </div>
                 </div>
@@ -416,7 +519,7 @@
             <div class="boardSubsection">
                 <div class="boardSubsectionHeader">
                     <h3>Awaiting Feedback</h3>
-                    <img class="plusButton" src="./assets/img/plus button v1.png">
+                    <img class="plusButton" onclick="openPopUpAddTask()" src="./assets/img/plus button v1.png">
                 </div>
                 <div id="doneBoard" class="boardCard" onclick="openTask()">
                     <span class="category marketing">Marketing</span>
@@ -427,7 +530,7 @@
                         <div>1/2 Done</div>
                     </div>
                     <div class="assignedToBoard">
-                        <span  class="assignedToAvatars" id="">HS</span>
+                        <span class="assignedToAvatars" id="">HS</span>
                         <img id="urgencyBoard" src="./assets/img/urgent.png">
                     </div>
                 </div>
@@ -436,7 +539,7 @@
             <div class="boardSubsection">
                 <div class="boardSubsectionHeader">
                     <h3>Done</h3>
-                    <img class="plusButton" src="./assets/img/plus button v1.png">
+                    <img class="plusButton" onclick="openPopUpAddTask()" src="./assets/img/plus button v1.png">
                 </div>
                 <div id="doneBoard" class="boardCard" onclick="openTask()">
                     <span class="category design">Design</span>
@@ -447,7 +550,7 @@
                         <div>1/2 Done</div>
                     </div>
                     <div class="assignedToBoard">
-                        <span  class="assignedToAvatars" id="">HS</span>
+                        <span class="assignedToAvatars" id="">HS</span>
                         <img id="urgencyBoard" src="./assets/img/urgent.png">
                     </div>
                 </div>
@@ -477,8 +580,9 @@
             </div>
         </div>
     </div>
-
     </div>
+
+
 </body>
 
 </html>
