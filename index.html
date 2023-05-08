@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="icon" href="assets/img/logo-blue.png">
     <link rel="stylesheet" href="style.css">
-    <!-- <link rel="stylesheet" href="assets/font/font.css"> -->
+    <link rel="stylesheet" href="fonts.css">
     <style>
         body {
             background-color: #F5F5F5;
@@ -16,16 +17,24 @@
             font-weight: 400;
         }
 
-        .logo-container {
+        .d-none {
+            display: none;
+        }
+
+        #logo-container {
             position: absolute;
             top: 0;
             right: 0;
             bottom: 0;
             left: 0;
             background-color: #F5F5F5;
-            z-index: 1;
-            animation: Background-visibility 700ms ease-in-out 500ms;
+            animation: Background-visibility 700ms ease-in-out 500ms,
+                Logo-Animation 700ms ease-in-out 440ms;
             animation-fill-mode: forwards;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 190px;
         }
 
         @keyframes Background-visibility {
@@ -35,73 +44,45 @@
 
             to {
                 position: inherit;
+                background-color: transparent;
             }
         }
 
         #join-logo {
-            position: absolute;
-            top: 50%;
+            /* position: absolute; */
+            /* top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            animation: Logo-Animation 700ms ease-in-out 500ms;
-            animation-fill-mode: forwards;
+            transform: translate(-50%, -50%), scale(1); */
+            /* animation: Logo-Animation 700ms ease-in-out 500ms; */
+            /* animation-fill-mode: forwards; */
             z-index: 2;
+            transition: transform 500ms ease-in-out;
+            transform: scale(0.4);
         }
 
         @keyframes Logo-Animation {
             from {
-                top: 50%;
+                position: absolute;
+                justify-content: center;
+                align-items: center;
+                /* top: 50%;
                 left: 50%;
-                transform: translate(-50%, -50%);
-                transition: transform 500ms ease-in-out;
-                transform: scale(1);
+                transform: translate(-50%, -50%); */
+                /* transition: transform 500ms ease-in-out;
+                transform: scale(1); */
             }
 
             to {
-                top: -30px;
-                left: 0px;
-                transform: scale(0.4);
-
+                position: static;
+                justify-content: flex-start;
+                /* align-items: flex-start; */
+                /* top: -30px;
+                left: 0px; */
+                /* transform: scale(0.4); */
             }
         }
 
-        /* .logo-container {
-            position: absolute;
-            top: 50%;
-            /* right: 0;
-            bottom: 0; 
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: Logo-Animation 500ms ease-in-out;
-            animation-fill-mode: forwards;
-            z-index: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #F5F5F5;
-        }
-
-        @keyframes Logo-Animation {
-            from {
-                top: 0;
-                /* right: 0;
-                bottom: 0; 
-                left: 0;
-                transform: scale(1);
-                transition: transform 500ms ease-in-out;
-            }
-
-            to {
-                top: 50px;
-                /* right: none;
-                bottom: none; 
-                left: 120px;
-                transform: scale(0.4);
-
-            }
-        } */
-
-        .signup-container {
+        #signup-container {
             position: absolute;
             top: 50px;
             left: 0;
@@ -113,7 +94,7 @@
             gap: 10px;
         }
 
-        .signup-container p {
+        #signup-container p {
             font-size: 21px;
         }
 
@@ -131,12 +112,15 @@
                 box-shadow 225ms ease-in-out;
         }
 
-        #signup-btn:hover {
+        #signup-btn:hover,
+        #login-btn-Two:hover,
+        #new-signup:hover {
             background-color: #29ABE2;
             box-shadow: 0px 4px 9px -1px rgba(0, 0, 0, 0.4);
         }
 
-        .login-container {
+        #login-container,
+        #empty-container {
             position: absolute;
             top: 0;
             left: 0;
@@ -145,9 +129,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            z-index: -1;
         }
 
-        #login-form {
+        .login-form {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -159,20 +145,20 @@
             padding: 35px 0 35px 0;
         }
 
-        #login-form h1 {
+        .login-form h1 {
             font-size: 61px;
             font-weight: 700;
             margin: 0;
         }
 
-        #login-form hr {
+        .login-form hr {
             height: 2px;
             width: 150px;
             background-color: #29ABE2;
             margin: 0;
         }
 
-        #login-form input {
+        .input-field {
             width: 422px;
             height: 51px;
             font-size: 21px;
@@ -191,38 +177,219 @@
         #password-input {
             background: url(assets/img/password-icon.png) no-repeat scroll 370px 15px;
         }
+
+        .login-settings {
+            width: 422px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        /* Customize the label (the container) */
+        .container {
+            position: relative;
+        }
+
+        /* Hide the browser's default checkbox */
+        .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            height: 16px;
+            width: 16px;
+            border: 1px solid black;
+            border-radius: 3px;
+            cursor: pointer;
+            background-image: linear-gradient(#F9F9F9, #F0F0F0);
+        }
+
+        /* On mouse-over, add a grey background color */
+        .container:hover input~.checkmark {
+            background-color: #d1d1d1;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        .container input:checked~.checkmark {
+            background-color: red;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+        .container input:checked~.checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+        .container .checkmark:after {
+            left: 4px;
+            top: -2px;
+            width: 6px;
+            height: 12px;
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .container p {
+            margin-left: 35px;
+        }
+
+        #forget-password {
+            color: #29ABE2;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .login-btns {
+            width: 422px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        #login-btn-Two {
+            background-color: #2a3647;
+            border-radius: 8px;
+            height: 51px;
+            width: 145px;
+            border-style: none;
+            color: #fff;
+            font-size: 21px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        #login-guest {
+            background-color: #fff;
+            border-radius: 8px;
+            height: 51px;
+            width: 145px;
+            border-style: none;
+            font-size: 21px;
+            font-weight: 700;
+            border: 2px solid #2a3647;
+            color: #2a3647;
+            cursor: pointer;
+            padding: 4px, 0px, 4px, 0px;
+        }
+
+        #login-guest:hover {
+            border: 2px solid #29ABE2;
+            color: #29ABE2;
+            box-shadow: 0px 4px 9px -1px rgba(0, 0, 0, 0.4);
+        }
+
+        /*Sign Up Form */
+
+
+        #name-input {
+            background: url(assets/img/user-icon.png) no-repeat scroll 370px 15px;
+        }
+
+        #email-input-signup {
+            background: url(assets/img/email-icon.png) no-repeat scroll 370px 15px;
+        }
+
+        #password-input-signup {
+            background: url(assets/img/password-icon.png) no-repeat scroll 370px 15px;
+        }
+
+        #new-signup {
+            background-color: #2a3647;
+            border-radius: 8px;
+            height: 51px;
+            width: 145px;
+            border-style: none;
+            color: #fff;
+            font-size: 21px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .arrow-left {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            cursor: pointer;
+        }
     </style>
+    <script>
+        function openSignUpContainer() {
+            document.getElementById('login-main').classList.add('d-none');
+            document.getElementById('empty-container').innerHTML = returnSignupForm();
+        }
+
+        function returnSignupForm() {
+            return `
+            <form onsubmit="" class="login-form">
+                <img class="arrow-left" onclick="backToLogin()" src="assets/img/arrow-left.png">
+                <h1>Sign up</h1>
+                <hr>
+                <input class="input-field" placeholder="Name" type="text" id="name-input" required>
+                <input class="input-field" placeholder="Email" type="email" id="email-input-signup" required>
+                <input class="input-field" placeholder="Password" type="password" id="password-input-signup" required>
+                <button id="new-signup">Sign up</button>
+            </form>
+            `;
+        }
+
+        function backToLogin() {
+            document.getElementById('empty-container').innerHTML = '';
+            document.getElementById('login-main').classList.remove('d-none');
+        }
+    </script>
 </head>
 
 <body>
-    <div class="logo-container">
+
+    <div id="logo-container">
         <img src="assets/img/logo-blue.png" id="join-logo">
     </div>
 
-    <div class="signup-container">
-        <p>Not a Join user?</p>
-        <button id="signup-btn">Sign up</button>
-    </div>
+    <div id="login-main">
+        <div id="signup-container">
+            <p>Not a Join user?</p>
+            <button id="signup-btn" onclick="openSignUpContainer()">Sign up</button>
+        </div>
 
-    <div class="login-container">
-        <form onsubmit="" id="login-form">
-            <h1>Log in</h1>
-            <hr>
-            <input placeholder="Email" type="email" id="email-input" required>
-            <input placeholder="Password" type="password" id="password-input" required>
-            <div class="login-settings">
-                <label class="container">
-                    <input type="checkbox">Remember me
-                    <!-- <span class="checkmark"></span> -->
-                </label>
-                <p>Forgot my password</p>
-            </div>
-            <div class="login-btns">
-                <button>Log in</button>
-                <button>Guest Log in</button>
-            </div>
-        </form>
+        <div id="login-container">
+            <form onsubmit="" class="login-form">
+                <h1>Log in</h1>
+                <hr>
+                <input class="input-field" placeholder="Email" type="email" id="email-input" required>
+                <input class="input-field" placeholder="Password" type="password" id="password-input" required>
+                <div class="login-settings">
+                    <label class="container">
+                        <input id="checkbox" type="checkbox">
+                        <p>Remember me</p>
+                        <span class="checkmark"></span>
+                    </label>
+                    <a id="forget-password">Forgot my password</a>
+                </div>
+                <div class="login-btns">
+                    <button id="login-btn-Two">Log in</button>
+                    <button id="login-guest">Guest Log in</button>
+                </div>
+            </form>
+        </div>
     </div>
+    <div id="empty-container"></div>
 
 </body>
 
