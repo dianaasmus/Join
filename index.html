@@ -34,7 +34,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 190px;
+            /* height: 190px; */
         }
 
         @keyframes Background-visibility {
@@ -120,7 +120,7 @@
         }
 
         #login-container,
-        #empty-container {
+        .container-style {
             position: absolute;
             top: 0;
             left: 0;
@@ -332,6 +332,7 @@
     <script>
         function openSignUpContainer() {
             document.getElementById('login-main').classList.add('d-none');
+            document.getElementById('empty-container').classList.add('container-style');
             document.getElementById('empty-container').innerHTML = returnSignupForm();
         }
 
@@ -353,11 +354,16 @@
             document.getElementById('empty-container').innerHTML = '';
             document.getElementById('login-main').classList.remove('d-none');
         }
+
+        function openGuestLogin() {
+            document.getElementById('email-input').disabled = true;
+            document.getElementById('password-input').disabled = true;
+            window.open("summary.html");
+        }
     </script>
 </head>
 
 <body>
-
     <div id="logo-container">
         <img src="assets/img/logo-blue.png" id="join-logo">
     </div>
@@ -384,7 +390,7 @@
                 </div>
                 <div class="login-btns">
                     <button id="login-btn-Two">Log in</button>
-                    <button id="login-guest">Guest Log in</button>
+                    <button onclick="openGuestLogin()" id="login-guest">Guest Log in</button>
                 </div>
             </form>
         </div>
