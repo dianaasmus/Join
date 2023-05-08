@@ -221,7 +221,7 @@
             right: 0;
             left: 0;
             bottom: 0;
-            height:auto;
+            height: auto;
             display: flex;
             justify-content: center;
             background-color: rgba(0, 0, 0, 0.25);
@@ -357,16 +357,23 @@
 
 
         @media(max-width:1000px) {
+            body{
+                width:100%;
+
+            }
 
             .boardHeader {
                 flex-direction: column;
-                width: 90%;
+                width: 95%;
                 padding: 0;
                 margin: 10px
             }
 
             h1 {
                 align-self: flex-start;
+            }
+            .inputContainer{
+                width:90%
             }
 
             .boardSubsections {
@@ -384,7 +391,8 @@
 
 
             .wrapper {
-                width: 100%;
+                width: 97%;
+                margin: auto;
                 align-items: center;
             }
 
@@ -411,53 +419,16 @@
             }
 
             .searchIconInput {
-                position: absolute;
-                top: 18px;
-                right: 100px
+             display: none;
             }
 
             .vertLineInput {
-                position: absolute;
-                top: 13px;
-                right: 130px;
+                display: none;
             }
+
         }
 
-        @media (min-width: 300px) and (max-width: 1000px) {
-            .boardHeader h1 {
-                font-size: 40px;
-            }
-
-            .boardInput {
-                padding: 0 5px;
-            }
-
-            .addTaskButton {
-                width: 30px;
-                display: flex !important;
-                justify-content: center;
-                margin-top: -140px;
-            }
-        }
-
-        @media(min-width:500px) and (max-width: 1000px) {
-            .boardHeader h1 {
-                font-size: 60px;
-            }
-
-            .boardInput {
-                padding: 0 5px
-            }
-
-            .addTaskButton {
-                width: 30px;
-                display: flex !important;
-                justify-content: center;
-                margin-top: 0;
-            }
-
-
-        }
+       
     </style>
 
 
