@@ -1,0 +1,290 @@
+  /* popUp */
+
+  .wrapperPopUpTask {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      transform: translateX(1600px);
+      background-color: rgba(0, 0, 0, 0.25);
+      z-index: 100;
+
+  }
+
+  .openPopUp {
+      transform: translateX(0);
+  }
+  .taskPopUpHeader{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .contentPopUpTask {
+
+      background-color: rgb(255, 255, 255);
+      margin: 20px 50px;
+      overflow-y: hidden;
+      width: 70%;
+      margin: auto;
+      border-radius: 30px;
+      padding: 0 40px;
+
+  }
+
+  h1 {
+      font-size: 61px;
+      margin-bottom: 60px;
+      font-weight: 700;
+  }
+
+  .taskBoardPopUpTask {
+      display: flex;
+
+  }
+
+  .taskBoardLeftPopUpTask {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      font-size: 21px;
+      font-weight: 400;
+      border-right: 1px solid #D1D1D1;
+      margin-right: 35px;
+  }
+
+  .taskBoardLeftPopUpTask textarea {
+      height: 119px;
+      width: 422px;
+      border-radius: 10px;
+      padding: 13px 21px 13px 21px;
+      color: #D1D1D1;
+      border: 1px solid #D1D1D1;
+      font-size: 21px;
+      line-height: 120%;
+      outline: none;
+      resize: none;
+  }
+
+  .taskBoardRightPopUpTask {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      font-size: 21px;
+      font-weight: 400;
+  }
+
+  form div {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 33px;
+
+  }
+
+  select {
+      border: none;
+
+      width: 464px;
+      border-radius: 10px;
+      padding: 13px 21px 13px 21px;
+      color: black;
+      border: 1px solid #D1D1D1;
+      font-size: 21px;
+      outline: none;
+  }
+
+
+  form span {
+      margin-bottom: 5px;
+      line-height: 120%;
+
+  }
+
+  input {
+      width: 422px;
+      border-radius: 10px;
+      padding: 13px 21px 13px 21px;
+      color: #000000;
+      border: 1px solid #D1D1D1;
+      font-size: 21px;
+      line-height: 120%;
+      outline: none;
+      resize: none;
+
+  }
+
+  .prioritiesPopUpTask {
+      display: flex;
+      flex-direction: row;
+      width: auto;
+      margin-bottom: 0 !important;
+  }
+
+  .priorityPopUpTask {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: white;
+      margin-right: 10px;
+      padding: 8px;
+      border-radius: 10px;
+      font-size: 21px;
+      font-weight: 400;
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 0 !important;
+
+  }
+
+  .priorityPopUpTask:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+      box-shadow: 0px 6px 7px -3px #6d6969;
+
+  }
+
+  .arrDownPopUpTask {
+      height: 9px;
+      width: 13px;
+
+  }
+
+  .newContactImgPopUpTask {
+      height: 7px;
+      width: 7px
+  }
+
+  .dropdownPopUpTask {
+      position: relative;
+      display: inline-block;
+      width: 422px;
+      height: 26px;
+      border-radius: 10px;
+      background-color: #ffffff;
+      padding: 13px 21px;
+      color: #000000;
+      border: 1px solid #D1D1D1;
+      margin-bottom: 0 !important;
+
+  }
+
+  .dropdown-contentPopUpTask {
+      display: none;
+      position: absolute;
+      top: 40px;
+      left: -1px;
+      width: 464px;
+      background-color: #ffffff;
+      color: #D1D1D1;
+      border: 1px solid;
+      border-radius: 10px;
+      z-index: 1;
+      padding-top: 10px;
+  }
+
+  .dropdown-contentPopUpTask a {
+      display: block;
+      padding: 12px 20px;
+      text-decoration: none;
+      color: #000000;
+
+
+  }
+
+  .dropdownPopUpTask:hover .dropdown-contentPopUpTask {
+      display: block;
+      border-top: none;
+  }
+
+  .headerForSelectionFieldPopUpTask {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .addSubtaskButtonPopUpTask {
+      height: 20px;
+      width: 20px;
+      position: absolute;
+      top: 17px;
+      right: 60px
+  }
+
+  .addSubTaskPopUpTask {
+      position: relative;
+
+  }
+
+  .buttonsCreateTaskPopUpTask {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      font-size: 21px;
+      font-weight: 400;
+      margin: 0 90px 90px 0
+  }
+
+  .buttonCreateTaskPopUpTask {
+      display: flex;
+      align-items: center;
+      background-color: rgba(42, 54, 71, 1);
+      color: white;
+      border-radius: 10px;
+      padding: 15px 20px;
+  }
+
+  .buttonCreateTaskPopUpTask:hover {
+      cursor: pointer;
+      background-color: #29ABE2;
+      transition: 0.1s ease-in-out;
+  }
+
+  .buttonClearTaskPopUpTask {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: 2px solid rgba(42, 54, 71, 1);
+      color: rgba(42, 54, 71, 1);
+  }
+
+  .buttonClearTaskPopUpTask:hover {
+      cursor: pointer;
+      border-color: #29ABE2;
+      color: #29ABE2;
+  }
+
+  .createTaskPageImgPopUpTask {
+      margin-left: 15px;
+  }
+
+  .clearTaskPageImgPopUpTask {
+      margin-left: 15px;
+      font-size: 36px;
+      transform: rotate(45deg);
+
+
+  }
+  .closePopUp{
+    height:20px;
+    margin-top: 60px;
+    margin-right: 60px;
+  }
+  .closePopUp:hover{
+    cursor: pointer;
+  }
+
+
+
+  ::-webkit-scrollbar {
+      width: 10px;
+      background-color: #F0F0F0;
+      width: 15px;
+
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background-color: rgba(42, 54, 71, 1);
+      border-radius: 10px;
+
+  }

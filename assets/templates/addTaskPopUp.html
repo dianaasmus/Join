@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <link rel="stylesheet" href="./addTaskPopUp.css">
+
+</head>
+
+<body>
+    <div id="addTaskPopUp" class="wrapperPopUpTask">
+        <div class="contentPopUpTask">
+           <div class="taskPopUpHeader"> 
+            <h1>Add Task</h1>
+            <img onclick="closePopUpAddTask()" class="closePopUp" src="../../assets/img/closeButtonBoard.png">
+           </div>
+            <div class="taskBoardPopUpTask">
+
+                <div class="taskBoardLeftPopUpTask">
+                    <form>
+                        <div>
+                            <span>Title</span>
+                            <input required type="text" placeholder="Enter a title">
+                        </div>
+
+                        <div>
+                            <span>Description</span>
+                            <textarea style="color: #000000;" required type="text"
+                                placeholder="Enter a description"></textarea>
+                        </div>
+
+                        <div>
+                            <span>Category</span>
+                            <div class="dropdownPopUpTask">
+                                <div class="headerForSelectionFieldPopUpTask">
+                                    <span>Select task category</span>
+                                    <img class="arrDownPopUpTask" src="./assets/img/arrDown.png">
+                                </div>
+                                <div class="dropdown-contentPopUpTask">
+                                    <a href="#">Option 1</a>
+                                    <a href="#">Option 2</a>
+                                    <a href="#">Option 3</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span>Assigned to</span>
+                            <div class="dropdownPopUpTask">
+                                <div class="headerForSelectionFieldPopUpTask">
+                                    <span>Select contacts to assign</span>
+                                    <img class="arrDownPopUpTask" src="./assets/img/arrDown.png">
+                                </div>
+                                <div class="dropdown-contentPopUpTask">
+                                    <a href="#">Option 1</a>
+                                    <a href="#">Option 2</a>
+                                    <a href="#">Option 3</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="taskBoardRightPopUpTask">
+                    <form>
+                        <div>
+                            <span>Due date</span>
+                            <input style="color: #757575;" id="datePicker" required type="date">
+                        </div>
+
+                        <div>
+                            <span>Prio</span>
+                            <div class="prioritiesPopUpTask">
+                                <div class="priorityPopUpTask"><span>Urgent</span> <img src="./assets/img/urgent.png">
+                                </div>
+                                <div class="priorityPopUpTask"><span>Medium </span><img src="./assets/img/medium.png">
+                                </div>
+                                <div class="priorityPopUpTask"><span>Low</span> <img src="./assets/img/low.png"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span>Subtasks</span>
+                            <div class="addSubTaskPopUpTask">
+                                <input placeholder="Add new subtask">
+                                <img class="addSubtaskButtonPopUpTask" src="./assets/img/addSubtaskButton.png">
+                            </div>
+                        </div>
+
+                        <div>
+                            <span></span>
+                        </div>
+                    </form>
+                </div>
+
+            </div><!--taskBoard closed-->
+
+            <div class="buttonsCreateTaskPopUpTask">
+                <div class="buttonClearTaskPopUpTask">
+                    <span>Clear</span>
+                    <span class="clearTaskPageImgPopUpTask">+</span>
+                    <!-- <img class="clearTaskPageImg" src="./assets/img/clearTaskPage.png"> -->
+                </div>
+                <div class="buttonCreateTaskPopUpTask">
+                    <span>Create Task</span>
+                    <img class="createTaskPageImgPopUpTask" src="./assets/img/createTaskPage.png">
+                </div>
+            </div>
+
+        </div><!--content closed-->
+    </div><!--wrapper closed-->
+</body>
+
+</html>
