@@ -56,3 +56,25 @@ function openForgotPasswordForm() {
         </div>
             `;
 }
+
+//Forgot Password 
+function openForgotPasswordForm() {
+    document.getElementById('login-main').classList.add('d-none');
+    document.getElementById('empty-container').classList.add('container-style');
+    document.getElementById('empty-container').innerHTML = returnForgotPasswordForm();
+}
+
+function returnForgotPasswordForm() {
+    return `
+    <form onsubmit=""" class="login-form forgotten-password-from">
+        <img class="arrow-left" onclick="backToLogin()" src="assets/img/arrow-left.png">
+        <h1>I forgot my password</h1>
+        <hr>
+        <p>Don't worry! We will send you an email with the instructions to reset your password.</p>
+        
+        <input class="input-field" placeholder="Email" type="email" id="email-forgot-password" required>
+        
+        <button id="login-btn-Two">Send me the email</button>
+    </form>
+    `;
+}

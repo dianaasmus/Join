@@ -149,7 +149,8 @@ body {
     align-items: center;
 }
 
-#email-input {
+#email-input,
+#email-forgot-password {
     background: url(../assets/img/email-icon.png) no-repeat scroll 370px 15px;
 }
 
@@ -246,7 +247,8 @@ body {
     background-color: #2a3647;
     border-radius: 8px;
     height: 51px;
-    width: 145px;
+    width: 165px;
+    /* padding: 0 20px; */
     border-style: none;
     color: #fff;
     font-size: 21px;
@@ -258,14 +260,14 @@ body {
     background-color: #fff;
     border-radius: 8px;
     height: 51px;
-    width: 145px;
+    width: 165px;
     border-style: none;
     font-size: 21px;
     font-weight: 700;
     border: 2px solid #2a3647;
     color: #2a3647;
     cursor: pointer;
-    padding: 4px, 0px, 4px, 0px;
+    /* padding: 0 20px; */
 }
 
 #login-guest:hover {
@@ -279,7 +281,8 @@ body {
     background: url(../assets/img/user-icon.png) no-repeat scroll 370px 15px;
 }
 
-#email-input-signup {
+#email-input-signup,
+#email-forgot-password {
     background: url(../assets/img/email-icon.png) no-repeat scroll 370px 15px;
 }
 
@@ -304,4 +307,19 @@ body {
     top: 40px;
     left: 40px;
     cursor: pointer;
+}
+
+/* forgotten password form  */
+.forgotten-password-from {
+    padding: 47px 85px 47px 85px;
+}
+
+.forgotten-password-from p {
+    font-size: 21px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.forgotten-password-from button {
+    width: 230px !important;
 }
