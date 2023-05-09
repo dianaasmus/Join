@@ -92,7 +92,7 @@ body {
 
 #signup-btn:hover,
 #login-btn-Two:hover,
-#new-signup:hover {
+#registerBtn:hover {
     background-color: #29ABE2;
     box-shadow: 0px 4px 9px -1px rgba(0, 0, 0, 0.4);
 }
@@ -287,7 +287,7 @@ body {
     background: url(../assets/img/password-icon.png) no-repeat scroll 370px 15px;
 }
 
-#new-signup {
+#registerBtn {
     border-radius: 8px;
     border-style: none;
     width: 145px;

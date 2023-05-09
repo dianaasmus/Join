@@ -1,3 +1,4 @@
+
 function openSignUpContainer() {
     document.getElementById('login-main').classList.add('d-none');
     document.getElementById('empty-container').classList.add('container-style');
@@ -6,14 +7,14 @@ function openSignUpContainer() {
 
 function returnSignupForm() {
     return `
-            <form onsubmit="" class="login-form">
+            <form onsubmit="register(); return false;" class="login-form">
                 <img class="arrow-left" onclick="backToLogin()" src="assets/img/arrow-left.png">
                 <h1>Sign up</h1>
                 <hr>
-                <input class="input-field" placeholder="Name" type="text" id="name-input" required>
-                <input class="input-field" placeholder="Email" type="email" id="email-input-signup" required>
-                <input class="input-field" placeholder="Password" type="password" id="password-input-signup" required>
-                <button id="new-signup">Sign up</button>
+                <input class="input-field" placeholder="Name" type="text" id="userName" required>
+                <input class="input-field" placeholder="Email" type="email" id="email" required>
+                <input class="input-field" placeholder="Password" type="password" id="password" autocomplete="on" required>
+                <button id="registerBtn">Sign up</button>
             </form>
             `;
 }
@@ -27,7 +28,8 @@ function backToLogin() {
 function openGuestLogin() {
     document.getElementById('email-input').disabled = true; //====================================================enable
     document.getElementById('password-input').disabled = true;
-    window.open("summary.html");
+    window.open("https://www.google.com", "_self");
+    // window.location.href = "summary.html", "_blank";
 }
 
 function openForgotPasswordForm() {

@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="fonts.css">
     <script src="js/index.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/register.js"></script>
 </head>
 
-<body>
+<body onload="init()">
     <div id="logo-container">
         <img src="assets/img/logo-blue.png" id="join-logo">
     </div>
@@ -28,7 +30,8 @@
                 <h1>Log in</h1>
                 <hr>
                 <input class="input-field" placeholder="Email" type="email" id="email-input" required>
-                <input class="input-field" placeholder="Password" type="password" id="password-input" autocomplete="on" required>
+                <input class="input-field" placeholder="Password" type="password" id="password-input" autocomplete="on"
+                    required>
                 <div class="login-settings">
                     <label class="remember-me">
                         <input id="checkbox" type="checkbox">
