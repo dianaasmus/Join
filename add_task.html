@@ -32,17 +32,14 @@
         }
 
         .content {
-            margin: 50px 85px 0 105px;
+            margin: 50px 85px 0 135px;
 
         }
 
         h1 {
             font-size: 61px;
-            margin: 0;
+            margin-bottom: 60px;
             font-weight: 700;
-            padding-bottom: 60px;
-            padding-top: 30px;
-       
         }
 
         .taskBoard {
@@ -88,18 +85,6 @@
 
         }
 
-        select {
-            border: none;
-
-            width: 464px;
-            border-radius: 10px;
-            padding: 13px 21px 13px 21px;
-            color: black;
-            border: 1px solid #D1D1D1;
-            font-size: 21px;
-            outline: none;
-        }
-
 
         form span {
             margin-bottom: 5px;
@@ -137,7 +122,7 @@
             border-radius: 10px;
             font-size: 21px;
             font-weight: 400;
-            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: -2px 0px 6px rgba(0, 0, 0, 0.25);
             margin-bottom: 0 !important;
 
         }
@@ -145,7 +130,7 @@
         .priority:hover {
             transform: scale(1.1);
             cursor: pointer;
-            box-shadow: 0px 6px 7px -3px #6d6969;
+            box-shadow: -2px 0px 6px rgba(0, 0, 0, 0.25);
 
         }
 
@@ -237,26 +222,35 @@
             background-color: rgba(42, 54, 71, 1);
             color: white;
             border-radius: 10px;
-            padding: 15px 20px;
+            padding: 7px 15px;
+            font-size: 21px;
+            border: none;
         }
 
         .buttonCreateTask:hover {
             cursor: pointer;
             background-color: #29ABE2;
-            transition: 0.1s ease-in-out;
+            transition: 75ms ease-in-out;
+            border: none;
         }
 
         .buttonClearTask {
             display: flex;
             align-items: center;
             margin-right: 20px;
-            padding: 10px 20px;
+            padding: 7px 15px;
             border-radius: 10px;
-            border: 2px solid rgba(42, 54, 71, 1)
+            border: 2px solid rgba(42, 54, 71, 1);
+            color: rgba(42, 54, 71, 1);
+            font-size: 21px;
+            background-color: #F6F7F8
         }
 
         .buttonClearTask:hover {
             cursor: pointer;
+            border-color: #29ABE2;
+            color: #29ABE2;
+
         }
 
         .createTaskPageImg {
@@ -265,6 +259,24 @@
 
         .clearTaskPageImg {
             margin-left: 15px;
+            font-size: 36px;
+            transform: rotate(45deg);
+
+
+        }
+
+
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            background-color: #F0F0F0;
+            width: 15px
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(42, 54, 71, 1);
+            border-radius: 10px;
+
         }
     </style>
 
@@ -276,98 +288,101 @@
     <div class="wrapper">
         <div class="content">
             <h1>Add Task</h1>
-            <div class="taskBoard">
+
+            <form class="taskBoard" onsubmit="">
+
 
                 <div class="taskBoardLeft">
-                    <form>
-                        <div>
-                            <span>Title</span>
-                            <input required type="text" placeholder="Enter a title">
-                        </div>
+                    <div>
+                        <label>Title</label>
+                        <input id="task" type="text" placeholder="Enter a title" required>
+                    </div>
 
-                        <div>
-                            <span>Description</span>
-                            <textarea style="color: #000000;" required type="text"
-                                placeholder="Enter a description"></textarea>
-                        </div>
+                    <div>
+                        <label>Description</label>
+                        <textarea id="description" required style="color: #000000;" required type="text"
+                            placeholder="Enter a description"></textarea>
+                    </div>
 
-                        <div>
-                            <span>Category</span>
-                            <div class="dropdown">
-                                <div class="headerForSelectionField">
-                                    <span>Select task category</span>
-                                    <img class="arrDown" src="./assets/img/arrDown.png">
-                                </div>
-                                <div class="dropdown-content">
-                                    <a href="#">Option 1</a>
-                                    <a href="#">Option 2</a>
-                                    <a href="#">Option 3</a>
-                                </div>
+                    <div>
+                        <label>Category</label>
+                        <div class="dropdown">
+                            <div class="headerForSelectionField">
+                                <span>Select task category</span>
+                                <img class="arrDown" src="./assets/img/arrDown.png">
+                            </div>
+                            <div class="dropdown-content">
+                                <a onclick="addCategory({i})" href="#">Option 1</a>
+                                <a onclick="addCategory({i})" href="#">Option 2</a>
+                                <a href="#">Option 3</a>
                             </div>
                         </div>
+                    </div>
 
-                        <div>
-                            <span>Assigned to</span>
-                            <div class="dropdown">
-                                <div class="headerForSelectionField">
-                                    <span>Select contacts to assign</span>
-                                    <img class="arrDown" src="./assets/img/arrDown.png">
-                                </div>
-                                <div class="dropdown-content">
-                                    <a href="#">Option 1</a>
-                                    <a href="#">Option 2</a>
-                                    <a href="#">Option 3</a>
-                                </div>
+                    <div>
+                        <span>Assigned to</span>
+                        <div class="dropdown">
+                            <div class="headerForSelectionField">
+                                <span>Select contacts to assign</span>
+                                <img class="arrDown" src="./assets/img/arrDown.png">
+                            </div>
+                            <div class="dropdown-content">
+                                <a href="#" onclick="addAssigned({i})">Option 1</a>
+                                <a href="#" onclick="addAssigned({i})">Option 2</a>
+                                <a href="#">Option 3</a>
                             </div>
                         </div>
+                    </div>
 
-                    </form>
+
                 </div>
 
                 <div class="taskBoardRight">
-                    <form>
-                        <div>
-                            <span>Due date</span>
-                            <input style="color: #757575;" id="datePicker" required type="date">
+
+                    <div>
+                        <span>Due date</span>
+                        <input type="date" id="myDate" required />
+                    </div>
+
+                    <div>
+                        <span>Prio</span>
+                        <div class="priorities">
+                            <div class="priority"><span>Urgent</span> <img src="./assets/img/urgent.png"></div>
+                            <div class="priority"><span>Medium </span><img src="./assets/img/medium.png"></div>
+                            <div class="priority"><span>Low</span> <img src="./assets/img/low.png"></div>
                         </div>
+                    </div>
 
-                        <div>
-                            <span>Prio</span>
-                            <div class="priorities">
-                                <div class="priority"><span>Urgent</span> <img src="./assets/img/urgent.png"></div>
-                                <div class="priority"><span>Medium </span><img src="./assets/img/medium.png"></div>
-                                <div class="priority"><span>Low</span> <img src="./assets/img/low.png"></div>
-                            </div>
+                    <div>
+                        <span>Subtasks</span>
+                        <div class="addSubTask">
+                            <input placeholder="Add new subtask">
+                            <img class="addSubtaskButton" src="./assets/img/addSubtaskButton.png">
                         </div>
+                    </div>
 
-                        <div>
-                            <span>Subtasks</span>
-                            <div class="addSubTask">
-                                <input placeholder="Add new subtask">
-                                <img class="addSubtaskButton" src="./assets/img/addSubtaskButton.png">
-                            </div>
-                        </div>
+                    <div>
+                        <span></span>
+                    </div>
+                    <div class="buttonsCreateTask">
+                        <button class="buttonClearTask">
+                            <span>Clear</span>
+                            <span class="clearTaskPageImg">+</span>
+                            <!-- <img class="clearTaskPageImg" src="./assets/img/clearTaskPage.png"> -->
+                        </button>
+                        <button type="submit" class="buttonCreateTask">
+                            <span>Create Task</span>
+                            <img class="createTaskPageImg" src="./assets/img/createTaskPage.png">
+                        </button>
+                    </div>
 
-                        <div>
-                            <span></span>
-                        </div>
-                    </form>
-                </div>
+            </form>
 
-            </div><!--taskBoard closed-->
+        </div><!--taskBoard closed-->
 
-            <div class="buttonsCreateTask">
-                <div class="buttonClearTask">
-                    <span>Clear</span>
-                    <img class="clearTaskPageImg" src="./assets/img/clearTaskPage.png">
-                </div>
-                <div class="buttonCreateTask">
-                    <span>Create Task</span>
-                    <img class="createTaskPageImg" src="./assets/img/createTaskPage.png">
-                </div>
-            </div>
 
-        </div><!--content closed-->
+
+    </div><!--content closed-->
     </div><!--wrapper closed-->
 
 </body>
