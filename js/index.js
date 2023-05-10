@@ -26,10 +26,10 @@ function backToLogin() {
 }
 
 function openGuestLogin() {
-    document.getElementById('email-input').disabled = true; //====================================================enable
-    document.getElementById('password-input').disabled = true;
-    window.open("https://www.google.com", "_self");
-    // window.location.href = "summary.html", "_blank";
+    document.getElementById('email-login').disabled = true; //==================================================== enable
+    document.getElementById('password-login').disabled = true;
+    window.open("./summary.html", "_self");
+    // ==================================================== window.location.href = "summary.html", "_self";
 }
 
 function openForgotPasswordForm() {
@@ -38,8 +38,8 @@ function openForgotPasswordForm() {
             <form onsubmit="" class="login-form">
                 <h1>Log in</h1>
                 <hr>
-                <input class="input-field" placeholder="Email" type="email" id="email-input" required>
-                <input class="input-field" placeholder="Password" type="password" id="password-input" required>
+                <input class="input-field" placeholder="Email" type="email" id="email-login" required>
+                <input class="input-field" placeholder="Password" type="password" id="password-login" required>
                 <div class="login-settings">
                     <label class="container">
                         <input id="checkbox" type="checkbox">
@@ -63,10 +63,10 @@ function openForgotPasswordForm() {
     document.getElementById('empty-container').classList.add('container-style');
     document.getElementById('empty-container').innerHTML = returnForgotPasswordForm();
 }
-
+//action="./send_mail.php" method="POST" 
 function returnForgotPasswordForm() {
     return `
-    <form onsubmit=""" class="login-form forgotten-password-from">
+    <form onsubmit="sentMail(); return false;" class="login-form forgotten-password-from">
         <img class="arrow-left" onclick="backToLogin()" src="assets/img/arrow-left.png">
         <h1>I forgot my password</h1>
         <hr>
@@ -74,7 +74,18 @@ function returnForgotPasswordForm() {
         
         <input class="input-field" placeholder="Email" type="email" id="email-forgot-password" required>
         
-        <button id="login-btn-Two">Send me the email</button>
+        <button id="forgot-password-btn">Send me the email</button>
     </form>
+    `;
+}
+
+function sentMail() {
+    document.getElementById('empty-container').innerHTML += `
+    <div class="sent-mail-container">
+        <div class="sent-mail-message">
+            <img src="./assets/img/SendCheck.png">
+            An E-Mail has been sent to you
+        </div>
+    </div>
     `;
 }

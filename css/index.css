@@ -11,7 +11,8 @@ body {
 }
 
 /* Logo */
-#logo-container {
+#logo-container,
+#logo-container-reset-password {
     position: absolute;
     z-index: 1;
     top: 0;
@@ -33,7 +34,8 @@ body {
     }
 }
 
-#join-logo {
+#join-logo,
+#join-logo-reset-password {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -42,6 +44,10 @@ body {
     animation-fill-mode: forwards;
     z-index: 3;
     transition: transform 500ms ease-in-out;
+}
+
+#join-logo-reset-password {
+    cursor: pointer;
 }
 
 @keyframes Logo-Animation {
@@ -92,7 +98,9 @@ body {
 
 #signup-btn:hover,
 #login-btn-Two:hover,
-#registerBtn:hover {
+#registerBtn:hover,
+#forgot-password-btn:hover,
+#reset-password-btn:hover {
     background-color: #29ABE2;
     box-shadow: 0px 4px 9px -1px rgba(0, 0, 0, 0.4);
 }
@@ -149,13 +157,8 @@ body {
     align-items: center;
 }
 
-#email-input,
-#email-forgot-password {
-    background: url(../assets/img/email-icon.png) no-repeat scroll 370px 15px;
-}
-
-#password-input {
-    background: url(../assets/img/password-icon.png) no-repeat scroll 370px 15px;
+.input-field::placeholder {
+    color: #d1d1d1;
 }
 
 .login-settings {
@@ -243,12 +246,13 @@ body {
     justify-content: space-evenly;
 }
 
-#login-btn-Two {
+#login-btn-Two,
+#forgot-password-btn,
+#reset-password-btn {
     background-color: #2a3647;
     border-radius: 8px;
     height: 51px;
     width: 165px;
-    /* padding: 0 20px; */
     border-style: none;
     color: #fff;
     font-size: 21px;
@@ -277,16 +281,18 @@ body {
 }
 
 /*Sign Up Form */
-#name-input {
+#userName {
     background: url(../assets/img/user-icon.png) no-repeat scroll 370px 15px;
 }
 
-#email-input-signup,
+#email-login,
+#email,
 #email-forgot-password {
     background: url(../assets/img/email-icon.png) no-repeat scroll 370px 15px;
 }
 
-#password-input-signup {
+#password,
+#password-login {
     background: url(../assets/img/password-icon.png) no-repeat scroll 370px 15px;
 }
 
@@ -310,7 +316,8 @@ body {
 }
 
 /* forgotten password form  */
-.forgotten-password-from {
+.forgotten-password-from,
+.reset-password-form {
     padding: 47px 85px 47px 85px;
 }
 
@@ -320,6 +327,69 @@ body {
     text-align: center;
 }
 
-.forgotten-password-from button {
+#forgot-password-btn {
     width: 230px !important;
+}
+
+.sent-mail-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(160, 160, 160, 0);
+    animation: slideInBackground 225ms ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideInBackground {
+    from {
+        background-color: rgba(160, 160, 160, 0);
+    }
+
+    to {
+        background-color: rgba(160, 160, 160, 0.6);
+    }
+}
+
+.sent-mail-message {
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    left: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: translate(-50%, 1000%);
+    animation: slideIn 225ms ease-in-out;
+    animation-fill-mode: forwards;
+
+    border-style: none;
+    border-radius: 8px;
+    width: 424px;
+    height: 74px;
+    cursor: pointer;
+
+    font-size: 23px;
+    font-weight: 400;
+    gap: 20px;
+    color: #fff;
+    background-color: #2a3647;
+
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate(-50%, 1000%);
+    }
+
+    to {
+        transform: translate(-50%, -50%);
+    }
+}
+
+.reset-password-form p {
+    font-size: 21px;
 }
