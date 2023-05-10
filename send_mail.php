@@ -2,15 +2,6 @@
 
 ########### CONFIG ###############
 
-// $recipient = ;
-// $redirect = 'success.html';
-// echo "<script src="index.js">load();</script>";
-
-
-echo "<script>";
-echo "let meinElement = document.getElementById('email-forgot-password');";
-echo "console.log(meinElement);";
-echo "</script>";
 
 
 ########### CONFIG END ###########
@@ -47,14 +38,25 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case ("POST"): //Send the email;
         header("Access-Control-Allow-Origin: *");
 
-        $subject = "Contact From " . $_POST['name'];
-        $headers = "From:  noreply@developerakademie.com";
+        $email = $_POST['email'];
 
-        mail($recipient, $subject, $_POST['message'], $headers);
-        header("Location: " . $redirect); 
+        $message = "Hello, \n
+        \nFollow this link to reset your JOIN password for your " . $email . " account. \n 
+        \nhttps://gruppe-559.developerakademie.net/reset_password.html?email=" . $email . "\n
+        \nIf you didn't ask to reset your password, you can ignore this email. \n
+        \nThanks, \n
+        \nYour Join-Team\n";
+
+        $recipient = $email;
+        $subject = "Reset your password for JOIN App";
+        $headers = "From: noreply@https://gruppe-559.developerakademie.net"
+
+        $result = mail($recipient, $subject, $message, $headers);
+        print($result);
+        # header("Location: " . $redirect);
 
         break;
-    default: //Reject any non POST or OPTIONS requests.
+    default: //Reject any non POST or OPTIONS requets.
         header("Allow: POST", true, 405);
         exit;
 }

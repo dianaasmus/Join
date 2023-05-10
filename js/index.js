@@ -63,10 +63,10 @@ function openForgotPasswordForm() {
     document.getElementById('empty-container').classList.add('container-style');
     document.getElementById('empty-container').innerHTML = returnForgotPasswordForm();
 }
-//action="./send_mail.php" method="POST" 
+
 function returnForgotPasswordForm() {
     return `
-    <form onsubmit="sentMail(); return false;" class="login-form forgotten-password-from">
+    <form onsubmit="onSubmit(event)" class="login-form forgotten-password-from">
         <img class="arrow-left" onclick="backToLogin()" src="assets/img/arrow-left.png">
         <h1>I forgot my password</h1>
         <hr>
@@ -79,7 +79,7 @@ function returnForgotPasswordForm() {
     `;
 }
 
-function sentMail() {
+function sentMailContainer() {
     document.getElementById('empty-container').innerHTML += `
     <div class="sent-mail-container">
         <div class="sent-mail-message">
