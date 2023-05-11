@@ -23,16 +23,16 @@ function generateRightSideNewContact() { //form: onsubmit="saveNewContact(); ret
                                 <div class="warning-message" id="warning-contact-new-edit">
                                 </div>
                                 <div class="input-form-new-contact">
-                                    <input required type="text" id="new-contact-name" placeholder ="first and last name" title="Enter first and last name">
-                                    <img src="../assets/img/name-input.svg>
+                                    <input required type="text" id="new-contact-name" placeholder ="first and last name">
+                                    <img src="../assets/img/name_input.svg">
                                 </div>
                                 <div class="input-form-new-contact">
                                     <input required type="email" id="new-contact-mail" placeholder ="e-mail">
                                     <img src="../assets/img/email_input.svg">
                                 </div>
                                 <div class="input-form-new-contact">
-                                    <input required type="tel" pattern="[0-9]+" id="new-contact-phone" placeholder ="phone">
-                                    <img src="../assets/img/icon-phone.svg">
+                                <input required type="tel" pattern="[0-9]+" id="new-contact-phone" placeholder ="phone">
+                                <img src="../assets/img/icon-phone.svg">
                                 </div>
                             <div class="create-cancel-box" id="create-edit-content" onclick="closeNewContact()">
                                 <button type="button" class="contact-new-cancel" id="contact-new-cancel">
