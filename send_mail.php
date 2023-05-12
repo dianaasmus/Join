@@ -2,7 +2,8 @@
 
 ########### CONFIG ###############
 
-
+# $recipient = 'your@mail.com';
+# $redirect = 'success.html';
 
 ########### CONFIG END ###########
 
@@ -49,7 +50,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         $recipient = $email;
         $subject = "Reset your password for JOIN App";
-        $headers = "From: noreply@https://gruppe-559.developerakademie.net"
+        $headers = "From: noreply@https://gruppe-559.developerakademie.net";
 
         $result = mail($recipient, $subject, $message, $headers);
         print($result);

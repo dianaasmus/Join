@@ -107,7 +107,7 @@ body {
 
 /* Login Container  */
 #login-container,
-.container-style {
+.wider-container-style {
     position: absolute;
     top: 0;
     left: 0;
@@ -130,6 +130,13 @@ body {
     border-radius: 30px;
     gap: 35px;
     padding: 35px 0 35px 0;
+}
+
+#loginFormContainer {
+    position: relative;
+    width: 650px;
+    background-color: #fff;
+    border-radius: 30px;
 }
 
 .login-form h1 {
@@ -243,7 +250,7 @@ body {
 .login-btns {
     width: 422px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 }
 
 #login-btn-Two,
@@ -260,6 +267,10 @@ body {
     cursor: pointer;
 }
 
+#login-btn-Two {
+    margin-left: 30px;
+}
+
 #login-guest {
     background-color: #fff;
     border-radius: 8px;
@@ -271,7 +282,9 @@ body {
     border: 2px solid #2a3647;
     color: #2a3647;
     cursor: pointer;
-    /* padding: 0 20px; */
+    position: absolute;
+    bottom: 35px;
+    right: 150px;
 }
 
 #login-guest:hover {
@@ -285,14 +298,14 @@ body {
     background: url(../assets/img/user-icon.png) no-repeat scroll 370px 15px;
 }
 
-#email-login,
+#emailLogin,
 #email,
 #email-forgot-password {
     background: url(../assets/img/email-icon.png) no-repeat scroll 370px 15px;
 }
 
 #password,
-#password-login {
+#passwordLogin {
     background: url(../assets/img/password-icon.png) no-repeat scroll 370px 15px;
 }
 
@@ -392,4 +405,26 @@ body {
 
 .reset-password-form p {
     font-size: 21px;
+}
+
+.shake-animation {
+    animation: shake 200ms 2;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        translate: 0;
+    }
+
+    25% {
+        translate: 0.125rem;
+        border-color: red;
+    }
+
+    75% {
+        translate: -0.125rem;
+        border-color: red;
+    }
 }
