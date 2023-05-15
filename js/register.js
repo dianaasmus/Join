@@ -13,11 +13,10 @@ async function loadUsers() {
 }
 
 async function register() {
-    
     registerBtn.disabled = true;
     users.push({
         userName: userName.value,
-        email: email.value,
+        emailSignUp: emailSignUp.value,
         password: password.value
     });
     await setItem('users', JSON.stringify(users));
@@ -26,7 +25,7 @@ async function register() {
 
 function resetForm() {
     userName.value = '';
-    email.value = '';
+    emailSignUp.value = '';
     password.value = '';
     registerBtn.disabled = false;
 }

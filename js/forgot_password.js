@@ -1,4 +1,4 @@
-//======================================================================= Beispiel User:
+// ======================================================================= Beispiel User:
 
 // let users;
 
@@ -28,11 +28,18 @@
 //     });
 // }
 
-
+// function saveUsers() {
+//     localStorage.setItem('users', JSON.stringify(users));
+// }
 
 async function onSubmit(event) {
     event.preventDefault(); // <form onsubmit="onSubmit(event); return false;">
     let formData = new FormData(event.target);
+    // formData.append('name-der-variable', 'wert-der-variable');
+    // const recipient = emailForgotPassword.value;
+    // formData.append('recipient', recipient);
+    // formData.append('name', 'Diana');
+    // formData.append('message', 'Dein Passwort wurde zurückgesetzt.');
     let response = await action(formData);
     if (response.ok) {
         sentMailContainer();
@@ -50,3 +57,4 @@ function action(formData) {
 
     return fetch(input, requestInit);
 }
+

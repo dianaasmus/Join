@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="fonts.css">
     <script src="js/index.js"></script>
-    <script src="js/forgot_password.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/register.js"></script>
+    <script src="js/forgot_password.js"></script>
+
 </head>
 
 <body onload="init()">
@@ -32,15 +33,14 @@
                     <h1>Log in</h1>
                     <hr>
                     <input class="input-field" placeholder="Email" type="email" id="emailLogin" required>
-                    <input class="input-field" placeholder="Password" type="password" id="passwordLogin"
-                        autocomplete="on" required>
+                    <input class="input-field" placeholder="Password" type="password" id="passwordLogin" oninput="disableInput()" required>
                     <div class="login-settings">
                         <label class="remember-me">
-                            <input onclick="rememberMe()" id="checkbox" type="checkbox">
+                            <input onclick="rememberMe()" id="checkbox" type="checkbox" disabled>
                             <p>Remember me</p>
-                            <span class="checkmark"></span>
+                            <span id="checkmark" class="checkmark"></span>
                         </label>
-                        <a onclick="openForgotPasswordForm()" id="forget-password">Forgot my password</a>
+                        <a onclick="openForgotPassword(); return false" id="forget-password">Forgot my password</a>
                     </div>
                     <div class="login-btns">
                         <button type="submit" id="login-btn-Two">Log in</button>

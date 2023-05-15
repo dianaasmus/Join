@@ -10,6 +10,14 @@ body {
     display: none;
 }
 
+.login-container,
+.container-style {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /* Logo */
 #logo-container,
 #logo-container-reset-password {
@@ -150,6 +158,7 @@ body {
     width: 150px;
     background-color: #29ABE2;
     margin: 0;
+    border: 1px solid #29ABE2;
 }
 
 .input-field {
@@ -198,18 +207,12 @@ body {
     width: 16px;
     border: 1px solid black;
     border-radius: 3px;
-    cursor: pointer;
     background-image: linear-gradient(#F9F9F9, #F0F0F0);
 }
 
 /* On mouse-over, add a grey background color */
 .remember-me:hover input~.checkmark {
     background-color: #d1d1d1;
-}
-
-/* When the checkbox is checked, add a blue background */
-.remember-me input:checked~.checkmark {
-    background-color: red;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -299,8 +302,7 @@ body {
 }
 
 #emailLogin,
-#email,
-#email-forgot-password {
+#emailSignUp {
     background: url(../assets/img/email-icon.png) no-repeat scroll 370px 15px;
 }
 
