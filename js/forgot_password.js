@@ -1,45 +1,36 @@
-// ======================================================================= Beispiel User:
+/**
+ * This function displays the Forgot-Password form and hides the Login form.
+ */
+function openForgotPassword() {
+    document.getElementById('login-main').classList.add('d-none');
+    document.getElementById('empty-container').classList.add('wider-container-style');
+    document.getElementById('empty-container').innerHTML = returnForgotPasswordForm();
+}
 
-// let users;
+/**
+ * This function returns the Forgot-Password form.
+ */
+function returnForgotPasswordForm() {
+    return `
+    <form onsubmit="onSubmit(event)" class="login-form forgotten-password-from">
+        <img class="arrow-left" onclick="backToLogin()" src="assets/img/arrow-left.png">
+        <h1>I forgot my password</h1>
+        <hr>
+        <p>Don't worry! We will send you an email with the instructions to reset your password.</p>
+        
+        <input class="input-field" name="email" placeholder="Email" type="email" id="email" required>
+        
+        <button type="submit" id="forgot-password-btn">Send me the email</button>
+    </form>
+    `;
+}
 
-// async function onPageLoad() {
-//     users = await fetchRandomUsers();
-//     saveUsers();
-//     displayUsers();
-// }
-
-// async function fetchRandomUsers() {
-//     let response = await fetch('https://randomuser.me/api/?results=10');
-//     return (await response.json()).results;
-// }
-
-// function saveUsers() {
-//     localStorage.setItem('users', JSON.stringify(users));
-// }
-
-// function displayUsers() {
-//     users.forEach((user) => {
-//         document.body.insertAdjacentElement('beforeend', `
-//         <div>
-//             <span>${user.name.first} ${user.name.last}</span><br>
-//             <span>${user.email}</span>
-//         </div>
-//         `)
-//     });
-// }
-
-// function saveUsers() {
-//     localStorage.setItem('users', JSON.stringify(users));
-// }
-
+/**
+ * This function checks whether the email has been sent or not.
+ */
 async function onSubmit(event) {
-    event.preventDefault(); // <form onsubmit="onSubmit(event); return false;">
+    event.preventDefault();
     let formData = new FormData(event.target);
-    // formData.append('name-der-variable', 'wert-der-variable');
-    // const recipient = emailForgotPassword.value;
-    // formData.append('recipient', recipient);
-    // formData.append('name', 'Diana');
-    // formData.append('message', 'Dein Passwort wurde zurückgesetzt.');
     let response = await action(formData);
     if (response.ok) {
         sentMailContainer();
@@ -48,6 +39,9 @@ async function onSubmit(event) {
     }
 }
 
+/**
+ * This function directs the email to the php file to send a message to it.
+ */
 function action(formData) {
     const input = 'https://gruppe-559.developerakademie.net/send_mail.php';
     const requestInit = {
@@ -58,3 +52,25 @@ function action(formData) {
     return fetch(input, requestInit);
 }
 
+/**
+ * This function opens a container that confirms the sending of the email.
+ */
+function sentMailContainer() {
+    document.getElementById('empty-container').innerHTML += `
+    <div class="sent-mail-container" onclick="linkToLogin()">
+        <div class="sent-mail-message">
+            <img src="./assets/img/SendCheck.png">
+            An E-Mail has been sent to you
+        </div>
+    </div>
+    `;
+}
+
+/**
+ * This function opens back the Login Container.
+ */
+function backToLogin() {
+    document.getElementById('login-main').classList.remove('d-none');
+    document.getElementById('empty-container').classList.remove('wider-container-style');
+    document.getElementById('empty-container').innerHTML = '';
+}

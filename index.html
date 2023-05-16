@@ -33,7 +33,7 @@
                     <h1>Log in</h1>
                     <hr>
                     <input class="input-field" placeholder="Email" type="email" id="emailLogin" required>
-                    <input class="input-field" placeholder="Password" type="password" id="passwordLogin" oninput="disableInput()" required>
+                    <input class="input-field" placeholder="Password" type="password" id="passwordLogin" onkeydown="enter(event)" oninput="disableInput()" required>
                     <div class="login-settings">
                         <label class="remember-me">
                             <input onclick="rememberMe()" id="checkbox" type="checkbox" disabled>
