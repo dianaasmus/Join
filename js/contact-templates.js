@@ -10,9 +10,8 @@ function generateLeftSideNewContact() {
     `;
 }
 
-//class Close-contact  onclick="closeNewContact()" contact-new-cancel onclick="closeNewContact()"
 function generateRightSideNewContact() { //form: onsubmit="saveNewContact(); return false;"
-    return ` <form  class="new-contact-circle-name" id="new-contact-circle-name">
+    return ` <form class="new-contact-circle-name" onsubmit="saveNewContact(); return false;" id="new-contact-circle-name">
                         <div class="edit-contact-circle">
                             <div class="contact-circle-big contact-circle-card bg0" id="circle-new-contact">
                                 <img src=".//assets/img/name_input.svg">
@@ -23,15 +22,15 @@ function generateRightSideNewContact() { //form: onsubmit="saveNewContact(); ret
                                 <div class="warning-message" id="warning-contact-new-edit">
                                 </div>
                                 <div class="input-form-new-contact">
-                                    <input required type="text" id="new-contact-name" placeholder ="first and last name">
+                                    <input required type="text" id="contact-name" placeholder ="first and last name">
                                     <img src="../assets/img/name_input.svg">
                                 </div>
                                 <div class="input-form-new-contact">
-                                    <input required type="email" id="new-contact-mail" placeholder ="e-mail">
+                                    <input required type="email" id="contact-mail" placeholder ="e-mail">
                                     <img src="../assets/img/email_input.svg">
                                 </div>
                                 <div class="input-form-new-contact">
-                                <input required type="tel" pattern="[0-9]+" id="new-contact-phone" placeholder ="phone">
+                                <input required type="tel" pattern="[0-9]+" id="contact-phone" placeholder ="phone">
                                 <img src="../assets/img/icon-phone.svg">
                                 </div>
                             <div class="create-cancel-box" id="create-edit-content" onclick="closeNewContact()">
