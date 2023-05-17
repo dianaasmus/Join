@@ -9,9 +9,10 @@
 
     <script>
         let users = [];
-        setURL('http://developerakademie.com/smallest_backend_ever');
+        setURL('https://gruppe-559.developerakademie.net/smallest_backend_ever-master/mini_backend.js');
 
         async function init() {
+            setURL('https://gruppe-559.developerakademie.net/smallest_backend_ever-master/mini_backend.js');
             await downloadFromServer();
             users = JSON.parse(backend.getItem('users')) || [];
         }

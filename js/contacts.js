@@ -1,4 +1,10 @@
-let contact = [];
+let contacts = [];
+
+async function initContacts(){
+    setURL('https://gruppe-559.developerakademie.net/smallest_backend_ever-master');
+    await downloadFromServer();
+    contacts = JSON.parse(backend.getItem('contacts'))
+}
 
 function openAddContacts() {
     clearContactCard();
@@ -34,7 +40,7 @@ function addContact() {
         "email": email.value,
         "phone": phone.value,
     };
-    contact.push(addContact);
+    contacts.push(addContact);
     addAndSaveContact();
     closeNewContact();
 }
