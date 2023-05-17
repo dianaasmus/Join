@@ -140,12 +140,12 @@ body {
     padding: 35px 0 35px 0;
 }
 
-#loginFormContainer {
+/* #loginFormContainer {
     position: relative;
     width: 650px;
     background-color: #fff;
     border-radius: 30px;
-}
+} */
 
 .login-form h1 {
     font-size: 61px;
@@ -207,6 +207,7 @@ body {
     width: 16px;
     border: 1px solid black;
     border-radius: 3px;
+    cursor: pointer;
     background-image: linear-gradient(#F9F9F9, #F0F0F0);
 }
 
@@ -304,6 +305,15 @@ body {
 #emailLogin,
 #emailSignUp {
     background: url(../assets/img/email-icon.png) no-repeat scroll 370px 15px;
+}
+
+#passwordLogin:focus,
+#emailLogin:focus,
+#userName:focus,
+#emailSignUp:focus,
+#password:focus,
+#email:focus {
+    outline: 2px solid #29ABE2;
 }
 
 #password,

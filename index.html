@@ -13,7 +13,7 @@
     <script src="js/storage.js"></script>
     <script src="js/register.js"></script>
     <script src="js/forgot_password.js"></script>
-
+    <script></script>
 </head>
 
 <body onload="init()">
@@ -28,26 +28,25 @@
         </div>
 
         <div id="login-container">
-            <div id="loginFormContainer">
-                <form onsubmit="checkUser(); return false;" class="login-form">
-                    <h1>Log in</h1>
-                    <hr>
-                    <input class="input-field" placeholder="Email" type="email" id="emailLogin" required>
-                    <input class="input-field" placeholder="Password" type="password" id="passwordLogin" onkeydown="enter(event)" oninput="disableInput()" required>
-                    <div class="login-settings">
-                        <label class="remember-me">
-                            <input onclick="rememberMe()" id="checkbox" type="checkbox" disabled>
-                            <p>Remember me</p>
-                            <span id="checkmark" class="checkmark"></span>
-                        </label>
-                        <a onclick="openForgotPassword(); return false" id="forget-password">Forgot my password</a>
-                    </div>
-                    <div class="login-btns">
-                        <button type="submit" id="login-btn-Two">Log in</button>
-                    </div>
-                </form>
-                <button onclick="openGuestLogin(); return false;" id="login-guest">Guest Log in</button>
-            </div>
+            <form onsubmit="checkUser(); return false;" class="login-form">
+                <h1>Log in</h1>
+                <hr>
+                <input class="input-field" placeholder="Email" type="email" id="emailLogin" required>
+                <input class="input-field" placeholder="Password" type="password" id="passwordLogin"
+                    onkeydown="enter(event)" required>
+                <div class="login-settings">
+                    <label class="remember-me">
+                        <input id="checkbox" type="checkbox">
+                        <p>Remember me</p>
+                        <span id="checkmark" class="checkmark"></span>
+                    </label>
+                    <a onclick="openForgotPassword(); return false" id="forget-password">Forgot my password</a>
+                </div>
+                <div class="login-btns">
+                    <button type="submit" id="login-btn-Two">Log in</button>
+                    <button onclick="openGuestLogin(); return false;" id="login-guest">Guest Log in</button>
+                </div>
+            </form>
         </div>
     </div>
     <div id="empty-container"></div>

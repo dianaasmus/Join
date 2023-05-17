@@ -30,12 +30,16 @@ function returnForgotPasswordForm() {
  */
 async function onSubmit(event) {
     event.preventDefault();
-    let formData = new FormData(event.target);
-    let response = await action(formData);
-    if (response.ok) {
-        sentMailContainer();
+    if (users.includes(users[0]['email'])) {
+        let formData = new FormData(event.target);
+        let response = await action(formData);
+        if (response.ok) {
+            sentMailContainer();
+        } else {
+            alert('E-mail could not be sent!');
+        }
     } else {
-        alert('E-mail could not be sent!');
+        console.log('you must be registered.')
     }
 }
 
