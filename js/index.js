@@ -3,7 +3,33 @@ let checkedBox;
 
 
 /**
+ * This function is executed as soon as the html page loads and initialises a new function.
+ */
+async function init() {
+    setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
+    await downloadFromServer();
+    // await backend.deleteItem('joinUsers', joinUsers);
+
+    loadUsers();
+    parseCheckbox();
+}
+
+
+/**
+ * This function loads all the registered users or displays an error.
+ */
+async function loadUsers() {
+    try {
+        joinUsers = JSON.parse(await backend.getItem('joinUsers')) || [];
+    } catch (e) {
+        console.error('Loading error:', e);
+    }
+}
+
+
+/**
  * this function executes the function checkUser() as soon as the enter button is pressed.
+ * @param {string} event - This refers to an event object that contains information about the triggered event.
  */
 function enter(event, i) {
     if (event.keyCode === 13) {
@@ -33,12 +59,16 @@ function checkUser() {
 function userIsRegistered() {
     for (let i = 0; i < joinUsers.length; i++) {
         const user = joinUsers[i];
-        const signedUserEmail = user['emailSignUp'];
+        const signedUserEmail = user['userEmail'];
         const signedUserPassword = user['password'];
         let loginUser = document.getElementById('emailLogin');
         let loginUserPassword = document.getElementById('passwordLogin');
 
-        return (signedUserEmail.includes(loginUser.value) && signedUserPassword.includes(loginUserPassword.value));
+        let correctUser = (signedUserEmail == loginUser.value && signedUserPassword == loginUserPassword.value);
+
+        if (correctUser) {
+            return correctUser;
+        }
     }
 }
 
@@ -58,16 +88,18 @@ function rememberMe() {
  * This function saves the input values and saves them remote.
  */
 async function saveLastUser() {
+    let lastUserData = 0;
+
     let user = document.getElementById('emailLogin').value;
     let userPassword = document.getElementById('passwordLogin').value;
 
-    lastUser.length = 0;
-    lastUser.push({
-        lastEmail: user,
-        lastPassword: userPassword
-    });
+    lastUserData = {
+        'lastEmail': user,
+        'lastPassword': userPassword
+    };
 
-    await setItem('lastUsers', JSON.stringify(lastUser));
+    let lastUserAsString = JSON.stringify(lastUserData);
+    await localStorage.setItem('lastUsers', lastUserAsString);
 }
 
 
@@ -109,7 +141,7 @@ function resetValues() {
  */
 async function parseCheckbox() {
     let checkbox = document.getElementById('checkbox');
-    let checkedBox = await localStorage.getItem('checkedBox');
+    let checkedBox = localStorage.getItem('checkedBox');
 
     if (checkedBox === 'true') {
         checkbox.checked = true;
@@ -124,9 +156,12 @@ async function parseCheckbox() {
  * This function parses the last Users email and password, if ,remember me' checkbox is checked.
  */
 async function parseLastUser() {
-    lastUser = JSON.parse(await getItem('lastUsers'));
-    let emailValue = lastUser[0]['lastEmail'];
-    let passwordValue = lastUser[0]['lastPassword'];
+    let lastUserAsString = localStorage.getItem('lastUsers')
+    lastUserData = JSON.parse(lastUserAsString);
+    console.log(lastUserData);
+
+    let emailValue = lastUserData['lastEmail'];
+    let passwordValue = lastUserData['lastPassword'];
     emailLogin.value = emailValue;
     passwordLogin.value = passwordValue;
 }

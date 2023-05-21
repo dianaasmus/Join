@@ -3,8 +3,8 @@
  */
 function openForgotPassword() {
     document.getElementById('login-main').classList.add('d-none');
-    document.getElementById('empty-container').classList.add('wider-container-style');
-    document.getElementById('empty-container').innerHTML = returnForgotPasswordForm();
+    document.getElementById('signup-forgotPsw-container').classList.add('wider-container-style');
+    document.getElementById('signup-forgotPsw-container').innerHTML = returnForgotPasswordForm();
 }
 
 /**
@@ -30,7 +30,8 @@ function returnForgotPasswordForm() {
  */
 async function onSubmit(event) {
     event.preventDefault();
-    if (users.includes(users[0]['email'])) {
+
+    if (emailIsRegistered()) {
         let formData = new FormData(event.target);
         let response = await action(formData);
         if (response.ok) {
@@ -42,6 +43,20 @@ async function onSubmit(event) {
         console.log('you must be registered.')
     }
 }
+
+
+function emailIsRegistered() {
+    for (let i = 0; i < joinUsers.length; i++) {
+        const user = joinUsers[i];
+        const signedUserEmail = user['emailSignUp'];
+        let resetEmail = document.getElementById('email');
+
+        if (signedUserEmail === resetEmail.value) {
+            return (signedUserEmail === resetEmail.value);
+        }
+    }
+}
+
 
 /**
  * This function directs the email to the php file to send a message to it.
@@ -60,7 +75,7 @@ function action(formData) {
  * This function opens a container that confirms the sending of the email.
  */
 function sentMailContainer() {
-    document.getElementById('empty-container').innerHTML += `
+    document.getElementById('signup-forgotPsw-container').innerHTML += `
     <div class="sent-mail-container" onclick="linkToLogin()">
         <div class="sent-mail-message">
             <img src="./assets/img/SendCheck.png">
@@ -75,6 +90,6 @@ function sentMailContainer() {
  */
 function backToLogin() {
     document.getElementById('login-main').classList.remove('d-none');
-    document.getElementById('empty-container').classList.remove('wider-container-style');
-    document.getElementById('empty-container').innerHTML = '';
+    document.getElementById('signup-forgotPsw-container').classList.remove('wider-container-style');
+    document.getElementById('signup-forgotPsw-container').innerHTML = '';
 }

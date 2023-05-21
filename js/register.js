@@ -2,34 +2,12 @@ let joinUsers = [];
 
 
 /**
- * This function is executed as soon as the html page loads and initialises a new function.
- */
-async function init() {
-    loadUsers();
-    parseCheckbox();
-}
-
-
-/**
- * This function loads all the registered users or displays an error.
- */
-async function loadUsers() {
-    try {
-        joinUsers = JSON.parse(await getItem('joinUsers'));
-        // lastUser = JSON.parse(await getItem('lastUser'));
-    } catch (e) {
-        console.error('Loading error:', e);
-    }
-}
-
-
-/**
  * This function displays the Sign Up form and hides the Login form.
  */
 function openSignUpContainer() {
     document.getElementById('login-main').classList.add('d-none');
-    document.getElementById('empty-container').classList.add('container-style');
-    document.getElementById('empty-container').innerHTML = returnSignupForm();
+    document.getElementById('signup-forgotPsw-container').classList.add('container-style');
+    document.getElementById('signup-forgotPsw-container').innerHTML = returnSignupForm();
 }
 
 
@@ -58,11 +36,12 @@ function returnSignupForm() {
 async function register() {
     registerBtn.disabled = true;
     joinUsers.push({
-        userName: userName.value,
-        emailSignUp: emailSignUp.value,
-        password: password.value
+        'userName': userName.value,
+        'userEmail': emailSignUp.value,
+        'password': password.value
     });
-    await setItem('joinUsers', JSON.stringify(joinUsers));
+    // await setItem('joinUsers', JSON.stringify(joinUsers));
+    await backend.setItem('joinUsers', JSON.stringify(joinUsers));
     resetForm();
 }
 
@@ -82,7 +61,7 @@ function resetForm() {
  * This function displays the Login form and hides the Sign up form.
  */
 function backToLogin() {
-    document.getElementById('empty-container').innerHTML = '';
+    document.getElementById('signup-forgotPsw-container').innerHTML = '';
     document.getElementById('login-main').classList.remove('d-none');
-    document.getElementById('empty-container').classList.remove('container-style');
+    document.getElementById('signup-forgotPsw-container').classList.remove('container-style');
 }
