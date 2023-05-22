@@ -3,7 +3,8 @@ let contacts = [];
 async function initContacts(){
     setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
     await downloadFromServer();
-    contacts = JSON.parse(backend.getItem('contacts')) || [];
+
+    contacts = JSON.parse(await backend.getItem('contacts')) || [];
     loadContacts();
 }
 
@@ -61,9 +62,9 @@ async function saveOnServer() {
 
 async function addContact(){
     contacts.push({
-        "name": contact-name.value,
-        "email": contact-mail.value,
-        "phone": contact-phone.value,
+        "name": contactName.value,
+        "email": contactMail.value,
+        "phone": contactPhone.value,
     });
 
     await backend.setItem('contacts', JSON.stringify(contacts));
@@ -71,9 +72,9 @@ async function addContact(){
 }
 
 function clearInput() {
-    document.getElementById('contact-name').value = '';
-    document.getElementById('contact-email').value = '';
-    document.getElementById('contact-phone').value = '';
+    document.getElementById('contactName').value = '';
+    document.getElementById('contactEmail').value = '';
+    document.getElementById('contactPhone').value = '';
 }
 
 

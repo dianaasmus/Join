@@ -5,6 +5,7 @@ let joinUsers = [];
  * This function displays the Sign Up form and hides the Login form.
  */
 function openSignUpContainer() {
+    // document.getElementById('signup-btn').disabled = true;
     document.getElementById('login-main').classList.add('d-none');
     document.getElementById('signup-forgotPsw-container').classList.add('container-style');
     document.getElementById('signup-forgotPsw-container').innerHTML = returnSignupForm();
@@ -22,8 +23,8 @@ function returnSignupForm() {
                 <hr>
                 <input class="input-field" placeholder="Name" type="text" id="userName" autocomplete="on" required>
                 <input class="input-field" placeholder="Email" type="email" id="emailSignUp" name="emailSignUp" autocomplete="on" required>
-                <input class="input-field" placeholder="Password" type="password" id="password" autocomplete="on"
-                title="The password must be at least 8 characters long, contain at least one uppercase letter and one special character." required>
+                <input class="input-field" placeholder="Password" type="password" id="password" autocomplete="on" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
                 <button type="submit" id="registerBtn">Sign up</button>
             </form>
             `;
@@ -34,14 +35,37 @@ function returnSignupForm() {
  * This function pushes the new registered users and saves them.
  */
 async function register() {
+    pushNewUser();
+}
+
+
+/**
+ * This function creates a new user and saves it in backend.
+ */
+async function pushNewUser() {
     registerBtn.disabled = true;
     joinUsers.push({
         'userName': userName.value,
         'userEmail': emailSignUp.value,
         'password': password.value
     });
-    // await setItem('joinUsers', JSON.stringify(joinUsers));
     await backend.setItem('joinUsers', JSON.stringify(joinUsers));
+    setSignUpFeedback();
+}
+
+
+/**
+ * This function creates a Feedback container for successfull registration.
+ */
+function setSignUpFeedback() {
+    document.getElementById('signup-forgotPsw-container').innerHTML += `
+    <div class="sent-mail-container" onclick="backToLogin()">
+        <div class="sent-mail-message">
+        <img src="assets/img/checkmark-icon.png">
+        You have been successfully registered.
+        </div>
+    </div>
+    `;
     resetForm();
 }
 
@@ -61,7 +85,7 @@ function resetForm() {
  * This function displays the Login form and hides the Sign up form.
  */
 function backToLogin() {
+    document.getElementById('signup-forgotPsw-container').classList.remove('container-style');
     document.getElementById('signup-forgotPsw-container').innerHTML = '';
     document.getElementById('login-main').classList.remove('d-none');
-    document.getElementById('signup-forgotPsw-container').classList.remove('container-style');
 }

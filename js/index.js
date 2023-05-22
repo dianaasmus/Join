@@ -6,12 +6,27 @@ let checkedBox;
  * This function is executed as soon as the html page loads and initialises a new function.
  */
 async function init() {
+    setUrl();
+    // await backend.deleteItem('joinUsers', joinUsers);
+}
+
+
+/**
+ * This function loads the specified variables that are stored in the backend.
+ */
+async function setUrl() {
     setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
     await downloadFromServer();
-    // await backend.deleteItem('joinUsers', joinUsers);
+    enableLoginBtn();
+}
 
+
+/**
+ * This function enables a disabled button.
+ */
+function enableLoginBtn() {
+    document.getElementById('login-btn-Two').disabled = false;
     loadUsers();
-    parseCheckbox();
 }
 
 
@@ -24,6 +39,7 @@ async function loadUsers() {
     } catch (e) {
         console.error('Loading error:', e);
     }
+    parseCheckbox();
 }
 
 
@@ -43,13 +59,18 @@ function enter(event, i) {
  */
 function checkUser() {
     if (userIsRegistered()) {
-        rememberMe();
-        saveLastUser();
-        resetLoginForm();
-        window.open("./summary.html", "_self");
+        disableBtn();
     } else {
         invalidInput();
     }
+}
+
+/**
+ * This function disables a button during the loading process.
+ */
+function disableBtn() {
+    document.getElementById('login-btn-Two').disabled = true;
+    rememberMe();
 }
 
 
@@ -61,11 +82,7 @@ function userIsRegistered() {
         const user = joinUsers[i];
         const signedUserEmail = user['userEmail'];
         const signedUserPassword = user['password'];
-        let loginUser = document.getElementById('emailLogin');
-        let loginUserPassword = document.getElementById('passwordLogin');
-
-        let correctUser = (signedUserEmail == loginUser.value && signedUserPassword == loginUserPassword.value);
-
+        let correctUser = (signedUserEmail == emailLogin.value && signedUserPassword == passwordLogin.value);
         if (correctUser) {
             return correctUser;
         }
@@ -81,6 +98,7 @@ function rememberMe() {
     checkedBox = checkbox.checked;
 
     localStorage.setItem('checkedBox', checkedBox);
+    saveLastUser();
 }
 
 
@@ -89,17 +107,24 @@ function rememberMe() {
  */
 async function saveLastUser() {
     let lastUserData = 0;
-
     let user = document.getElementById('emailLogin').value;
     let userPassword = document.getElementById('passwordLogin').value;
-
     lastUserData = {
         'lastEmail': user,
         'lastPassword': userPassword
     };
 
+    saveLastUserBackend(lastUserData);
+}
+
+
+/**
+ * This function saves the last user who logged in.
+ */
+async function saveLastUserBackend(lastUserData) {
     let lastUserAsString = JSON.stringify(lastUserData);
     await localStorage.setItem('lastUsers', lastUserAsString);
+    resetLoginForm();
 }
 
 
@@ -109,6 +134,7 @@ async function saveLastUser() {
 function resetLoginForm() {
     emailLogin.value = '';
     passwordLogin.value = '';
+    addLogInAnimation();
 }
 
 
@@ -140,9 +166,7 @@ function resetValues() {
  * This function checks onload if the checkbox is checked.
  */
 async function parseCheckbox() {
-    let checkbox = document.getElementById('checkbox');
     let checkedBox = localStorage.getItem('checkedBox');
-
     if (checkedBox === 'true') {
         checkbox.checked = true;
         parseLastUser();
@@ -158,8 +182,6 @@ async function parseCheckbox() {
 async function parseLastUser() {
     let lastUserAsString = localStorage.getItem('lastUsers')
     lastUserData = JSON.parse(lastUserAsString);
-    console.log(lastUserData);
-
     let emailValue = lastUserData['lastEmail'];
     let passwordValue = lastUserData['lastPassword'];
     emailLogin.value = emailValue;
@@ -171,5 +193,14 @@ async function parseLastUser() {
  * This function opens the Guest Login.
  */
 function openGuestLogin() {
+    window.open("./summary.html", "_self");
+}
+
+
+/**
+ * This function adds an animation when a user logs is.
+ */
+async function addLogInAnimation() {
+    //animation?
     window.open("./summary.html", "_self");
 }

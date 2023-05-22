@@ -9,6 +9,45 @@ body {
     display: none;
 }
 
+.checkbox-feedback {
+    z-index: 60;
+    position: absolute;
+    top: 50px;
+    left: 60%;
+    transform: translate(-50%, -200%);
+    background-color: #2a3647;
+    height: 50px;
+    width: 70%;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    padding-top: 25px;
+    font-size: 23px;
+    font-weight: 400;
+    animation: slideInFeedback 225ms ease-in-out, slideOutFeedback 225ms ease-in-out 2000ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideInFeedback {
+    0% {
+        transform: translate(-50%, -200%);
+    }
+
+    100% {
+        transform: translate(-50%, 0%);
+    }
+}
+
+@keyframes slideOutFeedback {
+    0% {
+        transform: translate(-50%, 0%);
+    }
+
+    100% {
+        transform: translate(-50%, -200%);
+    }
+}
+
 section {
     display: flex;
     margin-left: 23%;
@@ -63,8 +102,8 @@ section {
     width: 170px;
     cursor: pointer;
     color: black;
-    transition: transform 225ms ease-in-out,
-        background-color 225ms ease-in-out;
+    transition: transform 100ms ease-in-out,
+        background-color 100ms ease-in-out;
     transform: scale(1);
 }
 
@@ -84,7 +123,7 @@ section {
     color: #2A3647;
     margin: 0;
     background-color: #fff;
-    transition: background-color 225ms ease-in-out;
+    transition: background-color 100ms ease-in-out;
 }
 
 .task:hover p,
@@ -107,14 +146,14 @@ section {
     justify-content: space-evenly;
     cursor: pointer;
     width: 580px;
-    transition: transform 225ms ease-in-out,
-        background-color 225ms ease-in-out;
+    transition: transform 100ms ease-in-out,
+        background-color 100ms ease-in-out;
 }
 
 .middle-board-inner p,
 .middle-board-inner h2 {
     background-color: #fff;
-    transition: background-color 225ms ease-in-out;
+    transition: background-color 100ms ease-in-out;
 }
 
 .middle-board-inner:hover p,
@@ -181,7 +220,7 @@ section {
     margin: 0;
     color: #2A3647;
     background-color: #fff;
-    transition: background-color 225ms ease-in-out;
+    transition: background-color 100ms ease-in-out;
 }
 
 .vertical-line {
@@ -221,8 +260,8 @@ section {
     background-color: #fff;
     border-radius: 20px;
     height: 150px;
-    transition: transform 225ms ease-in-out,
-        background-color 225ms ease-in-out;
+    transition: transform 100ms ease-in-out,
+        background-color 100ms ease-in-out;
 }
 
 .to-do:hover,

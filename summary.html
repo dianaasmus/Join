@@ -6,27 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Summary</title>
+    <link rel="icon" href="assets/img/logo-blue.png">
+
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="css/summary.css">
-    <script>
-        function hoverTodoOn() {
-            document.getElementById('todo-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
-        }
-
-        function hoverDoneOn() {
-            document.getElementById('done-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
-        }
-
-        function hoverOff() {
-            document.getElementById('todo-icon').style = "filter: none;";
-            document.getElementById('done-icon').style = "filter: none;";
-        }
-    </script>
     <script src="script.js"></script>
+    <script src="js/summary.js"></script>
     <link rel="stylesheet" href="assets/templates/style_templates.css">
 </head>
 
-<body onload="init()">
+<body onload="onLoad()">
     <div w3-include-html="assets/templates/Sidebar.html"></div>
     <div w3-include-html="assets/templates/header.html"></div>
     <section>

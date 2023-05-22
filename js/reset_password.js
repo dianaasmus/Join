@@ -6,11 +6,18 @@ let joinUsers;
  * This function generates the values of the variables as soon as the page loads.
  */
 async function onPageLoad() {
-    setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
-    await downloadFromServer();
-
+    setUrl();
     email = getEmailUrlParameter();
     joinUsers = getUsers();
+}
+
+
+/**
+ * This function loads the specified variables that are stored in the backend.
+ */
+async function setUrl() {
+    setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
+    await downloadFromServer();
 }
 
 
@@ -47,7 +54,6 @@ function linkToLogin() {
  */
 async function checkUserPassword(event) {
     event.preventDefault();
-
     if (emailResetPassword.value === emailConfirmPassword.value) {
         changePassword();
     } else {
@@ -55,6 +61,7 @@ async function checkUserPassword(event) {
     }
     resetPasswordFrom();
 }
+
 
 /**
  * This function selects the user in the json array 'joinUsers'.
@@ -65,16 +72,27 @@ function changePassword() {
         const userName = user['userName'];
         const userEmail = user['emailSignUp'];
 
-        if (email == userEmail) {
-            deleteUserData(user);
-            setNewUserData(userName, userEmail);
-        }
+        checkEmail(userName, userEmail);
     }
 }
 
+
+/**
+ * This function checks when the email matches the email input.
+ * @param {string} userName - This parameter has the name of the user as value.
+ * @param {string} userEmail - This parameter has the email of the user as value.
+ */
+function checkEmail(userName, userEmail) {
+    if (email == userEmail) {
+        deleteUserData(user);
+        setNewUserData(userName, userEmail);
+    }
+}
+
+
 /**
  * This function deletes the user's current data.
- * @param {string} user - This is an array in the json array 'joinUsers'.
+ * @param {string} user - This parameter represets one user in the json array 'joinUsers';
  */
 async function deleteUserData(user) {
     let currentUser = joinUsers.indexOf(user);
@@ -82,10 +100,11 @@ async function deleteUserData(user) {
     await backend.deleteItem('joinUsers', JSON.stringify(currentUser));
 }
 
+
 /**
  * This function creates the user with the new password as a new user.
- * @param {string} userName - This is the name of a user that was entered during registration.
- * @param {string} userEmail - This is the email of a user that was entered during registration.
+ * @param {string} userName - This parameter has the name of the user as value.
+ * @param {string} userEmail - This parameter has the email of the user as value.
  */
 async function setNewUserData(userName, userEmail) {
     joinUsers.push({

@@ -10,12 +10,24 @@ body {
     display: none;
 }
 
-.login-container,
-.container-style {
+.login-container {
+    z-index: 10;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.container-style {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -10;
 }
 
 /* Logo */
@@ -51,7 +63,7 @@ body {
     animation: Logo-Animation 700ms ease-in-out 500ms;
     animation-fill-mode: forwards;
     z-index: 3;
-    transition: transform 500ms ease-in-out;
+    transition: transform 100ms ease-in-out;
 }
 
 #join-logo-reset-password {
@@ -63,7 +75,7 @@ body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        transition: transform 500ms ease-in-out 300ms;
+        transition: transform 100ms ease-in-out 300ms;
     }
 
     to {
@@ -73,6 +85,27 @@ body {
         transform: scale(0.4);
     }
 }
+
+/* .open-summary-animation {
+    animation: openSummary 700ms ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes openSummary {
+    0% {
+        top: -40px;
+        left: -30px;
+        transform: translate(4%, 5%);
+        transform: scale(0.4);
+        transition: transform 500ms ease-in-out 300ms;
+    }
+
+    100% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+} */
 
 /* Not a Join user? Sign up */
 #signup-container {
@@ -95,13 +128,13 @@ body {
     border-radius: 8px;
     height: 51px;
     width: 91px;
-    border-style: none;
+    border: unset;
     color: #fff;
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
-    transition: background-color 225ms ease-in-out,
-        box-shadow 225ms ease-in-out;
+    transition: background-color 100ms ease-in-out,
+        box-shadow 100ms ease-in-out;
 }
 
 #signup-btn:hover,
@@ -154,11 +187,11 @@ body {
 }
 
 .login-form hr {
-    height: 2px;
+    height: 4px;
     width: 150px;
     background-color: #29ABE2;
     margin: 0;
-    border: 1px solid #29ABE2;
+    border: unset;
 }
 
 .input-field {
@@ -264,7 +297,7 @@ body {
     border-radius: 8px;
     height: 51px;
     width: 165px;
-    border-style: none;
+    border: unset;
     color: #fff;
     font-size: 21px;
     font-weight: 700;
@@ -280,7 +313,7 @@ body {
     border-radius: 8px;
     height: 51px;
     width: 165px;
-    border-style: none;
+    border: unset;
     font-size: 21px;
     font-weight: 700;
     border: 2px solid #2a3647;
@@ -323,7 +356,7 @@ body {
 
 #registerBtn {
     border-radius: 8px;
-    border-style: none;
+    border: unset;
     width: 145px;
     height: 51px;
     background-color: #2a3647;
@@ -339,6 +372,30 @@ body {
     left: 40px;
     cursor: pointer;
 }
+
+.signup-feedback {
+    z-index: 60;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #2a3647;
+    height: 50px;
+    width: 70%;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    padding-top: 25px;
+    font-size: 23px;
+    font-weight: 400;
+    animation: slideIn 225ms ease-in-out;
+}
+
+/* .signup-forgotPsw-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+} */
 
 /* forgotten password form  */
 .forgotten-password-from,
@@ -391,9 +448,9 @@ body {
     animation: slideIn 225ms ease-in-out;
     animation-fill-mode: forwards;
 
-    border-style: none;
+    border: unset;
     border-radius: 8px;
-    width: 424px;
+    width: 485px;
     height: 74px;
     cursor: pointer;
 
@@ -402,15 +459,14 @@ body {
     gap: 20px;
     color: #fff;
     background-color: #2a3647;
-
 }
 
 @keyframes slideIn {
-    from {
+    0% {
         transform: translate(-50%, 1000%);
     }
 
-    to {
+    100% {
         transform: translate(-50%, -50%);
     }
 }
