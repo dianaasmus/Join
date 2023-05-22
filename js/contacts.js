@@ -1,9 +1,10 @@
 let contacts = [];
 
 async function initContacts(){
-    setURL('https://gruppe-559.developerakademie.net/smallest_backend_ever-master');
+    setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
     await downloadFromServer();
-    contacts = JSON.parse(backend.getItem('contacts'))
+    contacts = JSON.parse(backend.getItem('contacts')) || [];
+    loadContacts();
 }
 
 function openAddContacts() {
@@ -30,7 +31,7 @@ function closeNewContact() {
     editing = false;
 }
 
-
+/*
 function addContact() {
     let name = document.getElementById('contact-name');
     let email = document.getElementById('contact-mail');
@@ -46,18 +47,40 @@ function addContact() {
 }
 
 
-async function saveOnServer() {
-    await backend.setItem('contacts', JSON.stringify(contacts));
-}
-
 function addAndSaveContact() {
     saveOnServer();
     clearInput();
 }
 
 
+async function saveOnServer() {
+    await backend.setItem('contacts', JSON.stringify(contacts));
+}
+*/
+//TEST
+
+async function addContact(){
+    contacts.push({
+        "name": contact-name.value,
+        "email": contact-mail.value,
+        "phone": contact-phone.value,
+    });
+
+    await backend.setItem('contacts', JSON.stringify(contacts));
+    clearInput();
+}
+
 function clearInput() {
-    document.getElementById('contact-name').value = "";
-    document.getElementById('contact-email').value = "";
-    document.getElementById('contact-phone').value = "";
+    document.getElementById('contact-name').value = '';
+    document.getElementById('contact-email').value = '';
+    document.getElementById('contact-phone').value = '';
+}
+
+
+async function loadContacts() {
+    try {
+        contacts = JSON.parse(await backend.getItem('contacts')) || [];
+    }  catch (e) {
+        console.error('Loading error:', e);
+    }
 }

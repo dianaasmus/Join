@@ -33,10 +33,10 @@ function generateRightSideNewContact() { //form: onsubmit="saveNewContact(); ret
                                 <input required type="tel" pattern="[0-9]+" id="contact-phone" placeholder ="phone">
                                 <img src="../assets/img/icon-phone.svg">
                                 </div>
-                            <div class="create-cancel-box" id="create-edit-content" onclick="closeNewContact()">
-                                <button type="button" class="contact-new-cancel" id="contact-new-cancel">
+                            <div class="create-cancel-box" id="create-edit-content">
+                                <button type="button" class="contact-new-cancel" id="contact-new-cancel" onclick="closeNewContact()">
                                     <span>Cancel</span>
-                                    <span>&#10005;</span>
+                                    <span>X</span>
                                 </button>
                                 <button type="submit" class="contact-new-create">
                                     <span>Create Contact</span>
