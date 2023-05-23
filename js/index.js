@@ -1,5 +1,6 @@
 let lastUser = [];
 let checkedBox;
+let loggedUser;
 
 
 /**
@@ -135,9 +136,12 @@ async function saveLastUserBackend(lastUserData) {
  * This function deletes the entered values of the input field.
  */
 function resetLoginForm() {
+    let loggedUser = emailLogin.value;
+    localStorage.setItem('Logged User', loggedUser);
+
     emailLogin.value = '';
     passwordLogin.value = '';
-    addLogInAnimation();
+    logIn();
 }
 
 
@@ -197,6 +201,7 @@ async function parseLastUser() {
  */
 function openGuestLogin() {
     loginGuest.disableBtn = true;
+    localStorage.setItem('LogIn', 'Guest');
     window.open("./summary.html", "_self");
 }
 
@@ -204,6 +209,7 @@ function openGuestLogin() {
 /**
  * This function adds an animation when a user logs is.
  */
-async function addLogInAnimation() {
+async function logIn() {
+    localStorage.setItem('LogIn', 'User');
     window.open("./summary.html", "_self");
 }
