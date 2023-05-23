@@ -16,13 +16,17 @@ function getCheckboxFeedback() {
 
 function hoverTodoOn() {
     document.getElementById('todo-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
+    document.getElementById('todo-number').style.color = "white";
 }
 
 function hoverDoneOn() {
     document.getElementById('done-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
+    document.getElementById('done-number').style.color = "white";
 }
 
 function hoverOff() {
     document.getElementById('todo-icon').style = "filter: none;";
     document.getElementById('done-icon').style = "filter: none;";
+    document.getElementById('done-number').style.color = "black";
+    document.getElementById('todo-number').style.color = "black";
 }
