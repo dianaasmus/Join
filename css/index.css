@@ -138,10 +138,10 @@ body {
 }
 
 #signup-btn:hover,
-#login-btn-Two:hover,
+#loginBtn:hover,
 #registerBtn:hover,
-#forgot-password-btn:hover,
-#reset-password-btn:hover {
+#forgotPasswordBtn:hover,
+#resetPasswordBtn:hover {
     background-color: #29ABE2;
     box-shadow: 0px 4px 9px -1px rgba(0, 0, 0, 0.4);
 }
@@ -290,9 +290,9 @@ body {
     justify-content: flex-start;
 }
 
-#login-btn-Two,
-#forgot-password-btn,
-#reset-password-btn {
+#loginBtn,
+#forgotPasswordBtn,
+#resetPasswordBtn {
     background-color: #2a3647;
     border-radius: 8px;
     height: 51px;
@@ -304,11 +304,11 @@ body {
     cursor: pointer;
 }
 
-#login-btn-Two {
+#loginBtn {
     margin-left: 30px;
 }
 
-#login-guest {
+#loginGuest {
     background-color: #fff;
     border-radius: 8px;
     height: 51px;
@@ -324,7 +324,7 @@ body {
     right: 150px;
 }
 
-#login-guest:hover {
+#loginGuest:hover {
     border: 2px solid #29ABE2;
     color: #29ABE2;
     box-shadow: 0px 4px 9px -1px rgba(0, 0, 0, 0.4);
@@ -400,7 +400,7 @@ body {
 /* forgotten password form  */
 .forgotten-password-from,
 .reset-password-form {
-    padding: 47px 85px 47px 85px;
+    padding: 45px 85px 45px 85px;
 }
 
 .forgotten-password-from p {
@@ -409,7 +409,7 @@ body {
     text-align: center;
 }
 
-#forgot-password-btn {
+#forgotPasswordBtn {
     width: 230px !important;
 }
 
@@ -473,6 +473,16 @@ body {
 
 .reset-password-form p {
     font-size: 21px;
+    margin: 0;
+}
+
+#feedbackContainer,
+#feedbackForgotPsw {
+    position: absolute;
+    bottom: 109px;
+    left: 200px;
+    color: red;
+    font-size: 14px;
 }
 
 .shake-animation {

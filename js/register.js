@@ -62,7 +62,7 @@ function setSignUpFeedback() {
     <div class="sent-mail-container" onclick="backToLogin()">
         <div class="sent-mail-message">
         <img src="assets/img/checkmark-icon.png">
-        You have been successfully registered.
+        You have successfully registered.
         </div>
     </div>
     `;

@@ -5,6 +5,7 @@ function openForgotPassword() {
     document.getElementById('login-main').classList.add('d-none');
     document.getElementById('signup-forgotPsw-container').classList.add('wider-container-style');
     document.getElementById('signup-forgotPsw-container').innerHTML = returnForgotPasswordForm();
+    forgotPasswordBtn.disabled = false;
 }
 
 
@@ -20,8 +21,8 @@ function returnForgotPasswordForm() {
         <p>Don't worry! We will send you an email with the instructions to reset your password.</p>
         
         <input class="input-field" name="email" placeholder="Email" type="email" id="email" required>
-        
-        <button type="submit" id="forgot-password-btn">Send me the email</button>
+        <div id="feedbackForgotPsw"></div>
+        <button type="submit" id="forgotPasswordBtn">Send me the email</button>
     </form>
     `;
 }
@@ -33,11 +34,14 @@ function returnForgotPasswordForm() {
  */
 async function onSubmit(event) {
     event.preventDefault();
+    forgotPasswordBtn.disabled = true;
 
     if (emailIsRegistered()) {
         await sendMailToServer(event);
-    } else {
-        console.log('you must be registered.')
+    }
+    else {
+        addShakeAnimation();
+        sendForgotFeedback();
     }
 }
 
@@ -51,6 +55,7 @@ async function sendMailToServer(event) {
     let response = await action(formData);
     if (response.ok) {
         sentMailContainer();
+        removeFeedback();
     } else {
         alert('E-mail could not be sent!');
     }
@@ -68,8 +73,6 @@ function emailIsRegistered() {
 
         if (signedUserEmail === resetEmail.value) {
             return (signedUserEmail === resetEmail.value);
-        } else {
-            alert('This user is not registered.');
         }
     }
 }
@@ -101,6 +104,33 @@ function sentMailContainer() {
         </div>
     </div>
     `;
+}
+
+function removeFeedback() {
+    feedbackForgotPsw.innerHTML = '';
+}
+
+
+function addShakeAnimation() {
+    email.classList.add('shake-animation');
+    removeShakeAnimation();
+}
+
+
+function removeShakeAnimation() {
+    email.value = '';
+
+    setTimeout(function () {
+        email.classList.remove('shake-animation');
+    }, 1000)
+}
+
+
+function sendForgotFeedback() {
+    feedbackForgotPsw.innerHTML += `
+            This user is not registered.
+        `;
+    forgotPasswordBtn.disabled = false;
 }
 
 

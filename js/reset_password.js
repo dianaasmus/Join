@@ -6,9 +6,10 @@ let joinUsers;
  * This function generates the values of the variables as soon as the page loads.
  */
 async function onPageLoad() {
-    setUrl();
+    await setUrl();
     email = getEmailUrlParameter();
-    joinUsers = getUsers();
+    getUsers();
+    resetPasswordBtn.disabled = false;
 }
 
 
@@ -54,12 +55,18 @@ function linkToLogin() {
  */
 async function checkUserPassword(event) {
     event.preventDefault();
+    resetPasswordBtn.disabled = true;
+    feedbackContainer.innerHTML = '';
     if (emailResetPassword.value === emailConfirmPassword.value) {
         changePassword();
     } else {
-        console.log('Password muss übereinstimmen.');
+        // console.log('Password muss übereinstimmen.');
+        feedbackContainer.innerHTML += `
+        Your passwords do not match!
+        `;
+        resetPasswordBtn.disabled = false;
+        resetPasswordFrom();
     }
-    resetPasswordFrom();
 }
 
 
@@ -70,9 +77,9 @@ function changePassword() {
     for (let i = 0; i < joinUsers.length; i++) {
         const user = joinUsers[i];
         const userName = user['userName'];
-        const userEmail = user['emailSignUp'];
+        const userEmail = user['userEmail'];
 
-        checkEmail(userName, userEmail);
+        checkEmail(user, userName, userEmail);
     }
 }
 
@@ -82,7 +89,7 @@ function changePassword() {
  * @param {string} userName - This parameter has the name of the user as value.
  * @param {string} userEmail - This parameter has the email of the user as value.
  */
-function checkEmail(userName, userEmail) {
+function checkEmail(user, userName, userEmail) {
     if (email == userEmail) {
         deleteUserData(user);
         setNewUserData(userName, userEmail);
@@ -114,6 +121,7 @@ async function setNewUserData(userName, userEmail) {
     })
 
     await backend.setItem('joinUsers', JSON.stringify(joinUsers));
+    sendResetFeedback();
 }
 
 
@@ -123,4 +131,17 @@ async function setNewUserData(userName, userEmail) {
 function resetPasswordFrom() {
     emailResetPassword.value = '';
     emailConfirmPassword.value = '';
+}
+
+
+function sendResetFeedback() {
+    document.getElementById('wider-container-style').innerHTML += `
+    <div class="sent-mail-container" onclick="linkToLogin()">
+        <div class="sent-mail-message">
+            <img src="assets/img/checkmark-icon.png">
+            You reseted your password.
+        </div>
+    </div>
+    `;
+    resetPasswordFrom();
 }

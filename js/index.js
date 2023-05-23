@@ -18,6 +18,7 @@ async function setUrl() {
     setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
     await downloadFromServer();
     enableLoginBtn();
+    loadUsers();
 }
 
 
@@ -25,8 +26,9 @@ async function setUrl() {
  * This function enables a disabled button.
  */
 function enableLoginBtn() {
-    document.getElementById('login-btn-Two').disabled = false;
-    loadUsers();
+    loginBtn.disabled = false;
+    loginGuest.disabled = false;
+
 }
 
 
@@ -36,6 +38,7 @@ function enableLoginBtn() {
 async function loadUsers() {
     try {
         joinUsers = JSON.parse(await backend.getItem('joinUsers')) || [];
+        console.log(joinUsers);
     } catch (e) {
         console.error('Loading error:', e);
     }
@@ -69,7 +72,7 @@ function checkUser() {
  * This function disables a button during the loading process.
  */
 function disableBtn() {
-    document.getElementById('login-btn-Two').disabled = true;
+    loginBtn.disabled = true;
     rememberMe();
 }
 
@@ -193,6 +196,7 @@ async function parseLastUser() {
  * This function opens the Guest Login.
  */
 function openGuestLogin() {
+    loginGuest.disableBtn = true;
     window.open("./summary.html", "_self");
 }
 
@@ -201,6 +205,5 @@ function openGuestLogin() {
  * This function adds an animation when a user logs is.
  */
 async function addLogInAnimation() {
-    //animation?
     window.open("./summary.html", "_self");
 }
