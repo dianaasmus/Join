@@ -9,6 +9,61 @@ body {
     display: none;
 }
 
+#welcomingSummary {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(42, 54, 71);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: backgroundFade 1000ms ease-in-out 500ms, removePosition 1300ms ease-in-out 500ms;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes backgroundFade {
+    0% {
+        background-color: rgba(42, 54, 71, 1);
+    }
+
+    100% {
+        background-color: rgba(42, 54, 71, 0);
+    }
+}
+
+@keyframes removePosition {
+    0% {
+        position: absolute;
+    }
+    100% {
+        position: unset;
+    }
+}
+
+#welcomeGreeting {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: greetingPostition 1000ms ease-in-out 500ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes greetingPostition {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+
+    100% {
+        color: #2A3647;
+        transform: translate(90%, -9%);
+    }
+}
+
 .checkbox-feedback {
     z-index: 60;
     position: absolute;
@@ -182,19 +237,18 @@ section {
     flex-direction: column;
     align-items: center;
     padding: 0 0 0 10px;
-    color:#000;
+    color: #000;
 }
 
 #urgent-number {
     font-size: 47px;
     font-weight: 600;
     margin: 0;
-    /* color: #000; */
 }
 
-.welcoming {
-    padding-left: 70px;
-}
+/* #welcomingSummary {
+    margin-top: 500px;
+} */
 
 .welcoming h3 {
     font-size: 47px;
@@ -203,7 +257,27 @@ section {
     margin-bottom: 0;
 }
 
-.welcoming h4 {
+#greeting {
+    font-size: 47px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0;
+    animation: changeColor 1000ms ease-in-out 500ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes changeColor {
+    0% {
+        color: #fff;
+    }
+
+    100% {
+        color: #2A3647;
+    }
+}
+
+.welcoming h4,
+#greetUser {
     color: #29ABE2;
     font-size: 64px;
     font-weight: 700;

@@ -2,21 +2,27 @@ let loggedUser;
 let joinUsers;
 
 async function onLoad() {
-    await includeHTML(); 
+    await includeHTML();
+    await setUrl();
     getCheckboxFeedback();
-    setUrl();
 }
 
 
 function getCheckboxFeedback() {
     let checkedBox = localStorage.getItem('checkedBox');
     if (checkedBox === 'true') {
-        document.body.innerHTML += `
+        document.body.innerHTML += returnCheckboxFeedback();
+    }
+    getTime();
+}
+
+
+function returnCheckboxFeedback() {
+    return `
                 <div class="checkbox-feedback">
                 Your login details are stored in your browser.
                 </div>
             `;
-    }
 }
 
 
@@ -32,6 +38,21 @@ async function setUrl() {
  */
 async function getUsers() {
     joinUsers = JSON.parse(await backend.getItem('joinUsers')) || [];
+}
+
+
+function getTime() {
+    let currentTime = new Date();
+    let hour = currentTime.getHours();
+    let greeting = document.getElementById('greeting');
+
+    if (hour >= 1 && hour < 12) {
+        greeting.innerHTML = "Guten Morgen,";
+    } else if (hour >= 12 && hour < 18) {
+        greeting.innerHTML = "Guten Tag,";
+    } else {
+        greeting.innerHTML = "Guten Abend,";
+    }
     greetUser();
 }
 
@@ -39,11 +60,7 @@ async function getUsers() {
 function greetUser() {
     let loginValue = localStorage.getItem('LogIn');
     if (loginValue === 'User') {
-        console.log('The value of "LogIn" key is "Guest".');
-        // greetUser.classList.remove('d-none');
         greetUserName();
-    } else {
-        // profile.src = "./assets/img/name-icon";
     }
 }
 
@@ -54,10 +71,9 @@ function greetUserName() {
         const user = joinUsers[i];
         let loggedName = user['userName'];
         let loggedEmail = user['userEmail'];
-        
+
         if (loggedEmail == loggedUser) {
             document.getElementById('greetUser').innerHTML = loggedName;
-            console.log(loggedName);
         }
     }
 }

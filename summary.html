@@ -13,6 +13,7 @@
     <script src="script.js"></script>
     <script src="js/summary.js"></script>
     <script src="js/mini_backend.js"></script>
+    <script src="js/index.js"></script>
     <link rel="stylesheet" href="assets/templates/style_templates.css">
 </head>
 
@@ -59,15 +60,11 @@
                             <p>Upcoming Deadline</p>
                         </div>
                     </a>
-                    <div class="welcoming">
-                        <h3>Good morning<span class="d-none">,</span></h3>
-                        <h4 id="greetUser">User</h4>
-                    </div>
                 </div>
 
                 <div class="bottom-board">
-                    <a id="to-do-container" class="to-do box-shadow" onmouseover="hoverTodoOn()"
-                        onmouseout="hoverOff()" href="board.html">
+                    <a id="to-do-container" class="to-do box-shadow" onmouseover="hoverTodoOn()" onmouseout="hoverOff()"
+                        href="board.html">
                         <img src="assets/img/todo-icon.png" id="todo-icon">
                         <div class="todo-inner-container">
                             <h2 id="todo-number">1</h2>
@@ -75,8 +72,8 @@
                         </div>
                     </a>
 
-                    <a id="done-container" class="done box-shadow" onmouseover="hoverDoneOn()"
-                        onmouseout="hoverOff()" href="board.html">
+                    <a id="done-container" class="done box-shadow" onmouseover="hoverDoneOn()" onmouseout="hoverOff()"
+                        href="board.html">
                         <img src="assets/img/done-icon.png" id="done-icon">
                         <div class="done-inner-container">
                             <h2 id="done-number">1</h2>
@@ -87,8 +84,15 @@
 
             </div>
         </div>
-
     </section>
+    <div id="welcomingSummary">
+        <div id="welcomeGreeting">
+            <div>
+                <h3 id="greeting">Guten Tag,</h3>
+                <h4 id="greetUser">Guest</h4>
+            </div>
+        </div>
+    </div>
 
 </body>
 
