@@ -5,7 +5,9 @@ function openForgotPassword() {
     document.getElementById('login-main').classList.add('d-none');
     document.getElementById('signup-forgotPsw-container').classList.add('wider-container-style');
     document.getElementById('signup-forgotPsw-container').innerHTML = returnForgotPasswordForm();
+    forgotPasswordBtn.disabled = false;
 }
+
 
 /**
  * This function returns the Forgot-Password form.
@@ -19,36 +21,54 @@ function returnForgotPasswordForm() {
         <p>Don't worry! We will send you an email with the instructions to reset your password.</p>
         
         <input class="input-field" name="email" placeholder="Email" type="email" id="email" required>
-        
-        <button type="submit" id="forgot-password-btn">Send me the email</button>
+        <div id="feedbackForgotPsw"></div>
+        <button type="submit" id="forgotPasswordBtn">Send me the email</button>
     </form>
     `;
 }
 
+
 /**
  * This function checks whether the email has been sent or not.
+ * @param {string} event - This refers to an event object that contains information about the triggered event.
  */
 async function onSubmit(event) {
     event.preventDefault();
+    forgotPasswordBtn.disabled = true;
 
     if (emailIsRegistered()) {
-        let formData = new FormData(event.target);
-        let response = await action(formData);
-        if (response.ok) {
-            sentMailContainer();
-        } else {
-            alert('E-mail could not be sent!');
-        }
-    } else {
-        console.log('you must be registered.')
+        await sendMailToServer(event);
+    }
+    else {
+        addShakeAnimation();
+        sendForgotFeedback();
     }
 }
 
 
+/**
+ * This function hands over data and checks the response of the php file.
+ * @param {string} event - This refers to an event object that contains information about the triggered event.
+ */
+async function sendMailToServer(event) {
+    let formData = new FormData(event.target);
+    let response = await action(formData);
+    if (response.ok) {
+        sentMailContainer();
+        removeFeedback();
+    } else {
+        alert('E-mail could not be sent!');
+    }
+}
+
+
+/**
+ * This function picks the user email in the array.
+ */
 function emailIsRegistered() {
     for (let i = 0; i < joinUsers.length; i++) {
         const user = joinUsers[i];
-        const signedUserEmail = user['emailSignUp'];
+        const signedUserEmail = user['userEmail'];
         let resetEmail = document.getElementById('email');
 
         if (signedUserEmail === resetEmail.value) {
@@ -60,6 +80,7 @@ function emailIsRegistered() {
 
 /**
  * This function directs the email to the php file to send a message to it.
+ * @param {string} formData - This enables form data to be sent to a server.
  */
 function action(formData) {
     const input = 'https://gruppe-559.developerakademie.net/send_mail.php';
@@ -67,16 +88,16 @@ function action(formData) {
         method: 'post',
         body: formData
     };
-
     return fetch(input, requestInit);
 }
+
 
 /**
  * This function opens a container that confirms the sending of the email.
  */
 function sentMailContainer() {
     document.getElementById('signup-forgotPsw-container').innerHTML += `
-    <div class="sent-mail-container" onclick="linkToLogin()">
+    <div class="sent-mail-container" onclick="backToLogin()">
         <div class="sent-mail-message">
             <img src="./assets/img/SendCheck.png">
             An E-Mail has been sent to you
@@ -84,6 +105,34 @@ function sentMailContainer() {
     </div>
     `;
 }
+
+function removeFeedback() {
+    feedbackForgotPsw.innerHTML = '';
+}
+
+
+function addShakeAnimation() {
+    email.classList.add('shake-animation');
+    removeShakeAnimation();
+}
+
+
+function removeShakeAnimation() {
+    email.value = '';
+
+    setTimeout(function () {
+        email.classList.remove('shake-animation');
+    }, 1000)
+}
+
+
+function sendForgotFeedback() {
+    feedbackForgotPsw.innerHTML += `
+            This user is not registered.
+        `;
+    forgotPasswordBtn.disabled = false;
+}
+
 
 /**
  * This function opens back the Login Container.

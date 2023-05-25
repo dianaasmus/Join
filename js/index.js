@@ -1,17 +1,34 @@
 let lastUser = [];
 let checkedBox;
-
+let loggedUser;
 
 /**
  * This function is executed as soon as the html page loads and initialises a new function.
  */
 async function init() {
+    checkMediaQuery()
+    await setUrl();
+    enableLoginBtn();
+    loadUsers();
+    // await backend.deleteItem('joinUsers', joinUsers);
+}
+
+
+/**
+ * This function loads the specified variables that are stored in the backend.
+ */
+async function setUrl() {
     setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
     await downloadFromServer();
-    // await backend.deleteItem('joinUsers', joinUsers);
+}
 
-    loadUsers();
-    parseCheckbox();
+
+/**
+ * This function enables a disabled button.
+ */
+function enableLoginBtn() {
+    loginBtn.disabled = false;
+    loginGuest.disabled = false;
 }
 
 
@@ -21,9 +38,11 @@ async function init() {
 async function loadUsers() {
     try {
         joinUsers = JSON.parse(await backend.getItem('joinUsers')) || [];
+        console.log(joinUsers);
     } catch (e) {
         console.error('Loading error:', e);
     }
+    parseCheckbox();
 }
 
 
@@ -43,13 +62,18 @@ function enter(event, i) {
  */
 function checkUser() {
     if (userIsRegistered()) {
-        rememberMe();
-        saveLastUser();
-        resetLoginForm();
-        window.open("./summary.html", "_self");
+        disableBtn();
     } else {
         invalidInput();
     }
+}
+
+/**
+ * This function disables a button during the loading process.
+ */
+function disableBtn() {
+    loginBtn.disabled = true;
+    rememberMe();
 }
 
 
@@ -61,11 +85,7 @@ function userIsRegistered() {
         const user = joinUsers[i];
         const signedUserEmail = user['userEmail'];
         const signedUserPassword = user['password'];
-        let loginUser = document.getElementById('emailLogin');
-        let loginUserPassword = document.getElementById('passwordLogin');
-
-        let correctUser = (signedUserEmail == loginUser.value && signedUserPassword == loginUserPassword.value);
-
+        let correctUser = (signedUserEmail == emailLogin.value && signedUserPassword == passwordLogin.value);
         if (correctUser) {
             return correctUser;
         }
@@ -81,6 +101,7 @@ function rememberMe() {
     checkedBox = checkbox.checked;
 
     localStorage.setItem('checkedBox', checkedBox);
+    saveLastUser();
 }
 
 
@@ -89,17 +110,24 @@ function rememberMe() {
  */
 async function saveLastUser() {
     let lastUserData = 0;
-
     let user = document.getElementById('emailLogin').value;
     let userPassword = document.getElementById('passwordLogin').value;
-
     lastUserData = {
         'lastEmail': user,
         'lastPassword': userPassword
     };
 
+    saveLastUserBackend(lastUserData);
+}
+
+
+/**
+ * This function saves the last user who logged in.
+ */
+async function saveLastUserBackend(lastUserData) {
     let lastUserAsString = JSON.stringify(lastUserData);
     await localStorage.setItem('lastUsers', lastUserAsString);
+    resetLoginForm();
 }
 
 
@@ -107,8 +135,12 @@ async function saveLastUser() {
  * This function deletes the entered values of the input field.
  */
 function resetLoginForm() {
+    let loggedUser = emailLogin.value;
+    localStorage.setItem('Logged User', loggedUser);
+
     emailLogin.value = '';
     passwordLogin.value = '';
+    logIn();
 }
 
 
@@ -140,9 +172,7 @@ function resetValues() {
  * This function checks onload if the checkbox is checked.
  */
 async function parseCheckbox() {
-    let checkbox = document.getElementById('checkbox');
     let checkedBox = localStorage.getItem('checkedBox');
-
     if (checkedBox === 'true') {
         checkbox.checked = true;
         parseLastUser();
@@ -158,8 +188,6 @@ async function parseCheckbox() {
 async function parseLastUser() {
     let lastUserAsString = localStorage.getItem('lastUsers')
     lastUserData = JSON.parse(lastUserAsString);
-    console.log(lastUserData);
-
     let emailValue = lastUserData['lastEmail'];
     let passwordValue = lastUserData['lastPassword'];
     emailLogin.value = emailValue;
@@ -171,5 +199,30 @@ async function parseLastUser() {
  * This function opens the Guest Login.
  */
 function openGuestLogin() {
+    loginGuest.disableBtn = true;
+    localStorage.setItem('LogIn', 'Guest');
     window.open("./summary.html", "_self");
+}
+
+
+/**
+ * This function adds an animation when a user logs is.
+ */
+async function logIn() {
+    localStorage.setItem('LogIn', 'User');
+    // document.getElementById('welcomingSummary').classList.add('welcomingSummary');
+    window.open("./summary.html", "_self");
+}
+
+
+function checkMediaQuery() {
+    if (window.matchMedia('(max-width: 400px)').matches) {
+        console.log('Die maximale Breite beträgt 400 Pixel oder weniger.');
+        // document.getElementById('join-logo').style = "filter: invert(17%) sepia(13%) saturate(1567%) hue-rotate(176deg) brightness(88%) contrast(86%);";
+        document.getElementById('logo-container').style.backgroundColor = "#2a3647";
+
+      } else {
+        // Code für andere Bildschirmgrößen
+        console.log('Die maximale Breite beträgt mehr als 400 Pixel.');
+      }
 }

@@ -344,3 +344,19 @@ hr {
 .d-none {
     display: none;
 }
+
+/* ======================= */
+
+.single-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-contact h1 {
+    margin: 0;
+}
+
+.single-contact p {
+    margin: 0;
+}

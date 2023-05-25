@@ -1,6 +1,7 @@
 //standard js 
 function init() {
     includeHTML();
+    // getCheckboxFeedback();
 }
 
 

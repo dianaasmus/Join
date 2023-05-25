@@ -10,7 +10,11 @@ function generateLeftSideNewContact() {
     `;
 }
 
+<<<<<<< HEAD
 function generateRightSideNewContact() {
+=======
+function generateRightSideNewContact() { //form: onsubmit="saveNewContact(); return false;"
+>>>>>>> 533be13ea1fec8191260b574ef47ddd230e17240
     return ` <form class="new-contact-circle-name" onsubmit="addContact(); return false;" id="new-contact-circle-name">
                         <div class="edit-contact-circle">
                             <div class="contact-circle-big contact-circle-card bg0" id="circle-new-contact">
