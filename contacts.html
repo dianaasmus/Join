@@ -12,10 +12,10 @@
     <script src="script.js"></script>
     <script src="js/contacts.js"></script>
     <script src="js/contact-templates.js"></script>
-    <script src="js/storage.js"></script>
     <script src="js/mini_backend.js"></script>
     <link rel="stylesheet" href="css/contacts.css">
 
+    
 </head>
 
 <body onload="init(), initContacts()">
@@ -23,20 +23,19 @@
     <div w3-include-html="../assets/templates/Sidebar.html"></div>
     <div class="contacts">
 
-        <div class="overlay-container d-none" id="overlay-container">
-            <div class="add-contact-overlay" id="add-contact-overlay">
-                <div class="add-contact-left" id="add-contact-left">
+        <div class="overlay-container d-none" id="overlayContainer">
+            <div class="add-contact-overlay" id="addContactOverlay">
+                <div class="add-contact-left" id="addContactLeft">
                 </div>
-                <div class="add-contact-right" id="add-contact-right-content">
+                <div class="add-contact-right" id="addContactRightContent">
                 </div>
             </div>
         </div>
 
 
 
-        <div class="contact-list">
-            <h1>Kontakte<br> Folgt mit Javascript</h1>
-<div id="showContactList"></div>
+        <div class="contact-list" id="contactContainer">
+            <div id="contactList"></div>
         </div>
 
         <div class="contact-container">
