@@ -1,10 +1,12 @@
 let loggedUser;
-let joinUsers;
+let joinUsers = [];
+let tasks = [];
 
 async function onLoad() {
     await includeHTML();
     await setUrl();
     getCheckboxFeedback();
+    getTasks();
 }
 
 
@@ -37,7 +39,12 @@ async function setUrl() {
  * This function parses the json array from the backend.
  */
 async function getUsers() {
-    joinUsers = JSON.parse(await backend.getItem('joinUsers')) || [];
+    try {
+        joinUsers = JSON.parse(await backend.getItem('joinUsers')) || [];
+        console.log(joinUsers);
+    } catch (e) {
+        console.error('Loading error:', e);
+    }
 }
 
 
@@ -94,4 +101,13 @@ function hoverOff() {
     document.getElementById('done-icon').style = "filter: none;";
     document.getElementById('done-number').style.color = "black";
     document.getElementById('todo-number').style.color = "black";
+}
+
+
+ async function getTasks() {
+    tasks = await JSON.parse( backend.getItem('tasks')) || [];
+    tasksLength = tasks.length;
+
+    tasksInBoard.innerHTML = tasksLength;
+    // tasksInProgress.innerHTML = '';
 }

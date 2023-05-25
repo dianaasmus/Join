@@ -59,6 +59,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
+    height: 285px;
     transform: translate(-50%, -50%);
     animation: Logo-Animation 700ms ease-in-out 500ms;
     animation-fill-mode: forwards;
@@ -85,27 +86,6 @@ body {
         transform: scale(0.4);
     }
 }
-
-/* .open-summary-animation {
-    animation: openSummary 700ms ease-in-out;
-    animation-fill-mode: forwards;
-}
-
-@keyframes openSummary {
-    0% {
-        top: -40px;
-        left: -30px;
-        transform: translate(4%, 5%);
-        transform: scale(0.4);
-        transition: transform 500ms ease-in-out 300ms;
-    }
-
-    100% {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-} */
 
 /* Not a Join user? Sign up */
 #signup-container {
@@ -166,6 +146,8 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    max-width: 100%;
+    margin: 0 35px;
     width: 650px;
     background-color: #fff;
     border-radius: 30px;
@@ -184,6 +166,7 @@ body {
     font-size: 61px;
     font-weight: 700;
     margin: 0;
+    text-align: center;
 }
 
 .login-form hr {
@@ -288,6 +271,7 @@ body {
     width: 422px;
     display: flex;
     justify-content: flex-start;
+    gap: 35px;
 }
 
 #loginBtn,
@@ -319,9 +303,9 @@ body {
     border: 2px solid #2a3647;
     color: #2a3647;
     cursor: pointer;
-    position: absolute;
+    /* position: absolute;
     bottom: 35px;
-    right: 150px;
+    right: 150px; */
 }
 
 #loginGuest:hover {
@@ -474,6 +458,7 @@ body {
 .reset-password-form p {
     font-size: 21px;
     margin: 0;
+    text-align: center;
 }
 
 #feedbackContainer,

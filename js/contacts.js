@@ -1,11 +1,12 @@
 let contacts = [];
 
-async function initContacts(){
+async function initContacts() {
     setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
     await downloadFromServer();
 
     contacts = JSON.parse(await backend.getItem('contacts')) || [];
     loadContacts();
+    getFirstLetter();
 }
 
 function openAddContacts() {
@@ -31,6 +32,7 @@ function closeNewContact() {
     clearContactCard();
     editing = false;
 }
+
 
 /*
 function addContact() {
@@ -60,7 +62,7 @@ async function saveOnServer() {
 */
 //TEST
 
-async function addContact(){
+async function addContact() {
     contacts.push({
         "name": contactName.value,
         "email": contactMail.value,
@@ -71,9 +73,10 @@ async function addContact(){
     clearInput();
 }
 
+
 function clearInput() {
     document.getElementById('contactName').value = '';
-    document.getElementById('contactEmail').value = '';
+    document.getElementById('contactMail').value = '';
     document.getElementById('contactPhone').value = '';
 }
 
@@ -81,7 +84,7 @@ function clearInput() {
 async function loadContacts() {
     try {
         contacts = JSON.parse(await backend.getItem('contacts')) || [];
-    }  catch (e) {
+    } catch (e) {
         console.error('Loading error:', e);
     }
 }

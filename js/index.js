@@ -2,12 +2,14 @@ let lastUser = [];
 let checkedBox;
 let loggedUser;
 
-
 /**
  * This function is executed as soon as the html page loads and initialises a new function.
  */
 async function init() {
-    setUrl();
+    checkMediaQuery()
+    await setUrl();
+    enableLoginBtn();
+    loadUsers();
     // await backend.deleteItem('joinUsers', joinUsers);
 }
 
@@ -18,8 +20,6 @@ async function init() {
 async function setUrl() {
     setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
     await downloadFromServer();
-    enableLoginBtn();
-    loadUsers();
 }
 
 
@@ -29,7 +29,6 @@ async function setUrl() {
 function enableLoginBtn() {
     loginBtn.disabled = false;
     loginGuest.disabled = false;
-
 }
 
 
@@ -211,5 +210,19 @@ function openGuestLogin() {
  */
 async function logIn() {
     localStorage.setItem('LogIn', 'User');
+    // document.getElementById('welcomingSummary').classList.add('welcomingSummary');
     window.open("./summary.html", "_self");
+}
+
+
+function checkMediaQuery() {
+    if (window.matchMedia('(max-width: 400px)').matches) {
+        console.log('Die maximale Breite beträgt 400 Pixel oder weniger.');
+        // document.getElementById('join-logo').style = "filter: invert(17%) sepia(13%) saturate(1567%) hue-rotate(176deg) brightness(88%) contrast(86%);";
+        document.getElementById('logo-container').style.backgroundColor = "#2a3647";
+
+      } else {
+        // Code für andere Bildschirmgrößen
+        console.log('Die maximale Breite beträgt mehr als 400 Pixel.');
+      }
 }
