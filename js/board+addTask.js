@@ -330,6 +330,7 @@ async function editTask(i) {
     renderTaskCards();
     document.getElementById('dialogFullCard').classList.add('displayNone')
     document.getElementById('dialogEditCard').classList.add('displayNone')
+    console.log(tasks[i][readinessState]);
 }
 
 

@@ -1,6 +1,11 @@
 let loggedUser;
 let joinUsers = [];
 let tasks = [];
+let awaitingFeedback = [];
+let toDo = [];
+let inProgress = [];
+let done = [];
+
 
 async function onLoad() {
     await includeHTML();
@@ -41,7 +46,6 @@ async function setUrl() {
 async function getUsers() {
     try {
         joinUsers = JSON.parse(await backend.getItem('joinUsers')) || [];
-        console.log(joinUsers);
     } catch (e) {
         console.error('Loading error:', e);
     }
@@ -104,10 +108,44 @@ function hoverOff() {
 }
 
 
- async function getTasks() {
-    tasks = await JSON.parse( backend.getItem('tasks')) || [];
-    tasksLength = tasks.length;
+async function getTasks() {
+    tasks = await JSON.parse(backend.getItem('tasks')) || [];
 
-    tasksInBoard.innerHTML = tasksLength;
-    // tasksInProgress.innerHTML = '';
+    for (let t = 0; t < tasks.length; t++) {
+        const task = tasks[t];
+        const taskReadinessState = task['readinessState'];
+        await setTaskStates(taskReadinessState);
+    }
+    parseTaskStates();
 }
+
+async function setTaskStates(taskReadinessState) {
+    switch (taskReadinessState) {
+        case 'toDo':
+            toDo.push(taskReadinessState);
+            await backend.setItem('ToDo', JSON.stringify(toDo))
+            break;
+        case 'inProgress':
+            inProgress.push(taskReadinessState);
+            await backend.setItem('InProgress', JSON.stringify(inProgress))
+            break;
+        case 'awaitingProgress':
+            awaitingFeedback.push(taskReadinessState);
+            await backend.setItem('AwaitingFeedback', JSON.stringify(awaitingFeedback))
+            break;
+        case 'done':
+            done.push(taskReadinessState);
+            await backend.setItem('Done', JSON.stringify(done))
+            break;
+    }
+}   
+
+function parseTaskStates() {
+    tasksInBoard.innerHTML = tasks.length;;
+    tasksInProgress.innerHTML = inProgress.length;
+    // =================================================================================== urgent fehlt
+    document.getElementById('awaiting-number').innerHTML = awaitingFeedback.length;
+    document.getElementById('todo-number').innerHTML = toDo.length;
+    document.getElementById('done-number').innerHTML = done.length;
+}
+     
