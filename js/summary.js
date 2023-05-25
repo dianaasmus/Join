@@ -12,6 +12,7 @@ async function onLoad() {
     await setUrl();
     getCheckboxFeedback();
     getTasks();
+    checkMediaQ();
 }
 
 
@@ -138,7 +139,7 @@ async function setTaskStates(taskReadinessState) {
             await backend.setItem('Done', JSON.stringify(done))
             break;
     }
-}   
+}
 
 function parseTaskStates() {
     tasksInBoard.innerHTML = tasks.length;;
@@ -148,4 +149,13 @@ function parseTaskStates() {
     document.getElementById('todo-number').innerHTML = toDo.length;
     document.getElementById('done-number').innerHTML = done.length;
 }
-     
+
+function checkMediaQ() {
+    if (window.matchMedia('(max-width: 660px)').matches) {
+        // document.getElementById('headlineS').insertAdjacentHTML('beforebegin', `
+        //     <p>Kanban Project Managnement Tool</p>
+        // `);
+
+        // document.getElementById('kanban-text').style.display = "unset";
+    }
+}

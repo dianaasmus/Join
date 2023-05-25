@@ -16,10 +16,18 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-left: 10%;
+    /* padding-left: 10%; */
     padding-right: 5%;
     box-shadow: 0px 4px 4px rgb(0 0 0 / 10%);
     z-index: 50;
+}
+
+.kanban-text-container {
+    padding-left: 10%;
+}
+
+#logo-responsive {
+    display: none;
 }
 
 header span {
@@ -87,10 +95,13 @@ a {
     object-fit: cover;
     justify-content: center;
     align-items: center;
-    height: 200px;
     margin-right: 30px;
     margin-top: 50px;
     margin-bottom: 70px;
+}
+
+.sidebar-logo img {
+    height: 110px;
 }
 
 .sidebar-links {
@@ -113,6 +124,17 @@ a {
     padding-bottom: 10px;
     padding-top: 10px;
 }
+
+.sidebar-props:hover,
+.legal-notice:hover {
+    background-color: #000;
+}
+
+.sidebar-props:focus,
+.legal-notice:focus {
+    background-color: #000;
+}
+
 
 .sidebar-icons {
     width: 28%;
@@ -150,16 +172,88 @@ a {
     padding-bottom: 10px;
 }
 
-@media(max-width:1000px){
-    header{
+@media(max-width:1000px) {
+    header {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        justify-content: space-evenly;
-       
+        /* justify-content: space-evenly; */
+
     }
-    nav{
+
+    nav {
         display: none;
+    }
+
+    header {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 660px) {
+
+    .header-right {
+        position: absolute;
+        right: 5%;;
+    }
+
+    .kanban-text-container {
+        position: absolute;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-right: 250px;
+        padding-left: 0;
+    }
+
+    #logo-responsive {
+        display: unset;
+        position: absolute;
+        height: 50px;
+        left: 7%;
+    }
+
+    header span {
+        margin-top: 166px !important;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .kanban-text-container {
+        padding-right: 85px !important;
+    }
+
+    .kanban-text-container span {
+        font-size: 19px;
+    }
+
+    .profile-picture-container {
+        width: 35px;
+        height: 35px;
+    }
+
+    .profile-picture {
+        width: 35px;
+        height: 35px;
+    }
+
+    .question-mark {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media (max-width: 440px) {
+
+    .kanban-text-container {
+        padding-right: 0px !important;
+    }
+
+    .kanban-text-container span {
+        font-size: 18px;
     }
 }

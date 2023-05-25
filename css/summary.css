@@ -60,7 +60,7 @@ body {
 
     100% {
         color: #2A3647;
-        transform: translate(130%, 0%);
+        transform: translate(105%, 0%);
     }
 }
 
@@ -107,6 +107,7 @@ section {
     display: flex;
     margin-left: 24%;
     flex-direction: column;
+    padding-bottom: 100px;
 }
 
 .summary-board {
