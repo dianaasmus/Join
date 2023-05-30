@@ -409,3 +409,97 @@ hr {
     border-radius: 50%;
     margin-left: 25px;
 }
+
+/* CONTACT-INFO */
+
+.contact-info{
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 200px;
+    bottom: 0;
+}
+
+.contact-info-header{
+    display: flex;
+    align-items: center;
+    column-gap: 80px;
+}
+
+.contact-info-bubble{
+    height: 120px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background-color: #810292;
+    color: white;
+    font-size: 47px;
+    font-weight: 500;
+    border: 1px solid white;
+}
+
+.contact-info-headname h2{
+    margin: 0 0 2px 0;
+    font-size: 47px;
+    font-weight: 500;
+}
+
+.contact-info-headname span{
+    font-size: 16px;
+    font-weight: 400;
+    color: #29abe2;
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+    cursor: pointer;
+}
+
+.contact-info-edit{
+    display: flex;
+    align-items: flex-end;
+    column-gap: 50px;
+}
+
+.contact-edit-text{
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.contact-edit-popup{
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.open-contact-infos{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.contact-information{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.contact-mail{
+    color: #007cee;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+.contact-phone{
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    color: unset;
+}

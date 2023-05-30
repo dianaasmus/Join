@@ -92,79 +92,11 @@ async function renderContactList() {
 }
     }
 
-
-
-/*
-
-async function showContactList(){
-    JSON.parse(await backend.getItem('contacts')) || [];
-    let firstArea=document.getElementById('contactList');
-    firstArea.innerHTML="";
-    for (let i = 0; i < contacts.length; i++) {
-        const contacts = contacts[i];        
-    }
-    firstArea.innerHTML+=`
-    <div><span>${contacts[i]['name']}</span></div>
-    <div>${contacts[i]['email']}</div>
-    <div>${contacts[i]['phone']}</div>
-    </div>`
-}
-
-
-
-function showContactList(){
-    sortContacts();
-    let firstArea = document.getElementById('contactList');
-    firstArea.innerHTML="";
-    for (let i = 0; i < contacts.length; i++) {
+    async function showContacts(i){
+        await initContacts();
         const contact = contacts[i];
-        let lastNameLetter=contact.lastNameLetter[0].toUpperCase();
-        if (lastNameLetter !== currentLetter){
-            firstArea.innerHTML+=`<span class="area-letter">${lastNameLetter}</span>`;
-            currentLetter=lastNameLetter;
-        }
-        firstArea.innerHTML+= generateContactList();
+        let contactsInfo = document.getElementById('contactInfo');
+        contactsInfo.innerHTML=memberInfo(contact);
+
+        contactsInfo.style.display= "flex";
     }
-}
-
-
-async function addContact(){
-    contacts.push({
-        "name": contactName.value,
-        "email": contactMail.value,
-        "phone": contactPhone.value,
-    });
-
-
-    await backend.setItem('contacts', JSON.stringify(contacts));
-    clearInput();
-    closeNewContact();
-}
-
-
-async function pushFirstLetterJSON() {
-    alphabet = [];
-    for (let i = 0; i < contacts.length; i++) {
-        const member = contacts[i];
-        const memberFistLetter = member['name'].charAt(0);
-        const firstLetter = memberFistLetter.toUpperCase();
-        if (!alphabet.includes(firstLetter))
-            alphabet.push(firstLetter);
-    }
-    await backend.setItem('contacts', JSON.stringify(contacts));
-    alphabet.sort();
-}
-
-
-function generateContactList(contact){
-    return `<div>
-    <div>
-      <div style="color: white">${contact.lastNameLetter}</div>
-    </div>
-    <div>
-     <div>${contact.name}</div>
-     <a>${contact.email}</a>
-    </div>
-  </div>`
-}
-*/

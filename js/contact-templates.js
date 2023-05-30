@@ -53,7 +53,7 @@ function generateRightSideNewContact() {
 
 function memberHTML(i, contacts) {
     return ` 
-                <div class="single-contact-container">
+                <div class="single-contact-container" onclick="showContacts(${i})">
                     <div class="single-contact-bubble">${contacts[i]['firstNameLetter']}${contacts[i]['lastNameLetter']}</div>
                         <div class="single-contact">
                             <div class="single-contact-name">${contacts[i]['name']}</div>
@@ -61,4 +61,34 @@ function memberHTML(i, contacts) {
                     </div>
                 </div>
                 `;
+}
+
+function memberInfo(contact){
+    return `
+<div class="contact-info-header">
+    <div class="contact-info-bubble">
+        ${contact.firstNameLetter}${contact.lastNameLetter}
+    </div>
+    <div class="contact-info-headname">
+        <h2>${contact.name}</h2>
+        <span>
+            <img src="../assets/img/contact-add-task.png">
+            Add Task
+        </span>
+    </div>
+</div>
+<div class="contact-info-edit">
+    <span class="contact-edit-text">Contact Information</span>
+    <span class="contact-edit-popup">
+        <img src="../assets/img/contact-edit.png">
+        Edit Contact
+    </span>
+</div>
+<div class="open-contact-infos">
+        <span class="contact-information">Email</span>
+        <a class="contact-mail" href="mailto:${contact.email}">${contact.email}</a>
+        <span class="contact-information">Phone</span>
+        <a class="contact-phone" href="tel:${contact.phone}">${contact.phone}</a>
+    </div>
+    `;
 }
