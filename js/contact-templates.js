@@ -49,6 +49,55 @@ function generateRightSideNewContact() {
 }
 
 
+function generateLeftSideEditContact() {
+    return `
+                    <div class="add-contact-logo" id="contact-logo">
+                        <img src="../assets/img/logo-white.png">
+                    </div>
+                    <span class="contact-left-headline" id="contact-left-add">Edit Contact</span>
+                    <div class="edit-contact-left-line" id="blue-line">
+                    </div>
+    `;
+}
+
+
+function generateRightSideEditContact(i, contacts) {
+    return ` <form class="new-contact-circle-name" onsubmit="addContact(); return false;" id="new-contact-circle-name">
+                        <div class="edit-contact-circle-for-edit">
+                            <div class="contact-circle-big contact-circle-card" id="circle-new-contact">
+                            ${contacts[i]['firstNameLetter']}${contacts[i]['lastNameLetter']}
+                            </div>  
+                        </div>
+                        <div class="contact-new-inputs" id="contact-new-inputs">
+                            <span class="close-contact-cross" onclick="closeNewContact()">&#10005;</span>
+                                <div class="warning-message" id="warning-contact-new-edit">
+                                </div>
+                                <div class="input-form-new-contact">
+                                    <input required type="text" id="contactName" placeholder ="${contacts[i]['name']}">
+                                    <img src="../assets/img/name_input.svg">
+                                </div>
+                                <div class="input-form-new-contact">
+                                    <input required type="email" id="contactMail" placeholder ="${contacts[i]['email']}">
+                                    <img src="../assets/img/email_input.svg">
+                                </div>
+                                <div class="input-form-new-contact">
+                                <input required type="tel" pattern="[0-9]+" id="contactPhone" placeholder ="${contacts[i]['phone']}">
+                                <img src="../assets/img/icon-phone.svg">
+                                </div>
+                            <div class="create-cancel-box" id="create-edit-content">
+                                <button type="button" class="contact-new-cancel" id="contact-new-cancel" onclick="closeNewContact()">
+                                    <span>Cancel</span>
+                                    <span>X</span>
+                                </button>
+                                <button type="submit" class="contact-new-create">
+                                    <span>Create Contact</span>
+                                    <img src="../assets/img/icon-check.svg">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+    `;
+}
 
 
 function memberHTML(i, contacts) {
@@ -79,7 +128,7 @@ function memberInfo(contact){
 </div>
 <div class="contact-info-edit">
     <span class="contact-edit-text">Contact Information</span>
-    <span class="contact-edit-popup">
+    <span class="contact-edit-popup" onclick="openEditContacts()">
         <img src="../assets/img/contact-edit.png">
         Edit Contact
     </span>

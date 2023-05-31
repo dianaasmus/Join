@@ -36,6 +36,22 @@ function openAddContacts() {
 }
 
 
+async function openEditContacts(){
+    contacts = JSON.parse(await backend.getItem('contacts')) || [];
+
+    document.getElementById('overlayContainer').classList.remove('d-none');
+    setTimeout(() => {
+        let contentleft = document.getElementById('addContactLeft');
+        contentleft.innerHTML += generateLeftSideEditContact();
+        let contentright = document.getElementById('addContactRightContent');
+        for (let i = 0; i < contacts.length; i++) {
+            contentright.innerHTML = generateRightSideEditContact(i, contacts);
+        }
+        //contentright.innerHTML += generateRightSideEditContact(i, contacts);
+    }, 225);
+}
+
+
 function clearContactCard() {
     document.getElementById('addContactLeft').innerHTML = '';
     document.getElementById('addContactRightContent').innerHTML = '';
@@ -92,11 +108,12 @@ async function renderContactList() {
 }
     }
 
-    async function showContacts(i){
-        await initContacts();
-        const contact = contacts[i];
-        let contactsInfo = document.getElementById('contactInfo');
-        contactsInfo.innerHTML=memberInfo(contact);
 
-        contactsInfo.style.display= "flex";
+async function showContacts(i){
+    await initContacts();
+    const contact = contacts[i];
+    let contactsInfo = document.getElementById('contactInfo');
+    contactsInfo.innerHTML=memberInfo(contact);
+
+    contactsInfo.style.display= "flex";
     }
