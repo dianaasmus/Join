@@ -54,7 +54,7 @@ function linkToLogin() {
  * @param {string} event - This refers to an event object that contains information about the triggered event.
  */
 async function checkUserPassword(event) {
-    event.preventDefault();
+    // event.preventDefault();
     resetPasswordBtn.disabled = true;
     feedbackContainer.innerHTML = '';
     if (emailResetPassword.value === emailConfirmPassword.value) {

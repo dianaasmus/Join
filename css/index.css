@@ -80,17 +80,17 @@ body {
     }
 
     to {
-        top: -40px;
+        top: -71px;
         left: -30px;
         transform: translate(4%, 5%);
-        transform: scale(0.4);
+        transform: scale(0.3);
     }
 }
 
 /* Not a Join user? Sign up */
 #signup-container {
     position: absolute;
-    top: 50px;
+    top: 45px;
     left: 0;
     right: 120px;
     display: flex;
@@ -148,29 +148,22 @@ body {
     flex-direction: column;
     max-width: 100%;
     margin: 0 35px;
-    width: 650px;
+    width: 580px;
     background-color: #fff;
     border-radius: 30px;
-    gap: 35px;
+    gap: 30px;
     padding: 35px 0 35px 0;
 }
 
-/* #loginFormContainer {
-    position: relative;
-    width: 650px;
-    background-color: #fff;
-    border-radius: 30px;
-} */
-
 .login-form h1 {
-    font-size: 61px;
+    font-size: 49px;
     font-weight: 700;
     margin: 0;
     text-align: center;
 }
 
 .login-form hr {
-    height: 4px;
+    height: 3px;
     width: 150px;
     background-color: #29ABE2;
     margin: 0;
@@ -179,7 +172,7 @@ body {
 
 .input-field {
     width: 422px;
-    height: 51px;
+    height: 46px;
     font-size: 21px;
     padding-left: 20px;
     border: 1px solid #d1d1d1;
@@ -259,6 +252,7 @@ body {
 
 .remember-me p {
     margin-left: 35px;
+    cursor: pointer;
 }
 
 #forget-password {
@@ -271,7 +265,7 @@ body {
     width: 422px;
     display: flex;
     justify-content: flex-start;
-    gap: 35px;
+    gap: 30px;
 }
 
 #loginBtn,
@@ -303,9 +297,6 @@ body {
     border: 2px solid #2a3647;
     color: #2a3647;
     cursor: pointer;
-    /* position: absolute;
-    bottom: 35px;
-    right: 150px; */
 }
 
 #loginGuest:hover {
@@ -384,7 +375,7 @@ body {
 /* forgotten password form  */
 .forgotten-password-from,
 .reset-password-form {
-    padding: 45px 85px 45px 85px;
+    padding: 30px 85px 30px 85px;
 }
 
 .forgotten-password-from p {

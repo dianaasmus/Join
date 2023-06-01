@@ -9,7 +9,7 @@ body {
     display: none;
 }
 
-#welcomingSummary {
+.welcomingSummary {
     position: absolute;
     top: 0;
     left: 0;
@@ -49,7 +49,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: greetingPostition 1000ms ease-in-out 500ms;
+    animation: greetingPostition 1000ms ease-in-out 1000ms;
     animation-fill-mode: forwards;
 }
 
@@ -60,7 +60,7 @@ body {
 
     100% {
         color: #2A3647;
-        transform: translate(105%, 0%);
+        transform: translate(88%, 0%);
     }
 }
 
@@ -76,11 +76,14 @@ body {
     border-radius: 8px;
     color: white;
     text-align: center;
-    padding-top: 25px;
     font-size: 23px;
     font-weight: 400;
-    animation: slideInFeedback 225ms ease-in-out, slideOutFeedback 225ms ease-in-out 2000ms;
+    animation: slideInFeedback 225ms ease-in-out 1000ms, slideOutFeedback 225ms ease-in-out 3000ms;
     animation-fill-mode: forwards;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @keyframes slideInFeedback {
@@ -126,7 +129,8 @@ section {
 
 .summary-headline h1 {
     font-weight: 700;
-    font-size: 61px;
+    font-size: 59px;
+    margin: 30px 0;
 }
 
 .summary-headline hr {
@@ -138,14 +142,14 @@ section {
 }
 
 .summary-headline p {
-    font-size: 27px;
+    font-size: 22px;
     color: #2A3647;
 }
 
 .top-board {
     display: flex;
     gap: 35px;
-    width: 580px;
+    width: 550px;
 }
 
 .task {
@@ -165,7 +169,7 @@ section {
 }
 
 .task h2 {
-    font-size: 64px;
+    font-size: 59px;
     font-weight: 600;
     margin: 0;
 }
@@ -176,7 +180,7 @@ section {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-size: 21px;
+    font-size: 18px;
     color: #2A3647;
     margin: 0;
     background-color: #fff;
@@ -202,7 +206,7 @@ section {
     align-items: center;
     justify-content: space-evenly;
     cursor: pointer;
-    width: 580px;
+    width: 550px;
     transition: transform 100ms ease-in-out,
         background-color 100ms ease-in-out;
 }
@@ -238,7 +242,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 0 0 10px;
+    padding: 0 0 0 20px;
     color: #000;
 }
 
@@ -247,10 +251,6 @@ section {
     font-weight: 600;
     margin: 0;
 }
-
-/* #welcomingSummary {
-    margin-top: 500px;
-} */
 
 .welcoming h3 {
     font-size: 47px;
@@ -288,7 +288,7 @@ section {
 
 #todo-number,
 #done-number {
-    font-size: 64px;
+    font-size: 59px;
     font-weight: 600;
     margin: 0;
     color: #000;
@@ -326,7 +326,7 @@ section {
 .bottom-board {
     display: flex;
     gap: 35px;
-    width: 580px;
+    width: 550px;
 }
 
 .box-shadow {

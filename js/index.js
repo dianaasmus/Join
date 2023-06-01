@@ -211,6 +211,8 @@ function openGuestLogin() {
 async function logIn() {
     localStorage.setItem('LogIn', 'User');
     // document.getElementById('welcomingSummary').classList.add('welcomingSummary');
+    // welcomeUser();
+    localStorage.setItem('LoginBtn', true);
     window.open("./summary.html", "_self");
 }
 
@@ -223,6 +225,6 @@ function checkMediaQuery() {
 
       } else {
         // Code für andere Bildschirmgrößen
-        console.log('Die maximale Breite beträgt mehr als 400 Pixel.');
+        // console.log('Die maximale Breite beträgt mehr als 400 Pixel.');
       }
 }

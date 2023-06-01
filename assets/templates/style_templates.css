@@ -16,7 +16,6 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    /* padding-left: 10%; */
     padding-right: 5%;
     box-shadow: 0px 4px 4px rgb(0 0 0 / 10%);
     z-index: 50;
@@ -172,14 +171,12 @@ a {
     padding-bottom: 10px;
 }
 
-@media(max-width:1000px) {
+@media(max-width:1100px) {
     header {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        /* justify-content: space-evenly; */
-
     }
 
     nav {
@@ -191,7 +188,7 @@ a {
     }
 }
 
-@media (max-width: 660px) {
+@media (max-width: 640px) {
 
     .header-right {
         position: absolute;
@@ -218,18 +215,11 @@ a {
 
     header span {
         margin-top: 166px !important;
+        margin-right: -188px;
     }
 }
 
 @media (max-width: 600px) {
-
-    .kanban-text-container {
-        padding-right: 85px !important;
-    }
-
-    .kanban-text-container span {
-        font-size: 19px;
-    }
 
     .profile-picture-container {
         width: 35px;
@@ -248,6 +238,10 @@ a {
 }
 
 @media (max-width: 440px) {
+
+    header span {
+        margin-right: 15px;
+    }
 
     .kanban-text-container {
         padding-right: 0px !important;

@@ -66,8 +66,22 @@
     #join-logo,
     #join-logo-reset-password {
         height: 165px;
-        margin-top: 30px;
-        margin-left: 30px;
+    }
+
+    @keyframes Logo-Animation {
+        from {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 100ms ease-in-out 300ms;
+        }
+    
+        to {
+            top: -25px;
+            left: -20px;
+            transform: translate(4%, 5%); 
+            transform: scale(0.3);
+        }
     }
 
     #signup-container {
