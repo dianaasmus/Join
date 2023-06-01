@@ -148,7 +148,7 @@ body {
     flex-direction: column;
     max-width: 100%;
     margin: 0 35px;
-    width: 580px;
+    width: 550px;
     background-color: #fff;
     border-radius: 30px;
     gap: 30px;
@@ -160,6 +160,7 @@ body {
     font-weight: 700;
     margin: 0;
     text-align: center;
+    margin: 0 15px;
 }
 
 .login-form hr {
@@ -375,13 +376,14 @@ body {
 /* forgotten password form  */
 .forgotten-password-from,
 .reset-password-form {
-    padding: 30px 85px 30px 85px;
+    padding: 30px 55px 30px 55px;
 }
 
 .forgotten-password-from p {
     font-size: 21px;
     font-weight: 400;
     text-align: center;
+    margin: 0;
 }
 
 #forgotPasswordBtn {
@@ -455,8 +457,7 @@ body {
 #feedbackContainer,
 #feedbackForgotPsw {
     position: absolute;
-    bottom: 109px;
-    left: 200px;
+    bottom: 93px;
     color: red;
     font-size: 14px;
 }

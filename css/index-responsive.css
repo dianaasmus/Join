@@ -75,11 +75,11 @@
             transform: translate(-50%, -50%);
             transition: transform 100ms ease-in-out 300ms;
         }
-    
+
         to {
             top: -25px;
             left: -20px;
-            transform: translate(4%, 5%); 
+            transform: translate(4%, 5%);
             transform: scale(0.3);
         }
     }
@@ -99,7 +99,7 @@
 
     #feedbackContainer,
     #feedbackForgotPsw {
-        left: 100px;
+        bottom: 105px;
     }
 
     .sent-mail-message {
@@ -108,13 +108,14 @@
         font-size: 18px;
     }
 
-    .forgotten-password-from, .reset-password-form {
+    .forgotten-password-from,
+    .reset-password-form {
         padding: 45px 0 45px 0;
     }
 
     .arrow-left {
-        top: 22px;
-        left: 17px;
+        top: 30px;
+        left: 25px;
     }
 
     .reset-password-form p {
