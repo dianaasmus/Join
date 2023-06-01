@@ -11,7 +11,6 @@ async function initContacts() {
         renderContactList();
         contactsLoaded = true; // Setze den Ladezustand auf true, um die Endlosschleife zu verhindern
     }
-//    getFirstLetter();
 }
 
 
@@ -47,7 +46,6 @@ async function openEditContacts(){
         for (let i = 0; i < contacts.length; i++) {
             contentright.innerHTML = generateRightSideEditContact(i, contacts);
         }
-        //contentright.innerHTML += generateRightSideEditContact(i, contacts);
     }, 225);
 }
 
@@ -84,6 +82,22 @@ async function addContact() {
     closeNewContact();
     initContacts();
 }
+
+async function editContact(index) {
+    await downloadFromServer();
+    const editedFullName = prompt('Enter the new full name:');
+    const editedNames = editedFullName.split(' ');
+    const editedFirstName = editedNames[0].charAt(0).toUpperCase();
+    const editedLastName = editedNames.length > 1 ? editedNames[editedNames.length - 1].charAt(0).toUpperCase() : '';
+  
+    contacts[index].name = editedFullName;
+    contacts[index].firstNameLetter = editedFirstName;
+    contacts[index].lastNameLetter = editedLastName;
+
+    await backend.setItem('contacts', JSON.stringify(contacts));
+    closeNewContact();
+    initContacts();
+  }
 
 
 function clearInput() {
