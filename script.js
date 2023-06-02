@@ -1,7 +1,5 @@
-//standard js 
 function init() {
     includeHTML();
-    // getCheckboxFeedback();
 }
 
 
@@ -19,3 +17,33 @@ async function includeHTML() {
         }
     }
 };
+
+
+function openImgDropDoen() {
+    let dropdown = document.querySelector('.img-drop-down');
+
+    if (dropdown) {
+        dropdown.remove(); // Remove dropdown if it's already visible
+    } else {
+        pasteDropDown();
+    }
+}
+
+function pasteDropDown() {
+    document.getElementById('profile-picture').innerHTML += `
+                <div class="img-drop-down">
+                    Log out
+                </div>
+            `;
+
+    removeDiv();
+}
+
+function removeDiv() {
+    dropdown = document.querySelector('.img-drop-down');
+    setTimeout(function () {
+        if (dropdown) {
+            dropdown.remove();
+        }
+    }, 2000);
+}

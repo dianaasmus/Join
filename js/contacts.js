@@ -35,7 +35,7 @@ function openAddContacts() {
 }
 
 
-async function openEditContacts(){
+async function openEditContacts() {
     contacts = JSON.parse(await backend.getItem('contacts')) || [];
 
     document.getElementById('overlayContainer').classList.remove('d-none');
@@ -68,7 +68,7 @@ async function addContact() {
     const names = fullName.split(' ');
     const firstName = names[0].charAt(0).toUpperCase();
     const lastName = names.length > 1 ? names[names.length - 1].charAt(0).toUpperCase() : '';
-    
+
     contacts.push({
         "name": fullName,
         "email": contactMail.value,
@@ -83,13 +83,13 @@ async function addContact() {
     initContacts();
 }
 
-async function editContact(index) {
+async function editContact() {
     await downloadFromServer();
     const editedFullName = prompt('Enter the new full name:');
     const editedNames = editedFullName.split(' ');
     const editedFirstName = editedNames[0].charAt(0).toUpperCase();
     const editedLastName = editedNames.length > 1 ? editedNames[editedNames.length - 1].charAt(0).toUpperCase() : '';
-  
+
     contacts[index].name = editedFullName;
     contacts[index].firstNameLetter = editedFirstName;
     contacts[index].lastNameLetter = editedLastName;
@@ -97,7 +97,7 @@ async function editContact(index) {
     await backend.setItem('contacts', JSON.stringify(contacts));
     closeNewContact();
     initContacts();
-  }
+}
 
 
 function clearInput() {
@@ -118,16 +118,16 @@ async function renderContactList() {
 
     let contactContainer = document.getElementById('contactList');
     for (let i = 0; i < contacts.length; i++) {
-    contactContainer.innerHTML+=memberHTML(i, contacts);
-}
+        contactContainer.innerHTML += memberHTML(i, contacts);
     }
+}
 
 
-async function showContacts(i){
+async function showContacts(i) {
     await initContacts();
     const contact = contacts[i];
     let contactsInfo = document.getElementById('contactInfo');
-    contactsInfo.innerHTML=memberInfo(contact);
+    contactsInfo.innerHTML = memberInfo(contact);
 
-    contactsInfo.style.display= "flex";
-    }
+    contactsInfo.style.display = "flex";
+}

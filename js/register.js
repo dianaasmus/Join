@@ -23,8 +23,8 @@ function returnSignupForm() {
                 <hr>
                 <input class="input-field" placeholder="Name" type="text" id="userName" autocomplete="on" required>
                 <input class="input-field" placeholder="Email" type="email" id="emailSignUp" name="emailSignUp" autocomplete="on" required>
-                <input class="input-field" placeholder="Password" type="password" id="password" autocomplete="on" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                <input class="input-field" placeholder="Password" type="password" id="password" autocomplete="on" pattern="{8,}"
+                title="Must contain at least 8 or more characters" required>
                 <button type="submit" id="registerBtn">Sign up</button>
             </form>
             `;

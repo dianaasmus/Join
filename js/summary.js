@@ -8,8 +8,8 @@ let done = [];
 async function onLoad() {
     await includeHTML();
     await setUrl();
-    greetUser();
     getTasks();
+    getTime();
 }
 
 function getCheckboxFeedback() {
@@ -17,7 +17,6 @@ function getCheckboxFeedback() {
     if (checkedBox === 'true') {
         document.body.innerHTML += returnCheckboxFeedback();
     }
-    getTime();
 }
 
 
@@ -61,6 +60,8 @@ function getTime() {
     } else {
         greeting.innerHTML = "Guten Abend,";
     }
+    greetUser();
+
 }
 
 
@@ -68,7 +69,6 @@ function greetUser() {
     let loignBtnClick = localStorage.getItem('LoginBtn');
     if (loignBtnClick == 'true') {
 
-        // document.body.innerHTML += addWelcomeSummary();
         let loginValue = localStorage.getItem('LogIn');
         if (loginValue === 'User') {
             greetUserName();
@@ -78,18 +78,6 @@ function greetUser() {
     localStorage.setItem('LoginBtn', false);
 }
 
-function addWelcomeSummary() {
-    return `
-    <div id="welcomingSummary">
-        <div id="welcomeGreeting">
-            <div>
-                <h3 id="greeting"></h3>
-                <h4 id="greetUser"></h4>
-            </div>
-        </div>
-    </div>
-    `;
-}
 
 function greetUserName() {
     loggedUser = localStorage.getItem('Logged User');
@@ -104,7 +92,6 @@ function greetUserName() {
         }
     }
     getCheckboxFeedback();
-
 }
 
 

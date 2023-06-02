@@ -9,7 +9,7 @@ body {
     display: none;
 }
 
-.welcomingSummary {
+#welcomingSummary {
     position: absolute;
     top: 0;
     left: 0;
@@ -20,7 +20,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: backgroundFade 1000ms ease-in-out 500ms, removePosition 1300ms ease-in-out 500ms;
+    animation: backgroundFade 1200ms ease-in-out 500ms, removePosition 1300ms ease-in-out 500ms;
     animation-fill-mode: forwards;
 }
 
