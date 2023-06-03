@@ -128,12 +128,15 @@ a {
 .legal-notice:hover {
     background-color: #000;
 }
+/* 
+.sidebar-props:active,
+.legal-notice:active {
+    background-color: #000;
+} */
 
-.sidebar-props:focus,
-.legal-notice:focus {
+.clicked {
     background-color: #000;
 }
-
 
 .sidebar-icons {
     width: 28%;
@@ -175,16 +178,22 @@ a {
     position: absolute;
     top: 90px;
     right: 5%;
-    height: 20px;
-    width: 60px;
     background-color: #2A3647;
     color: white;
     border-radius: 10px;
     border-top-right-radius: 0;
-    padding: 10px;
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-.img-drop-down:hover {
+.img-drop-down a {
+    font-size: 16px;
+    margin: 10px 0;
+    color: white;
+}
+
+.img-drop-down a:hover {
     text-decoration: underline;
 }
 

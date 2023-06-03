@@ -1,8 +1,3 @@
-function init() {
-    includeHTML();
-}
-
-
 async function includeHTML() {
     let file;
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -16,7 +11,32 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
+    focusSidebar();
 };
+
+
+function focusSidebar() {
+    const pathName = window.location.pathname;
+    console.log(pathName);
+
+    switch (pathName) {
+        case '/summary.html':
+            document.getElementById('summary-props').classList.add('clicked');
+            break;
+        case '/board.html':
+            document.getElementById('board-props').classList.add('clicked');
+            break;
+        case '/addTask.html':
+            document.getElementById('addTask-props').classList.add('clicked');
+            break;
+        case '/contacts.html':
+            document.getElementById('contacts-props').classList.add('clicked');
+            break;
+        case '/legal-notice.html':
+            document.getElementById('legal-props').classList.add('clicked');
+            break;
+    }
+}
 
 
 function openImgDropDoen() {
@@ -25,19 +45,39 @@ function openImgDropDoen() {
     if (dropdown) {
         dropdown.remove(); // Remove dropdown if it's already visible
     } else {
-        pasteDropDown();
+        setDropdownContent();
     }
 }
 
-function pasteDropDown() {
+
+function setDropdownContent() {
+    if (window.matchMedia('(max-width: 1100px)').matches) {
+        pasteDropDownMobile();
+    } else {
+        pasteDropDownWeb();
+    }
+}
+
+
+function pasteDropDownMobile() {
     document.getElementById('profile-picture').innerHTML += `
                 <div class="img-drop-down">
-                    Log out
+                    <a onclick="">Help</a>
+                    <a onclick="">Legal Notice</a>
+                    <a href="index.html">Log out</a>
                 </div>
             `;
-
-    removeDiv();
 }
+
+
+function pasteDropDownWeb() {
+    document.getElementById('profile-picture').innerHTML += `
+                <div class="img-drop-down">
+                    <a href="index.html">Log out</a>
+                </div>
+            `;
+}
+
 
 function removeDiv() {
     dropdown = document.querySelector('.img-drop-down');

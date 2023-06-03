@@ -21,7 +21,6 @@ async function initAddTask() {
     document.getElementById("date").setAttribute("min", date.toISOString().split("T")[0]);
     includeHTML();
 
-
 }
 
 
