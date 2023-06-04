@@ -85,6 +85,7 @@ function setDropdownContent() {
     } else {
         pasteDropDownWeb();
     }
+    removeDiv();
 }
 
 

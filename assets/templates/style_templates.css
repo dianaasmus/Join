@@ -105,7 +105,7 @@ a {
     height: 110px;
 }
 
-/* .sidebar-links {
+.sidebar-links {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -115,16 +115,16 @@ a {
     width: 232px;
     height: 229px;
     z-index: 500;
-} */
+}
 
-/* .sidebar-props {
+.sidebar-props {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     padding-bottom: 10px;
     padding-top: 10px;
-} */
+}
 
 .sidebar-props:hover,
 .legal-notice:hover {
@@ -192,6 +192,7 @@ a {
     font-size: 16px;
     margin: 10px 0;
     color: white;
+    white-space: nowrap;
 }
 
 .img-drop-down a:hover {
