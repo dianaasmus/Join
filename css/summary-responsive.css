@@ -1,19 +1,57 @@
 @media (max-width: 1300px) {
+
+    #welcomingSummary {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgb(42, 54, 71);
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: backgroundFade 1200ms ease-in-out 500ms, removePosition 1300ms ease-in-out 500ms;
+        animation-fill-mode: forwards;
+    }
+    
+    
+    @keyframes backgroundFade {
+        0% {
+            background-color: rgba(42, 54, 71, 1);
+        }
+    
+        100% {
+            background-color: rgba(42, 54, 71, 0);
+            display: none;
+        }
+    }
     
     #welcomeGreeting {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        animation: FadeAway 700ms ease-in-out 500ms;
+        animation: FadeAway 700ms ease-in-out 500ms, RemoveContainer 1ms 1000ms;
         animation-fill-mode: forwards;
         display: unset;
         opacity: 1;
     }
 
+    @keyframes RemoveContainer {
+        0% {
+            position: absolute;
+        }
+
+        100% {
+            position: unset;
+        }
+    }
+
     @keyframes FadeAway {
         0% {
             opacity: 1;
+            display: unset;
         }
 
         100% {
@@ -34,7 +72,6 @@
         top: 8%;
         left: 50%;
         font-size: 20px;
-        /* transform: translate(-50%, -50%); */
     }
 
     section {

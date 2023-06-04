@@ -46,11 +46,11 @@ function getTime() {
     let greeting = document.getElementById('greeting');
 
     if (hour >= 1 && hour < 12) {
-        greeting.innerHTML = "Guten Morgen";
+        greeting.innerHTML = "Good morning";
     } else if (hour >= 12 && hour < 18) {
-        greeting.innerHTML = "Guten Tag";
+        greeting.innerHTML = "Welcome";
     } else {
-        greeting.innerHTML = "Guten Abend";
+        greeting.innerHTML = "Good evening";
     }
     greetUser();
 

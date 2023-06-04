@@ -1,9 +1,16 @@
+/**
+ * Initialize functions.
+ */
 async function initScript() {
     await includeHTML();
     focusSidebar();
     responsiveHeaderText();
 }
 
+
+/**
+ * Include Header and Sidebar.
+ */
 async function includeHTML() {
     let file;
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -17,8 +24,12 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
-};
+}
 
+
+/**
+ * If window matches media width, then add the kanban-text Container.
+ */
 function responsiveHeaderText() {
     if (window.matchMedia('(max-width: 640px)').matches) {
         document.body.innerHTML += `
@@ -30,18 +41,28 @@ function responsiveHeaderText() {
     }
 }
 
+
+/**
+ * If path name is either legal-notice.html or help.html, add special classList.
+ */
 function adjustMedia() {
     const pathName = window.location.pathname;
-    if (pathName == '/legal-notice.html' || '/help.html') {
+    if (pathName === '/legal-notice.html') {
         document.querySelector('.kanban-text-container-2').classList.add('responsiveHeader');
-
+    } 
+    if (pathName == '/help.html') {
+        document.querySelector('.kanban-text-container-2').classList.add('responsiveHeader');
+    }   else {
+        document.querySelector('.kanban-text-container-2').classList.remove('responsiveHeader');
     }
 }
 
 
+/**
+ * Focus links on sidebar if corresponding page is displayed.
+ */
 function focusSidebar() {
     const pathName = window.location.pathname;
-    console.log(pathName);
 
     switch (pathName) {
         case '/summary.html':
@@ -68,6 +89,9 @@ function focusSidebar() {
 }
 
 
+/**
+ * Add a dropdown with toggle effect.
+ */
 function openImgDropDoen() {
     let dropdown = document.querySelector('.img-drop-down');
 
@@ -79,16 +103,22 @@ function openImgDropDoen() {
 }
 
 
+/**
+ * Set dropdown content for web and mobile.
+ */
 function setDropdownContent() {
     if (window.matchMedia('(max-width: 1100px)').matches) {
         pasteDropDownMobile();
     } else {
         pasteDropDownWeb();
     }
-    removeDiv();
+    // removeDiv();
 }
 
 
+/**
+ * Mobile dropdown HTML.
+ */
 function pasteDropDownMobile() {
     document.getElementById('profile-picture').innerHTML += `
                 <div class="img-drop-down">
@@ -100,6 +130,9 @@ function pasteDropDownMobile() {
 }
 
 
+/**
+ * Web dropdown HTML.
+ */
 function pasteDropDownWeb() {
     document.getElementById('profile-picture').innerHTML += `
                 <div class="img-drop-down">
@@ -109,6 +142,9 @@ function pasteDropDownWeb() {
 }
 
 
+/**
+ * Remove Dropdown after 2 seconds.
+ */
 function removeDiv() {
     dropdown = document.querySelector('.img-drop-down');
     setTimeout(function () {

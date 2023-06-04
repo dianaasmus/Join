@@ -262,13 +262,16 @@ a {
         order: -1;
         margin-top: 20px;
         display: flex;
-        justify-content: center;
-        margin-right: 140px;
+        justify-content: center !important;
+        margin-right: 140px !important;
+    }
+
+    .img-drop-down {
+        top: 65px !important;
     }
 
     .responsiveHeader {
-        /* margin-left: 100px; */
-        justify-content: unset;
+        justify-content: unset !important;
         margin-right: 0;
     }
 
@@ -315,7 +318,7 @@ a {
     }
 
     .kanban-text-container-2 {
-        margin-right: 50px;
+        margin-right: 50px !important;
     }
 
     .kanban-text-container span {
@@ -324,5 +327,9 @@ a {
 
     #nav-mobile {
         height: 60px;
+    }
+
+    .img-drop-down {
+        top: 65px !important;
     }
 }
