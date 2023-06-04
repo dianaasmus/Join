@@ -107,7 +107,7 @@ function openImgDropDoen() {
  * Set dropdown content for web and mobile.
  */
 function setDropdownContent() {
-    if (window.matchMedia('(max-width: 1100px)').matches) {
+    if (window.matchMedia('(max-width: 1000px)').matches) {
         pasteDropDownMobile();
     } else {
         pasteDropDownWeb();

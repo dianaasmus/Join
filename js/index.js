@@ -38,7 +38,6 @@ function enableLoginBtn() {
 async function loadUsers() {
     try {
         joinUsers = JSON.parse(await backend.getItem('joinUsers')) || [];
-        console.log(joinUsers);
     } catch (e) {
         console.error('Loading error:', e);
     }
