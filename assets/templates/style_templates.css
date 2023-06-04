@@ -70,7 +70,7 @@ header span {
 
 /*Sidebar*/
 
-nav {
+#nav-web {
     position: fixed;
     top: 0;
     left: 0;
@@ -105,7 +105,7 @@ a {
     height: 110px;
 }
 
-.sidebar-links {
+/* .sidebar-links {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -115,27 +115,25 @@ a {
     width: 232px;
     height: 229px;
     z-index: 500;
-}
+} */
 
-.sidebar-props {
+/* .sidebar-props {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     padding-bottom: 10px;
     padding-top: 10px;
-}
+} */
 
 .sidebar-props:hover,
 .legal-notice:hover {
     background-color: #000;
 }
 
-/* 
-.sidebar-props:active,
-.legal-notice:active {
-    background-color: #000;
-} */
+#nav-mobile {
+    display: none;
+}
 
 .clicked {
     background-color: #000;
@@ -200,7 +198,7 @@ a {
     text-decoration: underline;
 }
 
-@media(max-width:1100px) {
+@media(max-width:1000px) {
     header {
         position: fixed;
         top: 0;
@@ -208,8 +206,31 @@ a {
         right: 0;
     }
 
-    nav {
+    #nav-web {
         display: none;
+    }
+
+    #nav-mobile {
+        display: flex;
+        justify-content: space-evenly;
+        background-color: #2A3647;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+    }
+
+    .sidebar-props-mobile {
+        text-decoration: none;
+        width: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sidebar-props-mobile:hover {
+        background-color: #000;
     }
 
     header {

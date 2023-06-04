@@ -46,18 +46,23 @@ function focusSidebar() {
     switch (pathName) {
         case '/summary.html':
             document.getElementById('summary-props').classList.add('clicked');
+            document.getElementById('summary-props-mobile').classList.add('clicked');
             break;
         case '/board.html':
             document.getElementById('board-props').classList.add('clicked');
+            document.getElementById('summary-props-mobile').classList.add('clicked');
             break;
         case '/addTask.html':
             document.getElementById('addTask-props').classList.add('clicked');
+            document.getElementById('summary-props-mobile').classList.add('clicked');
             break;
         case '/contacts.html':
             document.getElementById('contacts-props').classList.add('clicked');
+            document.getElementById('summary-props-mobile').classList.add('clicked');
             break;
         case '/legal-notice.html':
             document.getElementById('legal-props').classList.add('clicked');
+            document.getElementById('summary-props-mobile').classList.add('clicked');
             break;
     }
 }
