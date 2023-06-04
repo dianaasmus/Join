@@ -4,7 +4,9 @@ let toDo = [];
 let inProgress = [];
 let done = [];
 
-
+/**
+ * Execution of functions when loading the page.
+ */
 async function onLoad() {
     await initScript();
     await setUrl();
@@ -13,23 +15,9 @@ async function onLoad() {
 }
 
 
-function getCheckboxFeedback() {
-    let checkedBox = localStorage.getItem('checkedBox');
-    if (checkedBox === 'true') {
-        document.body.innerHTML += returnCheckboxFeedback();
-    }
-}
-
-
-function returnCheckboxFeedback() {
-    return `
-                <div class="checkbox-feedback">
-                Your login details are stored in your browser.
-                </div>
-            `;
-}
-
-
+/**
+ * Set and downlaod the backend url.
+ */
 async function setUrl() {
     setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
     await downloadFromServer();
@@ -49,6 +37,9 @@ async function getUsers() {
 }
 
 
+/**
+ * Get current time and display it.
+ */
 function getTime() {
     let currentTime = new Date();
     let hour = currentTime.getHours();
@@ -66,6 +57,9 @@ function getTime() {
 }
 
 
+/**
+ * Greet the logged user.
+ */
 function greetUser() {
     let loignBtnClick = localStorage.getItem('LoginBtn');
     if (loignBtnClick == 'true') {
@@ -80,6 +74,9 @@ function greetUser() {
 }
 
 
+/**
+ * Display logged user name.
+ */
 function greetUserName() {
     loggedUser = localStorage.getItem('Logged User');
 
@@ -96,16 +93,47 @@ function greetUserName() {
 }
 
 
+/**
+ * checks the checkboxs value.
+ */
+function getCheckboxFeedback() {
+    let checkedBox = localStorage.getItem('checkedBox');
+    if (checkedBox === 'true') {
+        document.body.innerHTML += returnCheckboxFeedback();
+    }
+}
+
+
+function returnCheckboxFeedback() {
+    return `
+                <div class="checkbox-feedback">
+                Your login details are stored in your browser.
+                </div>
+            `;
+}
+
+
+/**
+ * Add hover effect on Todo Container.
+ */
 function hoverTodoOn() {
     document.getElementById('todo-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
     document.getElementById('todo-number').style.color = "white";
 }
 
+
+/**
+ * Add hover effect on Done Container.
+ */
 function hoverDoneOn() {
     document.getElementById('done-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
     document.getElementById('done-number').style.color = "white";
 }
 
+
+/**
+ * Remove hover effect on todo + Done Container.
+ */
 function hoverOff() {
     document.getElementById('todo-icon').style = "filter: none;";
     document.getElementById('done-icon').style = "filter: none;";
@@ -114,6 +142,9 @@ function hoverOff() {
 }
 
 
+/**
+ * Get saved tasks.
+ */
 async function getTasks() {
     tasks = await JSON.parse(backend.getItem('tasks')) || [];
 
@@ -125,6 +156,12 @@ async function getTasks() {
     parseTaskStates();
 }
 
+
+/**
+ * Save readiness state in backend.
+ * 
+ * @param {string} taskReadinessState - repsective readiness state from tasts.
+ */
 async function setTaskStates(taskReadinessState) {
     switch (taskReadinessState) {
         case 'toDo':
@@ -146,6 +183,10 @@ async function setTaskStates(taskReadinessState) {
     }
 }
 
+
+/**
+ * Parse task in respective container.
+ */
 function parseTaskStates() {
     tasksInBoard.innerHTML = tasks.length;;
     tasksInProgress.innerHTML = inProgress.length;

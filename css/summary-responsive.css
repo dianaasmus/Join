@@ -1,4 +1,4 @@
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
     
     #welcomeGreeting {
         position: absolute;
@@ -27,6 +27,7 @@
 
     body {
         margin-left: 0 !important;
+        padding-left: 0;
     }
 
     .checkbox-feedback {

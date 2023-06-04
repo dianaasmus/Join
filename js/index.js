@@ -215,17 +215,3 @@ async function logIn() {
     localStorage.setItem('LoginBtn', true);
     window.open("./summary.html", "_self");
 }
-
-
-// function checkMediaQuery() {
-//     if (window.matchMedia('(max-width: 400px)').matches) {
-//         console.log('Die maximale Breite beträgt 400 Pixel oder weniger.');
-//         // document.getElementById('join-logo').src = './assets/img/blue-logo-small.png';
-//         // document.getElementById('join-logo').style = "filter: invert(17%) sepia(13%) saturate(1567%) hue-rotate(176deg) brightness(88%) contrast(86%);";
-//         document.getElementById('logo-container').style.backgroundColor = "#2a3647";
-
-//       } else {
-//         // Code für andere Bildschirmgrößen
-//         // console.log('Die maximale Breite beträgt mehr als 400 Pixel.');
-//       }
-// }

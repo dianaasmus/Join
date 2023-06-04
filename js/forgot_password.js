@@ -106,17 +106,27 @@ function sentMailContainer() {
     `;
 }
 
+
+/**
+ * Remove the feedback container content.
+ */
 function removeFeedback() {
     feedbackForgotPsw.innerHTML = '';
 }
 
 
+/**
+ * Add the shake animation.
+ */
 function addShakeAnimation() {
     email.classList.add('shake-animation');
     removeShakeAnimation();
 }
 
 
+/**
+ * Remove the shake animation
+ */
 function removeShakeAnimation() {
     email.value = '';
 
@@ -126,6 +136,9 @@ function removeShakeAnimation() {
 }
 
 
+/**
+ * Add feedback container.
+ */
 function sendForgotFeedback() {
     feedbackForgotPsw.innerHTML += `
             This user is not registered.
@@ -135,7 +148,7 @@ function sendForgotFeedback() {
 
 
 /**
- * This function opens back the Login Container.
+ * This function opens back the login container.
  */
 function backToLogin() {
     document.getElementById('login-main').classList.remove('d-none');
