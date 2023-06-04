@@ -8,21 +8,22 @@ function HTMLrenderTaskCards(i, j) {
                 </h4>
                 <div class="task">${tasks[i].description}
                 </div>
-                <div class="progressBarSection">
-                   <div id="" class="progressBar"></div>
-                   <div>1/2 Done</div>
+                <div id="progressBarSection${i}" class="progressBarSection">
+                   <div id="progressBar${i}" class="progressBar"></div>
+                   <div>${tasks[i].pace}/${tasks[i].subtasks.length} Done</div>
                 </div>
-                <div class="assignedToBoard">
-                    <span class="assignedToAvatars" id="">HS</span>
+                <div  class="assignedToBoard">
+                    <span id="assignedToCircles${i}" class="assignedToAvatars" ></span>
                     <img id="urgencyBoard${j}" src=" ">
                 </div>
             </div>`
+           
 }
 
 
 function HTMLrenderDialogFullCard(i) {
     return `
-    <div class="dialogFullCardContent">
+    <div id="dialogFullCardContent" class="dialogFullCardContent">
         <div class="wrapperDialog">
                  <img onclick="closeTask()" class="closeButtondialogFullCard" src="./assets/img/closeButtonBoard.png">
                  <div class="categoryDialog" style="background-color: ${tasks[i].colorCategory}"> 
@@ -39,21 +40,36 @@ function HTMLrenderDialogFullCard(i) {
                      <p>Priority:</p> <img class="priorityImgFullCard" id="urgencyFullCard${i}" src=" ">
                  </div>
               
+                 <div>
+                    <p>Subtasks:</p>
+                    <div  id="subtasksFullCard" style="display:flex; flex-direction:column;">
+                    </div>
+                </div>
+
                  <div class="assignedTo">
     
                       <p>Assigned to:</p>
+                      <div class="assignedToFullCard" id="assignedToFullCard">
+                      </div
+                     
                  </div>
                  <div class="editDelete">
-                       <img onclick="deleteTask(${i})" class="edit" src="./assets/img/blueDelete.png">
+                       <img onclick="deleteTask(${i})" class="delete" src="./assets/img/blueDelete.png">
                       <img onclick="openEditTask(${i})" class="edit" src="./assets/img/blueEdit.png">
                  </div>
         </div>
    </div>`
 }
 
+function HTMLrenderSubtasksDialogFullCard(i,subtask,counter) {
+    return `<div class="checkBoxDiv">
+    <span>${subtask.subtask}</span><input type="checkbox" onclick="countTasks(${i},${counter})"  id="checkBox${counter}" class="addedSubtaskOnEdit">
+</div>`}
+
 
 function openEditTaskHTML(i) {
-    return `<div class="dialogFullCardContent"
+ 
+    return `<div id="entireEditTaskCard" class="dialogFullCardContent"
         style="display:flex; justify-content: center !important; align-items: center;">
         <form class="boardEditTaskForm" onsubmit="editTask(${i}); return false;">
             <div>
@@ -69,32 +85,28 @@ function openEditTaskHTML(i) {
 
             <div>
                 <label>Due date</label>
-                <input class="inputEdit" type="date" value="${tasks[i].date}" id="editedDate" required />
+                <input class="inputEdit" type="date" id="editedDate" value="${tasks[i].date}" required />
             </div>
 
             <div><!--Prio container-->
                 <label>Prio</label>
                 <div class="priorities">
-                    <img id="prio4" value="urgent" onclick="addEditedPriority(${4})" class="priorityImgEdit"
+                    <img id="prio4" value="urgent" onclick="addEditedPriority(${i},${4})" class="priorityImgEdit"
                         src="./assets/img/urgentImg.png">
-                    <img id="prio5" value="medium" onclick="addEditedPriority(${5})" class="priorityImgEdit"
+                    <img id="prio5" value="medium" onclick="addEditedPriority(${i},${5})" class="priorityImgEdit"
                         src="./assets/img/mediumImg.png">
-                    <img id="prio6" value="low" onclick="addEditedPriority(${6})" class="priorityImgEdit"
+                    <img id="prio6" value="low" onclick="addEditedPriority(${i},${6})" class="priorityImgEdit"
                         src="./assets/img/lowImg.png">
                 </div>
             </div>
 
-               <div>
-                     <label>Subtasks:</label>
-                     <div  id="subtasksFullCard" style="display:flex; flex-direction:column;">
-                     </div>
-                 </div>
+             
 
             <div class="AssignedTo" style="padding:6px;"> <!--Assigned to container-->
                 <label>Assigned to</label>
                 <div class="dropdownEditTask">
                     <div class="headerForSelectionField">
-                        <span style="position: relative;">Reassign contacts</span>
+                        <span id="reassignContacts" style="position: relative;">Reassign contacts</span>
                         <img class="arrDown" src="./assets/img/arrDown.png">
                         <div>
                             <input id="editedHiddenInputAddContact" class="hiddenInput displayNone"
@@ -103,7 +115,7 @@ function openEditTaskHTML(i) {
                     </div>
                     
                     <div id="editedDropdownAddContact" class="dropdown-content" >
-                        <a href="#" onclick="openInputAddContact()">New contact</a>
+                  
                     </div>
                 </div>
             </div><!--Assigned to container closed-->

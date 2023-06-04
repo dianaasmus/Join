@@ -14,7 +14,7 @@ body {
     background-color: #F6F7F8;
     height: calc(100vh - 90px);
     width: calc(100% - 232px);
-
+    position: relative;
 
 }
 
@@ -31,26 +31,23 @@ h1 {
 
 .taskBoard {
     display: flex;
+    justify-content: space-evenly;
 
 
 }
 
 .taskBoardLeft {
-    width: 50%;
+
     font-size: 21px;
     font-weight: 400;
-    margin-right: 45px;
+
 }
 
 .dividingHR {
-    width: 1px;
-    height: 100%;
-    position: absolute;
-    top: 22%;
-    bottom: 0px;
-    left: 18%;
-    transform: translateX(-50%) rotate(180deg);
-    background-color: #D1D1D1;
+    width: 0px;
+    height: auto;
+    max-height: 1000px;
+    border: 1px solid #D1D1D1;
 
 }
 
@@ -68,7 +65,7 @@ h1 {
 }
 
 .taskBoardRight {
-    width: 50%;
+
     display: flex;
     flex-direction: column;
     font-size: 21px;
@@ -228,8 +225,7 @@ hr {
     height: 1px;
     width: 30px;
     position: absolute;
-    right: 35px;
-    top: 15px;
+    right: 2%;
     border: none;
 }
 
@@ -262,7 +258,7 @@ hr {
     width: 20px;
     position: absolute;
     top: 17px;
-    right: 60px
+    right: 5%
 }
 
 .addSubTask {
@@ -365,7 +361,7 @@ hr {
 }
 
 .addedSubtask {
-    width: 20px;
+    width: 5px;
     height: 20px;
     font-size: 18px;
 }
@@ -399,29 +395,40 @@ hr {
     font-size: 26px;
 }
 
+.droppedContacts {
+
+
+    margin-bottom: 3px;
+    position: relative;
+}
+
+.droppedContacts input {
+    position: absolute;
+    left: 30%;
+    top: 35%;
+    margin-right: 30%;
+}
+
 @keyframes taskAddedPopUp {
 
     0% {
         transform: translateY(0vh);
-       
+
     }
 
     50% {
         transform: translateY(-40vh);
- 
+
     }
 
     100% {
         transform: translateY(-40vh);
-     
+
     }
 }
 
 
 @media(max-width:800px) {
-    .taskBoardRight div:nth-child(2) {
-        order: -5
-    }
 
     h1 {
         margin: 70px 0 20px;
@@ -441,11 +448,11 @@ hr {
     }
 
     input {
-        width: 100%
+        width: 88%
     }
 
     .taskBoard textarea {
-        width: 100%;
+        width: 88%;
         height: 50px
     }
 
@@ -460,7 +467,7 @@ hr {
     }
 
     .dropdown {
-        width: 100%
+        width: 88%
     }
 
     .dropdown-content {
@@ -473,15 +480,41 @@ hr {
 
     .taskBoardRight {
         width: 90%;
-        margin-right: 45px;
     }
 
     .addSubtaskButton {
-        right: -2%
+        right: 7%
     }
+
+    .buttonsCreateTask {
+        margin: 0;
+        padding:10px 5px
+
+
+    }
+
+    .buttonsCreateTask span {
+        font-size: 18px;
+        padding:10px 5px
+    }
+
+    .buttonsCreateTask {
+        margin-bottom: 30% !important;
+    }
+
+    .droppedContacts input {
+        left: 40%
+    }
+
+    .dividingHR {
+        display: none;
+    }
+
+
+
 }
 
-@media(min-width:800px) and (max-width:1200px) {
+@media(min-width:800px) and (max-width:1000px) {
     .wrapper {
         width: 100%;
         height: 100vh;
@@ -502,9 +535,6 @@ hr {
         width: 70% !important;
     }
 
-    .taskBoard {
-        justify-content: space-between;
-    }
 
     .taskBoard textarea {
         width: 70%
@@ -518,12 +548,29 @@ hr {
         width: 100%
     }
 
-    .dividingHR {
-        left: -3%;
-        top: 24%
-    }
 
     .addSubtaskButton {
         right: 25%
+    }
+
+    .buttonsCreateTask {
+        margin-bottom: 80% !important;
+        padding:10px 5px
+    }
+
+    .droppedContacts input {
+        left: 50%
+    }
+
+ 
+}
+
+@media(min-width:500px)and (max-width:1000px) {
+    .addSubtaskButton {
+        right: 8%
+    }
+
+    .dividingHR {
+        display: none;
     }
 }
