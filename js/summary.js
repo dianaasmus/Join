@@ -6,11 +6,12 @@ let done = [];
 
 
 async function onLoad() {
-    await includeHTML();
+    await initScript();
     await setUrl();
     getTasks();
     getTime();
 }
+
 
 function getCheckboxFeedback() {
     let checkedBox = localStorage.getItem('checkedBox');
@@ -74,7 +75,7 @@ function greetUser() {
             greetUserName();
         }
     }
-    
+
     localStorage.setItem('LoginBtn', false);
 }
 

@@ -1,5 +1,7 @@
 body {
     font-family: 'Open-sans', sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -8,7 +10,7 @@ body {
 header {
     position: fixed;
     top: 0;
-    left: 200px;
+    left: 232px;
     right: 0;
     height: 90px;
     background-color: white;
@@ -22,7 +24,7 @@ header {
 }
 
 .kanban-text-container {
-    padding-left: 10%;
+    padding-left: 100px;
 }
 
 #logo-responsive {
@@ -128,6 +130,7 @@ a {
 .legal-notice:hover {
     background-color: #000;
 }
+
 /* 
 .sidebar-props:active,
 .legal-notice:active {
@@ -218,7 +221,7 @@ a {
 
     .header-right {
         position: absolute;
-        right: 5%;;
+        right: 5%;
     }
 
     .kanban-text-container {
@@ -230,6 +233,19 @@ a {
         align-items: center;
         padding-right: 250px;
         padding-left: 0;
+        display: none;
+    }
+
+    .kanban-text-container-2 {
+        order: -1;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .responsiveHeader {
+        /* margin-left: 100px; */
+        justify-content: unset;
     }
 
     #logo-responsive {
@@ -242,6 +258,7 @@ a {
     header span {
         margin-top: 166px !important;
         margin-right: -188px;
+        margin-left: 10%;
     }
 }
 

@@ -1,3 +1,9 @@
+async function initScript() {
+    await includeHTML();
+    focusSidebar();
+    responsiveHeaderText();
+}
+
 async function includeHTML() {
     let file;
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -11,8 +17,26 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
-    focusSidebar();
 };
+
+function responsiveHeaderText() {
+    if (window.matchMedia('(max-width: 640px)').matches) {
+        document.body.innerHTML += `
+        <div class="kanban-text-container-2">
+            <span> Kanban Project Managnement Tool</span>
+        </div>
+        `;
+    }
+    adjustMedia();
+}
+
+function adjustMedia() {
+    const pathName = window.location.pathname;
+    if (pathName == '/legal-notice.html') {
+        document.querySelector('.kanban-text-container-2').classList.add('responsiveHeader');
+
+    }
+}
 
 
 function focusSidebar() {
