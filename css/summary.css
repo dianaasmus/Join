@@ -3,7 +3,7 @@ body {
     margin: 0;
     font-family: 'Open-sans', sans-serif;
     font-weight: 400;
-    margin-left: 24%;
+    margin-left: 27%;
     margin-top: 100px;
 }
 
@@ -62,7 +62,7 @@ body {
 
     100% {
         color: #2A3647;
-        transform: translate(88%, 0%);
+        transform: translate(130%, -40%);
     }
 }
 

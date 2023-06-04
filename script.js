@@ -26,13 +26,13 @@ function responsiveHeaderText() {
             <span> Kanban Project Managnement Tool</span>
         </div>
         `;
+        adjustMedia();
     }
-    adjustMedia();
 }
 
 function adjustMedia() {
     const pathName = window.location.pathname;
-    if (pathName == '/legal-notice.html') {
+    if (pathName == '/legal-notice.html' || '/help.html') {
         document.querySelector('.kanban-text-container-2').classList.add('responsiveHeader');
 
     }
@@ -92,8 +92,8 @@ function setDropdownContent() {
 function pasteDropDownMobile() {
     document.getElementById('profile-picture').innerHTML += `
                 <div class="img-drop-down">
-                    <a onclick="">Help</a>
-                    <a onclick="">Legal Notice</a>
+                    <a href="help.html">Help</a>
+                    <a href="legal-notice.html">Legal Notice</a>
                     <a href="index.html">Log out</a>
                 </div>
             `;
