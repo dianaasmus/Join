@@ -241,11 +241,13 @@ a {
         margin-top: 20px;
         display: flex;
         justify-content: center;
+        margin-right: 140px;
     }
 
     .responsiveHeader {
         /* margin-left: 100px; */
         justify-content: unset;
+        margin-right: 0;
     }
 
     #logo-responsive {
@@ -288,6 +290,10 @@ a {
 
     .kanban-text-container {
         padding-right: 0px !important;
+    }
+
+    .kanban-text-container-2 {
+        margin-right: 50px;
     }
 
     .kanban-text-container span {
