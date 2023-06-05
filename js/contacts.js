@@ -1,6 +1,7 @@
 let contacts = [];
 let contactsLoaded = false; // Globale Variable zur Verfolgung des Ladezustands der Kontakte
 var colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#00ffff", "#ff00ff"];
+let letters = [];
 
 
 async function initContacts() {
@@ -9,10 +10,11 @@ async function initContacts() {
     initScript();
     contacts = JSON.parse(await backend.getItem('contacts')) || [];
     loadContacts();
-    if (!contactsLoaded) {
-        renderContactList();
-        contactsLoaded = true; // Setze den Ladezustand auf true, um die Endlosschleife zu verhindern
-    }
+    // if (!contactsLoaded) {
+    //     renderContactList();
+    //     contactsLoaded = true; // Setze den Ladezustand auf true, um die Endlosschleife zu verhindern
+    // }
+    setInitialLetters();
 }
 
 
@@ -48,7 +50,7 @@ async function openEditContacts() {
         for (let i = 0; i < contacts.length; i++) {
             contentright.innerHTML = generateRightSideEditContact(i, contacts);
         }
-        assignRandomBackgroundColors(); 
+        assignRandomBackgroundColors();
     }, 225);
 }
 
@@ -69,27 +71,27 @@ function closeNewContact() {
 function assignRandomBackgroundColors() {
     var elements = document.querySelectorAll(".contact-bubble-BG");
     for (var i = 0; i < elements.length; i++) {
-      var element = elements[i];
-      var color = getRandomColor();
-      element.style.backgroundColor = color;
+        var element = elements[i];
+        var color = getRandomColor();
+        element.style.backgroundColor = color;
     }
-  }
-  
-  function getRandomColor() {
+}
+
+function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
     for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+        color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
-  }
+}
 
 async function addContact() {
     const fullName = contactName.value;
     const names = fullName.split(' ');
     const firstName = names[0].charAt(0).toUpperCase();
     const lastName = names.length > 1 ? names[names.length - 1].charAt(0).toUpperCase() : '';
-    
+
     contacts.push({
         "name": fullName,
         "email": contactMail.value,
@@ -102,7 +104,7 @@ async function addContact() {
     clearInput();
     closeNewContact();
     initContacts();
-} 
+}
 
 
 async function editContact() {
@@ -111,7 +113,7 @@ async function editContact() {
     const editedNames = editedFullName.split(' ');
     const editedFirstName = editedNames[0].charAt(0).toUpperCase();
     const editedLastName = editedNames.length > 1 ? editedNames[editedNames.length - 1].charAt(0).toUpperCase() : '';
-  
+
     contacts[index].name = editedFullName;
     contacts[index].firstNameLetter = editedFirstName;
     contacts[index].lastNameLetter = editedLastName;
@@ -120,7 +122,7 @@ async function editContact() {
     closeNewContact();
     initContacts();
     assignRandomBackgroundColors();
-  }
+}
 
 
 function clearInput() {
@@ -134,15 +136,15 @@ function clearInput() {
 
 
 
-async function renderContactList() {
-    await initContacts();
-    contacts = JSON.parse(await backend.getItem('contacts')) || [];
+async function renderContactList(contact, initialLetter, l) {
+    // await initContacts();
+    // contacts = JSON.parse(await backend.getItem('contacts')) || [];
 
 
-    let contactContainer = document.getElementById('contactList');
-    for (let i = 0; i < contacts.length; i++) {
-    contactContainer.innerHTML+=memberHTML(i, contacts);
-    }
+    let contactContainer = document.getElementById(`initialLetterContacts${initialLetter}`);
+    // for (let i = 0; i < contacts.length; i++) {
+    contactContainer.innerHTML += memberHTML(contact);
+    // }
 
     assignRandomBackgroundColors();
 }
@@ -159,9 +161,53 @@ async function showContacts(i) {
 
     var contactContainer = document.querySelector(".contact-container");
     contactContainer.style.display = "block";
-    }
+}
 
-function closeContactInfo(){
+function closeContactInfo() {
     var contactContainer = document.querySelector(".contact-container");
     contactContainer.style.display = "none";
+}
+
+
+// Alphabet Letters
+function setInitialLetters() {
+    for (let l = 0; l < contacts.length; l++) {
+        const contact = contacts[l];
+        let initialLetter = contact['name'].charAt(0);
+
+        if (!letters.includes(initialLetter)) {
+            letters.push(initialLetter);
+            addInitalLetterContainer(initialLetter, contact, l);
+            console.log(initialLetter + ' letter is new');
+        } else {
+            // loadContactsLetter();
+            // letters.push(initialLetter);
+            // addInitalLetterContainer(initialLetter);
+            loadContactsLetter(initialLetter, contact, l);
+            console.log(initialLetter + ' letter is exists');
+        }
+    }
+}
+
+function addInitalLetterContainer(initialLetter, contact, l) {
+    document.getElementById('contactList').innerHTML += `
+        <div id="initialLetterContacts${initialLetter}">
+            <div id="initialLetterContainer">
+                ${initialLetter.toUpperCase()}
+            </div>
+        </div>
+
+    `;
+    loadContactsLetter(initialLetter, contact, l);
+}
+
+function loadContactsLetter(initialLetter, contact, l) {
+
+    let nameFirstLetter = contact['name'].charAt(0);
+
+    if (initialLetter === nameFirstLetter) {
+        console.log(nameFirstLetter + ' in render')
+        renderContactList(contact, initialLetter, l);
+        contactsLoaded = true; // Setze den Ladezustand auf true, um die Endlosschleife zu verhindern
+    }
 }

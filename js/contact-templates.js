@@ -98,13 +98,13 @@ function generateRightSideEditContact(i, contacts) {
 }
 
 
-function memberHTML(i, contacts) {
+function memberHTML(contact, initialLetter) {
     return ` 
-                <div class="single-contact-container" id="singleConactContainer" onclick="showContacts(${i})">
-                    <div class="single-contact-bubble contact-bubble-BG">${contacts[i]['firstNameLetter']}${contacts[i]['lastNameLetter']}</div>
+                <div class="single-contact-container" id="singleConactContainer" onclick="showContacts(${initialLetter})">
+                    <div class="single-contact-bubble contact-bubble-BG">${contact['firstNameLetter']}${contact['lastNameLetter']}</div>
                         <div class="single-contact">
-                            <div class="single-contact-name">${contacts[i]['name']}</div>
-                            <div class="single-contact-mail">${contacts[i]['email']}</div>
+                            <div class="single-contact-name">${contact['name']}</div>
+                            <div class="single-contact-mail">${contact['email']}</div>
                     </div>
                 </div>
                 `;
