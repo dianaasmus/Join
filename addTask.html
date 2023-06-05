@@ -27,7 +27,7 @@
         <div class="content">
             <h1>Add Task </h1>
 
-            <form onsubmit="addToTasks(); return false " class="taskBoard">
+            <form onsubmit="addToTasks(); setTimeout(function() { window.location.reload(); }, 3000); return false " class="taskBoard">
 
 
                 <div class="taskBoardLeft">
@@ -143,7 +143,7 @@
                             <span>Clear</span>
                             <span class="clearTaskPageImg">+</span>
                         </button>
-                        <button onclick="setTimeout(function() { window.location.reload(); }, 3000);"
+                        <button
                             class="buttonCreateTask">
                             <span>Create Task</span>
                             <img class="createTaskPageImg" src="./assets/img/createTaskPage.png">
