@@ -8,8 +8,7 @@ async function initContacts() {
     setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
     await downloadFromServer();
     initScript();
-    contacts = JSON.parse(await backend.getItem('contacts')) || [];
-    loadContacts();
+    await loadContacts();
     // if (!contactsLoaded) {
     //     renderContactList();
     //     contactsLoaded = true; // Setze den Ladezustand auf true, um die Endlosschleife zu verhindern
@@ -50,7 +49,7 @@ async function openEditContacts() {
         for (let i = 0; i < contacts.length; i++) {
             contentright.innerHTML = generateRightSideEditContact(i, contacts);
         }
-        assignRandomBackgroundColors();
+        // assignRandomBackgroundColors();
     }, 225);
 }
 
@@ -114,14 +113,14 @@ async function editContact() {
     const editedFirstName = editedNames[0].charAt(0).toUpperCase();
     const editedLastName = editedNames.length > 1 ? editedNames[editedNames.length - 1].charAt(0).toUpperCase() : '';
 
-    contacts[index].name = editedFullName;
-    contacts[index].firstNameLetter = editedFirstName;
-    contacts[index].lastNameLetter = editedLastName;
+    contact.name = editedFullName;
+    contact.firstNameLetter = editedFirstName;
+    contact.lastNameLetter = editedLastName;
 
     await backend.setItem('contacts', JSON.stringify(contacts));
     closeNewContact();
     initContacts();
-    assignRandomBackgroundColors();
+    // assignRandomBackgroundColors();
 }
 
 
@@ -132,27 +131,11 @@ function clearInput() {
 }
 
 
-
-
-
-
-async function renderContactList(contact, initialLetter, l) {
+async function showContacts(l) {
+    // console.log(contact);
+    let contact = contacts[l];
     // await initContacts();
-    // contacts = JSON.parse(await backend.getItem('contacts')) || [];
-
-
-    let contactContainer = document.getElementById(`initialLetterContacts${initialLetter}`);
-    // for (let i = 0; i < contacts.length; i++) {
-    contactContainer.innerHTML += memberHTML(contact);
-    // }
-
-    assignRandomBackgroundColors();
-}
-
-
-async function showContacts(i) {
-    await initContacts();
-    const contact = contacts[i];
+    // const contact = contacts[i];
     let contactsInfo = document.getElementById('contactInfo');
     contactsInfo.innerHTML = memberInfo(contact);
 
@@ -171,6 +154,7 @@ function closeContactInfo() {
 
 // Alphabet Letters
 function setInitialLetters() {
+    contacts.sort();
     for (let l = 0; l < contacts.length; l++) {
         const contact = contacts[l];
         let initialLetter = contact['name'].charAt(0);
@@ -178,16 +162,12 @@ function setInitialLetters() {
         if (!letters.includes(initialLetter)) {
             letters.push(initialLetter);
             addInitalLetterContainer(initialLetter, contact, l);
-            console.log(initialLetter + ' letter is new');
         } else {
-            // loadContactsLetter();
-            // letters.push(initialLetter);
-            // addInitalLetterContainer(initialLetter);
             loadContactsLetter(initialLetter, contact, l);
-            console.log(initialLetter + ' letter is exists');
         }
     }
 }
+
 
 function addInitalLetterContainer(initialLetter, contact, l) {
     document.getElementById('contactList').innerHTML += `
@@ -201,13 +181,25 @@ function addInitalLetterContainer(initialLetter, contact, l) {
     loadContactsLetter(initialLetter, contact, l);
 }
 
+
 function loadContactsLetter(initialLetter, contact, l) {
 
     let nameFirstLetter = contact['name'].charAt(0);
 
     if (initialLetter === nameFirstLetter) {
         console.log(nameFirstLetter + ' in render')
-        renderContactList(contact, initialLetter, l);
+        renderContactList(initialLetter, contact, l);
         contactsLoaded = true; // Setze den Ladezustand auf true, um die Endlosschleife zu verhindern
     }
+}
+
+
+async function renderContactList(initialLetter, contact, l) {
+    // await initContacts();
+    // contacts = JSON.parse(await backend.getItem('contacts')) || [];
+
+    let contactContainer = document.getElementById(`initialLetterContacts${initialLetter}`);
+    contactContainer.innerHTML += memberHTML(initialLetter, contact, l);
+
+    assignRandomBackgroundColors();
 }

@@ -65,7 +65,7 @@ function generateRightSideEditContact(i, contacts) {
     return ` <form class="new-contact-circle-name" onsubmit="editContact(); return false;" id="new-contact-circle-name">
                         <div class="edit-contact-circle-for-edit contact-bubble-BG">
                             <div class="contact-circle-big contact-circle-card" id="circle-new-contact">
-                            ${contacts[i]['firstNameLetter']}${contacts[i]['lastNameLetter']}
+                            ${contact['firstNameLetter']}${contact['lastNameLetter']}
                             </div>  
                         </div>
                         <div class="contact-new-inputs" id="contact-new-inputs">
@@ -73,7 +73,7 @@ function generateRightSideEditContact(i, contacts) {
                                 <div class="warning-message" id="warning-contact-new-edit">
                                 </div>
                                 <div class="input-form-new-contact">
-                                    <input required type="text" value="${contacts[i]['name']}" id="contactNameEdit" placeholder ="${contacts[i]['name']}">
+                                    <input required type="text" value="${contact['name']}" id="contactNameEdit" placeholder ="${contact['name']}">
                                     <img src="../assets/img/name_input.svg">
                                 </div>
                                 <div class="input-form-new-contact">
@@ -98,14 +98,14 @@ function generateRightSideEditContact(i, contacts) {
 }
 
 
-function memberHTML(contact, initialLetter) {
+function memberHTML(initialLetter, contact, l) {
     return ` 
-                <div class="single-contact-container" id="singleConactContainer" onclick="showContacts(${initialLetter})">
+                <div class="single-contact-container" id="singleConactContainer" onclick="showContacts(${l})">
                     <div class="single-contact-bubble contact-bubble-BG">${contact['firstNameLetter']}${contact['lastNameLetter']}</div>
                         <div class="single-contact">
                             <div class="single-contact-name">${contact['name']}</div>
                             <div class="single-contact-mail">${contact['email']}</div>
-                    </div>
+                        </div>
                 </div>
                 `;
 }
