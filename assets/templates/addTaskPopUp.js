@@ -227,7 +227,7 @@ function addToAssignedContacts(index) {
         } else {
             assignedContacts.splice(assignedContacts.indexOf(contact), 1);
         }
-        console.log(assignedContacts)
+      
     }
 }
 
