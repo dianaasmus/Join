@@ -63,7 +63,7 @@ function generateLeftSideEditContact() {
 
 function generateRightSideEditContact(i, contacts) {
     return ` <form class="new-contact-circle-name" onsubmit="editContact(); return false;" id="new-contact-circle-name">
-                        <div class="edit-contact-circle-for-edit">
+                        <div class="edit-contact-circle-for-edit contact-bubble-BG">
                             <div class="contact-circle-big contact-circle-card" id="circle-new-contact">
                             ${contacts[i]['firstNameLetter']}${contacts[i]['lastNameLetter']}
                             </div>  
@@ -101,7 +101,7 @@ function generateRightSideEditContact(i, contacts) {
 function memberHTML(i, contacts) {
     return ` 
                 <div class="single-contact-container" onclick="showContacts(${i})">
-                    <div class="single-contact-bubble">${contacts[i]['firstNameLetter']}${contacts[i]['lastNameLetter']}</div>
+                    <div class="single-contact-bubble contact-bubble-BG">${contacts[i]['firstNameLetter']}${contacts[i]['lastNameLetter']}</div>
                         <div class="single-contact">
                             <div class="single-contact-name">${contacts[i]['name']}</div>
                             <div class="single-contact-mail">${contacts[i]['email']}</div>
@@ -113,7 +113,7 @@ function memberHTML(i, contacts) {
 function memberInfo(contact){
     return `
 <div class="contact-info-header">
-    <div class="contact-info-bubble">
+    <div class="contact-info-bubble contact-bubble-BG">
         ${contact.firstNameLetter}${contact.lastNameLetter}
     </div>
     <div class="contact-info-headname">

@@ -1,10 +1,12 @@
 let contacts = [];
 let contactsLoaded = false; // Globale Variable zur Verfolgung des Ladezustands der Kontakte
+var colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#00ffff", "#ff00ff"];
+
 
 async function initContacts() {
     setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
     await downloadFromServer();
-
+    initScript();
     contacts = JSON.parse(await backend.getItem('contacts')) || [];
     loadContacts();
     if (!contactsLoaded) {
@@ -46,6 +48,7 @@ async function openEditContacts() {
         for (let i = 0; i < contacts.length; i++) {
             contentright.innerHTML = generateRightSideEditContact(i, contacts);
         }
+        assignRandomBackgroundColors(); 
     }, 225);
 }
 
@@ -63,12 +66,30 @@ function closeNewContact() {
 }
 
 
+function assignRandomBackgroundColors() {
+    var elements = document.querySelectorAll(".contact-bubble-BG");
+    for (var i = 0; i < elements.length; i++) {
+      var element = elements[i];
+      var color = getRandomColor();
+      element.style.backgroundColor = color;
+    }
+  }
+  
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
 async function addContact() {
     const fullName = contactName.value;
     const names = fullName.split(' ');
     const firstName = names[0].charAt(0).toUpperCase();
     const lastName = names.length > 1 ? names[names.length - 1].charAt(0).toUpperCase() : '';
-
+    
     contacts.push({
         "name": fullName,
         "email": contactMail.value,
@@ -81,7 +102,8 @@ async function addContact() {
     clearInput();
     closeNewContact();
     initContacts();
-}
+} 
+
 
 async function editContact() {
     await downloadFromServer();
@@ -89,7 +111,7 @@ async function editContact() {
     const editedNames = editedFullName.split(' ');
     const editedFirstName = editedNames[0].charAt(0).toUpperCase();
     const editedLastName = editedNames.length > 1 ? editedNames[editedNames.length - 1].charAt(0).toUpperCase() : '';
-
+  
     contacts[index].name = editedFullName;
     contacts[index].firstNameLetter = editedFirstName;
     contacts[index].lastNameLetter = editedLastName;
@@ -97,7 +119,8 @@ async function editContact() {
     await backend.setItem('contacts', JSON.stringify(contacts));
     closeNewContact();
     initContacts();
-}
+    assignRandomBackgroundColors();
+  }
 
 
 function clearInput() {
@@ -118,8 +141,10 @@ async function renderContactList() {
 
     let contactContainer = document.getElementById('contactList');
     for (let i = 0; i < contacts.length; i++) {
-        contactContainer.innerHTML += memberHTML(i, contacts);
+    contactContainer.innerHTML+=memberHTML(i, contacts);
     }
+
+    assignRandomBackgroundColors();
 }
 
 
@@ -130,4 +155,5 @@ async function showContacts(i) {
     contactsInfo.innerHTML = memberInfo(contact);
 
     contactsInfo.style.display = "flex";
-}
+    assignRandomBackgroundColors();
+    }
