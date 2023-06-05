@@ -16,21 +16,19 @@ let date = new Date();
 
 async function initAddTask() {
     includeHTML();
-   try{
-    setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
-    await downloadFromServer();
-    tasks = await JSON.parse(await backend.getItem('tasks')) || []
-    contacts = JSON.parse(backend.getItem('contacts')) || [];
-    document.getElementById("date").setAttribute("min", date.toISOString().split("T")[0])
-   }catch(er){
-    console.error(er)
-   }
+    try {
+        setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
+        await downloadFromServer();
+        tasks = await JSON.parse(await backend.getItem('tasks')) || []
+        contacts = JSON.parse(backend.getItem('contacts')) || [];
+        document.getElementById("date").setAttribute("min", date.toISOString().split("T")[0])
+    } catch (er) {
+        console.error(er)
+    }
 }
 
 
 async function addToTasks() {
-
-
     let title = document.getElementById('task');
     let description = document.getElementById('description');
     let date = document.getElementById('date');
@@ -53,16 +51,12 @@ async function addToTasks() {
         readinessState: 'toDo',
         assignedTo,
         pace: 0
-
-
     };
 
     clearValuesOfAddTask(title, description, category, assignedTo, date)
     tasks.push(task);
     await backend.setItem('tasks', JSON.stringify(tasks))
     popTheAddedDesk()
-
-
 }
 
 
@@ -123,22 +117,20 @@ function checkForChecked(i, checkedbox) {
 
 function addSubtask() {
     let subtask = document.getElementById('subtask');
-    if(subtask.value){
-    subtasksToSave.push({
-        subtask: subtask.value,
-        checkedValue: 0,
-    })}
-
+    if (subtask.value) {
+        subtasksToSave.push({
+            subtask: subtask.value,
+            checkedValue: 0,
+        })
+    }
     subtask.value = ''
     renderSubtasksOnAddTask()
-   
 }
 
 
-function deleteSubtask(i){
-    subtasksToSave.splice(i,1)
+function deleteSubtask(i) {
+    subtasksToSave.splice(i, 1)
     renderSubtasksOnAddTask()
-
 }
 
 
@@ -146,7 +138,6 @@ function openInputAddCategory() {
     document.getElementById('selectedCategoryInputValue').value = ''
     document.getElementById('hiddenInputCategory').classList.remove('displayNone')
     document.getElementById('dropdownCategory').style = 'display:none'
-
 }
 
 
@@ -176,7 +167,6 @@ function addCategoryColorOnTask(i) {
         }
         addCategoryOnTask()
     }
-
 }
 
 
@@ -195,7 +185,6 @@ function addToAssignedContacts(index) {
         } else {
             assignedContacts.splice(assignedContacts.indexOf(contact), 1);
         }
-   
     }
 }
 
@@ -213,13 +202,11 @@ function closeHiddenInput() {
 
 
 function renderSubtasksOnAddTask() {
-
     document.getElementById('subtasksOnAddTask').innerHTML = ''
-    subtasksToSave.forEach((subtask,index) => {
+    subtasksToSave.forEach((subtask, index) => {
         document.getElementById('subtasksOnAddTask').innerHTML += `<div class="checkBoxDiv">
         <label class="subtaskLabel">${subtask.subtask}</label><img src=".././assets/img/closeButtonBoard.png" onclick="deleteSubtask(${index})">
         </div>`
-
     })
 }
 

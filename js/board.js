@@ -47,17 +47,17 @@ async function renderTaskCards(i, j) {
             hideProgressSection(i)
             j++
         }
-
-    }
-
-
-    function hideProgressSection(i) {
-        if (tasks[i].subtasks.length == 0) {
-            document.getElementById(`progressBarSection${i}`).classList.remove('progressBarSection');
-            document.getElementById(`progressBarSection${i}`).classList.add('displayNone');
-        }
     }
 }
+
+
+function hideProgressSection(i) {
+    if (tasks[i].subtasks.length == 0) {
+        document.getElementById(`progressBarSection${i}`).classList.remove('progressBarSection');
+        document.getElementById(`progressBarSection${i}`).classList.add('displayNone');
+    }
+}
+
 
 
 function renderAssignedContactsOnBoard(i, colorCircle) {
