@@ -16,7 +16,7 @@ let date = new Date();
 
 
 async function initAddTask() {
-    includeHTML();
+    initScript();
    try{
     setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
     await downloadFromServer();

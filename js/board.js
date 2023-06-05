@@ -17,7 +17,7 @@ let date = new Date();
 
 
 async function initBoard() {
-    includeHTML();
+    initScript();
     try {
         setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
         await downloadFromServer();
@@ -467,6 +467,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function listenToEvent() {
+    
+  
     var entireEditTaskCard = document.getElementById('entireEditTaskCard');
     if (entireEditTaskCard) {
 
@@ -477,18 +479,12 @@ function listenToEvent() {
             dropdownAddContact.innerHTML = ''
             contacts.forEach((contact, index) => {
 
-                dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addToAssignedContacts('${index}')" type="checkbox"></div>`;
+                dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input id="checkedOnReassign${index}" onclick="addToAssignedContacts('${index}')" type="checkbox"></div>`;
             });
         });
 
     }
 }
-
-
-
-
-
-
 
 
 

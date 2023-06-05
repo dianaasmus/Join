@@ -428,7 +428,7 @@ hr {
 }
 
 
-@media(max-width:1000px) {
+@media(max-width:800px) {
 
     h1 {
         margin: 70px 0 20px;
@@ -514,8 +514,13 @@ hr {
 
 }
 
-@media(min-width:1000px) and (max-width:1200px) {
-  
+@media(min-width:800px) and (max-width:1000px) {
+    .wrapper {
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
 
     h1 {
         text-align: center;
@@ -556,14 +561,11 @@ hr {
     .droppedContacts input {
         left: 50%
     }
-    .dividingHR {
-        display: none;
-    }
 
  
 }
 
-@media(min-width:500px)and (max-width:800px) {
+@media(min-width:500px)and (max-width:1000px) {
     .addSubtaskButton {
         right: 8%
     }
