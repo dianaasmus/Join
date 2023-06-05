@@ -218,10 +218,11 @@ function addSubtaskOnPopUp() {
         subtasksToSave.push({
             subtask: subtask.value,
             checkedValue: 0,
-        })}
-        subtask.value = ''
-        renderSubtasksOnPopUpAddTask()
-    
+        })
+    }
+    subtask.value = ''
+    renderSubtasksOnPopUpAddTask()
+
 }
 
 function deleteSubtask(i) {
@@ -287,7 +288,11 @@ async function editTask(i) {
     let title = document.getElementById('editedTask');
     let description = document.getElementById('editedDescription');
     let date = document.getElementById('editedDate');
-    let assignedTo = assignedContacts.splice(0, assignedContacts.length)
+
+    let assignedTo
+    if (assignedContacts.length == 0) { assignedTo = tasks[i].assignedTo } else {
+        assignedTo = assignedContacts.splice(0, assignedContacts.length)
+    }
 
     tasks[i] = {
         title: title.value,
@@ -467,8 +472,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function listenToEvent() {
-    
-  
+
+
     var entireEditTaskCard = document.getElementById('entireEditTaskCard');
     if (entireEditTaskCard) {
 
