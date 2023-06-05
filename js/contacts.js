@@ -102,24 +102,43 @@ async function addContact() {
     clearInput();
     closeNewContact();
     initContacts();
+    renderContactList();
 } 
 
 
-async function editContact() {
-    await downloadFromServer();
-    const editedFullName = prompt('Enter the new full name:');
-    const editedNames = editedFullName.split(' ');
-    const editedFirstName = editedNames[0].charAt(0).toUpperCase();
-    const editedLastName = editedNames.length > 1 ? editedNames[editedNames.length - 1].charAt(0).toUpperCase() : '';
+async function editContact(i) {
+    const fullName = document.getElementById('contactNameEdit').value;
+    const email = document.getElementById('contactMailEdit').value;
+    const phone = document.getElementById('contactPhoneEdit').value;
   
-    contacts[index].name = editedFullName;
-    contacts[index].firstNameLetter = editedFirstName;
-    contacts[index].lastNameLetter = editedLastName;
-
+    const names = fullName.split(' ');
+    const firstName = names[0].charAt(0).toUpperCase();
+    const lastName = names.length > 1 ? names[names.length - 1].charAt(0).toUpperCase() : '';
+  
+    contacts[i] = {
+      "name": fullName,
+      "email": email,
+      "phone": phone,
+      "firstNameLetter": firstName,
+      "lastNameLetter": lastName
+    };
+  
     await backend.setItem('contacts', JSON.stringify(contacts));
     closeNewContact();
     initContacts();
-    assignRandomBackgroundColors();
+    renderContactList();
+    showContacts(i);
+  }
+
+
+  async function deleteContacts(i) {
+    contacts.splice(i, 1);
+  
+    await backend.setItem('contacts', JSON.stringify(contacts));
+    initContacts();
+    closeNewContact();
+    closeContactInfo();
+    renderContactList();
   }
 
 
@@ -130,18 +149,15 @@ function clearInput() {
 }
 
 
-
-
-
-
 async function renderContactList() {
     await initContacts();
     contacts = JSON.parse(await backend.getItem('contacts')) || [];
 
 
     let contactContainer = document.getElementById('contactList');
+    contactContainer.innerHTML = '';
     for (let i = 0; i < contacts.length; i++) {
-    contactContainer.innerHTML+=memberHTML(i, contacts);
+    contactContainer.innerHTML += memberHTML(i, contacts);
     }
 
     assignRandomBackgroundColors();
@@ -160,6 +176,7 @@ async function showContacts(i) {
     var contactContainer = document.querySelector(".contact-container");
     contactContainer.style.display = "block";
     }
+
 
 function closeContactInfo(){
     var contactContainer = document.querySelector(".contact-container");
