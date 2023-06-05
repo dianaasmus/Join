@@ -156,4 +156,12 @@ async function showContacts(i) {
 
     contactsInfo.style.display = "flex";
     assignRandomBackgroundColors();
+
+    var contactContainer = document.querySelector(".contact-container");
+    contactContainer.style.display = "block";
     }
+
+function closeContactInfo(){
+    var contactContainer = document.querySelector(".contact-container");
+    contactContainer.style.display = "none";
+}

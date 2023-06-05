@@ -100,7 +100,7 @@ function generateRightSideEditContact(i, contacts) {
 
 function memberHTML(i, contacts) {
     return ` 
-                <div class="single-contact-container" onclick="showContacts(${i})">
+                <div class="single-contact-container" id="singleConactContainer" onclick="showContacts(${i})">
                     <div class="single-contact-bubble contact-bubble-BG">${contacts[i]['firstNameLetter']}${contacts[i]['lastNameLetter']}</div>
                         <div class="single-contact">
                             <div class="single-contact-name">${contacts[i]['name']}</div>
