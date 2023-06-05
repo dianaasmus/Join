@@ -368,6 +368,7 @@ input::-webkit-search-cancel-button {
 .delete {
     height: 40px;
 }
+
 .delete:hover {
     cursor: pointer;
     content: url('../assets/img/lightBlueDelete.png');
@@ -670,7 +671,7 @@ textarea {
     }
 
     .editDelete {
-        margin-bottom: 40%;
+  
         position: unset;
     }
 
@@ -678,5 +679,25 @@ textarea {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly !important;
+    }
+
+}
+
+@media(max-width:500px) {
+    .priorityImgFullCard {
+        height: 40px;
+        width: 45%
+    }
+}
+@media(min-width:700px) {
+    .priorityImgFullCard {
+        height: 40px;
+        width: 20%
+    }
+}
+@media(min-width:1000px) and (max-width:1200px) {
+    .priorityImgFullCard {
+        height: 40px;
+        width: 40%
     }
 }
