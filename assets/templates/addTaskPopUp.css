@@ -131,8 +131,11 @@ input {
 .prioritiesPopUpTask {
     display: flex;
     flex-direction: row;
-    margin-left: -12%;
     margin-bottom: 0 !important;
+}
+
+.prioPopUp {
+    width: 81%
 }
 
 
@@ -647,6 +650,10 @@ hr {
         right: 2%;
 
     }
+    .prioPopUp {
+        width: 90%;
+    }
+
 
     .selectedCategoryInputValue {
         width: 85% !important;
@@ -667,7 +674,7 @@ hr {
     }
 }
 
-@media(min-width:1000px) and (max-width:1400px) {
+@media(min-width:1000px) and (max-width:1450px) {
     .dividingHRPopUp {
         display: none !important
     }
@@ -699,9 +706,11 @@ hr {
         width: 90% !important
     }
 
-    .prioritiesPopUpTask {
-        margin: 0;
+    .prioPopUp {
+        width: 90%;
     }
+
+
 
     .buttonsCreateTaskPopUpTask {
         margin: 0;

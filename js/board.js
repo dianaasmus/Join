@@ -12,7 +12,7 @@ let percentOfDone
 let colorOfBar
 let checkboxState;
 let checkedInput
-date = new Date();
+
 
 
 
@@ -24,7 +24,7 @@ async function initBoard() {
         tasks = await JSON.parse(await backend.getItem('tasks')) || []
         contacts = JSON.parse(backend.getItem('contacts')) || [];
         await renderTaskCards()
-        getTheDate()
+
     } catch (er) {
         console.error(er)
     }
@@ -38,14 +38,13 @@ function getTheDate() {
 
 async function renderTaskCards(i, j) {
     clearSubsections()
+
     let search = filterTasks()
     j = 0;
     let colorCircle = 0
-
     for (i = 0; i < tasks.length; i++) {
-
         if (tasks[i].title.toLowerCase().includes(search)) {
-
+            checkForContacts(i)
             checkForReadiness(i, j)
             document.getElementById('progressBar' + i).style.background = tasks[i].colorOfBar
             renderAssignedContactsOnBoard(i, colorCircle)
@@ -53,6 +52,16 @@ async function renderTaskCards(i, j) {
             j++
         }
     }
+}
+
+
+function checkForContacts(i) {
+  for (let j = 0; j < contacts.length; j++) {
+    let contact = tasks[i].assignedTo[j];
+    if (!contacts.includes(contact)) {
+      tasks[i].assignedTo.splice(j, 1);
+    }
+  }
 }
 
 

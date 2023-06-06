@@ -112,7 +112,7 @@ function setDropdownContent() {
     } else {
         pasteDropDownWeb();
     }
-    // removeDiv();
+    removeDiv();
 }
 
 

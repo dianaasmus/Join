@@ -76,6 +76,7 @@ function renderSubtasksOnPopUpAddTask() {
 
 
 function openPopUpAddTask() {
+    getTheDate()
     document.getElementById('addTaskPopUp').classList.add('openPopUp')
 }
 
@@ -227,7 +228,7 @@ function addToAssignedContacts(index) {
         } else {
             assignedContacts.splice(assignedContacts.indexOf(contact), 1);
         }
-      
+
     }
 }
 
@@ -242,17 +243,22 @@ function checkForChecked(i, checkedbox) {
     }
 }
 
-
-document.addEventListener('DOMContentLoaded', function () {
-    let contactList = document.getElementById('eventLisPopUp');
-    let dropdownAddContact = document.getElementById('dropdownAddContactPopUp')
-    contactList.addEventListener('mouseenter', function (event) {
-        dropdownAddContact.innerHTML = ''
-        contacts.forEach((contact, index) => {
-            dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addToAssignedContacts('${index}')" type="checkbox"></div>`;
+window.addEventListener('DOMContentLoaded', function () {
+    var includedContent = document.getElementById('includeContainer');
+    includedContent.addEventListener('click', function (event) {
+        let contactList = document.getElementById('eventLisPopUp');
+        let dropdownAddContact = document.getElementById('dropdownAddContactPopUp');
+        contactList.addEventListener('mouseenter', function (event) {
+            dropdownAddContact.innerHTML = '';
+            contacts.forEach((contact, index) => {
+                dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addToAssignedContacts('${index}')" type="checkbox"></div>`;
+            });
         });
     });
 });
+
+
+
 
 
 
