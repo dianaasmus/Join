@@ -387,10 +387,8 @@ input::-webkit-search-cancel-button {
     width: 110%;
     display: flex;
     justify-content: end;
-    margin-bottom: 10px;
     position: absolute;
-    bottom: 5px;
-    right: 5px
+    bottom: 2%
 }
 
 .addedSubtaskOnEdit {
@@ -475,9 +473,11 @@ textarea {
 
 .okButtonDiv {
 
+    width: 86%;
     display: flex;
-    align-items: flex-end;
-    padding-bottom: 15px;
+    align-items: end;
+    position: absolute;
+    bottom: 3%
 }
 
 .okButton {
@@ -568,13 +568,11 @@ textarea {
 
     .inputContainer {
         width: 100% !important;
-        ;
         margin: auto;
     }
 
     .boardInput {
         width: 100% !important;
-        ;
         margin: auto;
     }
 
@@ -650,7 +648,8 @@ textarea {
     }
 
     .wrapperDialog {
-
+        height: 100vh;
+        padding-top: 10%;
         width: 60%;
         display: flex;
         flex-direction: column;
@@ -659,8 +658,10 @@ textarea {
     }
 
     .headerForSelectionField span {
-        width: 82%
+        width: 82%;
+        flex-direction: row;
     }
+
 
     .dropdownEditTask {
         width: 83%
@@ -671,8 +672,11 @@ textarea {
     }
 
     .editDelete {
-  
         position: unset;
+    }
+
+    .closeButtondialogFullCard {
+        top: 8%;
     }
 
     .boardEditTaskForm {
@@ -680,24 +684,33 @@ textarea {
         flex-direction: column;
         justify-content: space-evenly !important;
     }
-
 }
 
-@media(max-width:500px) {
-    .priorityImgFullCard {
-        height: 40px;
-        width: 45%
+@media(max-width:350px) {
+    .closeButtondialogFullCard {
+        top: 2%;
+        height: 15px
+    }
+
+    .wrapperDialog {
+        padding-top: 15%;
     }
 }
-@media(min-width:700px) {
-    .priorityImgFullCard {
-        height: 40px;
-        width: 20%
+
+@media(min-width:350px) and (max-width:700px) {
+    .closeButtondialogFullCard {
+        top: 9%;
+        height: 20px
+    }
+
+    .wrapperDialog {
+        padding-top: 15%;
     }
 }
-@media(min-width:1000px) and (max-width:1200px) {
-    .priorityImgFullCard {
-        height: 40px;
-        width: 40%
+
+@media(min-width:1000px) and (max-width:1300px) {
+
+    .headerForSelectionField {
+        display: block !important
     }
 }

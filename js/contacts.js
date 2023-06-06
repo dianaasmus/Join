@@ -157,9 +157,11 @@ function getRandomColor() {
     var color = '#';
     for (var i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
+        color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
 }
+
 
 async function addContact() {
     const fullName = contactName.value;
@@ -184,20 +186,41 @@ async function addContact() {
 }
 
 
-async function editContact(l) {
-    const editedFullName = contactNameEdit.value;
-    const editedNames = editedFullName.split(' ');
-    const editedFirstName = editedNames[0].charAt(0).toUpperCase();
-    const editedLastName = editedNames.length > 1 ? editedNames[editedNames.length - 1].charAt(0).toUpperCase() : '';
-
-    contacts[l].name = editedFullName;
-    contacts[l].firstNameLetter = editedFirstName;
-    contacts[l].lastNameLetter = editedLastName;
-
+async function editContact(i) {
+    const fullName = document.getElementById('contactNameEdit').value;
+    const email = document.getElementById('contactMailEdit').value;
+    const phone = document.getElementById('contactPhoneEdit').value;
+  
+    const names = fullName.split(' ');
+    const firstName = names[0].charAt(0).toUpperCase();
+    const lastName = names.length > 1 ? names[names.length - 1].charAt(0).toUpperCase() : '';
+  
+    contacts[i] = {
+      "name": fullName,
+      "email": email,
+      "phone": phone,
+      "firstNameLetter": firstName,
+      "lastNameLetter": lastName
+    };
+  
     await backend.setItem('contacts', JSON.stringify(contacts));
     clearEditContacCard();
 
     initContacts();
+<<<<<<< HEAD
+}
+
+
+  async function deleteContacts(i) {
+    contacts.splice(i, 1);
+  
+    await backend.setItem('contacts', JSON.stringify(contacts));
+    initContacts();
+    closeNewContact();
+    closeContactInfo();
+    renderContactList();
+  }
+=======
 }
 
 function clearEditContactInput() {
@@ -210,6 +233,7 @@ function clearEditContacCard() {
     document.getElementById('overlayContainer').classList.add('d-none');
     document.getElementById('contactInfo').innerHTML = '';
 }
+>>>>>>> 6fbf18cba9a4be56345f956e17a035ac6a1cccb5
 
 
 function clearInput() {
@@ -219,7 +243,24 @@ function clearInput() {
 }
 
 
-async function showContacts(l) {
+async function renderContactList() {
+    await initContacts();
+    contacts = JSON.parse(await backend.getItem('contacts')) || [];
+
+
+    let contactContainer = document.getElementById('contactList');
+    contactContainer.innerHTML = '';
+    for (let i = 0; i < contacts.length; i++) {
+    contactContainer.innerHTML += memberHTML(i, contacts);
+    }
+
+    assignRandomBackgroundColors();
+}
+
+
+async function showContacts(i) {
+    await initContacts();
+    const contact = contacts[i];
     let contactsInfo = document.getElementById('contactInfo');
     contactsInfo.innerHTML = memberInfo(l);
 
@@ -227,9 +268,7 @@ async function showContacts(l) {
 
     var contactContainer = document.querySelector(".contact-container");
     contactContainer.style.display = "block";
-
-    assignRandomBackgroundColors();
-}
+    }
 
 function closeContactInfo() {
     if (window.innerWidth < 1000) {

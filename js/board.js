@@ -12,35 +12,39 @@ let percentOfDone
 let colorOfBar
 let checkboxState;
 let checkedInput
-date = new Date();
+
 
 
 
 async function initBoard() {
-    includeHTML();
+    initScript();
     try {
         setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
         await downloadFromServer();
         tasks = await JSON.parse(await backend.getItem('tasks')) || []
         contacts = JSON.parse(backend.getItem('contacts')) || [];
-        document.getElementById("date").setAttribute("min", date.toISOString().split("T")[0]);
-        renderTaskCards()
+        await renderTaskCards()
+
     } catch (er) {
         console.error(er)
     }
 }
 
+function getTheDate() {
+    let forCalender = document.getElementById("date").setAttribute("min", date.toISOString().split("T")[0]);
+    return (forCalender)
+}
+
 
 async function renderTaskCards(i, j) {
     clearSubsections()
+
     let search = filterTasks()
     j = 0;
     let colorCircle = 0
-
     for (i = 0; i < tasks.length; i++) {
-
         if (tasks[i].title.toLowerCase().includes(search)) {
-
+            checkForContacts(i)
             checkForReadiness(i, j)
             document.getElementById('progressBar' + i).style.background = tasks[i].colorOfBar
             renderAssignedContactsOnBoard(i, colorCircle)
@@ -48,6 +52,16 @@ async function renderTaskCards(i, j) {
             j++
         }
     }
+}
+
+
+function checkForContacts(i) {
+  for (let j = 0; j < contacts.length; j++) {
+    let contact = tasks[i].assignedTo[j];
+    if (!contacts.includes(contact)) {
+      tasks[i].assignedTo.splice(j, 1);
+    }
+  }
 }
 
 

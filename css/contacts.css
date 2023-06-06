@@ -22,7 +22,15 @@ hr {
     background-color: #ffffff;
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
     position: fixed;
+<<<<<<< HEAD
     overflow-y: auto;
+=======
+    overflow: auto;
+}
+
+.contact-list::-webkit-scrollbar {
+    display: none;
+>>>>>>> 6fbf18cba9a4be56345f956e17a035ac6a1cccb5
 }
 
 .contact-container {

@@ -61,8 +61,8 @@ function generateLeftSideEditContact() {
 }
 
 
-function generateRightSideEditContact(l) {
-    return ` <form class="new-contact-circle-name" onsubmit="editContact(${l}); return false;" id="new-contact-circle-name">
+function generateRightSideEditContact(i, contacts) {
+    return ` <form class="new-contact-circle-name" onsubmit="editContact(${i}); return false;" id="new-contact-circle-name">
                         <div class="edit-contact-circle-for-edit contact-bubble-BG">
                             <div class="contact-circle-big contact-circle-card" id="circle-new-contact">
                             ${contacts[l]['firstNameLetter']}${contacts[l]['lastNameLetter']}
@@ -85,7 +85,7 @@ function generateRightSideEditContact(l) {
                                 <img src="../assets/img/icon-phone.svg">
                                 </div>
                             <div class="create-cancel-box edit-submit-box" id="create-edit-content">
-                                <button type="button" class="contact-new-cancel" id="contact-new-cancel" onclick="deleteNewContact(${l})">
+                                <button type="button" class="contact-new-cancel" id="contact-new-cancel" onclick="deleteContacts(${i})">
                                     <span>Delete</span>
                                 </button>
                                 <button type="submit" class="contact-new-create">

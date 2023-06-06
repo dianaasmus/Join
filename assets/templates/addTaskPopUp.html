@@ -63,9 +63,9 @@
 
                 <div class="contactContainer"> <!--Assigned to container-->
                     <label>Assigned to</label>
-                    <div class="dropdown">
-                        <div id="eventLisPopUp" class="headerForSelectionField">
-                            <label  style="position: relative;">Select contacts to assign</label>
+                    <div id="eventLisPopUp" class="dropdown">
+                        <div class="headerForSelectionField">
+                            <label style="position: relative;">Select contacts</label>
                             <img class="arrDown" src="./assets/img/arrDown.png">
                             <div>
                                 <input id="hiddenInputAddContact" class="hiddenInput displayNone"
@@ -82,17 +82,17 @@
 
 
             </div>
-
-            <div class="taskBoardRight">
+            <div class="dividingHRPopUp"></div>
+            <div class="taskBoardRightPopUp">
 
                 <div>
                     <label>Due date</label>
                     <input type="date" id="date" required />
                 </div>
 
-                <div>
+                <div class="prioPopUp">
                     <label>Prio</label>
-                    <div class="priorities">
+                    <div class="prioritiesPopUpTask">
                         <img id="prio1" value="urgent" onclick="addPriority(1)" class="priorityImg"
                             src="./assets/img/urgentImg.png">
                         <img id="prio2" value="medium" onclick="addPriority(2)" class="priorityImg"
@@ -142,3 +142,4 @@
 
 </div><!--content closed-->
 </div><!--wrapper closed-->
+
