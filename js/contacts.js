@@ -12,7 +12,7 @@ async function initContacts() {
     // if (!contactsLoaded) {
     //     renderContactList();
     //     contactsLoaded = true; // Setze den Ladezustand auf true, um die Endlosschleife zu verhindern
-    // }
+    //}   
     letters = [];
     sortContacts();
 }
@@ -89,14 +89,14 @@ function loadContactsLetter(initialLetter, contact, l) {
     }
 }
 
-
+/*
 async function renderContactList(initialLetter, contact, l) {
     let contactContainer = document.getElementById(`initialLetterContacts${initialLetter}`);
     contactContainer.innerHTML += memberHTML(l);
 
     assignRandomBackgroundColors();
 }
-
+*/
 
 function openAddContacts() {
     clearContactCard();
@@ -182,7 +182,7 @@ async function addContact() {
     document.getElementById('contactList').innerHTML = '';
     clearContactCard();
     initContacts();
-
+    renderContactList();
 }
 
 
@@ -205,9 +205,7 @@ async function editContact(i) {
   
     await backend.setItem('contacts', JSON.stringify(contacts));
     clearEditContacCard();
-
     initContacts();
-<<<<<<< HEAD
 }
 
 
@@ -220,8 +218,7 @@ async function editContact(i) {
     closeContactInfo();
     renderContactList();
   }
-=======
-}
+
 
 function clearEditContactInput() {
     document.getElementById('contactNameEdit').value = '';
@@ -233,7 +230,6 @@ function clearEditContacCard() {
     document.getElementById('overlayContainer').classList.add('d-none');
     document.getElementById('contactInfo').innerHTML = '';
 }
->>>>>>> 6fbf18cba9a4be56345f956e17a035ac6a1cccb5
 
 
 function clearInput() {
@@ -258,9 +254,9 @@ async function renderContactList() {
 }
 
 
-async function showContacts(i) {
+async function showContacts(l) {
     await initContacts();
-    const contact = contacts[i];
+//    const contact = contacts[l];
     let contactsInfo = document.getElementById('contactInfo');
     contactsInfo.innerHTML = memberInfo(l);
 
@@ -269,6 +265,7 @@ async function showContacts(i) {
     var contactContainer = document.querySelector(".contact-container");
     contactContainer.style.display = "block";
     }
+
 
 function closeContactInfo() {
     if (window.innerWidth < 1000) {
