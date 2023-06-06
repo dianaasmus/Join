@@ -23,11 +23,16 @@ async function initBoard() {
         await downloadFromServer();
         tasks = await JSON.parse(await backend.getItem('tasks')) || []
         contacts = JSON.parse(backend.getItem('contacts')) || [];
-        document.getElementById("date").setAttribute("min", date.toISOString().split("T")[0]);
-        renderTaskCards()
+        await renderTaskCards()
+        getTheDate()
     } catch (er) {
         console.error(er)
     }
+}
+
+function getTheDate() {
+    let forCalender = document.getElementById("date").setAttribute("min", date.toISOString().split("T")[0]);
+    return (forCalender)
 }
 
 
