@@ -17,7 +17,7 @@ date = new Date();
 
 
 async function initBoard() {
-    includeHTML();
+    initScript();
     try {
         setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
         await downloadFromServer();
