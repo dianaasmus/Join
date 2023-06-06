@@ -5,15 +5,16 @@ let letters = [];
 
 
 async function initContacts() {
+    await initScript();
     setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
     await downloadFromServer();
-    initScript();
     await loadContacts();
     // if (!contactsLoaded) {
     //     renderContactList();
     //     contactsLoaded = true; // Setze den Ladezustand auf true, um die Endlosschleife zu verhindern
     // }
-    setInitialLetters();
+    letters = [];
+    sortContacts();
 }
 
 
@@ -23,6 +24,77 @@ async function loadContacts() {
     } catch (e) {
         console.error('Loading error:', e);
     }
+}
+
+
+// Alphabet Letters
+async function sortContacts() {
+    contacts.sort(function (a, b) {
+        let nameA = a.name.toUpperCase(); // Großbuchstaben verwenden, um die Sortierung zu vereinheitlichen
+        let nameB = b.name.toUpperCase();
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+        return 0;
+    });
+
+    await backend.setItem('contacts', JSON.stringify(contacts));
+    loadInitialLetters();
+}
+
+
+async function loadInitialLetters() {
+    document.getElementById('contactList').innerHTML = '';
+    for (let l = 0; l < contacts.length; l++) {
+        const contact = contacts[l];
+        let initialLetter = contact['name'].charAt(0);
+
+        setInitialLetters(initialLetter, contact, l);
+    }
+}
+
+function setInitialLetters(initialLetter, contact, l) {
+    
+    if (!letters.includes(initialLetter)) {
+        letters.push(initialLetter);
+        addInitalLetterContainer(initialLetter, contact, l);
+    } else {
+        loadContactsLetter(initialLetter, contact, l);
+    }
+}
+
+
+function addInitalLetterContainer(initialLetter, contact, l) {
+    document.getElementById('contactList').innerHTML += `
+        <div id="initialLetterContacts${initialLetter}">
+            <div id="initialLetterContainer">
+                ${initialLetter.toUpperCase()}
+            </div>
+        </div>
+
+    `;
+    loadContactsLetter(initialLetter, contact, l);
+}
+
+
+function loadContactsLetter(initialLetter, contact, l) {
+    let nameFirstLetter = contact['name'].charAt(0);
+
+    if (initialLetter === nameFirstLetter) {
+        renderContactList(initialLetter, contact, l);
+        contactsLoaded = true; // Setze den Ladezustand auf true, um die Endlosschleife zu verhindern
+    }
+}
+
+
+async function renderContactList(initialLetter, contact, l) {
+    let contactContainer = document.getElementById(`initialLetterContacts${initialLetter}`);
+    contactContainer.innerHTML += memberHTML(l);
+
+    assignRandomBackgroundColors();
 }
 
 
@@ -38,18 +110,15 @@ function openAddContacts() {
 }
 
 
-async function openEditContacts() {
-    contacts = JSON.parse(await backend.getItem('contacts')) || [];
-
+async function openEditContacts(l) {
     document.getElementById('overlayContainer').classList.remove('d-none');
     setTimeout(() => {
         let contentleft = document.getElementById('addContactLeft');
         contentleft.innerHTML += generateLeftSideEditContact();
         let contentright = document.getElementById('addContactRightContent');
         for (let i = 0; i < contacts.length; i++) {
-            contentright.innerHTML = generateRightSideEditContact(i, contacts);
+            contentright.innerHTML = generateRightSideEditContact(l);
         }
-        // assignRandomBackgroundColors();
     }, 225);
 }
 
@@ -57,13 +126,18 @@ async function openEditContacts() {
 function clearContactCard() {
     document.getElementById('addContactLeft').innerHTML = '';
     document.getElementById('addContactRightContent').innerHTML = '';
+    document.getElementById('overlayContainer').classList.add('d-none');
 }
 
 
-function closeNewContact() {
+async function deleteNewContact(l) {
+    contacts.splice(l, 1);
     document.getElementById('overlayContainer').classList.add('d-none');
     clearContactCard();
     editing = false;
+    await backend.setItem('contacts', JSON.stringify(contacts));
+    document.getElementById('contactInfo').innerHTML = '';
+    initContacts();
 }
 
 
@@ -101,26 +175,38 @@ async function addContact() {
 
     await backend.setItem('contacts', JSON.stringify(contacts));
     clearInput();
-    closeNewContact();
+    document.getElementById('contactList').innerHTML = '';
+    clearContactCard();
     initContacts();
+
 }
 
 
-async function editContact() {
-    await downloadFromServer();
-    const editedFullName = prompt('Enter the new full name:');
+async function editContact(l) {
+    const editedFullName = contactNameEdit.value;
     const editedNames = editedFullName.split(' ');
     const editedFirstName = editedNames[0].charAt(0).toUpperCase();
     const editedLastName = editedNames.length > 1 ? editedNames[editedNames.length - 1].charAt(0).toUpperCase() : '';
 
-    contact.name = editedFullName;
-    contact.firstNameLetter = editedFirstName;
-    contact.lastNameLetter = editedLastName;
+    contacts[l].name = editedFullName;
+    contacts[l].firstNameLetter = editedFirstName;
+    contacts[l].lastNameLetter = editedLastName;
 
     await backend.setItem('contacts', JSON.stringify(contacts));
-    closeNewContact();
+    clearEditContacCard();
+
     initContacts();
-    // assignRandomBackgroundColors();
+}
+
+function clearEditContactInput() {
+    document.getElementById('contactNameEdit').value = '';
+    document.getElementById('contactMailEdit').value = '';
+    document.getElementById('contactPhoneEdit').value = '';
+}
+
+function clearEditContacCard() {
+    document.getElementById('overlayContainer').classList.add('d-none');
+    document.getElementById('contactInfo').innerHTML = '';
 }
 
 
@@ -132,18 +218,14 @@ function clearInput() {
 
 
 async function showContacts(l) {
-    // console.log(contact);
-    let contact = contacts[l];
-    // await initContacts();
-    // const contact = contacts[i];
     let contactsInfo = document.getElementById('contactInfo');
-    contactsInfo.innerHTML = memberInfo(contact);
+    contactsInfo.innerHTML = memberInfo(l);
 
     contactsInfo.style.display = "flex";
-    assignRandomBackgroundColors();
 
     var contactContainer = document.querySelector(".contact-container");
     contactContainer.style.display = "block";
+
 }
 
 function closeContactInfo() {
@@ -152,54 +234,3 @@ function closeContactInfo() {
 }
 
 
-// Alphabet Letters
-function setInitialLetters() {
-    contacts.sort();
-    for (let l = 0; l < contacts.length; l++) {
-        const contact = contacts[l];
-        let initialLetter = contact['name'].charAt(0);
-
-        if (!letters.includes(initialLetter)) {
-            letters.push(initialLetter);
-            addInitalLetterContainer(initialLetter, contact, l);
-        } else {
-            loadContactsLetter(initialLetter, contact, l);
-        }
-    }
-}
-
-
-function addInitalLetterContainer(initialLetter, contact, l) {
-    document.getElementById('contactList').innerHTML += `
-        <div id="initialLetterContacts${initialLetter}">
-            <div id="initialLetterContainer">
-                ${initialLetter.toUpperCase()}
-            </div>
-        </div>
-
-    `;
-    loadContactsLetter(initialLetter, contact, l);
-}
-
-
-function loadContactsLetter(initialLetter, contact, l) {
-
-    let nameFirstLetter = contact['name'].charAt(0);
-
-    if (initialLetter === nameFirstLetter) {
-        console.log(nameFirstLetter + ' in render')
-        renderContactList(initialLetter, contact, l);
-        contactsLoaded = true; // Setze den Ladezustand auf true, um die Endlosschleife zu verhindern
-    }
-}
-
-
-async function renderContactList(initialLetter, contact, l) {
-    // await initContacts();
-    // contacts = JSON.parse(await backend.getItem('contacts')) || [];
-
-    let contactContainer = document.getElementById(`initialLetterContacts${initialLetter}`);
-    contactContainer.innerHTML += memberHTML(initialLetter, contact, l);
-
-    assignRandomBackgroundColors();
-}
