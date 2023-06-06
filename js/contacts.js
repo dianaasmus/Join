@@ -1,3 +1,4 @@
+
 let contacts = [];
 let contactsLoaded = false; // Globale Variable zur Verfolgung des Ladezustands der Kontakte
 var colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#00ffff", "#ff00ff"];
@@ -89,14 +90,12 @@ function loadContactsLetter(initialLetter, contact, l) {
     }
 }
 
-/*
+
 async function renderContactList(initialLetter, contact, l) {
     let contactContainer = document.getElementById(`initialLetterContacts${initialLetter}`);
     contactContainer.innerHTML += memberHTML(l);
-
-    assignRandomBackgroundColors();
 }
-*/
+
 
 function openAddContacts() {
     clearContactCard();
@@ -238,7 +237,7 @@ function clearInput() {
     document.getElementById('contactPhone').value = '';
 }
 
-
+/*
 async function renderContactList() {
     await initContacts();
     contacts = JSON.parse(await backend.getItem('contacts')) || [];
@@ -252,7 +251,7 @@ async function renderContactList() {
 
     assignRandomBackgroundColors();
 }
-
+*/
 
 async function showContacts(l) {
     await initContacts();
@@ -273,3 +272,4 @@ function closeContactInfo() {
       contactContainer.style.display = "none";
     }
   }
+  
