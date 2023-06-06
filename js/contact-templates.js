@@ -14,11 +14,11 @@ function generateRightSideNewContact() {
     return ` <form class="new-contact-circle-name" onsubmit="addContact(); return false;" id="new-contact-circle-name">
                         <div class="edit-contact-circle">
                             <div class="contact-circle-big contact-circle-card bg0" id="circle-new-contact">
-                                <img src=".//assets/img/name_input.svg">
+                                <img src="./assets/img/avatar-white.png">
                             </div>  
                         </div>
                         <div class="contact-new-inputs" id="contact-new-inputs">
-                            <span class="close-contact-cross" onclick="closeNewContact()">&#10005;</span>
+                            <span class="close-contact-cross" onclick="clearContactCard()">&#10005;</span>
                                 <div class="warning-message" id="warning-contact-new-edit">
                                 </div>
                                 <div class="input-form-new-contact">
@@ -61,31 +61,31 @@ function generateLeftSideEditContact() {
 }
 
 
-function generateRightSideEditContact(i, contacts) {
-    return ` <form class="new-contact-circle-name" onsubmit="editContact(${i}); return false;" id="new-contact-circle-name">
+function generateRightSideEditContact(l) {
+    return ` <form class="new-contact-circle-name" onsubmit="editContact(${l}); return false;" id="new-contact-circle-name">
                         <div class="edit-contact-circle-for-edit contact-bubble-BG">
                             <div class="contact-circle-big contact-circle-card" id="circle-new-contact">
-                            ${contacts[i]['firstNameLetter']}${contacts[i]['lastNameLetter']}
+                            ${contacts[l]['firstNameLetter']}${contacts[l]['lastNameLetter']}
                             </div>  
                         </div>
                         <div class="contact-new-inputs" id="contact-new-inputs">
-                            <span class="close-contact-cross" onclick="closeNewContact()">&#10005;</span>
+                            <span class="close-contact-cross" onclick="clearContactCard()">&#10005;</span>
                                 <div class="warning-message" id="warning-contact-new-edit">
                                 </div>
                                 <div class="input-form-new-contact">
-                                    <input required type="text" value="${contacts[i]['name']}" id="contactNameEdit" placeholder ="${contacts[i]['name']}">
+                                    <input required type="text" value="${contacts[l]['name']}" id="contactNameEdit" placeholder="${contacts[l]['name']}">
                                     <img src="../assets/img/name_input.svg">
                                 </div>
                                 <div class="input-form-new-contact">
-                                    <input required type="email" value="${contacts[i]['email']}" id="contactMailEdit" placeholder ="${contacts[i]['email']}">
+                                    <input required type="email" value="${contacts[l]['email']}" id="contactMailEdit" placeholder ="${contacts[l]['email']}">
                                     <img src="../assets/img/email_input.svg">
                                 </div>
                                 <div class="input-form-new-contact">
-                                <input required value="${contacts[i]['phone']}" type="tel" pattern="[0-9]+" id="contactPhoneEdit" placeholder ="${contacts[i]['phone']}">
+                                <input required value="${contacts[l]['phone']}" type="tel" pattern="[0-9]+" id="contactPhoneEdit" placeholder ="${contacts[l]['phone']}">
                                 <img src="../assets/img/icon-phone.svg">
                                 </div>
                             <div class="create-cancel-box edit-submit-box" id="create-edit-content">
-                                <button type="button" class="contact-new-cancel" id="contact-new-cancel" onclick="deleteContacts(${i})">
+                                <button type="button" class="contact-new-cancel" id="contact-new-cancel" onclick="deleteNewContact(${l})">
                                     <span>Delete</span>
                                 </button>
                                 <button type="submit" class="contact-new-create">
@@ -98,26 +98,26 @@ function generateRightSideEditContact(i, contacts) {
 }
 
 
-function memberHTML(i, contacts) {
+function memberHTML(l) {
     return ` 
-                <div class="single-contact-container" id="singleConactContainer" onclick="showContacts(${i})">
-                    <div class="single-contact-bubble contact-bubble-BG">${contacts[i]['firstNameLetter']}${contacts[i]['lastNameLetter']}</div>
+                <div class="single-contact-container" id="singleConactContainer" onclick="showContacts(${l})">
+                    <div class="single-contact-bubble contact-bubble-BG">${contacts[l]['firstNameLetter']}${contacts[l]['lastNameLetter']}</div>
                         <div class="single-contact">
-                            <div class="single-contact-name">${contacts[i]['name']}</div>
-                            <div class="single-contact-mail">${contacts[i]['email']}</div>
-                    </div>
+                            <div class="single-contact-name">${contacts[l]['name']}</div>
+                            <div class="single-contact-mail">${contacts[l]['email']}</div>
+                        </div>
                 </div>
                 `;
 }
 
-function memberInfo(contact){
+function memberInfo(l){
     return `
 <div class="contact-info-header">
     <div class="contact-info-bubble contact-bubble-BG">
-        ${contact.firstNameLetter}${contact.lastNameLetter}
+        ${contacts[l].firstNameLetter}${contacts[l].lastNameLetter}
     </div>
     <div class="contact-info-headname">
-        <h2>${contact.name}</h2>
+        <h2>${contacts[l].name}</h2>
         <span>
             <img src="../assets/img/contact-add-task.png">
             Add Task
@@ -126,16 +126,16 @@ function memberInfo(contact){
 </div>
 <div class="contact-info-edit">
     <span class="contact-edit-text">Contact Information</span>
-    <span class="contact-edit-popup" onclick="openEditContacts()">
+    <span class="contact-edit-popup" onclick="openEditContacts(${l})">
         <img src="../assets/img/contact-edit.png">
         Edit Contact
     </span>
 </div>
 <div class="open-contact-infos">
         <span class="contact-information">Email</span>
-        <a class="contact-mail" href="mailto:${contact.email}">${contact.email}</a>
+        <a class="contact-mail" href="mailto:${contacts[l].email}">${contacts[l].email}</a>
         <span class="contact-information">Phone</span>
-        <a class="contact-phone" href="tel:${contact.phone}">${contact.phone}</a>
+        <a class="contact-phone" href="tel:${contacts[l].phone}">${contacts[l].phone}</a>
     </div>
     `;
 }
