@@ -23,7 +23,9 @@ async function loadContacts() {
 }
 
 
-// Alphabet Letters
+/**
+ * This function sorts the keys 'name' in the json object 'conatcts' in an alphabetic order.
+ */
 async function sortContacts() {
     contacts.sort(function (a, b) {
         let nameA = a.name.toUpperCase(); // Großbuchstaben verwenden, um die Sortierung zu vereinheitlichen
@@ -36,25 +38,31 @@ async function sortContacts() {
         }
         return 0;
     });
-
     await backend.setItem('contacts', JSON.stringify(contacts));
     loadInitialLetters();
 }
 
 
+/**
+ * This function generates for each contact its inital letter.
+ */
 async function loadInitialLetters() {
     document.getElementById('contactList').innerHTML = '';
     for (let l = 0; l < contacts.length; l++) {
         const contact = contacts[l];
-        let initialLetter = contact['name'].charAt(0);
+        let initialLetter = contact['firstNameLetter'];
 
         setInitialLetters(initialLetter, contact, l);
     }
 }
 
-
+/**
+ * This funtcion pushes the initial letter in the letters array or executes the function loadContactsLetter().
+ * @param {string} initialLetter - carries the value of the current inital letter.
+ * @param {string} contact - carries all the data of the contact.
+ * @param {string} l - carries the nummber of the current contact in the json object.
+ */
 function setInitialLetters(initialLetter, contact, l) {
-    
     if (!letters.includes(initialLetter)) {
         letters.push(initialLetter);
         addInitalLetterContainer(initialLetter, contact, l);
@@ -64,6 +72,12 @@ function setInitialLetters(initialLetter, contact, l) {
 }
 
 
+/**
+ * This function creates a container with the inital letter of a new added contact.
+ * @param {string} initialLetter - carries the value of the current inital letter.
+ * @param {string} contact - carries all the data of the contact.
+ * @param {string} l - carries the nummber of the current contact in the json object.
+ */
 function addInitalLetterContainer(initialLetter, contact, l) {
     document.getElementById('contactList').innerHTML += `
         <div id="initialLetterContacts${initialLetter}">
@@ -77,8 +91,15 @@ function addInitalLetterContainer(initialLetter, contact, l) {
 }
 
 
+
+/**
+ * This function checks if the generated inital letter is already in the letters array.
+ * @param {string} initialLetter - carries the value of the current inital letter.
+ * @param {string} contact - carries all the data of the contact.
+ * @param {string} l - carries the nummber of the current contact in the json object.
+ */
 function loadContactsLetter(initialLetter, contact, l) {
-    let nameFirstLetter = contact['name'].charAt(0);
+    let nameFirstLetter = contact['firstNameLetter'];
 
     if (initialLetter === nameFirstLetter) {
         renderContactList(initialLetter, contact, l);
