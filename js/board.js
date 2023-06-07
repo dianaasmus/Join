@@ -17,7 +17,7 @@ let checkedInput
 
 
 async function initBoard() {
-    initScript();
+    await initScript();
     try {
         setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
         await downloadFromServer();
@@ -56,13 +56,16 @@ async function renderTaskCards(i, j) {
 
 
 function checkForContacts(i) {
-  for (let j = 0; j < contacts.length; j++) {
-    let contact = tasks[i].assignedTo[j];
-    if (!contacts.includes(contact)) {
-      tasks[i].assignedTo.splice(j, 1);
+    for (let k = 0; k < tasks[i].assignedTo.length; k++) {
+        let assignedContact = tasks[i].assignedTo[k];
+        if (!contacts.some(contact => contact.email === assignedContact.email)) {
+            tasks[i].assignedTo.splice(k, 1);
+        }
     }
-  }
 }
+
+
+
 
 
 function hideProgressSection(i) {

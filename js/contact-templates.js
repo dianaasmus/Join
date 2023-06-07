@@ -1,5 +1,6 @@
 function generateLeftSideNewContact() {
     return `
+                    <span class="close-contact-cross-white d-none" onclick="clearContactCard()">X</span>
                     <div class="add-contact-logo" id="contact-logo">
                         <img src="../assets/img/logo-white.png">
                     </div>
@@ -51,6 +52,7 @@ function generateRightSideNewContact() {
 
 function generateLeftSideEditContact() {
     return `
+                    <span class="close-contact-cross-white d-none" onclick="clearContactCard()">X</span>
                     <div class="add-contact-logo" id="contact-logo">
                         <img src="../assets/img/logo-white.png">
                     </div>
@@ -135,6 +137,12 @@ function memberInfo(l){
         <a class="contact-mail" href="mailto:${contacts[l].email}">${contacts[l].email}</a>
         <span class="contact-information">Phone</span>
         <a class="contact-phone" href="tel:${contacts[l].phone}">${contacts[l].phone}</a>
-    </div>
+</div>
+
+
+<div class="responsive-buttons d-none">
+    <img class="trash-can" src="../assets/img/delete-box.png" onclick="deleteNewContact(${l})">
+    <img class="edit-box" src="../assets/img/edit-box.png" onclick="openEditContacts(${l})">
+</div>
     `;
 }
