@@ -198,7 +198,7 @@ async function editContact(l) {
 
     await backend.setItem('contacts', JSON.stringify(contacts));
     clearEditContacCard();
-
+    showContacts(l);
     initContacts();
 }
 

@@ -12,7 +12,7 @@
         justify-content: center;
         left: 0;
         width: 100%;
-        max-height: 78.2vh;
+        max-height: 85vh;
         bottom: 80px;
         top: 90px;
     }
@@ -115,5 +115,118 @@
 
     .create-cancel-box{
         justify-content: center;
+    }
+
+    .add-contact-left{
+        padding-left: 0;
+        align-items: center;
+    }
+
+    .add-contact-logo{
+        display: none;
+    }
+
+    .edit-contact-left-line{
+        top: 110px;
+        left: 72px;
+    }
+
+    .new-contact-left-line{
+        top: 160px;
+        left: 70px;
+    }
+
+    .close-contact-cross-white{
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: x-large;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 640px){
+
+    .contact-header{
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+
+    .kanban-responsive{
+        display: block;
+        font-size: 16px;
+    }
+
+    .contact-header h1{
+        font-size: 40px;
+        margin: 10px 0 10px 0;
+    }
+
+    .contact-header h2{
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .contacts-hr-line{
+        display: none;
+    }
+
+    .hr-responsive{
+        display: flex;
+        border: 1px solid #29ABE2;;
+        margin: 15px 0 15px 0;
+        width: 65px;
+    }
+
+    .contact-info{
+        top: 160px;
+    }
+
+    .contact-info-header {
+        column-gap: 20px;
+    }
+
+    .contact-info-headname h2 {
+        font-size: 40px;
+    }
+
+    .contact-info-bubble {
+        height: 60px;
+        width: 60px;
+        font-size: 30px;
+    }
+
+    .contact-edit-popup {
+        display: none;
+    }
+
+    .add-contact-button{
+        display: none;
+    }
+
+    .responsive-buttons{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .edit-box{
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+
+    .trash-can{
+        width: 21px;
+        height: 24px;
+        margin-bottom: 20px;
+        border: 2px solid #2A3647;
+        border-radius: 5px;
+        cursor: pointer;
     }
 }

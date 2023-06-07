@@ -18,7 +18,7 @@ hr {
 .contact-list {
     padding-top: 12px;
     width: 30%;
-    height: 90vh;
+    height: 80vh;
     background-color: #ffffff;
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
     position: fixed;
@@ -36,7 +36,7 @@ hr {
     display: flex;
     flex-direction: column;
     width: 45%;
-    height: 100vh;
+    height: 80vh;
 }
 
 .contact-header {
