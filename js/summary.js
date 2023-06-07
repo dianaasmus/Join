@@ -6,7 +6,7 @@ let done = [];
 let urgent = [];
 
 /**
- * Execution of functions when loading the page.
+ * This function executes of functions when loading the page.
  */
 async function onLoad() {
     await initScript();
@@ -17,7 +17,7 @@ async function onLoad() {
 
 
 /**
- * Set and downlaod the backend url.
+ * This function sets and downlaods the backend url.
  */
 async function setUrl() {
     setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
@@ -39,7 +39,7 @@ async function getUsers() {
 
 
 /**
- * Get current time and display it.
+ * This function gets the current time and displays it.
  */
 function getTime() {
     let currentTime = new Date();
@@ -59,7 +59,7 @@ function getTime() {
 
 
 /**
- * Greet the logged user.
+ * This function greets the logged user.
  */
 function greetUser() {
     let loignBtnClick = localStorage.getItem('LoginBtn');
@@ -76,7 +76,7 @@ function greetUser() {
 
 
 /**
- * Display logged user name.
+ * This function displays logged user name.
  */
 function greetUserName() {
     loggedUser = localStorage.getItem('Logged User');
@@ -95,7 +95,7 @@ function greetUserName() {
 
 
 /**
- * checks the checkboxs value.
+ * This function checks the checkboxs value.
  */
 function getCheckboxFeedback() {
     let checkedBox = localStorage.getItem('checkedBox');
@@ -115,7 +115,7 @@ function returnCheckboxFeedback() {
 
 
 /**
- * Add hover effect on Todo Container.
+ * This function adds a hover effect on the 'todo' Container.
  */
 function hoverTodoOn() {
     document.getElementById('todo-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
@@ -124,7 +124,7 @@ function hoverTodoOn() {
 
 
 /**
- * Add hover effect on Done Container.
+ * This function adds a hover effect on the 'done' Container.
  */
 function hoverDoneOn() {
     document.getElementById('done-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
@@ -133,7 +133,7 @@ function hoverDoneOn() {
 
 
 /**
- * Remove hover effect on todo + Done Container.
+ * This function removes the hover effect on the 'todo' + 'done' Container.
  */
 function hoverOff() {
     document.getElementById('todo-icon').style = "filter: none;";
@@ -144,7 +144,7 @@ function hoverOff() {
 
 
 /**
- * Get saved tasks.
+ * This function sets saved tasks.
  */
 async function getTasks() {
     tasks = await JSON.parse(backend.getItem('tasks')) || [];
@@ -161,7 +161,7 @@ async function getTasks() {
 
 
 /**
- * Save readiness state in backend.
+ * This function saves the readiness state in the backend.
  * 
  * @param {string} taskReadinessState - repsective readiness state from tasts.
  */
@@ -186,6 +186,11 @@ async function setTaskStates(taskReadinessState) {
     }
 }
 
+
+/**
+ * This function saves the prio task 'urgent' in the backend.
+ * @param {string} taskPrio - This variable carries the value from the key-value pair task['prio'].
+ */
 async function setUrgetState(taskPrio) {
     if (taskPrio == 'urgent') {
         urgent.push(taskPrio);
@@ -195,7 +200,7 @@ async function setUrgetState(taskPrio) {
 
 
 /**
- * Parse task in respective container.
+ * This function parses the task in respective container.
  */
 function parseTaskStates() {
     tasksInBoard.innerHTML = tasks.length;
