@@ -17,7 +17,7 @@ let checkedInput
 
 
 async function initBoard() {
-    initScript();
+    await initScript();
     try {
         setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
         await downloadFromServer();
@@ -44,7 +44,7 @@ async function renderTaskCards(i, j) {
     let colorCircle = 0
     for (i = 0; i < tasks.length; i++) {
         if (tasks[i].title.toLowerCase().includes(search)) {
-            checkForContacts(i)
+          /*   checkForContacts(i) */
             checkForReadiness(i, j)
             document.getElementById('progressBar' + i).style.background = tasks[i].colorOfBar
             renderAssignedContactsOnBoard(i, colorCircle)
@@ -56,12 +56,13 @@ async function renderTaskCards(i, j) {
 
 
 function checkForContacts(i) {
-  for (let j = 0; j < contacts.length; j++) {
-    let contact = tasks[i].assignedTo[j];
-    if (!contacts.includes(contact)) {
-      tasks[i].assignedTo.splice(j, 1);
+    let contact
+    for (let j = 0; j < contacts.length; j++) {
+        contact = tasks[i].assignedTo[j];
+        if (contacts.includes(contact)) {
+            tasks[i].assignedTo.splice(j, 1);
+        }
     }
-  }
 }
 
 

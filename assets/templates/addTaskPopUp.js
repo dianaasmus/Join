@@ -8,6 +8,7 @@ let prioImagesFullCard = ['./assets/img/urgentOnclick.png', './assets/img/medium
 let tasksToEdit = []
 let subtasksToSave = []
 let date = new Date();
+contacts = []
 
 
 
