@@ -1,4 +1,3 @@
-
 let contacts = [];
 let contactsLoaded = false; // Globale Variable zur Verfolgung des Ladezustands der Kontakte
 var colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#00ffff", "#ff00ff"];
@@ -10,10 +9,6 @@ async function initContacts() {
     setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
     await downloadFromServer();
     await loadContacts();
-    // if (!contactsLoaded) {
-    //     renderContactList();
-    //     contactsLoaded = true; // Setze den Ladezustand auf true, um die Endlosschleife zu verhindern
-    //}   
     letters = [];
     sortContacts();
 }
@@ -57,6 +52,7 @@ async function loadInitialLetters() {
     }
 }
 
+
 function setInitialLetters(initialLetter, contact, l) {
     
     if (!letters.includes(initialLetter)) {
@@ -94,6 +90,8 @@ function loadContactsLetter(initialLetter, contact, l) {
 async function renderContactList(initialLetter, contact, l) {
     let contactContainer = document.getElementById(`initialLetterContacts${initialLetter}`);
     contactContainer.innerHTML += memberHTML(l);
+
+    assignRandomBackgroundColors();
 }
 
 
@@ -117,7 +115,6 @@ async function openEditContacts(l) {
         let contentright = document.getElementById('addContactRightContent');
         for (let i = 0; i < contacts.length; i++) {
             contentright.innerHTML = generateRightSideEditContact(l);
-            assignRandomBackgroundColors();
         }
     }, 225);
 }
@@ -138,7 +135,11 @@ async function deleteNewContact(l) {
     await backend.setItem('contacts', JSON.stringify(contacts));
     document.getElementById('contactInfo').innerHTML = '';
     initContacts();
-    closeContactInfo();
+
+    if (window.innerWidth < 1000) {
+        var contactContainer = document.querySelector(".contact-container");
+        contactContainer.style.display = "none";
+    }
 }
 
 
@@ -151,11 +152,11 @@ function assignRandomBackgroundColors() {
     }
 }
 
+
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
     for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
@@ -181,42 +182,25 @@ async function addContact() {
     document.getElementById('contactList').innerHTML = '';
     clearContactCard();
     initContacts();
-    renderContactList();
+
 }
 
 
-async function editContact(i) {
-    const fullName = document.getElementById('contactNameEdit').value;
-    const email = document.getElementById('contactMailEdit').value;
-    const phone = document.getElementById('contactPhoneEdit').value;
-  
-    const names = fullName.split(' ');
-    const firstName = names[0].charAt(0).toUpperCase();
-    const lastName = names.length > 1 ? names[names.length - 1].charAt(0).toUpperCase() : '';
-  
-    contacts[i] = {
-      "name": fullName,
-      "email": email,
-      "phone": phone,
-      "firstNameLetter": firstName,
-      "lastNameLetter": lastName
-    };
-  
+async function editContact(l) {
+    const editedFullName = contactNameEdit.value;
+    const editedNames = editedFullName.split(' ');
+    const editedFirstName = editedNames[0].charAt(0).toUpperCase();
+    const editedLastName = editedNames.length > 1 ? editedNames[editedNames.length - 1].charAt(0).toUpperCase() : '';
+
+    contacts[l].name = editedFullName;
+    contacts[l].firstNameLetter = editedFirstName;
+    contacts[l].lastNameLetter = editedLastName;
+
     await backend.setItem('contacts', JSON.stringify(contacts));
     clearEditContacCard();
+
     initContacts();
 }
-
-
-  async function deleteContacts(i) {
-    contacts.splice(i, 1);
-  
-    await backend.setItem('contacts', JSON.stringify(contacts));
-    initContacts();
-    closeNewContact();
-    closeContactInfo();
-    renderContactList();
-  }
 
 
 function clearEditContactInput() {
@@ -237,25 +221,8 @@ function clearInput() {
     document.getElementById('contactPhone').value = '';
 }
 
-/*
-async function renderContactList() {
-    await initContacts();
-    contacts = JSON.parse(await backend.getItem('contacts')) || [];
-
-
-    let contactContainer = document.getElementById('contactList');
-    contactContainer.innerHTML = '';
-    for (let i = 0; i < contacts.length; i++) {
-    contactContainer.innerHTML += memberHTML(i, contacts);
-    }
-
-    assignRandomBackgroundColors();
-}
-*/
 
 async function showContacts(l) {
-    await initContacts();
-//    const contact = contacts[l];
     let contactsInfo = document.getElementById('contactInfo');
     contactsInfo.innerHTML = memberInfo(l);
 
@@ -263,13 +230,11 @@ async function showContacts(l) {
 
     var contactContainer = document.querySelector(".contact-container");
     contactContainer.style.display = "block";
-    }
+
+}
 
 
 function closeContactInfo() {
-    if (window.innerWidth < 1000) {
-      var contactContainer = document.querySelector(".contact-container");
-      contactContainer.style.display = "none";
-    }
-  }
-  
+    var contactContainer = document.querySelector(".contact-container");
+    contactContainer.style.display = "none";
+}

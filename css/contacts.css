@@ -312,6 +312,7 @@ hr {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: lightgray;
 }
 
 .create-new-message {
@@ -349,6 +350,10 @@ hr {
 
 .d-none {
     display: none;
+}
+
+.display-none {
+    display: none;  
 }
 
 /* ======================= */

@@ -94,6 +94,13 @@
         left: 94px;
     }
 
+    .edit-contact-circle-for-edit{
+        background-color: lightgray;
+        position: absolute;
+        top: 240px;
+        left: 94px; 
+    }
+
     .contact-new-inputs{
         margin-top: 40px;
     }

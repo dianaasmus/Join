@@ -85,7 +85,7 @@ function generateRightSideEditContact(l) {
                                 <img src="../assets/img/icon-phone.svg">
                                 </div>
                             <div class="create-cancel-box edit-submit-box" id="create-edit-content">
-                                <button type="button" class="contact-new-cancel" id="contact-new-cancel" onclick="deleteContacts(${i})">
+                                <button type="button" class="contact-new-cancel" id="contact-new-cancel" onclick="deleteNewContact(${l})">
                                     <span>Delete</span>
                                 </button>
                                 <button type="submit" class="contact-new-create">
