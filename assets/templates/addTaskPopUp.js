@@ -259,8 +259,10 @@ window.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
+function closeHiddenInput() {
+    document.getElementById('hiddenInputCategory').classList.add('displayNone')
+    document.getElementById('dropdownCategory').style = 'display:inlineBlock'
+}
 
 
 
