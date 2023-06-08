@@ -9,14 +9,13 @@
     <link rel="stylesheet" href="./css/addTask.css">
     <link rel="icon" href="assets/img/logo-blue.png">
     <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="./assets/templates/style_templates.css">
+    
     <script src="./js/mini_backend.js"></script>
     <script src="./js/HTMLsBoard_AddTask.js"></script>
     <script src="./js/addTask.js"></script>
     <script src="./js/contacts.js"></script>
     <script src="./script.js"></script>
-    <link rel="stylesheet" href="./assets/templates/style_templates.css">
-
-
 </head>
 
 <body onload="initAddTask()">
@@ -28,7 +27,8 @@
         <div class="content">
             <h1>Add Task </h1>
 
-            <form onsubmit="addToTasks(); setTimeout(function() { window.location.reload(); }, 3000); return false " class="taskBoard">
+            <form onsubmit="addToTasks(); setTimeout(function() { window.location.reload(); }, 3000); return false "
+                class="taskBoard">
 
 
                 <div class="taskBoardLeft">
@@ -144,8 +144,7 @@
                             <span>Clear</span>
                             <span class="clearTaskPageImg">+</span>
                         </button>
-                        <button
-                            class="buttonCreateTask">
+                        <button class="buttonCreateTask">
                             <span>Create Task</span>
                             <img class="createTaskPageImg" src="./assets/img/createTaskPage.png">
                         </button>

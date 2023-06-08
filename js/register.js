@@ -5,10 +5,11 @@ let joinUsers = [];
  * This function displays the Sign Up form and hides the Login form.
  */
 function openSignUpContainer() {
-    // document.getElementById('signup-btn').disabled = true;
+    document.getElementById('signup-btn').disabled = true; // disable while loading
     document.getElementById('login-main').classList.add('d-none');
     document.getElementById('signup-forgotPsw-container').classList.add('container-style');
     document.getElementById('signup-forgotPsw-container').innerHTML = returnSignupForm();
+    document.getElementById('signup-btn').disabled = false;
 }
 
 
@@ -23,7 +24,7 @@ function returnSignupForm() {
                 <hr>
                 <input class="input-field" placeholder="Name" type="text" id="userName" autocomplete="on" required>
                 <input class="input-field" placeholder="Email" type="email" id="emailSignUp" name="emailSignUp" autocomplete="on" required>
-                <input class="input-field" placeholder="Password" type="password" id="password" autocomplete="on" pattern="{8,}"
+                <input class="input-field" placeholder="Password" type="password" id="password" autocomplete="on"
                 title="Must contain at least 8 or more characters" required>
                 <button type="submit" id="registerBtn">Sign up</button>
             </form>

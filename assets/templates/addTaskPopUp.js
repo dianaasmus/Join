@@ -8,6 +8,7 @@ let prioImagesFullCard = ['./assets/img/urgentOnclick.png', './assets/img/medium
 let tasksToEdit = []
 let subtasksToSave = []
 let date = new Date();
+contacts = []
 
 
 
@@ -258,8 +259,10 @@ window.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
+function closeHiddenInput() {
+    document.getElementById('hiddenInputCategory').classList.add('displayNone')
+    document.getElementById('dropdownCategory').style = 'display:inlineBlock'
+}
 
 
 

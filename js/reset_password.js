@@ -51,22 +51,27 @@ function linkToLogin() {
 
 /**
  * This function checks if both entered passwords are the same.
- * @param {string} event - This refers to an event object that contains information about the triggered event.
  */
-async function checkUserPassword(event) {
-    // event.preventDefault();
+async function checkUserPassword() {
     resetPasswordBtn.disabled = true;
     feedbackContainer.innerHTML = '';
     if (emailResetPassword.value === emailConfirmPassword.value) {
         changePassword();
     } else {
-        // console.log('Password muss übereinstimmen.');
-        feedbackContainer.innerHTML += `
-        Your passwords do not match!
-        `;
-        resetPasswordBtn.disabled = false;
-        resetPasswordFrom();
+        sendPasswordFeedback();
     }
+}
+
+
+/**
+ * This function sends a feedback if the passwords do not match.
+ */
+function sendPasswordFeedback() {
+    feedbackContainer.innerHTML += `
+    Your passwords do not match!
+    `;
+    resetPasswordBtn.disabled = false;
+    resetPasswordFrom();
 }
 
 
@@ -79,49 +84,22 @@ function changePassword() {
         const userName = user['userName'];
         const userEmail = user['userEmail'];
 
-        checkEmail(user, userName, userEmail);
+        checkEmail(user, userEmail);
     }
 }
 
 
 /**
- * This function checks when the email matches the email input.
- * @param {string} userName - This parameter has the name of the user as value.
+ * This function checks when the email matches the email input and sets the new user password.
  * @param {string} userEmail - This parameter has the email of the user as value.
  */
-function checkEmail(user, userName, userEmail) {
+async function checkEmail(user, userEmail) {
     if (email == userEmail) {
-        deleteUserData(user);
-        setNewUserData(userName, userEmail);
+        user['password'] = emailConfirmPassword.value;
+
+        await backend.setItem('joinUsers', JSON.stringify(joinUsers));
+        sendResetFeedback();
     }
-}
-
-
-/**
- * This function deletes the user's current data.
- * @param {string} user - This parameter represets one user in the json array 'joinUsers';
- */
-async function deleteUserData(user) {
-    let currentUser = joinUsers.indexOf(user);
-    joinUsers.splice(currentUser, 1);
-    await backend.deleteItem('joinUsers', JSON.stringify(currentUser));
-}
-
-
-/**
- * This function creates the user with the new password as a new user.
- * @param {string} userName - This parameter has the name of the user as value.
- * @param {string} userEmail - This parameter has the email of the user as value.
- */
-async function setNewUserData(userName, userEmail) {
-    joinUsers.push({
-        'userName': userName,
-        'userEmail': userEmail,
-        'password': emailConfirmPassword.value
-    })
-
-    await backend.setItem('joinUsers', JSON.stringify(joinUsers));
-    sendResetFeedback();
 }
 
 
