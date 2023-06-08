@@ -6,11 +6,8 @@ let loggedUser;
  * This function is executed as soon as the html page loads and initialises a new function.
  */
 async function init() {
-    // checkMediaQuery()
     await setUrl();
-    enableLoginBtn();
     loadUsers();
-    // await backend.deleteItem('joinUsers', joinUsers);
 }
 
 
@@ -20,15 +17,6 @@ async function init() {
 async function setUrl() {
     setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
     await downloadFromServer();
-}
-
-
-/**
- * This function enables a disabled button.
- */
-function enableLoginBtn() {
-    loginBtn.disabled = false;
-    loginGuest.disabled = false;
 }
 
 

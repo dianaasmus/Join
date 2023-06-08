@@ -42,19 +42,21 @@ async function getUsers() {
  * This function gets the current time and displays it.
  */
 function getTime() {
-    let currentTime = new Date();
-    let hour = currentTime.getHours();
-    let greeting = document.getElementById('greeting');
+    let loignBtnClick = localStorage.getItem('LoginBtn');
+    if (loignBtnClick == 'true') {
+        let currentTime = new Date();
+        let hour = currentTime.getHours();
+        let greeting = document.getElementById('greeting');
 
-    if (hour >= 1 && hour < 12) {
-        greeting.innerHTML = "Good morning";
-    } else if (hour >= 12 && hour < 18) {
-        greeting.innerHTML = "Welcome";
-    } else {
-        greeting.innerHTML = "Good evening";
+        if (hour >= 1 && hour < 12) {
+            greeting.innerHTML = "Good morning";
+        } else if (hour >= 12 && hour < 18) {
+            greeting.innerHTML = "Welcome";
+        } else {
+            greeting.innerHTML = "Good evening";
+        }
+        greetUser();
     }
-    greetUser();
-
 }
 
 
@@ -62,13 +64,9 @@ function getTime() {
  * This function greets the logged user.
  */
 function greetUser() {
-    let loignBtnClick = localStorage.getItem('LoginBtn');
-    if (loignBtnClick == 'true') {
-
-        let loginValue = localStorage.getItem('LogIn');
-        if (loginValue === 'User') {
-            greetUserName();
-        }
+    let loginValue = localStorage.getItem('LogIn');
+    if (loginValue === 'User') {
+        greetUserName();
     }
 
     localStorage.setItem('LoginBtn', false);
