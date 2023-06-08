@@ -19,7 +19,7 @@ function generateRightSideNewContact() {
                             </div>  
                         </div>
                         <div class="contact-new-inputs" id="contact-new-inputs">
-                            <span class="close-contact-cross" onclick="clearContactCard()">&#10005;</span>
+                            <span class="close-contact-cross" onclick="clearContactCard()">X</span>
                                 <div class="warning-message" id="warning-contact-new-edit">
                                 </div>
                                 <div class="input-form-new-contact">
@@ -35,7 +35,7 @@ function generateRightSideNewContact() {
                                 <img src="../assets/img/icon-phone.svg">
                                 </div>
                             <div class="create-cancel-box" id="create-edit-content">
-                                <button type="button" class="contact-new-cancel" id="contact-new-cancel" onclick="closeNewContact()">
+                                <button type="button" class="contact-new-cancel" id="contact-new-cancel" onclick="clearContactCard()">
                                     <span>Cancel</span>
                                     <span>X</span>
                                 </button>
@@ -126,8 +126,10 @@ function memberInfo(l){
     <div class="contact-info-headname">
         <h2>${contacts[l].name}</h2>
         <span>
-            <img src="../assets/img/contact-add-task.png">
-            Add Task
+            <a href="../addTask.html">
+                <img src="../assets/img/contact-add-task.png">
+                Add Task
+            </a>
         </span>
     </div>
 </div>

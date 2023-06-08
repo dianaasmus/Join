@@ -41,12 +41,18 @@
     }
 
     .contact-info{
+        top: 150px;
         padding-left: 32px;
         row-gap: 20px;
     }
 
     .contact-info-close{
         display: block;
+    }
+
+    .contact-created{
+        bottom: 20%;
+        width: 310px;
     }
 
 }
@@ -228,10 +234,61 @@
     .contact-container{
         z-index: 1;
     }
+
+    .add-contact-button{
+        font-size: 0;
+        gap: 0;
+        height: 50px;
+        width: 50px;
+    }
 }
 
-@media (max-width:440px){
+@media (max-width: 440px){
+
     .contact-container{
         height: 82%;
     }
+
+    .responsive-buttons{
+        bottom: 45px;
+    }
+
+
+.add-contact-overlay{
+    width: 310px;
+    height: 600px;
+}
+
+.add-contact-left{
+    width: 310px;
+}
+
+.add-contact-right{
+    width: 310px;
+}
+
+.new-contact-circle-name{
+    width: 310px;
+}
+
+.edit-contact-circle-for-edit{
+    top: 220px;
+    left: 75px;
+}
+
+.edit-contact-circle {
+    top: 220px;
+    left: 75px;
+}
+
+.edit-contact-left-line {
+    top: 105px;
+    left: 51px;
+}
+
+.new-contact-left-line {
+    top: 155px;
+    left: 51px;
+}
+
 }

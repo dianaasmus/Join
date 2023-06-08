@@ -80,7 +80,7 @@ function setInitialLetters(initialLetter, contact, l) {
  */
 function addInitalLetterContainer(initialLetter, contact, l) {
     document.getElementById('contactList').innerHTML += `
-        <div id="initialLetterContacts${initialLetter}">
+        <div class="initial-letter-container" id="initialLetterContacts${initialLetter}">
             <div id="initialLetterContainer">
                 ${initialLetter.toUpperCase()}
             </div>
@@ -161,26 +161,6 @@ async function deleteNewContact(l) {
     }
 }
 
-/*
-function assignRandomBackgroundColors() {
-    var elements = document.querySelectorAll(".contact-bubble-BG");
-    for (var i = 0; i < elements.length; i++) {
-        var element = elements[i];
-        var color = getRandomColor();
-        element.style.backgroundColor = color;
-    }
-}
-
-
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-*/
 
 async function addContact() {
     const fullName = contactName.value;
@@ -195,12 +175,21 @@ async function addContact() {
         "firstNameLetter": firstName,
         "lastNameLetter": lastName,
     });
-
+    contactCreatedSuccessfuly();
     await backend.setItem('contacts', JSON.stringify(contacts));
     clearInput();
     document.getElementById('contactList').innerHTML = '';
     clearContactCard();
     initContacts();
+}
+
+function contactCreatedSuccessfuly() {
+    document.getElementById('contactCreated').classList.remove('d-none');
+    document.getElementById('contactCreated').classList.add('contact-created')
+    setTimeout(() => {
+        document.getElementById('contactCreated').classList.remove('contact-created');
+        document.getElementById('contactCreated').classList.add('d-none');
+    }, 2000);
 }
 
 function getContactBackgroundColor(index) {
