@@ -19,7 +19,7 @@ function generateRightSideNewContact() {
                             </div>  
                         </div>
                         <div class="contact-new-inputs" id="contact-new-inputs">
-                            <span class="close-contact-cross" onclick="clearContactCard()">&#10005;</span>
+                            <span class="close-contact-cross" onclick="clearContactCard()">X</span>
                                 <div class="warning-message" id="warning-contact-new-edit">
                                 </div>
                                 <div class="input-form-new-contact">
@@ -35,7 +35,7 @@ function generateRightSideNewContact() {
                                 <img src="../assets/img/icon-phone.svg">
                                 </div>
                             <div class="create-cancel-box" id="create-edit-content">
-                                <button type="button" class="contact-new-cancel" id="contact-new-cancel" onclick="closeNewContact()">
+                                <button type="button" class="contact-new-cancel" id="contact-new-cancel" onclick="clearContactCard()">
                                     <span>Cancel</span>
                                     <span>X</span>
                                 </button>
@@ -64,8 +64,10 @@ function generateLeftSideEditContact() {
 
 
 function generateRightSideEditContact(l) {
+    const backgroundColor = getContactBackgroundColor(l);
+
     return ` <form class="new-contact-circle-name" onsubmit="editContact(${l}); return false;" id="new-contact-circle-name">
-                        <div class="edit-contact-circle-for-edit contact-bubble-BG">
+                        <div class="edit-contact-circle-for-edit contact-bubble-BG" style="background-color: ${backgroundColor};">
                             <div class="contact-circle-big contact-circle-card" id="circle-new-contact">
                             ${contacts[l]['firstNameLetter']}${contacts[l]['lastNameLetter']}
                             </div>  
@@ -100,9 +102,11 @@ function generateRightSideEditContact(l) {
 }
 
 function memberHTML(l) {
+    const backgroundColor = getContactBackgroundColor(l);
+
     return ` 
                 <div class="single-contact-container" id="singleConactContainer" onclick="showContacts(${l})">
-                    <div class="single-contact-bubble contact-bubble-BG">${contacts[l]['firstNameLetter']}${contacts[l]['lastNameLetter']}</div>
+                    <div class="single-contact-bubble contact-bubble-BG" style="background-color: ${backgroundColor};">${contacts[l]['firstNameLetter']}${contacts[l]['lastNameLetter']}</div>
                         <div class="single-contact">
                             <div class="single-contact-name">${contacts[l]['name']}</div>
                             <div class="single-contact-mail">${contacts[l]['email']}</div>
@@ -112,16 +116,20 @@ function memberHTML(l) {
 }
 
 function memberInfo(l){
+    const backgroundColor = getContactBackgroundColor(l);
+
     return `
 <div class="contact-info-header">
-    <div class="contact-info-bubble contact-bubble-BG">
+    <div class="contact-info-bubble contact-bubble-BG" style="background-color: ${backgroundColor};">
         ${contacts[l].firstNameLetter}${contacts[l].lastNameLetter}
     </div>
     <div class="contact-info-headname">
         <h2>${contacts[l].name}</h2>
         <span>
-            <img src="../assets/img/contact-add-task.png">
-            Add Task
+            <a href="../addTask.html">
+                <img src="../assets/img/contact-add-task.png">
+                Add Task
+            </a>
         </span>
     </div>
 </div>

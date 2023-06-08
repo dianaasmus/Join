@@ -1,6 +1,6 @@
 let contacts = [];
 let contactsLoaded = false; // Globale Variable zur Verfolgung des Ladezustands der Kontakte
-var colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#00ffff", "#ff00ff"];
+var colors = ["#0048cd", "#81adfd", "#b6fa81", "#f99090", "#845400", "#fac66e", "#07ab1d"];
 let letters = [];
 
 
@@ -80,7 +80,7 @@ function setInitialLetters(initialLetter, contact, l) {
  */
 function addInitalLetterContainer(initialLetter, contact, l) {
     document.getElementById('contactList').innerHTML += `
-        <div id="initialLetterContacts${initialLetter}">
+        <div class="initial-letter-container" id="initialLetterContacts${initialLetter}">
             <div id="initialLetterContainer">
                 ${initialLetter.toUpperCase()}
             </div>
@@ -111,8 +111,6 @@ function loadContactsLetter(initialLetter, contact, l) {
 async function renderContactList(initialLetter, l) {
     let contactContainer = document.getElementById(`initialLetterContacts${initialLetter}`);
     contactContainer.innerHTML += memberHTML(l);
-
-    assignRandomBackgroundColors();
 }
 
 
@@ -164,26 +162,6 @@ async function deleteNewContact(l) {
 }
 
 
-function assignRandomBackgroundColors() {
-    var elements = document.querySelectorAll(".contact-bubble-BG");
-    for (var i = 0; i < elements.length; i++) {
-        var element = elements[i];
-        var color = getRandomColor();
-        element.style.backgroundColor = color;
-    }
-}
-
-
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-
-
 async function addContact() {
     const fullName = contactName.value;
     const names = fullName.split(' ');
@@ -197,23 +175,39 @@ async function addContact() {
         "firstNameLetter": firstName,
         "lastNameLetter": lastName,
     });
-
+    contactCreatedSuccessfuly();
     await backend.setItem('contacts', JSON.stringify(contacts));
     clearInput();
     document.getElementById('contactList').innerHTML = '';
     clearContactCard();
     initContacts();
-
 }
 
+function contactCreatedSuccessfuly() {
+    document.getElementById('contactCreated').classList.remove('d-none');
+    document.getElementById('contactCreated').classList.add('contact-created')
+    setTimeout(() => {
+        document.getElementById('contactCreated').classList.remove('contact-created');
+        document.getElementById('contactCreated').classList.add('d-none');
+    }, 2000);
+}
+
+function getContactBackgroundColor(index) {
+    const colorIndex = index % colors.length;
+    return colors[colorIndex];
+}
 
 async function editContact(l) {
     const editedFullName = contactNameEdit.value;
+    const editedMail = contactMailEdit.value;
+    const editedPhone = contactPhoneEdit.value;
     const editedNames = editedFullName.split(' ');
     const editedFirstName = editedNames[0].charAt(0).toUpperCase();
     const editedLastName = editedNames.length > 1 ? editedNames[editedNames.length - 1].charAt(0).toUpperCase() : '';
 
     contacts[l].name = editedFullName;
+    contacts[l].email = editedMail;
+    contacts[l].phone = editedPhone;
     contacts[l].firstNameLetter = editedFirstName;
     contacts[l].lastNameLetter = editedLastName;
 
@@ -229,6 +223,7 @@ function clearEditContactInput() {
     document.getElementById('contactMailEdit').value = '';
     document.getElementById('contactPhoneEdit').value = '';
 }
+
 
 function clearEditContacCard() {
     document.getElementById('overlayContainer').classList.add('d-none');

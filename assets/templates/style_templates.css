@@ -212,6 +212,7 @@ a {
     }
 
     #nav-mobile {
+        z-index: 2;
         display: flex;
         justify-content: space-evenly;
         background-color: #2A3647;
