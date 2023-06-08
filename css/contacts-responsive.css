@@ -31,7 +31,6 @@
         display: none;
         background-color: #F5F5F5;
         left: 0;
-        max-height: 80vh;
         width: 100%;
         bottom: 80px;
         top: 90px;
@@ -202,16 +201,12 @@
         display: none;
     }
 
-    .add-contact-button{
-        display: none;
-    }
-
     .responsive-buttons{
         position: absolute;
         display: flex;
         flex-direction: column;
         align-items: center;
-        bottom: 10px;
+        bottom: 30px;
         right: 10px;
     }
 
@@ -228,5 +223,15 @@
         border: 2px solid #2A3647;
         border-radius: 5px;
         cursor: pointer;
+    }
+
+    .contact-container{
+        z-index: 1;
+    }
+}
+
+@media (max-width:440px){
+    .contact-container{
+        height: 82%;
     }
 }

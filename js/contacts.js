@@ -1,6 +1,6 @@
 let contacts = [];
 let contactsLoaded = false; // Globale Variable zur Verfolgung des Ladezustands der Kontakte
-var colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#00ffff", "#ff00ff"];
+var colors = ["#0048cd", "#81adfd", "#b6fa81", "#f99090", "#845400", "#fac66e", "#07ab1d"];
 let letters = [];
 
 
@@ -90,8 +90,6 @@ function loadContactsLetter(initialLetter, contact, l) {
 async function renderContactList(initialLetter, contact, l) {
     let contactContainer = document.getElementById(`initialLetterContacts${initialLetter}`);
     contactContainer.innerHTML += memberHTML(l);
-
-    assignRandomBackgroundColors();
 }
 
 
@@ -142,7 +140,7 @@ async function deleteNewContact(l) {
     }
 }
 
-
+/*
 function assignRandomBackgroundColors() {
     var elements = document.querySelectorAll(".contact-bubble-BG");
     for (var i = 0; i < elements.length; i++) {
@@ -161,7 +159,7 @@ function getRandomColor() {
     }
     return color;
 }
-
+*/
 
 async function addContact() {
     const fullName = contactName.value;
@@ -182,17 +180,24 @@ async function addContact() {
     document.getElementById('contactList').innerHTML = '';
     clearContactCard();
     initContacts();
-
 }
 
+function getContactBackgroundColor(index) {
+    const colorIndex = index % colors.length;
+    return colors[colorIndex];
+}
 
 async function editContact(l) {
     const editedFullName = contactNameEdit.value;
+    const editedMail = contactMailEdit.value;
+    const editedPhone = contactPhoneEdit.value;
     const editedNames = editedFullName.split(' ');
     const editedFirstName = editedNames[0].charAt(0).toUpperCase();
     const editedLastName = editedNames.length > 1 ? editedNames[editedNames.length - 1].charAt(0).toUpperCase() : '';
 
     contacts[l].name = editedFullName;
+    contacts[l].email = editedMail;
+    contacts[l].phone = editedPhone;
     contacts[l].firstNameLetter = editedFirstName;
     contacts[l].lastNameLetter = editedLastName;
 
@@ -208,6 +213,7 @@ function clearEditContactInput() {
     document.getElementById('contactMailEdit').value = '';
     document.getElementById('contactPhoneEdit').value = '';
 }
+
 
 function clearEditContacCard() {
     document.getElementById('overlayContainer').classList.add('d-none');

@@ -64,8 +64,10 @@ function generateLeftSideEditContact() {
 
 
 function generateRightSideEditContact(l) {
+    const backgroundColor = getContactBackgroundColor(l);
+
     return ` <form class="new-contact-circle-name" onsubmit="editContact(${l}); return false;" id="new-contact-circle-name">
-                        <div class="edit-contact-circle-for-edit contact-bubble-BG">
+                        <div class="edit-contact-circle-for-edit contact-bubble-BG" style="background-color: ${backgroundColor};">
                             <div class="contact-circle-big contact-circle-card" id="circle-new-contact">
                             ${contacts[l]['firstNameLetter']}${contacts[l]['lastNameLetter']}
                             </div>  
@@ -100,9 +102,11 @@ function generateRightSideEditContact(l) {
 }
 
 function memberHTML(l) {
+    const backgroundColor = getContactBackgroundColor(l);
+
     return ` 
                 <div class="single-contact-container" id="singleConactContainer" onclick="showContacts(${l})">
-                    <div class="single-contact-bubble contact-bubble-BG">${contacts[l]['firstNameLetter']}${contacts[l]['lastNameLetter']}</div>
+                    <div class="single-contact-bubble contact-bubble-BG" style="background-color: ${backgroundColor};">${contacts[l]['firstNameLetter']}${contacts[l]['lastNameLetter']}</div>
                         <div class="single-contact">
                             <div class="single-contact-name">${contacts[l]['name']}</div>
                             <div class="single-contact-mail">${contacts[l]['email']}</div>
@@ -112,9 +116,11 @@ function memberHTML(l) {
 }
 
 function memberInfo(l){
+    const backgroundColor = getContactBackgroundColor(l);
+
     return `
 <div class="contact-info-header">
-    <div class="contact-info-bubble contact-bubble-BG">
+    <div class="contact-info-bubble contact-bubble-BG" style="background-color: ${backgroundColor};">
         ${contacts[l].firstNameLetter}${contacts[l].lastNameLetter}
     </div>
     <div class="contact-info-headname">
