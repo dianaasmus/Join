@@ -102,13 +102,13 @@ function loadContactsLetter(initialLetter, contact, l) {
     let nameFirstLetter = contact['firstNameLetter'];
 
     if (initialLetter === nameFirstLetter) {
-        renderContactList(initialLetter, l);
+        renderContactList(initialLetter, contact, l);
         contactsLoaded = true; // Setze den Ladezustand auf true, um die Endlosschleife zu verhindern
     }
 }
 
 
-async function renderContactList(initialLetter, l) {
+async function renderContactList(initialLetter, contact, l) {
     let contactContainer = document.getElementById(`initialLetterContacts${initialLetter}`);
     contactContainer.innerHTML += memberHTML(l);
 }
