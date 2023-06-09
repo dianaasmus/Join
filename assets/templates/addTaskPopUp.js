@@ -243,11 +243,10 @@ function addToAssignedContacts(index) {
 
 window.addEventListener('DOMContentLoaded', function () {
     var includedContent = document.getElementById('includeContainer');
-    includedContent.addEventListener('click', function (event) {
+    includedContent.addEventListener('mouseenter', function (event) {
         let contactList = document.getElementById('eventLisPopUp');
         let dropdownAddContact = document.getElementById('dropdownAddContactPopUp');
-        contactList.addEventListener('touchstart', handleTouchStart, false)
-        contactList.addEventListener('click', handleClickOutside);
+  
         contactList.addEventListener('mouseenter', function (event) {
             dropdownAddContact.innerHTML = '';
             contacts.forEach((contact, index) => {
