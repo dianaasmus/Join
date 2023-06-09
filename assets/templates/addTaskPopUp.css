@@ -49,7 +49,7 @@ h1 {
     display: flex;
     justify-content: space-evenly !important;
     width: 100%;
-   
+
 }
 
 .taskBoardLeftPopUpTask {
@@ -505,6 +505,7 @@ hr {
 }
 
 @media(max-width:1000px) {
+
     h1 {
         margin-left: 10px;
         text-align: center;
@@ -678,64 +679,65 @@ hr {
     input {
         padding: 16px 21px !important
     }
+
     .taskAddedPopUp span {
 
         margin-left: 10%;
-      
+
     }
-    
+
 }
 
-    @media(min-width:1000px) and (max-width:1450px) {
-        .dividingHRPopUp {
-            display: none !important
-        }
-
-        input {
-            width: 90% !important;
-            margin-right: 20px;
-            font-size: 16px;
-        }
-
-        textarea {
-            width: 90% !important;
-            font-size: 16px !important;
-        }
-
-        .dropdown {
-            width: 90% !important
-        }
-
-        form div {
-            width: 90%
-        }
-
-        .categoryContainer {
-            width: 90% !important
-        }
-
-        .contactContainer {
-            width: 90% !important
-        }
-
-        .prioPopUp {
-            width: 90%;
-        }
-
-
-
-        .buttonsCreateTaskPopUpTask {
-            margin: 0;
-        }
-
-        .headerForSelectionField label {
-            width: 150% !important
-        }
+@media(min-width:1000px) and (max-width:1450px) {
+    .dividingHRPopUp {
+        display: none !important
     }
 
-    @media(min-width:500px) and (max-width:1000px) {
-        .priorityImg {
-            width: 30% !important;
-            height: 70%
-        }
+    input {
+        width: 90% !important;
+        margin-right: 20px;
+        font-size: 16px;
     }
+
+    textarea {
+        width: 90% !important;
+        font-size: 16px !important;
+    }
+
+    .dropdown {
+        width: 90% !important
+    }
+
+    form div {
+        width: 90%
+    }
+
+    .categoryContainer {
+        width: 90% !important
+    }
+
+    .contactContainer {
+        width: 90% !important
+    }
+
+    .prioPopUp {
+        width: 90%;
+    }
+
+
+
+    .buttonsCreateTaskPopUpTask {
+        margin: 0;
+    }
+
+    .headerForSelectionField label {
+        width: 150% !important
+    }
+}
+
+@media(min-width:500px) and (max-width:1000px) {
+    .priorityImg {
+        width: 30% !important;
+        height: 70%
+    }
+}

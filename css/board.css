@@ -599,7 +599,7 @@ textarea {
     }
 
     .boardSubsection {
-        min-height: fit-content;
+        min-height: 20px;
     }
 
 
