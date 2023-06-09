@@ -28,7 +28,18 @@ async function initAddTask() {
 }
 
 
+function disableButtonAddTask() {
+    let button = document.getElementById('addTaskButton')
+    button.disabled = true; 
+    
+    setTimeout(function () {
+        button.disabled = false;
+    }, 3000);
+}
+
+
 async function addToTasks() {
+   
     let title = document.getElementById('task');
     let description = document.getElementById('description');
     let date = document.getElementById('date');
@@ -52,9 +63,10 @@ async function addToTasks() {
         assignedTo,
         pace: 0
     };
-
+  
     clearValuesOfAddTask(title, description, category, assignedTo, date)
     tasks.push(task);
+    disableButtonAddTask()
     await backend.setItem('tasks', JSON.stringify(tasks))
     popTheAddedDesk()
 }
@@ -101,17 +113,6 @@ function colorPrios(selectedUrgency, i) {
         document.getElementById("prio" + 2).src = "./assets/img/mediumImg.png"
     }
 
-}
-
-
-function checkForChecked(i, checkedbox) {
-    for (let counter = 0; counter < tasks[i].subtasks.length; counter++) {
-        checkedbox = document.getElementById(`checkBox${counter}`)
-
-        if (tasks[i].subtasks[counter].checkedValue == 0) {
-            checkedbox.checked = false
-        } else { checkedbox.checked = true }
-    }
 }
 
 
@@ -179,7 +180,7 @@ function openInputAddContact() {
 function addToAssignedContacts(index) {
     if (index >= 0 && index < contacts.length) {
         let contact = contacts[index];
-
+        contact.id = 1
         if (!assignedContacts.includes(contact)) {
             assignedContacts.push(contact);
         } else {

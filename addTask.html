@@ -10,7 +10,7 @@
     <link rel="icon" href="assets/img/logo-blue.png">
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="./assets/templates/style_templates.css">
-    
+
     <script src="./js/mini_backend.js"></script>
     <script src="./js/HTMLsBoard_AddTask.js"></script>
     <script src="./js/addTask.js"></script>
@@ -53,8 +53,8 @@
                                 <!--Hidden input category-->
                                 <div id="hiddenInputCategory" class="hiddenInput displayNone">
 
-                                    <input maxlength="30" id="selectedCategoryInputValue" required
-                                        style="position: relative;" placeholder="New category name">
+                                    <input class="selectedCategoryInputValue" maxlength="30" id="selectedCategoryInputValue" required
+                                       placeholder="Category name">
                                     <img class="closeHiddenInput" src="./assets/img/closeButtonBoard.png">
                                     <hr>
                                     <img class="createInHiddenInput" onclick="addCategoryOnTask()"
@@ -140,7 +140,7 @@
                         <span></span>
                     </div>
                     <div class="buttonsCreateTask">
-                        <button class="buttonClearTask">
+                        <button id="addTaskButton" onclick="window.location.reload();" class="buttonClearTask">
                             <span>Clear</span>
                             <span class="clearTaskPageImg">+</span>
                         </button>

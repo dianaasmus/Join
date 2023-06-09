@@ -48,7 +48,8 @@ h1 {
 .taskBoardPopUpTask {
     display: flex;
     justify-content: space-evenly !important;
-    width: 100%
+    width: 100%;
+   
 }
 
 .taskBoardLeftPopUpTask {
@@ -538,7 +539,7 @@ hr {
         display: flex;
         flex-direction: column;
         align-items: center !important;
-        margin: 20px;
+        margin: 0 !important;
     }
 
     .taskBoardLeftPopUpTask {

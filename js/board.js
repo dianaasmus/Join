@@ -56,10 +56,12 @@ async function renderTaskCards(i, j) {
 
 
 function checkForContacts(i) {
-    for (let k = 0; k < tasks[i].assignedTo.length; k++) {
-        let assignedContact = tasks[i].assignedTo[k];
-        if (!contacts.some(contact => contact.email === assignedContact.email)) {
-            tasks[i].assignedTo.splice(k, 1);
+    if (tasks[i].assignedTo) {
+        for (let k = 0; k < tasks[i].assignedTo.length; k++) {
+            let assignedContact = tasks[i].assignedTo[k];
+            if (!contacts.some(contact => contact.email === assignedContact.email)) {
+                tasks[i].assignedTo.splice(k, 1);
+            }
         }
     }
 }
@@ -78,7 +80,7 @@ function hideProgressSection(i) {
 
 
 function renderAssignedContactsOnBoard(i, colorCircle) {
-    if (tasks[i].assignedTo.length > 0) {
+    if (tasks[i].assignedTo) {
         document.getElementById(`assignedToCircles${i}`).innerHTML = ''
         for (let contact = 0; contact < tasks[i].assignedTo.length; contact++) {
             let element = document.getElementById(`colors${colorCircle}`);
@@ -93,7 +95,7 @@ function renderAssignedContactsOnBoard(i, colorCircle) {
 
 function renderAssignedContactsOnFullCard(i) {
     let colorCircle = 0
-    if (tasks[i].assignedTo.length > 0) {
+    if (tasks[i].assignedTo) {
         document.getElementById(`assignedToFullCard`).innerHTML = ''
         for (let contact = 0; contact < tasks[i].assignedTo.length; contact++) {
             let element = document.getElementById(`colors${colorCircle}`);
@@ -143,7 +145,7 @@ function openEditTask(i) {
     document.getElementById('dialogEditCard').classList.remove('displayNone')
     document.getElementById('dialogEditCard').innerHTML = openEditTaskHTML(i)
     document.getElementById(`editedDate`).setAttribute("min", date.toISOString().split("T")[0]);
-    listenToEvent()
+    listenToEvent(i)
 }
 
 
@@ -152,15 +154,15 @@ async function editTask(i) {
     let title = document.getElementById('editedTask');
     let description = document.getElementById('editedDescription');
     let date = document.getElementById('editedDate');
-    let assignedTo = assignedContacts.splice(0, assignedContacts.length)
+
 
     tasks[i] = {
         title: title.value,
         description: description.value,
         category: tasks[i].category,
         colorCategory: tasks[i].colorCategory,
-        assignedTo,
         date: date.value,
+        assignedTo: tasks[i].assignedTo,
         prio: tasks[i].prio,
         readinessState: tasks[i].readinessState,
         subtasks: tasks[i].subtasks,
@@ -294,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-function listenToEvent() {
+function listenToEvent(i) {
     var entireEditTaskCard = document.getElementById('entireEditTaskCard');
     if (entireEditTaskCard) {
         let contactList = document.getElementById('reassignContacts');
@@ -302,13 +304,59 @@ function listenToEvent() {
         contactList.addEventListener('mouseenter', function () {
             dropdownAddContact.innerHTML = ''
             contacts.forEach((contact, index) => {
-
-                dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addToAssignedContacts('${index}')" type="checkbox"></div>`;
+                dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addDeleteReassignedContacts(${i},${index})" id="checkboxAssigned${index}"  type="checkbox"></div>`;
             });
+            checkForCheckedAssigned(i)
         });
 
     }
 }
+
+
+function checkForChecked(i, checkedbox) {
+    for (let counter = 0; counter < tasks[i].subtasks.length; counter++) {
+        checkedbox = document.getElementById(`checkBox${counter}`)
+
+        if (tasks[i].subtasks[counter].checkedValue == 0) {
+            checkedbox.checked = false
+        } else { checkedbox.checked = true }
+    }
+}
+
+
+function checkForCheckedAssigned(i) {
+    let checkedbox
+
+    contacts.forEach((contact, index) => {
+
+        tasks[i].assignedTo.forEach(assigned => {
+            checkedbox = document.getElementById(`checkboxAssigned${index}`)
+            if (contact.email === assigned.email) {
+                checkedbox.checked = true;
+            }
+        });
+    });
+}
+
+
+async function addDeleteReassignedContacts(i, index) {
+    let checkedbox = document.getElementById(`checkboxAssigned${index}`)
+    if (checkedbox.checked == true) { addReassigned(i, index) }
+    if (checkedbox.checked == false) { deleteReassigned(i) }
+    await backend.setItem('tasks', JSON.stringify(tasks));
+}
+
+
+function deleteReassigned(i, index) {
+    tasks[i].assignedTo.splice(tasks[i].assignedTo[index], 1);
+}
+
+
+function addReassigned(i, index) {
+    tasks[i].assignedTo.push(contacts[index])
+}
+
+
 
 
 

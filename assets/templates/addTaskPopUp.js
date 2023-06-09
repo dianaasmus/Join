@@ -10,10 +10,16 @@ let subtasksToSave = []
 let date = new Date();
 contacts = []
 
-
+function disableButtonAddTask() {
+    let button = document.getElementById('buttonCreateTaskPopUpTask')
+    button.disabled = true; 
+    
+    setTimeout(function () {
+        button.disabled = false;
+    }, 3000);
+}
 
 async function addToTasks() {
-
 
     let title = document.getElementById('task');
     let description = document.getElementById('description');
@@ -41,6 +47,7 @@ async function addToTasks() {
 
     clearValuesOfAddTask(title, description, category, assignedTo, date)
     tasks.push(task);
+    disableButtonAddTask()
     await backend.setItem('tasks', JSON.stringify(tasks))
     popTheAddedDesk()
 }
@@ -234,29 +241,44 @@ function addToAssignedContacts(index) {
 }
 
 
-function checkForChecked(i, checkedbox) {
-    for (let counter = 0; counter < tasks[i].subtasks.length; counter++) {
-        checkedbox = document.getElementById(`checkBox${counter}`)
-
-        if (tasks[i].subtasks[counter].checkedValue == 0) {
-            checkedbox.checked = false
-        } else { checkedbox.checked = true }
-    }
-}
-
 window.addEventListener('DOMContentLoaded', function () {
     var includedContent = document.getElementById('includeContainer');
     includedContent.addEventListener('click', function (event) {
         let contactList = document.getElementById('eventLisPopUp');
         let dropdownAddContact = document.getElementById('dropdownAddContactPopUp');
+        contactList.addEventListener('touchstart', handleTouchStart, false)
+        contactList.addEventListener('click', handleClickOutside);
         contactList.addEventListener('mouseenter', function (event) {
             dropdownAddContact.innerHTML = '';
             contacts.forEach((contact, index) => {
                 dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addToAssignedContacts('${index}')" type="checkbox"></div>`;
             });
         });
+
+       
     });
 });
+
+function handleClickOutside(event) {
+    let contactList = document.getElementById('eventLisPopUp');
+    // Check if the clicked element is outside of 'myElement'
+    if (!contactList.contains(event.target)) {
+      // 'myElement' is not clicked, so remove its focus or close it
+      contactList.blur(); // Remove focus
+      // Additional logic to close or perform actions on 'myElement'
+    }
+  }
+
+function handleTouchStart(event) {
+    let dropdownAddContact = document.getElementById('dropdownAddContactPopUp');
+    dropdownAddContact.innerHTML = '';
+    contacts.forEach((contact, index) => {
+        dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addToAssignedContacts('${index}')" type="checkbox"></div>`;
+    });
+}
+
+
+
 
 
 function closeHiddenInput() {
