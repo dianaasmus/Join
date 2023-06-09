@@ -12,8 +12,8 @@ contacts = []
 
 function disableButtonAddTask() {
     let button = document.getElementById('buttonCreateTaskPopUpTask')
-    button.disabled = true; 
-    
+    button.disabled = true;
+
     setTimeout(function () {
         button.disabled = false;
     }, 3000);
@@ -255,19 +255,18 @@ window.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-       
+
     });
 });
 
+
 function handleClickOutside(event) {
     let contactList = document.getElementById('eventLisPopUp');
-    // Check if the clicked element is outside of 'myElement'
     if (!contactList.contains(event.target)) {
-      // 'myElement' is not clicked, so remove its focus or close it
-      contactList.blur(); // Remove focus
-      // Additional logic to close or perform actions on 'myElement'
+        contactList.blur();
     }
-  }
+}
+
 
 function handleTouchStart(event) {
     let dropdownAddContact = document.getElementById('dropdownAddContactPopUp');
@@ -276,9 +275,6 @@ function handleTouchStart(event) {
         dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addToAssignedContacts('${index}')" type="checkbox"></div>`;
     });
 }
-
-
-
 
 
 function closeHiddenInput() {
