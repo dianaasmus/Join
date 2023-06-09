@@ -96,7 +96,6 @@ a {
     object-fit: cover;
     justify-content: center;
     align-items: center;
-    /* margin-right: 30px; */
     margin-top: 50px;
     margin-bottom: 100px;
 }
@@ -237,6 +236,10 @@ a {
 
     header {
         padding-left: 0;
+    }
+
+    #link-to-help {
+        display: none;
     }
 }
 

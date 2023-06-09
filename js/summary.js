@@ -56,6 +56,8 @@ function getTime() {
             greeting.innerHTML = "Good evening";
         }
         greetUser();
+    } else {
+        document.getElementById('welcomingSummary').classList.add('d-none');
     }
 }
 
@@ -70,6 +72,7 @@ function greetUser() {
     }
 
     localStorage.setItem('LoginBtn', false);
+
 }
 
 
