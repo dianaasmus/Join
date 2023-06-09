@@ -299,16 +299,17 @@ document.addEventListener('DOMContentLoaded', function () {
 function listenToEvent(i) {
     var entireEditTaskCard = document.getElementById('entireEditTaskCard');
     if (entireEditTaskCard) {
-        let contactList = document.getElementById('reassignContacts');
-        let dropdownAddContact = document.getElementById('editedDropdownAddContact');
-        contactList.addEventListener('mouseenter', function () {
-            dropdownAddContact.innerHTML = ''
-            contacts.forEach((contact, index) => {
-                dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addDeleteReassignedContacts(${i},${index})" id="checkboxAssigned${index}"  type="checkbox"></div>`;
+        entireEditTaskCard.addEventListener('mouseenter', function () {
+            let contactList = document.getElementById('reassignContacts');
+            let dropdownAddContact = document.getElementById('editedDropdownAddContact');
+            contactList.addEventListener('mouseenter', function () {
+                dropdownAddContact.innerHTML = ''
+                contacts.forEach((contact, index) => {
+                    dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addDeleteReassignedContacts(${i},${index})" id="checkboxAssigned${index}"  type="checkbox"></div>`;
+                });
+                checkForCheckedAssigned(i)
             });
-            checkForCheckedAssigned(i)
         });
-
     }
 }
 
