@@ -70,7 +70,7 @@ header span {
 
 /*Sidebar*/
 
-#nav-web {
+#nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -127,7 +127,7 @@ a {
 
 .sidebar-props:hover,
 .legal-notice:hover {
-    background-color: #000;
+    background-color: rgb(0, 0, 0, 0.4);
 }
 
 #nav-mobile {
@@ -135,7 +135,7 @@ a {
 }
 
 .clicked {
-    background-color: #000;
+    background-color: rgb(0, 0, 0, 0.4);
 }
 
 .sidebar-icons {
@@ -206,32 +206,42 @@ a {
         right: 0;
     }
 
-    #nav-web {
+    .sidebar-logo,
+    .sidebar-legal-notice {
         display: none;
     }
 
-    #nav-mobile {
-        z-index: 2;
-        display: flex;
-        justify-content: space-evenly;
-        background-color: #2A3647;
-        position: fixed;
-        bottom: 0;
-        left: 0;
+    #nav {
+        top: unset;
         right: 0;
         height: 80px;
-    }
-
-    .sidebar-props-mobile {
-        text-decoration: none;
-        width: 80px;
+        width: 100%;
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: center;
     }
 
-    .sidebar-props-mobile:hover {
-        background-color: #000;
+    .sidebar-links {
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: unset;
+        padding: 0px;
+        width: 100%;
+    }
+
+    .sidebar-props {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        height: 80px;
+        padding: 0 40px 0 40px;
+        width: fit-content;
+    }
+
+    .sidebar-text {
+        width: unset;
+        padding-top: 10px;
+        white-space: nowrap;
     }
 
     header {
@@ -244,6 +254,27 @@ a {
 }
 
 @media (max-width: 640px) {
+
+    #nav {
+        height: 70px;
+    }
+
+    .sidebar-icons img {
+        height: 1.3rem;
+    }
+
+    .sidebar-text {
+        font-size: 14px;
+    }
+
+    .sidebar-links {
+        gap: 0;
+    }
+
+    .sidebar-props {
+        width: 0;
+        height: 70px;
+    }
 
     .header-right {
         position: absolute;
@@ -327,10 +358,6 @@ a {
 
     .kanban-text-container span {
         font-size: 18px;
-    }
-
-    #nav-mobile {
-        height: 60px;
     }
 
     .img-drop-down {
