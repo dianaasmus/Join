@@ -12,6 +12,8 @@ let percentOfDone
 let colorOfBar
 let checkboxState;
 let checkedInput
+let statusOpen
+
 
 
 
@@ -23,20 +25,15 @@ async function initBoard() {
         await downloadFromServer();
         tasks = await JSON.parse(await backend.getItem('tasks')) || []
         contacts = JSON.parse(backend.getItem('contacts')) || [];
-        await renderTaskCards()
-
+        renderTaskCards()
+        
     } catch (er) {
         console.error(er)
     }
 }
 
-function getTheDate() {
-    let forCalender = document.getElementById("date").setAttribute("min", date.toISOString().split("T")[0]);
-    return (forCalender)
-}
 
-
-async function renderTaskCards(i, j) {
+function renderTaskCards(i, j) {
     clearSubsections()
 
     let search = filterTasks()
@@ -94,6 +91,7 @@ function renderAssignedContactsOnBoard(i, colorCircle) {
 
 
 function renderAssignedContactsOnFullCard(i) {
+    openChangeStatus(i)
     let colorCircle = 0
     if (tasks[i].assignedTo) {
         document.getElementById(`assignedToFullCard`).innerHTML = ''
@@ -136,7 +134,7 @@ async function renderDialogFullCard(i, colorCircle) {
     })
     renderAssignedContactsOnFullCard(i)
     checkForChecked(i, `checkBox${counter}`)
-    await backend.setItem('tasks', JSON.stringify(tasks))
+
 }
 
 
@@ -192,7 +190,7 @@ async function moveTo(readinessState) {
     tasks = JSON.parse(await backend.getItem('tasks'))
     tasks[currentDragged].readinessState = readinessState
     await backend.setItem('tasks', JSON.stringify(tasks))
-    await renderTaskCards()
+    renderTaskCards()
 }
 
 
@@ -269,32 +267,6 @@ async function countTasks(i, j) {
 }
 
 
-document.addEventListener('DOMContentLoaded', function () {
-
-    const fullCard = document.getElementById('dialogFullCard');
-    const fullCardEdit = document.getElementById('dialogEditCard');
-    var fileName = 'addTask.html';
-
-    if (fullCard) {
-        fullCard.addEventListener('click', function (event) {
-            if (event.target === fileName) {
-                fileName.classList.add('displayNone');
-                renderTaskCards();
-            }
-        });
-    }
-
-    if (fullCardEdit) {
-        fullCardEdit.addEventListener('click', function (event) {
-            if (event.target === fileName) {
-                fileName.classList.add('displayNone');
-                fullCard.classList.add('displayNone');
-                renderTaskCards();
-            }
-        });
-    }
-});
-
 
 function listenToEvent(i) {
     var entireEditTaskCard = document.getElementById('entireEditTaskCard');
@@ -343,13 +315,20 @@ function checkForCheckedAssigned(i) {
 async function addDeleteReassignedContacts(i, index) {
     let checkedbox = document.getElementById(`checkboxAssigned${index}`)
     if (checkedbox.checked == true) { addReassigned(i, index) }
-    if (checkedbox.checked == false) { deleteReassigned(i) }
+    if (checkedbox.checked == false) { deleteReassigned(i, index) }
     await backend.setItem('tasks', JSON.stringify(tasks));
 }
 
 
 function deleteReassigned(i, index) {
-    tasks[i].assignedTo.splice(tasks[i].assignedTo[index], 1);
+    const emailToDelete = contacts[index].email;
+    const assignedTo = tasks[i].assignedTo;
+
+    for (let j = assignedTo.length - 1; j >= 0; j--) {
+        if (assignedTo[j].email === emailToDelete) {
+            assignedTo.splice(j, 1);
+        }
+    }
 }
 
 
@@ -358,21 +337,50 @@ function addReassigned(i, index) {
 }
 
 
+function openChangeStatus(i, event) {
+
+    let changeStatus = document.getElementById(`dropdown-contentForMobileDevices${i}`);
+    if (changeStatus.style.display === 'none') { changeStatus.style.display = 'block'; } else {
+        changeStatus.style.display = 'none'
+    }
+    event = event || window.event;
+    event.stopPropagation();
+    openChangeStatusContent(i);
+
+}
 
 
+function openChangeStatusContent(i) {
+    ifStatusToDoForMobile(i)
+    ifStatusInProgressForMobile(i)
+    ifStatusAwaitingFeedbackForMobile(i)
+    ifStatusDoneForMobile(i)
+}
 
 
+async function statusInProgress(i) {
+    tasks[i].readinessState = "inProgress"
+    await backend.setItem('tasks', JSON.stringify(tasks))
+    renderTaskCards(i)
+}
 
+async function statusAwaitingFeedback(i) {
+    tasks[i].readinessState = "awaitingFeedback"
+    await backend.setItem('tasks', JSON.stringify(tasks))
+    renderTaskCards(i)
+}
 
+async function statusDone(i) {
+    tasks[i].readinessState = "done"
+    await backend.setItem('tasks', JSON.stringify(tasks))
+    renderTaskCards(i)
+}
 
-
-
-
-
-
-
-
-
+async function statusToDo(i) {
+    tasks[i].readinessState = "toDo"
+    await backend.setItem('tasks', JSON.stringify(tasks))
+    renderTaskCards(i)
+}
 
 
 

@@ -16,8 +16,22 @@ function HTMLrenderTaskCards(i, j) {
                     <span id="assignedToCircles${i}" class="assignedToAvatars" ></span>
                     <img id="urgencyBoard${j}" src=" ">
                 </div>
+
+                <div onclick="openChangeStatus(${i})"> <!--For mobile devices-->
+                <div  id="dropdownForMobileDevices${i}" class="dropdownForMobileDevices">
+                    <div class="headerForSelectionField">
+                        <label id="statusForMobileDevices" style="position: relative;">Change status</label>
+                        <img class="arrDownStatus" src="./assets/img/arrDown.png">
+                    </div>
+
+                    <div id="dropdown-contentForMobileDevices${i}" class="dropdown-contentForMobileDevices">
+                    </div>
+
+                </div>
+            </div>
+
             </div>`
-           
+
 }
 
 
@@ -50,25 +64,25 @@ function HTMLrenderDialogFullCard(i) {
     
                       <p>Assigned to:</p>
                       <div class="assignedToFullCard" id="assignedToFullCard">
-                      </div
+                      </div>
                      
                  </div>
-                 <div class="editDelete">
-                       <img onclick="deleteTask(${i})" class="delete" src="./assets/img/blueDelete.png">
-                      <img onclick="openEditTask(${i})" class="edit" src="./assets/img/blueEdit.png">
-                 </div>
+              <div class="editDelete">
+                   <img  class="deleteButton" onclick="deleteTask(${i})"  src="./assets/img/blueDelete.png">
+                  <img  class="editButton" onclick="openEditTask(${i})" src="./assets/img/blueEdit.png">   
+             </div>
         </div>
    </div>`
 }
 
-function HTMLrenderSubtasksDialogFullCard(i,subtask,counter) {
+function HTMLrenderSubtasksDialogFullCard(i, subtask, counter) {
     return `<div class="checkBoxDiv">
     <span>${subtask.subtask}</span><input type="checkbox" onclick="countTasks(${i},${counter})"  id="checkBox${counter}" class="addedSubtaskOnEdit">
 </div>`}
 
 
 function openEditTaskHTML(i) {
- 
+
     return `<div id="entireEditTaskCard" class="dialogFullCardContent"
         style="display:flex; justify-content: center !important; align-items: center;">
         <form class="boardEditTaskForm" onsubmit="editTask(${i}); return false;">
@@ -104,8 +118,8 @@ function openEditTaskHTML(i) {
 
             <div class="AssignedTo" style="padding:6px;"> <!--Assigned to container-->
                 <label>Assigned to</label>
-                <div class="dropdownEditTask">
-                    <div id="reassignContacts" class="headerForSelectionField">
+                <div id="reassignContacts" class="dropdownEditTask">
+                    <div  class="headerForSelectionField">
                         <span style="position: relative;">Reassign contacts</span>
                         <img class="arrDown" src="./assets/img/arrDown.png">
                         <div>
@@ -127,3 +141,85 @@ function openEditTaskHTML(i) {
   </div><!--Edit card container closed-->
   `
 }
+
+
+
+function ifStatusToDoForMobile(i) {
+    let statuses = document.getElementById(`dropdown-contentForMobileDevices${i}`)
+
+    if (tasks[i].readinessState === "toDo") {
+        statuses.innerHTML = ''
+        statuses.innerHTML += `<div class="statusesDropdown">
+        <p onclick="statusInProgress(${i})">In Progress</p>
+        <p onclick="statusAwaitingFeedback(${i})">Awaiting Feedback</p>
+        <p onclick="statusDone(${i})">Done</p>
+        </div>`
+    }
+}
+
+
+function ifStatusInProgressForMobile(i) {
+    let statuses = document.getElementById(`dropdown-contentForMobileDevices${i}`)
+
+    if (tasks[i].readinessState === "inProgress") {
+        statuses.innerHTML = ''
+        statuses.innerHTML += `<div class="statusesDropdown">
+        <p onclick="statusToDo(${i})">To Do</p>
+        <p onclick="statusAwaitingFeedback(${i})">Awaiting Feedback</p>
+        <p onclick="statusDone(${i})">Done</p>
+        </div>`
+    }
+}
+
+
+function ifStatusAwaitingFeedbackForMobile(i) {
+    let statuses = document.getElementById(`dropdown-contentForMobileDevices${i}`)
+
+    if (tasks[i].readinessState === "awaitingFeedback") {
+        statuses.innerHTML = ''
+        statuses.innerHTML += `<div class="statusesDropdown">
+        <p onclick="statusToDo(${i})">To Do</p>
+        <p onclick="statusInProgress(${i})">In Progress</p>
+        <p onclick="statusDone(${i})">Done</p>
+        </div>`
+    }
+}
+
+
+function ifStatusDoneForMobile(i) {
+    let statuses = document.getElementById(`dropdown-contentForMobileDevices${i}`)
+
+    if (tasks[i].readinessState === "done") {
+        statuses.innerHTML = ''
+        statuses.innerHTML += `<div class="statusesDropdown">
+        <p onclick="statusToDo(${i})">To Do</p>
+        <p onclick="statusInProgress(${i})">In Progress</p>
+        <p onclick="statusAwaitingFeedback(${i})">Awaiting Feedback</p>
+        </div>
+        `
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

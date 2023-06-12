@@ -214,6 +214,21 @@ hr {
 
 }
 
+.dropdownAssigned {
+    position: relative;
+    display: inline-block;
+    width: 422px;
+    height: 26px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 13px 21px;
+    color: #000000;
+    border: 1px solid #D1D1D1;
+    margin-bottom: 0 !important;
+
+
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -226,7 +241,8 @@ hr {
     border-radius: 10px;
     z-index: 1;
     padding-top: 10px;
-    margin-bottom: 15px !important
+    margin-bottom: 15px !important;
+    border-top: none;
 }
 
 .dropdown-content a {
@@ -242,6 +258,7 @@ hr {
     display: block;
     border-top: none;
 }
+
 
 .colorPickers {
     display: flex;
@@ -329,16 +346,16 @@ hr {
 
 }
 
-.dropdownPopUpTask:hover .dropdown-contentPopUpTask {
-    display: block;
-    border-top: none;
-}
 
 .headerForSelectionField {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+.headerForSelectionField:hover {
+    cursor: pointer
 }
 
 .addSubtaskButtonPopUpTask {
@@ -536,6 +553,7 @@ hr {
         justify-content: space-around;
     }
 
+
     .taskBoardPopUpTask {
         display: flex;
         flex-direction: column;
@@ -582,6 +600,10 @@ hr {
         width: 90% !important
     }
 
+    .dropdownAssigned {
+        width: 90% !important
+    }
+
     form div {
         width: 90%
     }
@@ -599,7 +621,7 @@ hr {
     }
 
     .hiddenInput {
-        width: 100% !important
+        width: 103% !important
     }
 
     .headerForSelectionField {
@@ -649,7 +671,7 @@ hr {
     }
 
     .createInHiddenInput {
-        right: 2%;
+        right: 4%;
 
     }
 
@@ -668,7 +690,7 @@ hr {
     }
 
     hr {
-        right: 6%;
+        right: 8%;
         width: 25px
     }
 
@@ -697,6 +719,11 @@ hr {
         width: 90% !important;
         margin-right: 20px;
         font-size: 16px;
+        padding: 16px 21px !important
+    }
+
+    .hiddenInput {
+        width: 98%;
     }
 
     textarea {
@@ -705,6 +732,10 @@ hr {
     }
 
     .dropdown {
+        width: 90% !important
+    }
+
+    .dropdownAssigned {
         width: 90% !important
     }
 

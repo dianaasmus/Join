@@ -91,7 +91,7 @@ input::-webkit-search-cancel-button {
 }
 
 .boardSubsections {
-  
+
     min-height: 55vh;
     width: 25%;
     display: flex;
@@ -164,6 +164,7 @@ input::-webkit-search-cancel-button {
     cursor: pointer;
     content: url('.././assets/img/plusButtonBoardLightBlue.png');
 
+
 }
 
 .design {
@@ -221,6 +222,7 @@ input::-webkit-search-cancel-button {
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.25);
     z-index: 80;
+
 }
 
 .dialogFullCardContent {
@@ -246,8 +248,8 @@ input::-webkit-search-cancel-button {
 
 .closeButtondialogFullCard {
     position: absolute;
-    top: 10px;
-    right: -20px
+    top: 24px;
+    right: -3px
 }
 
 .wrapperDialog {
@@ -256,6 +258,10 @@ input::-webkit-search-cancel-button {
     margin: auto;
     position: relative;
     height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
 }
 
 .wrapperDialog h1 {
@@ -366,31 +372,34 @@ input::-webkit-search-cancel-button {
     cursor: pointer;
 }
 
-.delete {
-    height: 40px;
+.deleteButton {
+    height: 100%
 }
 
-.delete:hover {
+.editButton {
+    height: 100%
+}
+
+.deleteButton:hover {
     cursor: pointer;
     content: url('../assets/img/lightBlueDelete.png');
+
 }
 
-.edit {
-    height: 40px;
-}
 
-.edit:hover {
+.editButton:hover {
     cursor: pointer;
     content: url('../assets/img/lightBlueEdit.png');
+
 }
 
 .editDelete {
     width: 110%;
     display: flex;
-    justify-content: end;
-    position: absolute;
-    bottom: 2%
+    justify-content: flex-end;
+
 }
+
 
 .addedSubtaskOnEdit {
     width: 15px !important;
@@ -469,16 +478,16 @@ textarea {
 
 
 .dropdown-content {
-    width: 100% !important
+    width: 100% !important;
 }
+
 
 .okButtonDiv {
 
     width: 86%;
     display: flex;
     align-items: end;
-    position: absolute;
-    bottom: 3%
+
 }
 
 .okButton {
@@ -496,10 +505,6 @@ textarea {
     cursor: pointer;
 }
 
-.boardEditTaskForm div {
-    margin-bottom: 15px !important;
-}
-
 .boardEditTaskForm label {
     font-weight: bolder;
 }
@@ -509,7 +514,6 @@ textarea {
 
     display: flex;
     flex-direction: row;
-
     align-items: center;
     margin-bottom: 3px;
     position: relative;
@@ -546,9 +550,66 @@ textarea {
     width: 83%
 }
 
+.dropdownForMobileDevices {
+    display: none;
+    position: relative;
+    font-size: 18px;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #000000;
+    margin-top: 10px;
+}
+
+.dropdown-contentForMobileDevices {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: -1px;
+    width: 50%;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 10px;
+    z-index: 1;
+    padding: 10px;
+    overflow-y: scroll;
+    z-index: 200;
+}
+
+label:hover {
+    cursor: pointer;
+}
 
 
-@media(max-width:1000px) {
+
+@media(min-width:250px) and (max-width:1000px) {
+
+
+    .editDelete {
+        margin-bottom: 40%
+    }
+
+    .deleteButton:hover {
+        cursor: pointer;
+        content: inherit
+    }
+
+    .editButton {
+        height: 30px;
+    }
+
+    .deleteButton {
+        height: 30px;
+    }
+
+    .editButton:hover {
+        cursor: pointer;
+        content: inherit
+    }
+
+
+
     .wrapper {
         display: flex;
         align-items: center;
@@ -654,7 +715,9 @@ textarea {
         width: 60%;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly !important;
+        justify-content: space-evenly;
+        margin-top: 10px;
+        margin-bottom: 80px;
 
     }
 
@@ -672,10 +735,6 @@ textarea {
         left: 50%;
     }
 
-    .editDelete {
-        position: unset;
-    }
-
     .closeButtondialogFullCard {
         top: 8%;
     }
@@ -683,8 +742,11 @@ textarea {
     .boardEditTaskForm {
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly !important;
+        justify-content: space-evenly;
+        margin-bottom: 70px;
+        margin-top: 100px;
     }
+
 }
 
 @media(max-width:350px) {
@@ -692,10 +754,7 @@ textarea {
         top: 2%;
         height: 15px
     }
-
-    .wrapperDialog {
-        padding-top: 15%;
-    }
+   
 }
 
 @media(min-width:350px) and (max-width:700px) {
@@ -705,13 +764,34 @@ textarea {
     }
 
     .wrapperDialog {
-        padding-top: 15%;
+        margin-top: 10px;
+    }
+    .boardEditTaskForm {
+      
+        margin-bottom: 90px;
+        margin-top: 100px;
     }
 }
 
-@media(min-width:1000px) and (max-width:1300px) {
+@media(min-width:1000px) and (max-width:1450px) {
+    .boardSubsectionHeader h2 {
+        margin-right: 15%;
+        font-size: 20px;
+    }
+
+    .dropdownForMobileDevices {
+        display: none;
+    
+    }
 
     .headerForSelectionField {
-        display: block !important
+        display: block !important;
+        width: 100%
+    }
+}
+
+@media(max-width:600px) {
+    .dropdownForMobileDevices {
+        display: block;
     }
 }

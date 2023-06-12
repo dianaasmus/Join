@@ -27,8 +27,7 @@
         <div class="content">
             <h1>Add Task </h1>
 
-            <form onsubmit="addToTasks(); setTimeout(function() { window.location.reload(); }, 3000); return false "
-                class="taskBoard">
+            <form class="taskBoard">
 
 
                 <div class="taskBoardLeft">
@@ -53,9 +52,10 @@
                                 <!--Hidden input category-->
                                 <div id="hiddenInputCategory" class="hiddenInput displayNone">
 
-                                    <input class="selectedCategoryInputValue" maxlength="30" id="selectedCategoryInputValue"
-                                       placeholder="Category name">
-                                    <img onclick="closeHiddenInput()" class="closeHiddenInput" src="./assets/img/closeButtonBoard.png">
+                                    <input class="selectedCategoryInputValue" maxlength="30"
+                                        id="selectedCategoryInputValue" placeholder="Category name">
+                                    <img onclick="closeHiddenInput()" class="closeHiddenInput"
+                                        src="./assets/img/closeButtonBoard.png">
                                     <hr>
                                     <img class="createInHiddenInput" onclick="addCategoryOnTask()"
                                         src="./assets/img/check.png">
@@ -83,11 +83,11 @@
                         </div>
                     </div>
 
-                    <div> <!--Assigned to container-->
+                    <div id="eventLis"> <!--Assigned to container-->
                         <label>Assigned to</label>
-                        <div class="dropdown">
+                        <div class="dropdownAssigned">
                             <div class="headerForSelectionField">
-                                <label id="eventLis" style="position: relative;">Select contacts</label>
+                                <label style="position: relative;">Select contacts</label>
                                 <img class="arrDown" src="./assets/img/arrDown.png">
                                 <div>
                                     <input id="hiddenInputAddContact" class="hiddenInput displayNone"
@@ -127,7 +127,7 @@
                     <div>
                         <label>Subtasks</label>
                         <div class="addSubTask">
-                            <input maxlength="35" id="subtask" placeholder="Add new subtask">
+                            <input maxlength="35" id="subtask" placeholder="Add a subtask">
                             <img onclick="addSubtask()" class="addSubtaskButton"
                                 src="./assets/img/addSubtaskButton.png">
                         </div>
@@ -140,11 +140,12 @@
                         <span></span>
                     </div>
                     <div class="buttonsCreateTask">
-                        <button id="addTaskButton" onclick="window.location.reload();" class="buttonClearTask">
+                        <button onclick="window.location.reload(); return false" id="addTaskButton" class="buttonClearTask">
                             <span>Clear</span>
                             <span class="clearTaskPageImg">+</span>
                         </button>
-                        <button class="buttonCreateTask">
+                        <button onclick="addToTasks(); setTimeout(function() { window.location.reload(); }, 3000); return false"
+                            class="buttonCreateTask">
                             <span>Create Task</span>
                             <img class="createTaskPageImg" src="./assets/img/createTaskPage.png">
                         </button>

@@ -10,6 +10,7 @@ let subtasksToSave = []
 let date = new Date();
 contacts = []
 
+
 function disableButtonAddTask() {
     let button = document.getElementById('buttonCreateTaskPopUpTask')
     button.disabled = true;
@@ -84,8 +85,9 @@ function renderSubtasksOnPopUpAddTask() {
 
 
 function openPopUpAddTask() {
-    getTheDate()
+
     document.getElementById('addTaskPopUp').classList.add('openPopUp')
+    document.getElementById(`date`).setAttribute("min", date.toISOString().split("T")[0]);
 }
 
 
@@ -221,12 +223,6 @@ function addCategoryColorOnTask(i) {
 }
 
 
-function openInputAddContact() {
-    document.getElementById('hiddenInputAddContact').classList.remove('displayNone')
-    document.getElementById('dropdownAddContact').style = 'display:none'
-}
-
-
 function addToAssignedContacts(index) {
     if (index >= 0 && index < contacts.length) {
         let contact = contacts[index];
@@ -241,46 +237,38 @@ function addToAssignedContacts(index) {
 }
 
 
-window.addEventListener('DOMContentLoaded', function () {
-    var includedContent = document.getElementById('includeContainer');
-    includedContent.addEventListener('mouseenter', function (event) {
-        let contactList = document.getElementById('eventLisPopUp');
-        let dropdownAddContact = document.getElementById('dropdownAddContactPopUp');
-  
-        contactList.addEventListener('mouseenter', function (event) {
-            dropdownAddContact.innerHTML = '';
-            contacts.forEach((contact, index) => {
-                dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addToAssignedContacts('${index}')" type="checkbox"></div>`;
-            });
-        });
-
-
-    });
-});
-
-
-function handleClickOutside(event) {
-    let contactList = document.getElementById('eventLisPopUp');
-    if (!contactList.contains(event.target)) {
-        contactList.blur();
-    }
-}
-
-
-function handleTouchStart(event) {
-    let dropdownAddContact = document.getElementById('dropdownAddContactPopUp');
-    dropdownAddContact.innerHTML = '';
-    contacts.forEach((contact, index) => {
-        dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addToAssignedContacts('${index}')" type="checkbox"></div>`;
-    });
-}
-
-
 function closeHiddenInput() {
     document.getElementById('hiddenInputCategory').classList.add('displayNone')
     document.getElementById('dropdownCategory').style = 'display:inlineBlock'
 }
 
+
+function contactList() {
+    let droppedContacts = document.getElementById('dropdownAddContactPopUp');
+    if (droppedContacts.style.display === 'none') {
+        droppedContacts.style.display = 'block'
+    } else { droppedContacts.style.display = 'none' }
+    droppedContacts.innerHTML = ''
+
+    contacts.forEach((contact, index) => {
+        droppedContacts.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input id="checkboxAssigned${index}" onclick="addToAssignedContacts('${index}')" type="checkbox"></div>`;
+    })
+    checkForCheckedAssignedPopUp()
+}
+
+function checkForCheckedAssignedPopUp() {
+    let checkedbox
+
+    contacts.forEach((contact, index) => {
+
+        assignedContacts.forEach(assigned => {
+            checkedbox = document.getElementById(`checkboxAssigned${index}`)
+            if (contact.email === assigned.email) {
+                checkedbox.checked = true;
+            }
+        });
+    });
+}
 
 
 

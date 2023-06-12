@@ -15,15 +15,16 @@
     <script src="./script.js"></script>
     <script src="./js/mini_backend.js"></script>
     <script src="./js/board.js"></script>
-    <script src="./assets/templates/addTaskPopUp.js"></script>
     <script src="./js/HTMLsBoard_AddTask.js"></script>
     <script src="./js/contacts.js"></script>
+    <script src="./assets/templates/addTaskPopUp.js"></script>
+
 </head>
 
 <body onload="initBoard()">
     <div w3-include-html="./assets/templates/Sidebar.html"></div>
     <div w3-include-html="./assets/templates/header.html"></div>
-    <div id="includeContainer" w3-include-html="./assets/templates/addTaskPopUp.html"></div>
+    <div onload="contactList()" id="includeContainer" w3-include-html="./assets/templates/addTaskPopUp.html"></div>
     <div id="wrapper" class="wrapper">
 
         <div class="boardHeader">
@@ -110,7 +111,6 @@
 
     </div><!--content closed-->
     </div><!--wrapper closed-->
-
 
 </body>
 

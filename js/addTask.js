@@ -22,6 +22,7 @@ async function initAddTask() {
         tasks = await JSON.parse(await backend.getItem('tasks')) || []
         contacts = JSON.parse(backend.getItem('contacts')) || [];
         document.getElementById("date").setAttribute("min", date.toISOString().split("T")[0])
+        contactList()
     } catch (er) {
         console.error(er)
     }
@@ -30,8 +31,8 @@ async function initAddTask() {
 
 function disableButtonAddTask() {
     let button = document.getElementById('addTaskButton')
-    button.disabled = true; 
-    
+    button.disabled = true;
+
     setTimeout(function () {
         button.disabled = false;
     }, 3000);
@@ -39,7 +40,7 @@ function disableButtonAddTask() {
 
 
 async function addToTasks() {
-   
+
     let title = document.getElementById('task');
     let description = document.getElementById('description');
     let date = document.getElementById('date');
@@ -63,8 +64,8 @@ async function addToTasks() {
         assignedTo,
         pace: 0
     };
-  
-    clearValuesOfAddTask(title, description, category, assignedTo, date)
+
+    
     tasks.push(task);
     disableButtonAddTask()
     await backend.setItem('tasks', JSON.stringify(tasks))
@@ -135,6 +136,16 @@ function deleteSubtask(i) {
 }
 
 
+async function deleteTask(i) {
+
+    tasks.splice(i, 1);
+    await backend.setItem('tasks', JSON.stringify(tasks))
+    renderTaskCards();
+    document.getElementById('dialogFullCard').classList.add('displayNone')
+
+}
+
+
 function openInputAddCategory() {
     document.getElementById('selectedCategoryInputValue').value = ''
     document.getElementById('hiddenInputCategory').classList.remove('displayNone')
@@ -174,6 +185,7 @@ function addCategoryColorOnTask(i) {
 function openInputAddContact() {
     document.getElementById('hiddenInputAddContact').classList.remove('displayNone')
     document.getElementById('dropdownAddContact').style = 'display:none'
+  
 }
 
 
@@ -212,15 +224,12 @@ function renderSubtasksOnAddTask() {
 }
 
 
-document.addEventListener('DOMContentLoaded', function () {
+function contactList() {
+    let dropdownAddContact = document.getElementById('dropdownAddContact');
+    dropdownAddContact.innerHTML = ''
 
-    const contactList = document.getElementById('eventLis');
-    const dropdownAddContact = document.getElementById('dropdownAddContact')
+    contacts.forEach((contact, index) => {
+        dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input id="checkboxAssigned${index}" onclick="addToAssignedContacts('${index}')" type="checkbox"></div>`;
+    })
+}
 
-    contactList.addEventListener('mouseenter', function (event) {
-        dropdownAddContact.innerHTML = ''
-        contacts.forEach((contact, index) => {
-            dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addToAssignedContacts('${index}')" type="checkbox"></div>`;
-        });
-    });
-});

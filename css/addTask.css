@@ -151,20 +151,35 @@ input {
 
 
 }
+.dropdownAssigned {
+    position: relative;
+    display: inline-block;
+    width: 422px;
+    height: 26px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 13px 21px;
+    color: #000000;
+    border: 1px solid #D1D1D1;
+    margin-bottom: 0 !important;
+
+
+}
 
 .dropdown-content {
     display: none;
     position: absolute;
     top: 40px;
     left: -1px;
-    width: 464px;
+    width: 100%;
     background-color: #ffffff;
     color: #D1D1D1;
     border: 1px solid;
     border-radius: 10px;
     z-index: 1;
     padding-top: 10px;
-    margin-bottom: 15px !important
+    margin-bottom: 15px !important;
+    border-top: none;
 }
 
 .dropdown-content a {
@@ -172,23 +187,25 @@ input {
     padding: 12px 20px;
     text-decoration: none;
     color: #000000;
-
-
 }
+
 
 .dropdown:hover .dropdown-content {
     display: block;
     border-top: none;
 }
 
+.dropdownAssigned:hover .dropdown-content {
+    display: block;
+    border-top: none;
+}
+
+
 .colorPickers {
     display: flex;
     flex-direction: row;
     margin-top: 5px;
     margin-bottom: 0 !important;
-
-
-
 }
 
 .colorPicker {
@@ -424,7 +441,7 @@ hr {
 
 
 @media(max-width:800px) {
-   
+
 
     h1 {
         text-align: center;
@@ -469,6 +486,9 @@ hr {
     }
 
     .dropdown {
+        width: 88%
+    }
+    .dropdownAssigned {
         width: 88%
     }
 
@@ -577,6 +597,9 @@ hr {
     .dropdown {
         width: 70%
     }
+    .dropdownAssigned {
+        width: 70%
+    }
 
     .dropdown-content {
         width: 100%
@@ -605,15 +628,17 @@ hr {
     }
 
     .priorityImg {
-        width: 20%
+        width: 30%
     }
 }
 
-@media(min-width:500px)and (max-width:750px) {
+@media(min-width:500px)and (max-width:800px) {
     .selectedCategoryInputValue {
-
         width: 107%;
+    }
 
+    .priorityImg {
+        width: 20%
     }
 }
 
@@ -681,6 +706,9 @@ hr {
     .dropdown {
         width: 70%
     }
+    .dropdownAssigned {
+        width: 70%
+    }
 
     .content {
         margin: 0
@@ -698,4 +726,15 @@ hr {
         right: 17%;
     }
 
+}
+
+@media(min-width:240px) and (max-width:450px) {
+    .priorityImg {
+        width: 36%;
+        height: 40px;
+    }
+
+    .addSubtaskButton {
+        right: 0
+    }
 }
