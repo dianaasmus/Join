@@ -149,7 +149,7 @@ function ifStatusToDoForMobile(i) {
 
     if (tasks[i].readinessState === "toDo") {
         statuses.innerHTML = ''
-        statuses.innerHTML += `<div class="statusesDropdown">
+        statuses.innerHTML += `<div id="statusesDropdown${i}" class="statusesDropdown">
         <p onclick="statusInProgress(${i})">In Progress</p>
         <p onclick="statusAwaitingFeedback(${i})">Awaiting Feedback</p>
         <p onclick="statusDone(${i})">Done</p>
@@ -163,7 +163,7 @@ function ifStatusInProgressForMobile(i) {
 
     if (tasks[i].readinessState === "inProgress") {
         statuses.innerHTML = ''
-        statuses.innerHTML += `<div class="statusesDropdown">
+        statuses.innerHTML += `<div id="statusesDropdown${i}" class="statusesDropdown">
         <p onclick="statusToDo(${i})">To Do</p>
         <p onclick="statusAwaitingFeedback(${i})">Awaiting Feedback</p>
         <p onclick="statusDone(${i})">Done</p>
@@ -177,7 +177,7 @@ function ifStatusAwaitingFeedbackForMobile(i) {
 
     if (tasks[i].readinessState === "awaitingFeedback") {
         statuses.innerHTML = ''
-        statuses.innerHTML += `<div class="statusesDropdown">
+        statuses.innerHTML += `<div id="statusesDropdown${i}" class="statusesDropdown">
         <p onclick="statusToDo(${i})">To Do</p>
         <p onclick="statusInProgress(${i})">In Progress</p>
         <p onclick="statusDone(${i})">Done</p>
@@ -191,7 +191,7 @@ function ifStatusDoneForMobile(i) {
 
     if (tasks[i].readinessState === "done") {
         statuses.innerHTML = ''
-        statuses.innerHTML += `<div class="statusesDropdown">
+        statuses.innerHTML += `<div id="statusesDropdown${i}" class="statusesDropdown">
         <p onclick="statusToDo(${i})">To Do</p>
         <p onclick="statusInProgress(${i})">In Progress</p>
         <p onclick="statusAwaitingFeedback(${i})">Awaiting Feedback</p>

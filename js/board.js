@@ -26,7 +26,7 @@ async function initBoard() {
         tasks = await JSON.parse(await backend.getItem('tasks')) || []
         contacts = JSON.parse(backend.getItem('contacts')) || [];
         renderTaskCards()
-        
+
     } catch (er) {
         console.error(er)
     }
@@ -123,7 +123,7 @@ function priorityImageForRenderFullTaskCard(i) {
 
 
 async function renderDialogFullCard(i, colorCircle) {
-
+   
     let counter = 0
     document.getElementById('dialogFullCard').classList.remove('displayNone')
     document.getElementById('dialogFullCard').innerHTML = HTMLrenderDialogFullCard(i)
@@ -134,12 +134,14 @@ async function renderDialogFullCard(i, colorCircle) {
     })
     renderAssignedContactsOnFullCard(i)
     checkForChecked(i, `checkBox${counter}`)
-
+    let changeStatus = document.getElementById(`dropdown-contentForMobileDevices${i}`);
+    changeStatus.style.display = 'none'
 }
 
 
 function openEditTask(i) {
-
+    let changeStatus = document.getElementById(`dropdown-contentForMobileDevices${i}`);
+    changeStatus.style.display = 'none'
     document.getElementById('dialogEditCard').classList.remove('displayNone')
     document.getElementById('dialogEditCard').innerHTML = openEditTaskHTML(i)
     document.getElementById(`editedDate`).setAttribute("min", date.toISOString().split("T")[0]);
@@ -340,13 +342,21 @@ function addReassigned(i, index) {
 function openChangeStatus(i, event) {
 
     let changeStatus = document.getElementById(`dropdown-contentForMobileDevices${i}`);
-    if (changeStatus.style.display === 'none') { changeStatus.style.display = 'block'; } else {
+
+    if (changeStatus.style.display === 'none') {
+        changeStatus.style.display = 'block';
+
+    } else {
         changeStatus.style.display = 'none'
+
     }
     event = event || window.event;
     event.stopPropagation();
     openChangeStatusContent(i);
-
+    let droppedContent = document.getElementById(`statusesDropdown${i}`);
+    if (changeStatus.style.display === 'none') {
+        droppedContent.style.display = 'none'
+    }
 }
 
 
