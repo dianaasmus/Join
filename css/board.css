@@ -110,6 +110,7 @@ input::-webkit-search-cancel-button {
     align-items: space-between;
     margin-right: 30px;
     font-size: 21px;
+    gap:30px
 
 }
 
