@@ -38,34 +38,16 @@ function renderTaskCards(i, j) {
 
     let search = filterTasks()
     j = 0;
-    let colorCircle = 0
     for (i = 0; i < tasks.length; i++) {
         if (tasks[i].title.toLowerCase().includes(search)) {
-            /*  checkForContacts(i) */
             checkForReadiness(i, j)
             document.getElementById('progressBar' + i).style.background = tasks[i].colorOfBar
-            renderAssignedContactsOnBoard(i, colorCircle)
+            renderAssignedContactsOnBoard(i)
             hideProgressSection(i)
             j++
         }
     }
 }
-
-
-/* function checkForContacts(i) {
-    if (tasks[i].assignedTo) {
-        for (let k = 0; k < tasks[i].assignedTo.length; k++) {
-            let assignedContact = tasks[i].assignedTo[k];
-            
-            if (!contacts.some(contact => contact.email === assignedContact.email)) {
-                tasks[i].assignedTo.splice(k, 1);
-            }
-        }
-    }
-} */
-
-
-
 
 
 function hideProgressSection(i) {
@@ -77,19 +59,13 @@ function hideProgressSection(i) {
 
 
 
-function renderAssignedContactsOnBoard(i, colorCircle) {
+function renderAssignedContactsOnBoard(i, contact, colorCircle) {
+    colorCircle = 0
     if (tasks[i].assignedTo) {
         document.getElementById(`assignedToCircles${i}`).innerHTML = ''
-        for (let contact = 0; contact < tasks[i].assignedTo.length; contact++) {
-            contacts.filter(maincontact => {
-                if (maincontact.email === tasks[i].assignedTo[contact].email) {
-                    tasks[i].assignedTo[contact].firstNameLetter = maincontact.firstNameLetter;
-                    tasks[i].assignedTo[contact].lastNameLetter = maincontact.lastNameLetter;
-                }
-            })
-            let element = document.getElementById(`colors${colorCircle}`);
-            let backgroundColorCircle = element.style.backgroundColor;
-            document.getElementById(`assignedToCircles${i}`).innerHTML += `<span style="background-color:${backgroundColorCircle}" class="assignedToAvatar">${tasks[i].assignedTo[contact].firstNameLetter}${tasks[i].assignedTo[contact].lastNameLetter}</span>`
+        for (contact = 0; contact < tasks[i].assignedTo.length; contact++) {
+            checkIfTheContactNameChanged(i, contact)
+            HTMLforRenderAssignedContactsOnBoard(i, colorCircle, contact)
             colorCircle++
             if (colorCircle == 6) { colorCircle = 0 }
         }
@@ -97,19 +73,28 @@ function renderAssignedContactsOnBoard(i, colorCircle) {
 }
 
 
-function renderAssignedContactsOnFullCard(i) {
-    openChangeStatus(i)
-    let colorCircle = 0
+function renderAssignedContactsOnFullCard(i, contact, colorCircle) {
+   
+    colorCircle = 0
     if (tasks[i].assignedTo) {
         document.getElementById(`assignedToFullCard`).innerHTML = ''
-        for (let contact = 0; contact < tasks[i].assignedTo.length; contact++) {
-            let element = document.getElementById(`colors${colorCircle}`);
-            let backgroundColorCircle = element.style.backgroundColor;
-            document.getElementById(`assignedToFullCard`).innerHTML += `<div class="assignedToContact"><span style="background-color:${backgroundColorCircle}" class="assignedToAvatar">${tasks[i].assignedTo[contact].firstNameLetter}${tasks[i].assignedTo[contact].lastNameLetter}</span><p>${tasks[i].assignedTo[contact].name}</p><div>`
+        for (contact = 0; contact < tasks[i].assignedTo.length; contact++) {
+            checkIfTheContactNameChanged(i, contact)
+            HTMLforRenderAssignedContactsOnFullCard(i, contact, colorCircle)
             colorCircle++
             if (colorCircle == 6) { colorCircle = 0 }
         }
     }
+}
+
+
+function checkIfTheContactNameChanged(i, contact) {
+    contacts.filter(maincontact => {
+        if (maincontact.email === tasks[i].assignedTo[contact].email) {
+            tasks[i].assignedTo[contact].firstNameLetter = maincontact.firstNameLetter;
+            tasks[i].assignedTo[contact].lastNameLetter = maincontact.lastNameLetter;
+        }
+    })
 }
 
 
