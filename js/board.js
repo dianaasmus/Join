@@ -41,7 +41,7 @@ function renderTaskCards(i, j) {
     let colorCircle = 0
     for (i = 0; i < tasks.length; i++) {
         if (tasks[i].title.toLowerCase().includes(search)) {
-            checkForContacts(i)
+            /*  checkForContacts(i) */
             checkForReadiness(i, j)
             document.getElementById('progressBar' + i).style.background = tasks[i].colorOfBar
             renderAssignedContactsOnBoard(i, colorCircle)
@@ -52,16 +52,17 @@ function renderTaskCards(i, j) {
 }
 
 
-function checkForContacts(i) {
+/* function checkForContacts(i) {
     if (tasks[i].assignedTo) {
         for (let k = 0; k < tasks[i].assignedTo.length; k++) {
             let assignedContact = tasks[i].assignedTo[k];
+            
             if (!contacts.some(contact => contact.email === assignedContact.email)) {
                 tasks[i].assignedTo.splice(k, 1);
             }
         }
     }
-}
+} */
 
 
 
@@ -80,6 +81,12 @@ function renderAssignedContactsOnBoard(i, colorCircle) {
     if (tasks[i].assignedTo) {
         document.getElementById(`assignedToCircles${i}`).innerHTML = ''
         for (let contact = 0; contact < tasks[i].assignedTo.length; contact++) {
+            contacts.filter(maincontact => {
+                if (maincontact.email === tasks[i].assignedTo[contact].email) {
+                    tasks[i].assignedTo[contact].firstNameLetter = maincontact.firstNameLetter;
+                    tasks[i].assignedTo[contact].lastNameLetter = maincontact.lastNameLetter;
+                }
+            })
             let element = document.getElementById(`colors${colorCircle}`);
             let backgroundColorCircle = element.style.backgroundColor;
             document.getElementById(`assignedToCircles${i}`).innerHTML += `<span style="background-color:${backgroundColorCircle}" class="assignedToAvatar">${tasks[i].assignedTo[contact].firstNameLetter}${tasks[i].assignedTo[contact].lastNameLetter}</span>`
@@ -123,7 +130,7 @@ function priorityImageForRenderFullTaskCard(i) {
 
 
 async function renderDialogFullCard(i, colorCircle) {
-   
+
     let counter = 0
     document.getElementById('dialogFullCard').classList.remove('displayNone')
     document.getElementById('dialogFullCard').innerHTML = HTMLrenderDialogFullCard(i)
