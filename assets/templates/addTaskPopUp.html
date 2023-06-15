@@ -5,7 +5,7 @@
             <img onclick="closePopUpAddTask()" class="closePopUp" src="../../assets/img/closeButtonBoard.png">
         </div>
 
-        <form class="taskBoardPopUpTask">
+        <form  onsubmit="addToTasks(); setTimeout(function() { window.location.reload(); }, 3000); return false" class="taskBoardPopUpTask">
 
 
             <div class="taskBoardLeftPopUpTask">
@@ -127,7 +127,7 @@
                         <span class="clearTaskPageImgPopUpTask">+</span>
                         <!-- <img class="clearTaskPageImg" src="./assets/img/clearTaskPage.png"> -->
                     </button>
-                    <button onsubmit="addToTasks(); setTimeout(function() { window.location.reload(); }, 3000); return false" id="buttonCreateTaskPopUpTask" class="buttonCreateTaskPopUpTask">
+                    <button type="submit" id="buttonCreateTaskPopUpTask" class="buttonCreateTaskPopUpTask">
                         <span>Create Task</span>
                         <img class="createTaskPageImgPopUpTask" src="./assets/img/createTaskPage.png">
                     </button>
