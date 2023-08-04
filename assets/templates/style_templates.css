@@ -244,6 +244,10 @@ a {
         white-space: nowrap;
     }
 
+    #contacts-props img {
+        height: 27px;
+    }
+
     header {
         padding-left: 0;
     }
@@ -274,6 +278,10 @@ a {
     .sidebar-props {
         width: 0;
         height: 70px;
+    }
+
+    #contacts-props img {
+        height: 22px;
     }
 
     .header-right {
