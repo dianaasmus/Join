@@ -116,7 +116,7 @@ function sendResetFeedback() {
     document.getElementById('wider-container-style').innerHTML += `
     <div class="sent-mail-container" onclick="linkToLogin()">
         <div class="sent-mail-message">
-            <img src="assets/img/checkmark-icon.png">
+            <img src="../assets/img/checkmark-icon.png">
             You reseted your password.
         </div>
     </div>

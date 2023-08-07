@@ -6,22 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add task</title>
-    <link rel="stylesheet" href="./css/addTask.css">
-    <link rel="icon" href="assets/img/logo-blue.png">
-    <link rel="stylesheet" href="fonts.css">
-    <link rel="stylesheet" href="./assets/templates/style_templates.css">
+    <link rel="stylesheet" href="../css/addTask.css">
+    <link rel="icon" href="../assets/img/logo-blue.png">
+    <link rel="stylesheet" href="../fonts.css">
+    <link rel="stylesheet" href="../css/sidebar_header.css">
 
-    <script src="./js/mini_backend.js"></script>
-    <script src="./js/HTMLsBoard_AddTask.js"></script>
-    <script src="./js/addTask.js"></script>
-    <script src="./js/contacts.js"></script>
-    <script src="./script.js"></script>
+    <script src="../js/mini_backend.js"></script>
+    <script src="../js/HTMLsBoard_AddTask.js"></script>
+    <script src="../js/addTask.js"></script>
+    <script src="../js/contacts.js"></script>
+    <script src="../script.js"></script>
 </head>
 
 <body onload="initAddTask()">
 
-    <div w3-include-html="./assets/templates/Sidebar.html"></div>
-    <div w3-include-html="./assets/templates/header.html"></div>
+    <div w3-include-html="sidebar.html"></div>
+    <div w3-include-html="header.html"></div>
     <div class="wrapper">
 
         <div class="content">
@@ -32,30 +32,30 @@
 
 
                 <div class="taskBoardLeft">
-                    <div><!--Title container-->
+                    <div>
                         <label>Title</label>
                         <input id="task" type="text" placeholder="Enter a title" required>
                     </div>
 
-                    <div><!--Title container-->
+                    <div>
                         <label>Description</label>
                         <textarea id="description" required style="color: #000000;" required type="text"
                             placeholder="Enter a description"></textarea>
                     </div>
 
-                    <div class="categoryContainer"> <!--Category container-->
+                    <div class="categoryContainer">
                         <label>Category</label>
 
                         <div class="dropdown">
                             <div class="headerForSelectionField">
                                 <label id="labelCategory">Select task category</label>
                                 <img class="arrDown" src="./assets/img/arrDown.png">
-                                <!--Hidden input category-->
                                 <div id="hiddenInputCategory" class="hiddenInput displayNone">
 
-                                    <input class="selectedCategoryInputValue" maxlength="30" id="selectedCategoryInputValue"
-                                       placeholder="Category name">
-                                    <img onclick="closeHiddenInput()" class="closeHiddenInput" src="./assets/img/closeButtonBoard.png">
+                                    <input class="selectedCategoryInputValue" maxlength="30"
+                                        id="selectedCategoryInputValue" placeholder="Category name">
+                                    <img onclick="closeHiddenInput()" class="closeHiddenInput"
+                                        src="./assets/img/closeButtonBoard.png">
                                     <hr>
                                     <img class="createInHiddenInput" onclick="addCategoryOnTask()"
                                         src="./assets/img/check.png">
@@ -83,7 +83,7 @@
                         </div>
                     </div>
 
-                    <div> <!--Assigned to container-->
+                    <div>
                         <label>Assigned to</label>
                         <div class="dropdown">
                             <div class="headerForSelectionField">
@@ -91,14 +91,11 @@
                                 <img class="arrDown" src="./assets/img/arrDown.png">
                                 <div>
                                     <input id="hiddenInputAddContact" class="hiddenInput displayNone"
-                                        placeholder="New category name"> <!--Hidden input addContact-->
+                                        placeholder="New category name">
 
                                 </div>
-
                             </div>
                             <div id="dropdownAddContact" class="dropdown-content">
-
-
                             </div>
                         </div>
                     </div>
@@ -152,15 +149,10 @@
 
             </form>
 
-        </div><!--taskBoard closed-->
-
-
-
-    </div><!--content closed-->
+        </div>
+    </div>
     <div id="popUpWhenAdded" class="taskAddedPopUp displayNone"><span>Task added to board</span></div>
-    </div><!--wrapper closed-->
-
-
+    </div>
 </body>
 
 </html>

@@ -15,7 +15,7 @@ function openForgotPassword() {
 function returnForgotPasswordForm() {
     return `
     <form onsubmit="onSubmit(event)" class="login-form forgotten-password-from">
-        <img class="arrow-left" onclick="backToLogin()" src="assets/img/arrow-left.png">
+        <img class="arrow-left" onclick="backToLogin()" src="../assets/img/arrow-left.png">
         <h1>I forgot my password</h1>
         <hr>
         <p>Don't worry! We will send you an email with the instructions to reset your password.</p>
@@ -99,7 +99,7 @@ function sentMailContainer() {
     document.getElementById('signup-forgotPsw-container').innerHTML += `
     <div class="sent-mail-container" onclick="backToLogin()">
         <div class="sent-mail-message">
-            <img src="./assets/img/SendCheck.png">
+            <img src="../assets/img/SendCheck.png">
             An E-Mail has been sent to you
         </div>
     </div>

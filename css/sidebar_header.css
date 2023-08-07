@@ -33,9 +33,7 @@ header {
 
 header span {
     font-style: normal;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 120%;
+    font-size: 1rem;
 }
 
 .header-right {
@@ -45,25 +43,25 @@ header span {
 }
 
 .question-mark {
-    width: 31px;
-    height: 31px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
-    padding-right: 15px;
+    padding-right: 28px;
 }
 
 .profile-picture-container {
-    width: 46px;
-    height: 46px;
+    width: 40px;
+    height: 40px;
     padding: 1px;
     border: 3px solid black;
-    border-radius: 90px;
+    border-radius: 100%;
     cursor: pointer;
 }
 
 .profile-picture {
-    width: 46px;
-    height: 46px;
-    border-radius: 559px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
     object-fit: cover;
 }
 
@@ -101,7 +99,7 @@ a {
 }
 
 .sidebar-logo img {
-    height: 110px;
+    height: 100px;
 }
 
 .sidebar-links {
@@ -139,16 +137,34 @@ a {
 }
 
 .sidebar-icons {
-    width: 28%;
+    width: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.sidebar-icon-1 {
+    width: 24px;
+}
+
+.sidebar-icon-3 {
+    width: 29px;
+    padding-left: 4px;
+}
+
+.sidebar-icon-4 {
+    width: 24px;
+    padding-left: 2px;
+}
+
+.sidebar-icon-5 {
+    width: 25px;
+}
+
 .sidebar-text {
     width: 50%;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     color: white;

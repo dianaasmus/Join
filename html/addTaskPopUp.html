@@ -1,42 +1,44 @@
 <div id="addTaskPopUp" class="wrapperPopUpTask">
-    <div class="contentPopUpTask">
-        <div class="taskPopUpHeader">
+    <div class="content-popup-task">
+        <div class="task-popup-header">
             <h1>Add Task</h1>
-            <img onclick="closePopUpAddTask()" class="closePopUp" src="../../assets/img/closeButtonBoard.png">
+            <img onclick="closePopUpAddTask()" class="close-popup" src="../assets/img/closeButtonBoard.png">
         </div>
 
-        <form onsubmit="addToTasks();setTimeout(function() { window.location.reload(); }, 3000); return false;" class="taskBoardPopUpTask">
+        <form onsubmit="addToTasks();setTimeout(function() { window.location.reload(); }, 3000); return false;"
+            class="board-popup-form">
 
 
-            <div class="taskBoardLeftPopUpTask">
-                <div><!--Title container-->
+            <div class="board-popup-form-left">
+                <div>
                     <label>Title</label>
                     <input id="task" type="text" placeholder="Enter a title" required>
                 </div>
 
-                <div><!--Title container-->
+                <div>
                     <label>Description</label>
                     <textarea id="description" required style="color: #000000;" required type="text"
                         placeholder="Enter a description"></textarea>
                 </div>
 
-                <div class="categoryContainer"> <!--Category container-->
+                <div class="categoryContainer">
                     <label>Category</label>
+                    <div class="dropdown" id="categoryDropdown">
 
-                    <div class="dropdown">
-                        <div class="headerForSelectionField">
-                            <label id="labelCategory">Select task category</label>
-                            <img class="arrDown" src="./assets/img/arrDown.png">
-                            <!--Hidden input category-->
-                            <div id="hiddenInputCategory" class="hiddenInput displayNone">
+                        <!-- <div class="header-for-selection-field"> -->
+
+                            <label class="lable-select-category">Select task category</label>
+                            <img class="dropdown-arrow" src="../assets/img/arrDown.png" onclick="dropDownCategory()">
+
+                            <!-- <div id="hiddenInputCategory" class="hiddenInput displayNone">
 
                                 <input id="selectedCategoryInputValue" style="position: relative;"
                                     placeholder="New category name">
                                 <img onclick="closeHiddenInput()" class="closeHiddenInput"
-                                    src="./assets/img/closeButtonBoard.png">
+                                    src="../assets/img/closeButtonBoard.png">
                                 <hr>
                                 <img class="createInHiddenInput" onclick="addCategoryOnTask()"
-                                    src="./assets/img/check.png">
+                                    src="../assets/img/check.png">
 
 
                                 <div class="colorPickers">
@@ -53,20 +55,23 @@
                                     <div onclick="addCategoryColorOnTask(6)" id="color6" class="colorPicker"
                                         style="background-color:#0038FF ;"></div>
                                 </div>
-                            </div>
-                        </div>
-                        <div id="dropdownCategory" class="dropdown-content">
+                            </div> -->
+
+                        <!-- </div> -->
+
+                        <!-- <div id="dropdownCategory" class="dropdown-content">
                             <a onclick="openInputAddCategory()" href="#">Add category</a>
-                        </div>
+                        </div> -->
+                        
                     </div>
                 </div>
 
                 <div class="contactContainer"> <!--Assigned to container-->
                     <label>Assigned to</label>
                     <div id="eventLisPopUp" class="dropdown">
-                        <div class="headerForSelectionField">
-                            <label style="position: relative;">Select contacts</label>
-                            <img class="arrDown" src="./assets/img/arrDown.png">
+                        <div class="header-for-selection-field">
+                            <label class="label-select-contact" style="position: relative;">Select contacts</label>
+                            <img class="dropdown-arrow" src="../assets/img/arrDown.png">
                             <div>
                                 <input id="hiddenInputAddContact" class="hiddenInput displayNone"
                                     placeholder="New category name"> <!--Hidden input addContact-->
@@ -94,11 +99,11 @@
                     <label>Prio</label>
                     <div class="prioritiesPopUpTask">
                         <img id="prio1" value="urgent" onclick="addPriority(1)" class="priorityImg"
-                            src="./assets/img/urgentImg.png">
+                            src="../assets/img/urgentImg.png">
                         <img id="prio2" value="medium" onclick="addPriority(2)" class="priorityImg"
-                            src="./assets/img/mediumImg.png">
+                            src="../assets/img/mediumImg.png">
                         <img id="prio3" value="low" onclick="addPriority(3)" class="priorityImg"
-                            src="./assets/img/lowImg.png">
+                            src="../assets/img/lowImg.png">
                     </div>
                 </div>
 
@@ -110,7 +115,7 @@
                     <div class="addSubTaskPopUpTask">
                         <input maxlength="35" id="subtaskPopUp" placeholder="Add new subtask">
                         <img class="addSubtaskButtonPopUpTask" onclick="addSubtaskOnPopUp()"
-                            class="addSubtaskButtonPopUpTask" src="./assets/img/addSubtaskButton.png">
+                            class="addSubtaskButtonPopUpTask" src="../assets/img/addSubtaskButton.png">
                     </div>
                     <div id="subtasksPopUp" class="checkBoxSubtasksDivPopUp">
 
@@ -129,7 +134,7 @@
                     </button>
                     <button id="buttonCreateTaskPopUpTask" class="buttonCreateTaskPopUpTask">
                         <span>Create Task</span>
-                        <img class="createTaskPageImgPopUpTask" src="./assets/img/createTaskPage.png">
+                        <img class="createTaskPageImgPopUpTask" src="../assets/img/createTaskPage.png">
                     </button>
                 </div>
 
@@ -141,4 +146,3 @@
 
 </div><!--content closed-->
 </div><!--wrapper closed-->
-

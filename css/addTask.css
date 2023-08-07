@@ -319,21 +319,6 @@ hr {
     transform: rotate(45deg);
 }
 
-
-
-::-webkit-scrollbar {
-    width: 10px;
-    background-color: #F0F0F0;
-    width: 15px
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgba(42, 54, 71, 1);
-    border-radius: 10px;
-
-
-}
-
 .priorityImg {
     height: 50px;
     border-radius: 10px;

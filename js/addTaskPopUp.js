@@ -9,6 +9,28 @@ let tasksToEdit = []
 let subtasksToSave = []
 let date = new Date();
 contacts = []
+let droppedDown = false;
+
+
+function dropDownCategory() {
+    let categoryDropDown = document.getElementById('categoryDropdown');
+
+    if (droppedDown) {
+        let categorySelections = document.getElementById('catergorySelections');
+        if (categorySelections) {
+            categoryDropDown.removeChild(categorySelections);
+        }
+        droppedDown = false;
+    } else {
+        droppedDown = true;
+        categoryDropDown.innerHTML += `
+            <div id="catergorySelections">
+                <label class="label-select-category">Select task category 1</label>
+                <label class="label-select-category">Select task category 2</label>
+            </div>
+        `;
+    }
+}
 
 function disableButtonAddTask() {
     let button = document.getElementById('buttonCreateTaskPopUpTask')
@@ -183,18 +205,18 @@ function colorPrios(selectedUrgency, i) {
 }
 
 
-function addCategoryOnTask() {
-    let value = document.getElementById('selectedCategoryInputValue').value;
-    if (value) {
-        document.getElementById('labelCategory').innerHTML = '';
-        document.getElementById('labelCategory').innerHTML = `<div class="assignedCategoryValues">
-         ${value}
-          <div class="colorPicker colorPickerAssigned" style="background-color: ${colorsCategory}"  id="assignedColor"></div>
-         </div>` ;
-        document.getElementById('hiddenInputCategory').classList.add('displayNone')
-        document.getElementById('dropdownCategory').style = 'none'
-    }
-}
+// function addCategoryOnTask() {
+//     let value = document.getElementById('selectedCategoryInputValue').value;
+//     if (value) {
+//         document.getElementById('labelCategory').innerHTML = '';
+//         document.getElementById('labelCategory').innerHTML = `<div class="assignedCategoryValues">
+//          ${value}
+//           <div class="colorPicker colorPickerAssigned" style="background-color: ${colorsCategory}"  id="assignedColor"></div>
+//          </div>` ;
+//         document.getElementById('hiddenInputCategory').classList.add('displayNone')
+//         document.getElementById('dropdownCategory').style = 'none'
+//     }
+// }
 
 
 function openInputAddCategory() {
@@ -242,11 +264,11 @@ function addToAssignedContacts(index) {
 
 
 window.addEventListener('DOMContentLoaded', function () {
-    var includedContent = document.getElementById('includeContainer');
+    let includedContent = document.getElementById('includeContainer');
     includedContent.addEventListener('mouseenter', function (event) {
         let contactList = document.getElementById('eventLisPopUp');
         let dropdownAddContact = document.getElementById('dropdownAddContactPopUp');
-  
+
         contactList.addEventListener('mouseenter', function (event) {
             dropdownAddContact.innerHTML = '';
             contacts.forEach((contact, index) => {

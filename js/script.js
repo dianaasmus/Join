@@ -47,10 +47,10 @@ function responsiveHeaderText() {
  */
 function adjustMedia() {
     const pathName = window.location.pathname;
-    if (pathName === '/legal-notice.html') {
+    if (pathName === '/html/legal-notice.html') {
         document.querySelector('.kanban-text-container-2').classList.add('responsiveHeader');
     } 
-    if (pathName == '/help.html') {
+    if (pathName == '/html/help.html') {
         document.querySelector('.kanban-text-container-2').classList.add('responsiveHeader');
     }   else {
         document.querySelector('.kanban-text-container-2').classList.remove('responsiveHeader');
@@ -65,19 +65,19 @@ function focusSidebar() {
     const pathName = window.location.pathname;
 
     switch (pathName) {
-        case '/summary.html':
+        case '/html/summary.html':
             document.getElementById('summary-props').classList.add('clicked');
             break;
-        case '/board.html':
+        case '/html/board.html':
             document.getElementById('board-props').classList.add('clicked');
             break;
-        case '/addTask.html':
+        case '/html/addTask.html':
             document.getElementById('addTask-props').classList.add('clicked');
             break;
-        case '/contacts.html':
+        case '/html/contacts.html':
             document.getElementById('contacts-props').classList.add('clicked');
             break;
-        case '/legal-notice.html':
+        case '/html/legal-notice.html':
             document.getElementById('legal-props').classList.add('clicked');
             break;
     }

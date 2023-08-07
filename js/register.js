@@ -19,7 +19,7 @@ function openSignUpContainer() {
 function returnSignupForm() {
     return `
             <form onsubmit="register(); return false;" class="login-form">
-                <img class="arrow-left" onclick="backToLogin()" src="assets/img/arrow-left.png">
+                <img class="arrow-left" onclick="backToLogin()" src="../assets/img/arrow-left.png">
                 <h1>Sign up</h1>
                 <hr>
                 <input class="input-field" placeholder="Name" type="text" id="userName" autocomplete="on" required>
@@ -62,7 +62,7 @@ function setSignUpFeedback() {
     document.getElementById('signup-forgotPsw-container').innerHTML += `
     <div class="sent-mail-container" onclick="backToLogin()">
         <div class="sent-mail-message">
-        <img src="assets/img/checkmark-icon.png">
+        <img src="../assets/img/checkmark-icon.png">
         You have successfully registered.
         </div>
     </div>
