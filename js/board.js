@@ -3,8 +3,8 @@ assignedContacts = []
 prios = []
 categories = []
 colorsCategory = []
-prioImages = ['./assets/img/urgent.png', './assets/img/medium.png', './assets/img/low.png']
-prioImagesFullCard = ['./assets/img/urgentOnclick.png', './assets/img/mediumOnclick.png', './assets/img/lowOnclick.png']
+prioImages = ['../assets/img/urgent.png', '../assets/img/medium.png', '../assets/img/low.png']
+prioImagesFullCard = ['../assets/img/urgentOnclick.png', '../assets/img/mediumOnclick.png', '../assets/img/lowOnclick.png']
 tasksToEdit = []
 subtasksToSave = []
 let currentDragged
@@ -12,8 +12,6 @@ let percentOfDone
 let colorOfBar
 let checkboxState;
 let checkedInput
-
-
 
 
 async function initBoard() {
@@ -29,6 +27,7 @@ async function initBoard() {
         console.error(er)
     }
 }
+
 
 function getTheDate() {
     let forCalender = document.getElementById("date").setAttribute("min", date.toISOString().split("T")[0]);
@@ -112,7 +111,6 @@ function priorityImageForRenderTaskCards(i) {
     if (tasks[i].prio == 'urgent') { document.getElementById(`urgencyBoard${i}`).src = prioImages[0] }
     if (tasks[i].prio == 'medium') { document.getElementById(`urgencyBoard${i}`).src = prioImages[1] }
     if (tasks[i].prio == 'low') { document.getElementById(`urgencyBoard${i}`).src = prioImages[2] }
-
 }
 
 
@@ -120,7 +118,6 @@ function priorityImageForRenderFullTaskCard(i) {
     if (tasks[i].prio == 'urgent') { document.getElementById(`urgencyFullCard${i}`).src = prioImagesFullCard[0] }
     if (tasks[i].prio == 'medium') { document.getElementById(`urgencyFullCard${i}`).src = prioImagesFullCard[1] }
     if (tasks[i].prio == 'low') { document.getElementById(`urgencyFullCard${i}`).src = prioImagesFullCard[2] }
-
 }
 
 

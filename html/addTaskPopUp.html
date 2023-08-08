@@ -23,13 +23,16 @@
 
                 <div class="categoryContainer">
                     <label>Category</label>
-                    <div class="dropdown" id="categoryDropdown">
+                    <div id="categoryDropdown">
 
-                        <div onclick="dropDown('category')" style="margin: 0;">
-                            <button id="categoryBtn" class="lable-select-category">Select task
-                                category</button>
+                        <div class="dropdown">
+                            <button id="categoryBtn" class="lable-select-category">Select task category</button>
                             <img id="dropdownArrowCategory" src="../assets/img/arrDown.png">
+                            <div class="dropdown-content">
+                                <a href="#">New Category</a>
+                            </div>
                         </div>
+
 
                         <!-- <div id="hiddenInputCategory" class="hiddenInput displayNone">
 
@@ -119,12 +122,9 @@
                     </div>
                 </div>
 
-
-
-
                 <div>
                     <label>Subtasks</label>
-                    <div class="addSubTaskPopUpTask">
+                    <div class="add-subtask">
                         <input maxlength="35" id="subtaskPopUp" placeholder="Add new subtask">
                         <img class="add-subtask-img" onclick="addSubtaskOnPopUp()"
                             src="../assets/img/addSubtaskButton.png">
@@ -137,7 +137,7 @@
                 <div class="create-task-btns">
                     <button class="clear-task-btn">
                         <span>Clear</span>
-                        <span class="clearTaskPageImgPopUpTask">+</span>
+                        <span class="clear-task-img">+</span>
                     </button>
                     <button id="buttonCreateTaskPopUpTask" class="create-task-btn">
                         <span>Create Task</span>
@@ -147,5 +147,4 @@
 
         </form>
         <div id="popUpWhenAdded" class="taskAddedPopUp displayNone"><span>Task added to board</span></div>
-        <!-- </div> -->
     </div>

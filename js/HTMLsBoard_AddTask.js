@@ -1,44 +1,40 @@
 function HTMLrenderTaskCards(i, j) {
-
-    return `<div draggable="true" ondragstart="startDragging(${i})" onclick="renderDialogFullCard(${i})" class="boardCard" >
+    return `<div draggable="true" ondragstart="startDragging(${i})" onclick="renderDialogFullCard(${i})" class="board-card" >
                 <div class="category" style="background-color: ${tasks[i].colorCategory}">
                    ${tasks[i].category}
                 </div>
-                <h4 >${tasks[i].title}
-                </h4>
-                <div class="task">${tasks[i].description}
-                </div>
-                <div id="progressBarSection${i}" class="progressBarSection">
-                   <div id="progressBar${i}" class="progressBar"></div>
+                <h4>${tasks[i].title}</h4>
+                <div class="task">${tasks[i].description}</div>
+                <div id="progressBarSection${i}" class="progress-bar-section">
+                   <div id="progressBar${i}" class="progress-bar"></div>
                    <div>${tasks[i].pace}/${tasks[i].subtasks.length} Done</div>
                 </div>
-                <div  class="assignedToBoard">
-                    <span id="assignedToCircles${i}" class="assignedToAvatars" ></span>
-                    <img id="urgencyBoard${j}" src=" ">
+                <div class="assign-to-board">
+                    <span id="assignedToCircles${i}" class="assign-to-avatar"></span>
+                    <img id="urgencyBoard${j}">
                 </div>
             </div>`
-           
+
 }
 
 
 function HTMLrenderDialogFullCard(i) {
     return `
-    <div id="dialogFullCardContent" class="dialogFullCardContent">
-        <div class="wrapperDialog">
-                 <img onclick="closeTask()" class="closeButtondialogFullCard" src="./assets/img/closeButtonBoard.png">
-                 <div class="categoryDialog" style="background-color: ${tasks[i].colorCategory}"> 
+    <div id="dialogFullCardContent" class="dialog-full-card-content">
+        <div class="dialog-wrapper">
+            <div class="categoryDialog" style="background-color: ${tasks[i].colorCategory}"> 
                       ${tasks[i].category}
-                 </div>
-                 <h1>${tasks[i].title}</h1>  
-                 <div class="taskDescript">
-                      ${tasks[i].description}
-                 </div>
-                 <div class="dueDate">
-                      <p>Due Date:</p> <span>${tasks[i].date}</span>
-                 </div>
-                 <div class="dueDate">
-                     <p>Priority:</p> <img class="priorityImgFullCard" id="urgencyFullCard${i}" src=" ">
-                 </div>
+            </div>
+            <img onclick="closeTask()" class="closeButtondialogFullCard" src="../assets/img/closeButtonBoard.png">
+            <h1>${tasks[i].title}</h1>  
+            <div class="taskDescript">${tasks[i].description}</div>
+            <div class="dueDate">
+                <p>Due Date:</p> <span>${tasks[i].date}</span>
+            </div>
+
+            <div class="dueDate">
+                <p>Priority:</p> <img class="priorityImgFullCard" id="urgencyFullCard${i}" src=" ">
+            </div>
               
                  <div>
                     <p>Subtasks:</p>
@@ -48,27 +44,25 @@ function HTMLrenderDialogFullCard(i) {
 
                  <div class="assignedTo">
     
-                      <p>Assigned to:</p>
-                      <div class="assignedToFullCard" id="assignedToFullCard">
-                      </div
+            <p>Assigned to:</p>
+            <div class="assignedToFullCard" id="assignedToFullCard"></div>
                      
-                 </div>
-                 <div class="editDelete">
-                       <img onclick="deleteTask(${i})" class="delete" src="./assets/img/blueDelete.png">
-                      <img onclick="openEditTask(${i})" class="edit" src="./assets/img/blueEdit.png">
-                 </div>
+            <div class="editDelete">
+                <img onclick="deleteTask(${i})" class="delete" src="../assets/img/blueDelete.png">
+                <img onclick="openEditTask(${i})" class="edit" src="../assets/img/blueEdit.png">
+            </div>
         </div>
    </div>`
 }
 
-function HTMLrenderSubtasksDialogFullCard(i,subtask,counter) {
+function HTMLrenderSubtasksDialogFullCard(i, subtask, counter) {
     return `<div class="checkBoxDiv">
     <span>${subtask.subtask}</span><input type="checkbox" onclick="countTasks(${i},${counter})"  id="checkBox${counter}" class="addedSubtaskOnEdit">
 </div>`}
 
 
 function openEditTaskHTML(i) {
- 
+
     return `<div id="entireEditTaskCard" class="dialogFullCardContent"
         style="display:flex; justify-content: center !important; align-items: center;">
         <form class="boardEditTaskForm" onsubmit="editTask(${i}); return false;">
@@ -92,11 +86,11 @@ function openEditTaskHTML(i) {
                 <label>Prio</label>
                 <div class="priorities">
                     <img id="prio4" value="urgent" onclick="addEditedPriority(${i},${4})" class="priorityImgEdit"
-                        src="./assets/img/urgentImg.png">
+                        src="../assets/img/urgentImg.png">
                     <img id="prio5" value="medium" onclick="addEditedPriority(${i},${5})" class="priorityImgEdit"
-                        src="./assets/img/mediumImg.png">
+                        src="../assets/img/mediumImg.png">
                     <img id="prio6" value="low" onclick="addEditedPriority(${i},${6})" class="priorityImgEdit"
-                        src="./assets/img/lowImg.png">
+                        src="../assets/img/lowImg.png">
                 </div>
             </div>
 
@@ -107,7 +101,7 @@ function openEditTaskHTML(i) {
                 <div class="dropdownEditTask">
                     <div id="reassignContacts" class="headerForSelectionField">
                         <span style="position: relative;">Reassign contacts</span>
-                        <img class="arrDown" src="./assets/img/arrDown.png">
+                        <img class="arrDown" src="../assets/img/arrDown.png">
                         <div>
                             <input id="editedHiddenInputAddContact" class="hiddenInput displayNone"
                                 placeholder="New category name"> <!--Hidden input addContact-->

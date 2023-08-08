@@ -3,72 +3,14 @@ let assignedContacts = []
 let prios = []
 let categories = []
 let colorsCategory = []
-let prioImages = ['./assets/img/urgent.png', './assets/img/medium.png', './assets/img/low.png']
-let prioImagesFullCard = ['./assets/img/urgentOnclick.png', './assets/img/mediumOnclick.png', './assets/img/lowOnclick.png']
+let prioImages = ['../assets/img/urgent.png', '../assets/img/medium.png', '../assets/img/low.png']
+let prioImagesFullCard = ['../assets/img/urgentOnclick.png', '../assets/img/mediumOnclick.png', '../assets/img/lowOnclick.png']
 let tasksToEdit = []
 let subtasksToSave = []
 let date = new Date();
 contacts = []
 let droppedDown = false;
 
-const dropdownToggle = document.getElementById('categoryBtn');
-// const dropdownMenu = document.getElementById('dropdownMenu');
-const dropdownOptions = document.querySelectorAll('.dropdown li');
-
-
-// dropdownToggle.addEventListener('click', () => {
-//     dropdownMenu.classList.toggle('show');
-// });
-
-
-dropdownOptions.forEach(option => {
-    option.addEventListener('click', () => {
-        console.log('click');
-        // dropdownToggle.innerHTML = option.innerHTML + ' <span class="arrow"></span>';
-        // dropdownMenu.classList.remove('show');
-    });
-});
-
-
-
-function dropDown(type) {
-    if (type == 'category') {
-        let categoryDropDown = document.getElementById('categoryDropdown');
-        let dropdownArrow = document.getElementById('dropdownArrowCategory');
-
-        if (droppedDown) {
-            closeCategory(categoryDropDown, dropdownArrow);
-        } else {
-            openCategory(categoryDropDown, dropdownArrow);
-        }
-    } else if (type == 'assign') {
-        console.log('assign');
-    }
-}
-
-
-function closeCategory(categoryDropDown, dropdownArrow) {
-    let categorySelections = document.getElementById('catergorySelections');
-    dropdownArrow.style.transform = "rotate(180deg)";
-
-    if (categorySelections) {
-        categoryDropDown.removeChild(categorySelections);
-    }
-    droppedDown = false;
-}
-
-
-function openCategory(categoryDropDown, dropdownArrow) {
-    droppedDown = true;
-    dropdownArrow.style.transform = "rotate(0deg)";
-
-    categoryDropDown.innerHTML += `
-            <ul id="catergorySelections">
-                <li><a class="label-select-category" href="#">Technical task</a></li>
-                <li><a class="label-select-category" href="#">User Story</a></li>
-            </ul>
-        `;
-}
 
 function disableButtonAddTask() {
     let button = document.getElementById('buttonCreateTaskPopUpTask')
@@ -137,7 +79,7 @@ function renderSubtasksOnPopUpAddTask() {
     document.getElementById('subtasksPopUp').innerHTML = ''
     subtasksToSave.forEach((subtask, index) => {
         document.getElementById('subtasksPopUp').innerHTML += `<div class="checkBoxDiv">
-        <label class="subtaskLabel">${subtask.subtask}</label><img src=".././assets/img/closeButtonBoard.png" onclick="deleteSubtask(${index})">
+        <label class="subtask-label">${subtask.subtask}</label><img src=".././assets/img/closeButtonBoard.png" onclick="deleteSubtask(${index})" class="delete-subtask">
         </div>`
     })
 }
@@ -205,7 +147,6 @@ function editColorPrios(selectedUrgency, i) {
         document.getElementById("prio" + 4).src = "./assets/img/urgentImg.png"
         document.getElementById("prio" + 5).src = "./assets/img/mediumImg.png"
     }
-
 }
 
 
@@ -224,22 +165,17 @@ function addPriority(i) {
 
 
 function colorPrios(selectedUrgency, i) {
-    if (selectedUrgency == 'urgent') {
-        document.getElementById("prio" + i).src = "./assets/img/urgentOnclick.png";
-        document.getElementById("prio" + 2).src = "./assets/img/mediumImg.png";
-        document.getElementById("prio" + 3).src = "./assets/img/lowImg.png";
-    }
-    if (selectedUrgency == 'medium') {
-        document.getElementById("prio" + i).src = "./assets/img/mediumOnclick.png"
-        document.getElementById("prio" + 1).src = "./assets/img/urgentImg.png"
-        document.getElementById("prio" + 3).src = "./assets/img/lowImg.png"
-    }
-    if (selectedUrgency == 'low') {
-        document.getElementById("prio" + i).src = "./assets/img/lowOnclick.png"
-        document.getElementById("prio" + 1).src = "./assets/img/urgentImg.png"
-        document.getElementById("prio" + 2).src = "./assets/img/mediumImg.png"
-    }
+    document.getElementById("prio1").classList.remove('selected-urgent');
+    document.getElementById("prio2").classList.remove('selected-medium');
+    document.getElementById("prio3").classList.remove('selected-low');
 
+    if (selectedUrgency == 'urgent') {
+        document.getElementById("prio" + i).classList.add('selected-urgent');
+    } else if (selectedUrgency == 'medium') {
+        document.getElementById("prio" + i).classList.add('selected-medium');
+    } else if (selectedUrgency == 'low') {
+        document.getElementById("prio" + i).classList.add('selected-low');
+    }
 }
 
 

@@ -1,10 +1,9 @@
 body {
-    /* height: 100vh; */
     background-color: #F5F5F5;
     font-family: 'Open-sans', sans-serif;
     font-weight: 400;
     margin: 90px 0 0 232px;
-    padding: 0 50px 0 100px;
+    padding: 0 50px 0 50px;
 }
 
 .board-header h1 {
@@ -18,12 +17,6 @@ body {
     white-space: nowrap;
     font-size: 1rem;
 }
-
-/* h4 {
-    color: #2A3647;
-    margin-bottom: 10px;
-    margin-top: 16px;
-} */
 
 .board-header {
     display: flex;
@@ -76,7 +69,6 @@ input::-webkit-search-cancel-button {
 
 .headings {
     display: flex;
-    align-items: center;
     justify-content: space-between;
 }
 
@@ -91,12 +83,15 @@ input::-webkit-search-cancel-button {
 .board-subsection {
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
 
 .board-subsection-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    min-width: 180px;
 }
 
 .add-task-btn {
@@ -126,7 +121,7 @@ input::-webkit-search-cancel-button {
 }
 
 .plus-img {
-    padding: 0 4vw 0 10px;
+    height: 25px;
 }
 
 .plus-img:hover {
@@ -134,13 +129,65 @@ input::-webkit-search-cancel-button {
     content: url('.././assets/img/plusButtonBoardLightBlue.png');
 }
 
-/* POPUP */
-/* .category {
+/* task */
+.board-card {
+    border-radius: 25px;
+    background-color: white;
+    padding: 18px 19px;
+    box-shadow: -2px 0px 6px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.category {
     color: white;
-    padding: 4px 22px;
-    border-radius: 8px;
-    font-size: 18px;
-} */
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 12px;
+    font-size: 1rem;
+}
+
+.task {
+    color: #9e9d9d;
+    font-size: smaller;
+    max-width: 80%;
+    word-wrap: wrap;
+}
+
+.progress-bar-section {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.progress-bar {
+    height: 5px;
+    width: 60%;
+    background: linear-gradient(to right, #29ABE2 0%, #e9e7e7 0%);
+}
+
+.progress-bar-section div {
+    text-align: center;
+}
+
+.assign-to-board {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.assign-to-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+    color: white;
+}
 
 .design {
     background-color: #FF7A00;
@@ -158,33 +205,13 @@ input::-webkit-search-cancel-button {
     background-color: #0038FF;
 }
 
-.boardCards {
+/* .boardCards {
     display: flex;
     justify-content: space-evenly;
     margin-left: 40px;
-}
+} */
 
-.boardCard {
-    border-radius: 30px;
-    background-color: white;
-    padding: 18px 19px;
-    box-shadow: -2px 0px 6px rgba(0, 0, 0, 0.25);
-    overflow-wrap: break-word;
-}
-
-.boardCard:hover {
-    cursor: pointer;
-}
-
-.task {
-    color: #9e9d9d;
-    font-size: smaller;
-    max-width: 80%;
-    word-wrap: wrap;
-    overflow-y: hidden;
-}
-
-.dialogFullCard {
+.dialog-full-card {
     position: fixed;
     top: 0;
     right: 0;
@@ -197,46 +224,60 @@ input::-webkit-search-cancel-button {
     z-index: 80;
 }
 
-.dialogFullCardContent {
+.dialog-full-card-content {
     position: relative;
     height: 90%;
     margin: auto;
-    width: 30%;
+    width: 40%;
     background-color: #F6F7F8;
     border-radius: 30px;
     overflow-wrap: break-word;
     overflow-y: auto;
-
 }
 
-.dialogFullCardContent h1 {
+.dialog-wrapper {
+    width: 80%;
+    margin: 10%;
+    position: relative;
+}
+
+.dialog-wrapper h1 {
+    font-size: 2.5rem;
+    color: #2A3647;
+}
+
+/* .dialog-full-card-content h1 {
     font-size: 51px
+} */
+
+
+.taskDescript {
+    padding: 0 0 7px 0;
 }
 
 
-.closeButtondialogFullCard:hover {
-    cursor: pointer;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .closeButtondialogFullCard {
     position: absolute;
-    top: 10px;
-    right: -20px
+    top: 11px;
+    right: 0;
+    cursor: pointer;
 }
 
-.wrapperDialog {
 
-    width: 80%;
-    margin: auto;
-    position: relative;
-    height: 95%;
-}
-
-.wrapperDialog h1 {
-    font-size: 41px;
-    color: #2A3647;
-    margin: 20px 0
-}
 
 .categoryDialog {
     margin-top: 15px;
@@ -246,13 +287,13 @@ input::-webkit-search-cancel-button {
     width: fit-content;
 }
 
-.taskDescript {
-    font-size: 21px;
-}
+
 
 .dueDate {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .dialogFullCardContent p {
@@ -261,11 +302,6 @@ input::-webkit-search-cancel-button {
     margin-right: 15px;
 }
 
-.dueDate span {
-    font-size: 20px;
-    padding-top: 4px;
-
-}
 
 .priority {
     display: flex;
@@ -283,13 +319,6 @@ input::-webkit-search-cancel-button {
     display: none;
 }
 
-.progressBarSection {
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 14px;
-}
 
 .progressBar {
 
@@ -299,13 +328,7 @@ input::-webkit-search-cancel-button {
 
 }
 
-.assignedToBoard {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 15px;
 
-}
 
 .assignedToAvatars {
     display: flex;
@@ -359,17 +382,13 @@ input::-webkit-search-cancel-button {
 }
 
 .editDelete {
-    width: 110%;
+    width: 100%;
     display: flex;
     justify-content: end;
     position: absolute;
-    bottom: 2%
 }
 
-.addedSubtaskOnEdit {
-    width: 15px !important;
-    margin-right: 80px;
-}
+
 
 .boardEditTaskForm {
     width: 80%;
@@ -420,7 +439,6 @@ input::-webkit-search-cancel-button {
 
 .priorityImgFullCard {
     height: 40px;
-    width: 25%
 }
 
 .dropdownEditTask {
@@ -479,7 +497,7 @@ input::-webkit-search-cancel-button {
 }
 
 
-.droppedContacts {
+/* .droppedContacts {
 
     display: flex;
     flex-direction: row;
@@ -494,7 +512,7 @@ input::-webkit-search-cancel-button {
     position: absolute;
     left: 85% !important;
     width: 10px !important
-}
+} */
 
 
 .assignedToFullCard {
