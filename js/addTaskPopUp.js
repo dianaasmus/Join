@@ -11,25 +11,63 @@ let date = new Date();
 contacts = []
 let droppedDown = false;
 
+const dropdownToggle = document.getElementById('categoryBtn');
+// const dropdownMenu = document.getElementById('dropdownMenu');
+const dropdownOptions = document.querySelectorAll('.dropdown li');
 
-function dropDownCategory() {
-    let categoryDropDown = document.getElementById('categoryDropdown');
 
-    if (droppedDown) {
-        let categorySelections = document.getElementById('catergorySelections');
-        if (categorySelections) {
-            categoryDropDown.removeChild(categorySelections);
+// dropdownToggle.addEventListener('click', () => {
+//     dropdownMenu.classList.toggle('show');
+// });
+
+
+dropdownOptions.forEach(option => {
+    option.addEventListener('click', () => {
+        console.log('click');
+        // dropdownToggle.innerHTML = option.innerHTML + ' <span class="arrow"></span>';
+        // dropdownMenu.classList.remove('show');
+    });
+});
+
+
+
+function dropDown(type) {
+    if (type == 'category') {
+        let categoryDropDown = document.getElementById('categoryDropdown');
+        let dropdownArrow = document.getElementById('dropdownArrowCategory');
+
+        if (droppedDown) {
+            closeCategory(categoryDropDown, dropdownArrow);
+        } else {
+            openCategory(categoryDropDown, dropdownArrow);
         }
-        droppedDown = false;
-    } else {
-        droppedDown = true;
-        categoryDropDown.innerHTML += `
-            <div id="catergorySelections">
-                <label class="label-select-category">Select task category 1</label>
-                <label class="label-select-category">Select task category 2</label>
-            </div>
-        `;
+    } else if (type == 'assign') {
+        console.log('assign');
     }
+}
+
+
+function closeCategory(categoryDropDown, dropdownArrow) {
+    let categorySelections = document.getElementById('catergorySelections');
+    dropdownArrow.style.transform = "rotate(180deg)";
+
+    if (categorySelections) {
+        categoryDropDown.removeChild(categorySelections);
+    }
+    droppedDown = false;
+}
+
+
+function openCategory(categoryDropDown, dropdownArrow) {
+    droppedDown = true;
+    dropdownArrow.style.transform = "rotate(0deg)";
+
+    categoryDropDown.innerHTML += `
+            <ul id="catergorySelections">
+                <li><a class="label-select-category" href="#">Technical task</a></li>
+                <li><a class="label-select-category" href="#">User Story</a></li>
+            </ul>
+        `;
 }
 
 function disableButtonAddTask() {
@@ -107,12 +145,12 @@ function renderSubtasksOnPopUpAddTask() {
 
 function openPopUpAddTask() {
     getTheDate()
-    document.getElementById('addTaskPopUp').classList.add('openPopUp')
+    document.getElementById('addTaskPopUp').classList.add('open-task-popup')
 }
 
 
 function closePopUpAddTask() {
-    document.getElementById('addTaskPopUp').classList.remove('openPopUp')
+    document.getElementById('addTaskPopUp').classList.remove('open-task-popup')
 }
 
 
