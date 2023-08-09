@@ -9,7 +9,6 @@ let tasksToEdit = []
 let subtasksToSave = []
 let date = new Date();
 contacts = []
-let droppedDown = false;
 
 
 function disableButtonAddTask() {
@@ -79,20 +78,21 @@ function renderSubtasksOnPopUpAddTask() {
     document.getElementById('subtasksPopUp').innerHTML = ''
     subtasksToSave.forEach((subtask, index) => {
         document.getElementById('subtasksPopUp').innerHTML += `<div class="checkBoxDiv">
-        <label class="subtask-label">${subtask.subtask}</label><img src=".././assets/img/closeButtonBoard.png" onclick="deleteSubtask(${index})" class="delete-subtask">
+        <label class="subtaskLabel">${subtask.subtask}</label><img src="../assets/img/closeButtonBoard.png" onclick="deleteSubtask(${index})">
         </div>`
     })
 }
 
 
 function openPopUpAddTask() {
-    getTheDate()
-    document.getElementById('addTaskPopUp').classList.add('open-task-popup')
+
+    document.getElementById('addTaskPopUp').classList.add('openPopUp')
+    document.getElementById(`date`).setAttribute("min", date.toISOString().split("T")[0]);
 }
 
 
 function closePopUpAddTask() {
-    document.getElementById('addTaskPopUp').classList.remove('open-task-popup')
+    document.getElementById('addTaskPopUp').classList.remove('openPopUp')
 }
 
 
@@ -133,20 +133,21 @@ async function addEditedPriority(i, j) {
 
 function editColorPrios(selectedUrgency, i) {
     if (selectedUrgency == 'urgent') {
-        document.getElementById("prio" + i).src = "./assets/img/urgentOnclick.png";
-        document.getElementById("prio" + 5).src = "./assets/img/mediumImg.png";
-        document.getElementById("prio" + 6).src = "./assets/img/lowImg.png";
+        document.getElementById("prio" + i).src = "../assets/img/urgentOnclick.png";
+        document.getElementById("prio" + 5).src = "../assets/img/mediumImg.png";
+        document.getElementById("prio" + 6).src = "../assets/img/lowImg.png";
     }
     if (selectedUrgency == 'medium') {
-        document.getElementById("prio" + i).src = "./assets/img/mediumOnclick.png"
-        document.getElementById("prio" + 4).src = "./assets/img/urgentImg.png"
-        document.getElementById("prio" + 6).src = "./assets/img/lowImg.png"
+        document.getElementById("prio" + i).src = "../assets/img/mediumOnclick.png"
+        document.getElementById("prio" + 4).src = "../assets/img/urgentImg.png"
+        document.getElementById("prio" + 6).src = "../assets/img/lowImg.png"
     }
     if (selectedUrgency == 'low') {
-        document.getElementById("prio" + i).src = "./assets/img/lowOnclick.png"
-        document.getElementById("prio" + 4).src = "./assets/img/urgentImg.png"
-        document.getElementById("prio" + 5).src = "./assets/img/mediumImg.png"
+        document.getElementById("prio" + i).src = "../assets/img/lowOnclick.png"
+        document.getElementById("prio" + 4).src = "../assets/img/urgentImg.png"
+        document.getElementById("prio" + 5).src = "../assets/img/mediumImg.png"
     }
+
 }
 
 
@@ -165,32 +166,37 @@ function addPriority(i) {
 
 
 function colorPrios(selectedUrgency, i) {
-    document.getElementById("prio1").classList.remove('selected-urgent');
-    document.getElementById("prio2").classList.remove('selected-medium');
-    document.getElementById("prio3").classList.remove('selected-low');
-
     if (selectedUrgency == 'urgent') {
-        document.getElementById("prio" + i).classList.add('selected-urgent');
-    } else if (selectedUrgency == 'medium') {
-        document.getElementById("prio" + i).classList.add('selected-medium');
-    } else if (selectedUrgency == 'low') {
-        document.getElementById("prio" + i).classList.add('selected-low');
+        document.getElementById("prio" + i).src = "../assets/img/urgentOnclick.png";
+        document.getElementById("prio" + 2).src = "../assets/img/mediumImg.png";
+        document.getElementById("prio" + 3).src = "../assets/img/lowImg.png";
     }
+    if (selectedUrgency == 'medium') {
+        document.getElementById("prio" + i).src = "../assets/img/mediumOnclick.png"
+        document.getElementById("prio" + 1).src = "../assets/img/urgentImg.png"
+        document.getElementById("prio" + 3).src = "../assets/img/lowImg.png"
+    }
+    if (selectedUrgency == 'low') {
+        document.getElementById("prio" + i).src = "./assets/img/lowOnclick.png"
+        document.getElementById("prio" + 1).src = "./assets/img/urgentImg.png"
+        document.getElementById("prio" + 2).src = "./assets/img/mediumImg.png"
+    }
+
 }
 
 
-// function addCategoryOnTask() {
-//     let value = document.getElementById('selectedCategoryInputValue').value;
-//     if (value) {
-//         document.getElementById('labelCategory').innerHTML = '';
-//         document.getElementById('labelCategory').innerHTML = `<div class="assignedCategoryValues">
-//          ${value}
-//           <div class="colorPicker colorPickerAssigned" style="background-color: ${colorsCategory}"  id="assignedColor"></div>
-//          </div>` ;
-//         document.getElementById('hiddenInputCategory').classList.add('displayNone')
-//         document.getElementById('dropdownCategory').style = 'none'
-//     }
-// }
+function addCategoryOnTask() {
+    let value = document.getElementById('selectedCategoryInputValue').value;
+    if (value) {
+        document.getElementById('labelCategory').innerHTML = '';
+        document.getElementById('labelCategory').innerHTML = `<div class="assignedCategoryValues">
+         ${value}
+          <div class="colorPicker colorPickerAssigned" style="background-color: ${colorsCategory}"  id="assignedColor"></div>
+         </div>` ;
+        document.getElementById('hiddenInputCategory').classList.add('displayNone')
+        document.getElementById('dropdownCategory').style = 'none'
+    }
+}
 
 
 function openInputAddCategory() {
@@ -217,12 +223,6 @@ function addCategoryColorOnTask(i) {
 }
 
 
-function openInputAddContact() {
-    document.getElementById('hiddenInputAddContact').classList.remove('displayNone')
-    document.getElementById('dropdownAddContact').style = 'display:none'
-}
-
-
 function addToAssignedContacts(index) {
     if (index >= 0 && index < contacts.length) {
         let contact = contacts[index];
@@ -237,47 +237,35 @@ function addToAssignedContacts(index) {
 }
 
 
-window.addEventListener('DOMContentLoaded', function () {
-    let includedContent = document.getElementById('includeContainer');
-    includedContent.addEventListener('mouseenter', function (event) {
-        let contactList = document.getElementById('eventLisPopUp');
-        let dropdownAddContact = document.getElementById('dropdownAddContactPopUp');
-
-        contactList.addEventListener('mouseenter', function (event) {
-            dropdownAddContact.innerHTML = '';
-            contacts.forEach((contact, index) => {
-                dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addToAssignedContacts('${index}')" type="checkbox"></div>`;
-            });
-        });
-
-
-    });
-});
-
-
-function handleClickOutside(event) {
-    let contactList = document.getElementById('eventLisPopUp');
-    if (!contactList.contains(event.target)) {
-        contactList.blur();
-    }
-}
-
-
-function handleTouchStart(event) {
-    let dropdownAddContact = document.getElementById('dropdownAddContactPopUp');
-    dropdownAddContact.innerHTML = '';
-    contacts.forEach((contact, index) => {
-        dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addToAssignedContacts('${index}')" type="checkbox"></div>`;
-    });
-}
-
-
 function closeHiddenInput() {
     document.getElementById('hiddenInputCategory').classList.add('displayNone')
     document.getElementById('dropdownCategory').style = 'display:inlineBlock'
 }
 
 
+function contactList() {
+    let droppedContacts = document.getElementById('dropdownAddContactPopUp');
+    if (droppedContacts.style.display === 'none') {
+        droppedContacts.style.display = 'block'
+    } else { droppedContacts.style.display = 'none' }
+    droppedContacts.innerHTML = ''
 
+    contacts.forEach((contact, index) => {
+        droppedContacts.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input id="checkboxAssigned${index}" onclick="addToAssignedContacts('${index}')" type="checkbox"></div>`;
+    })
+    checkForCheckedAssignedPopUp()
+}
 
+function checkForCheckedAssignedPopUp() {
+    let checkedbox
 
+    contacts.forEach((contact, index) => {
+
+        assignedContacts.forEach(assigned => {
+            checkedbox = document.getElementById(`checkboxAssigned${index}`)
+            if (contact.email === assigned.email) {
+                checkedbox.checked = true;
+            }
+        });
+    });
+}

@@ -1,18 +1,35 @@
 function HTMLrenderTaskCards(i, j) {
-    return `<div draggable="true" ondragstart="startDragging(${i})" onclick="renderDialogFullCard(${i})" class="board-card" >
+
+    return `<div draggable="true" ondragstart="startDragging(${i})" onclick="renderDialogFullCard(${i})" class="boardCard" >
                 <div class="category" style="background-color: ${tasks[i].colorCategory}">
                    ${tasks[i].category}
                 </div>
-                <h4>${tasks[i].title}</h4>
-                <div class="task">${tasks[i].description}</div>
-                <div id="progressBarSection${i}" class="progress-bar-section">
-                   <div id="progressBar${i}" class="progress-bar"></div>
-                   <div>${tasks[i].pace}/${tasks[i].subtasks.length} Done</div>
+                <h4 >${tasks[i].title}
+                </h4>
+                <div class="task">${tasks[i].description}
                 </div>
-                <div class="assign-to-board">
-                    <span id="assignedToCircles${i}" class="assign-to-avatar"></span>
-                    <img id="urgencyBoard${j}">
+                <div id="progressBarSection${i}" class="progressBarSection">
+                   <div id="progressBar${i}" class="progressBar"></div>
+                   <p>${tasks[i].pace}/${tasks[i].subtasks.length} Done</p>
                 </div>
+                <div  class="assignedToBoard">
+                    <span id="assignedToCircles${i}" class="assignedToAvatars" ></span>
+                    <img id="urgencyBoard${j}" src=" ">
+                </div>
+
+                <div onclick="openChangeStatus(${i})"> <!--For mobile devices-->
+                <div  id="dropdownForMobileDevices${i}" class="dropdownForMobileDevices">
+                    <div class="headerForSelectionField">
+                        <label id="statusForMobileDevices" style="position: relative;">Change status</label>
+                        <img class="arrDownStatus" src="../assets/img/arrDown.png">
+                    </div>
+
+                    <div id="dropdown-contentForMobileDevices${i}" class="dropdown-contentForMobileDevices">
+                    </div>
+
+                </div>
+            </div>
+
             </div>`
 
 }
@@ -20,21 +37,22 @@ function HTMLrenderTaskCards(i, j) {
 
 function HTMLrenderDialogFullCard(i) {
     return `
-    <div id="dialogFullCardContent" class="dialog-full-card-content">
-        <div class="dialog-wrapper">
-            <div class="categoryDialog" style="background-color: ${tasks[i].colorCategory}"> 
+    <div id="dialogFullCardContent" class="dialogFullCardContent">
+        <div class="wrapperDialog">
+                 <img onclick="closeTask()" class="closeButtondialogFullCard" src="../assets/img/closeButtonBoard.png">
+                 <div class="categoryDialog" style="background-color: ${tasks[i].colorCategory}"> 
                       ${tasks[i].category}
-            </div>
-            <img onclick="closeTask()" class="closeButtondialogFullCard" src="../assets/img/closeButtonBoard.png">
-            <h1>${tasks[i].title}</h1>  
-            <div class="taskDescript">${tasks[i].description}</div>
-            <div class="dueDate">
-                <p>Due Date:</p> <span>${tasks[i].date}</span>
-            </div>
-
-            <div class="dueDate">
-                <p>Priority:</p> <img class="priorityImgFullCard" id="urgencyFullCard${i}" src=" ">
-            </div>
+                 </div>
+                 <h1>${tasks[i].title}</h1>  
+                 <div class="taskDescript">
+                      ${tasks[i].description}
+                 </div>
+                 <div class="dueDate">
+                      <p>Due Date:</p> <span>${tasks[i].date}</span>
+                 </div>
+                 <div class="dueDate">
+                     <p>Priority:</p> <img class="priorityImgFullCard" id="urgencyFullCard${i}" src=" ">
+                 </div>
               
                  <div>
                     <p>Subtasks:</p>
@@ -44,13 +62,15 @@ function HTMLrenderDialogFullCard(i) {
 
                  <div class="assignedTo">
     
-            <p>Assigned to:</p>
-            <div class="assignedToFullCard" id="assignedToFullCard"></div>
+                      <p>Assigned to:</p>
+                      <div class="assignedToFullCard" id="assignedToFullCard">
+                      </div>
                      
-            <div class="editDelete">
-                <img onclick="deleteTask(${i})" class="delete" src="../assets/img/blueDelete.png">
-                <img onclick="openEditTask(${i})" class="edit" src="../assets/img/blueEdit.png">
-            </div>
+                 </div>
+              <div class="editDelete">
+                   <img  class="deleteButton" onclick="deleteTask(${i})"  src="../assets/img/blueDelete.png">
+                  <img  class="editButton" onclick="openEditTask(${i})" src="../assets/img/blueEdit.png">   
+             </div>
         </div>
    </div>`
 }
@@ -98,8 +118,8 @@ function openEditTaskHTML(i) {
 
             <div class="AssignedTo" style="padding:6px;"> <!--Assigned to container-->
                 <label>Assigned to</label>
-                <div class="dropdownEditTask">
-                    <div id="reassignContacts" class="headerForSelectionField">
+                <div id="reassignContacts" class="dropdownEditTask">
+                    <div  class="headerForSelectionField">
                         <span style="position: relative;">Reassign contacts</span>
                         <img class="arrDown" src="../assets/img/arrDown.png">
                         <div>
@@ -120,4 +140,76 @@ function openEditTaskHTML(i) {
     
   </div><!--Edit card container closed-->
   `
+}
+
+
+
+function ifStatusToDoForMobile(i) {
+    let statuses = document.getElementById(`dropdown-contentForMobileDevices${i}`)
+
+    if (tasks[i].readinessState === "toDo") {
+        statuses.innerHTML = ''
+        statuses.innerHTML += `<div id="statusesDropdown${i}" class="statusesDropdown">
+        <p onclick="statusInProgress(${i})">In Progress</p>
+        <p onclick="statusAwaitingFeedback(${i})">Awaiting Feedback</p>
+        <p onclick="statusDone(${i})">Done</p>
+        </div>`
+    }
+}
+
+
+function ifStatusInProgressForMobile(i) {
+    let statuses = document.getElementById(`dropdown-contentForMobileDevices${i}`)
+
+    if (tasks[i].readinessState === "inProgress") {
+        statuses.innerHTML = ''
+        statuses.innerHTML += `<div id="statusesDropdown${i}" class="statusesDropdown">
+        <p onclick="statusToDo(${i})">To Do</p>
+        <p onclick="statusAwaitingFeedback(${i})">Awaiting Feedback</p>
+        <p onclick="statusDone(${i})">Done</p>
+        </div>`
+    }
+}
+
+
+function ifStatusAwaitingFeedbackForMobile(i) {
+    let statuses = document.getElementById(`dropdown-contentForMobileDevices${i}`)
+
+    if (tasks[i].readinessState === "awaitingFeedback") {
+        statuses.innerHTML = ''
+        statuses.innerHTML += `<div id="statusesDropdown${i}" class="statusesDropdown">
+        <p onclick="statusToDo(${i})">To Do</p>
+        <p onclick="statusInProgress(${i})">In Progress</p>
+        <p onclick="statusDone(${i})">Done</p>
+        </div>`
+    }
+}
+
+
+function ifStatusDoneForMobile(i) {
+    let statuses = document.getElementById(`dropdown-contentForMobileDevices${i}`)
+
+    if (tasks[i].readinessState === "done") {
+        statuses.innerHTML = ''
+        statuses.innerHTML += `<div id="statusesDropdown${i}" class="statusesDropdown">
+        <p onclick="statusToDo(${i})">To Do</p>
+        <p onclick="statusInProgress(${i})">In Progress</p>
+        <p onclick="statusAwaitingFeedback(${i})">Awaiting Feedback</p>
+        </div>
+        `
+    }
+}
+
+
+function HTMLforRenderAssignedContactsOnBoard(i, colorCircle, contact) {
+    let element = document.getElementById(`colors${colorCircle}`);
+    let backgroundColorCircle = element.style.backgroundColor;
+    document.getElementById(`assignedToCircles${i}`).innerHTML += `<span style="background-color:${backgroundColorCircle}" class="assignedToAvatar">${tasks[i].assignedTo[contact].firstNameLetter}${tasks[i].assignedTo[contact].lastNameLetter}</span>`
+}
+
+
+function HTMLforRenderAssignedContactsOnFullCard(i, colorCircle, contact) {
+    let element = document.getElementById(`colors${colorCircle}`);
+    let backgroundColorCircle = element.style.backgroundColor;
+    document.getElementById(`assignedToFullCard`).innerHTML += `<div class="assignedToContact"><span style="background-color:${backgroundColorCircle}" class="assignedToAvatar">${tasks[i].assignedTo[contact].firstNameLetter}${tasks[i].assignedTo[contact].lastNameLetter}</span><p>${tasks[i].assignedTo[contact].name}</p><div>`
 }

@@ -18,87 +18,87 @@
     <script src="../js/addTaskPopUp.js"></script>
     <script src="../js/HTMLsBoard_AddTask.js"></script>
     <script src="../js/contacts.js"></script>
-
 </head>
 
 <body onload="initBoard()">
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="header.html"></div>
-    <div id="includeContainer" w3-include-html="addTaskPopUp.html"></div>
+    <div onload="contactList()" id="includeContainer" w3-include-html="addTaskPopUp.html"></div>
     <div id="wrapper" class="wrapper">
 
-        <div class="board-header">
+        <div class="boardHeader">
             <h1>Board</h1>
-            <div class="input-container">
-                <img class="search-img-input" src="../assets/img/search.png">
-                <hr>
-                <input onkeyup="renderTaskCards()" id="findATask" required class="board-input" type="search"
+            <div class="inputContainer">
+                <img class="searchImgInput" src="../assets/img/search.png">
+                <input onkeyup="renderTaskCards()" id="findATask" required class="boardInput" type="search"
                     placeholder="Find Task" maxlength="21">
-                <div onclick="openPopUpAddTask()" class="add-task-btn">
-                    <span>Add task </span> <span class="plus-btn"> + </span>
+                <div onclick="openPopUpAddTask()" class="addTaskButton">
+                    <span>Add task</span> <span class="buttonPlus">+</span>
                 </div>
             </div>
-        </div>
+        </div><!--board Header closes-->
+
+
 
         <div class="boardContent">
             <div class="headings">
-                <div class="board-subsection">
-                    <div class="board-subsection-header">
+                <div class="boardSubsections">
+                    <div class="boardSubsectionHeader">
                         <h2>To do</h2>
-                        <img class="plus-img" onclick="openPopUpAddTask()" src="../assets/img/plusButtonBoard.png">
+                        <img class="plusButton" onclick="openPopUpAddTask()" src="../assets/img/plusButtonBoard.png">
                     </div>
                     <div ondrop="moveTo('toDo')" ondragover="allowDrop(event)" id="boardSubsectionToDo"
-                        class="board-subsection">
+                        class="boardSubsection">
                     </div>
                 </div>
 
-                <div class="board-subsection">
-                    <div class="board-subsection-header">
+                <div class="boardSubsections">
+                    <div class="boardSubsectionHeader">
                         <h2>In progress</h2>
-                        <img class="plus-img" onclick="openPopUpAddTask()" src="../assets/img/plusButtonBoard.png">
+                        <img class="plusButton" onclick="openPopUpAddTask()" src="../assets/img/plusButtonBoard.png">
                     </div>
                     <div ondrop="moveTo('inProgress')" ondragover="allowDrop(event)" id="boardSubsectionInProgress"
-                        class="board-subsection">
+                        class="boardSubsection">
                     </div>
                 </div>
 
-                <div class="board-subsection">
-                    <div class="board-subsection-header">
+                <div class="boardSubsections">
+                    <div class="boardSubsectionHeader">
                         <h2>Awaiting Feedback</h2>
-                        <img class="plus-img" onclick="openPopUpAddTask()" src="../assets/img/plusButtonBoard.png">
+                        <img class="plusButton" onclick="openPopUpAddTask()" src="../assets/img/plusButtonBoard.png">
                     </div>
                     <div ondrop="moveTo('awaitingFeedback')" ondragover="allowDrop(event)" id="boardSubsectionFeedback"
-                        class="board-subsection">
+                        class="boardSubsection">
                     </div>
                 </div>
 
-                <div class="board-subsection">
-                    <div class="board-subsection-header">
+                <div class="boardSubsections">
+                    <div class="boardSubsectionHeader">
                         <h2>Done</h2>
-                        <img class="plus-img" onclick="openPopUpAddTask()" src="../assets/img/plusButtonBoard.png">
+                        <img class="plusButton" onclick="openPopUpAddTask()" src="../assets/img/plusButtonBoard.png">
                     </div>
                     <div ondrop="moveTo('done')" ondragover="allowDrop(event)" id="boardSubsectionDone"
-                        class="board-subsection">
+                        class="boardSubsection">
                     </div>
                 </div>
 
             </div>
 
 
-            <div id="dialogFullCard" class="dialog-full-card displayNone">
-                <div class="dialog-full-card-content">
+            <div id="dialogFullCard" class="dialogFullCard displayNone">
+                <div class="dialogFullCardContent">
 
                 </div>
             </div>
 
         </div>
 
-        <div id="dialogEditCard" class="dialog-full-card displayNone">
+        <div id="dialogEditCard" class="dialogFullCard displayNone">
 
-        </div>
+        </div><!--Edit card container closed-->
 
 
-    </div>
+    </div><!--wrapper closed-->
     <div class="colorPickers">
         <div id="colors0" style="background-color:#8AA4FF;"></div>
         <div id="colors1" style="background-color:#FF0000;"></div>
@@ -108,9 +108,8 @@
         <div id="colors5" style="background-color:#0038FF ;"></div>
     </div>
 
-    </div>
-    </div>
-
+    </div><!--content closed-->
+    </div><!--wrapper closed-->
 
 </body>
 

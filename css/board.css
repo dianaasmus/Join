@@ -1,192 +1,149 @@
 body {
-    background-color: #F5F5F5;
+    background-color: #F6F7F8;
+    display: flex;
+    overflow-x: hidden;
     font-family: 'Open-sans', sans-serif;
     font-weight: 400;
-    margin: 90px 0 0 232px;
-    padding: 0 50px 0 50px;
+    padding-left: 5%;
+    margin: 90px 50px 0 20%;
 }
 
-.board-header h1 {
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: #F6F7F8;
+    /* width: calc(100% - 232px); */
+}
+
+.boardHeader h1 {
     font-weight: 700;
     font-size: 3rem;
-    margin: 30px 0;
+    margin: 0;
 }
 
-.board-subsection-header h2 {
+h2 {
+    color: #2A3647
+}
+
+h4 {
     color: #2A3647;
-    white-space: nowrap;
-    font-size: 1rem;
+    margin-bottom: 10px;
+    margin-top: 16px;
 }
 
-.board-header {
+
+
+
+.boardHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 30px;
 }
 
-.input-container {
+.inputContainer {
     display: flex;
     align-items: center;
+    justify-content: end;
     position: relative;
+    gap: 7%;
+
 }
 
-.input-container hr {
-    position: absolute;
-    right: 217px;
-    background: #d1d1d1;
-    width: 1px;
-    height: 33px;
-    border: 0;
-}
-
-.board-input {
-    width: 17vw;
-    height: 46px;
-    font-size: 1rem;
-    padding-left: 20px;
-    border: 1px solid #d1d1d1;
-    box-sizing: border-box;
+.boardInput {
+    height: 45px;
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    margin-right: 28px;
+    border-color: #D1D1D1;
+    outline: none;
 }
 
-.board-input:focus {
-    outline: 2px solid #29ABE2;
-}
 
 input::-webkit-search-cancel-button {
     display: none;
 }
 
-.search-img-input {
-    position: relative;
-    height: 20px;
-    right: -15.5vw;
+.searchImgInput {
+    position: absolute;
+    right: 50%;
+    height: 17px;
     cursor: pointer;
 }
 
 .headings {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2%;
 }
 
-.board-subsections {
+.boardSubsections {
+    min-height: 55vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: space-between;
     font-size: 1rem;
-    white-space: nowrap;
 }
 
-.board-subsection {
+.boardSubsection {
+    min-height: 55vh;
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: space-between;
+    gap: 30px;
 }
 
-.board-subsection-header {
+
+.boardSubsectionHeader {
+    height: 90px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    min-width: 180px;
 }
 
-.add-task-btn {
+.addTaskButton {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #2a3647;
-    border-radius: 8px;
-    height: 45px;
-    width: 145px;
-    border: unset;
-    color: #fff;
+    white-space: nowrap;
+    position: relative;
+    height: 11px;
+    background-color: #2A3647;
+    color: white;
+    Padding: 18px 10px;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
     font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
+    border: none;
 }
 
-.add-task-btn:hover {
+.addTaskButton:hover {
+    cursor: pointer;
     background-color: #29ABE2;
-    box-shadow: 0px 4px 9px -1px rgba(0, 0, 0, 0.4);
-}
-
-.plus-btn {
-    padding: 0 7px 4px;
-    font-size: 25px;
-    font-weight: 400;
-}
-
-.plus-img {
-    height: 25px;
-}
-
-.plus-img:hover {
-    cursor: pointer;
-    content: url('.././assets/img/plusButtonBoardLightBlue.png');
-}
-
-/* task */
-.board-card {
-    border-radius: 25px;
-    background-color: white;
-    padding: 18px 19px;
     box-shadow: -2px 0px 6px rgba(0, 0, 0, 0.25);
-    cursor: pointer;
+    transition: 75ms ease-in-out;
+}
+
+.buttonPlus {
+    font-size: 25px;
+    font-weight: lighter;
+    margin-left: 10px;
+    margin-top: -4px;
 }
 
 .category {
     color: white;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 12px;
-    font-size: 1rem;
-}
-
-.task {
-    color: #9e9d9d;
-    font-size: smaller;
-    max-width: 80%;
-    word-wrap: wrap;
-}
-
-.progress-bar-section {
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 14px;
-}
-
-.progress-bar {
-    height: 5px;
-    width: 60%;
-    background: linear-gradient(to right, #29ABE2 0%, #e9e7e7 0%);
-}
-
-.progress-bar-section div {
+    border-radius: 8px;
+    padding: 4px 0;
     text-align: center;
 }
 
-.assign-to-board {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 15px;
-}
+.plusButton:hover {
+    cursor: pointer;
+    content: url('.././assets/img/plusButtonBoardLightBlue.png');
 
-.assign-to-avatar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 35px;
-    width: 35px;
-    border-radius: 100%;
-    color: white;
+
 }
 
 .design {
@@ -205,13 +162,36 @@ input::-webkit-search-cancel-button {
     background-color: #0038FF;
 }
 
-/* .boardCards {
+.boardCards {
     display: flex;
     justify-content: space-evenly;
     margin-left: 40px;
-} */
 
-.dialog-full-card {
+
+}
+
+.boardCard {
+    border-radius: 30px;
+    background-color: white;
+    padding: 18px 19px;
+    width: 76%;
+    box-shadow: -2px 0px 6px rgba(0, 0, 0, 0.25);
+    overflow-wrap: break-word;
+}
+
+.boardCard:hover {
+    cursor: pointer;
+}
+
+.task {
+    color: #9e9d9d;
+    font-size: smaller;
+    max-width: 80%;
+    word-wrap: wrap;
+    overflow-y: hidden;
+}
+
+.dialogFullCard {
     position: fixed;
     top: 0;
     right: 0;
@@ -222,9 +202,10 @@ input::-webkit-search-cancel-button {
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.25);
     z-index: 80;
+
 }
 
-.dialog-full-card-content {
+.dialogFullCardContent {
     position: relative;
     height: 90%;
     margin: auto;
@@ -233,51 +214,40 @@ input::-webkit-search-cancel-button {
     border-radius: 30px;
     overflow-wrap: break-word;
     overflow-y: auto;
+
 }
 
-.dialog-wrapper {
-    width: 80%;
-    margin: 10%;
-    position: relative;
-}
-
-.dialog-wrapper h1 {
-    font-size: 2.5rem;
-    color: #2A3647;
-}
-
-/* .dialog-full-card-content h1 {
+.dialogFullCardContent h1 {
     font-size: 51px
-} */
-
-
-.taskDescript {
-    padding: 0 0 7px 0;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.closeButtondialogFullCard {
-    position: absolute;
-    top: 11px;
-    right: 0;
+.closeButtondialogFullCard:hover {
     cursor: pointer;
 }
 
+.closeButtondialogFullCard {
+    position: absolute;
+    top: 37px;
+    right: 0;
+}
 
+.wrapperDialog {
+
+    width: 80%;
+    margin: 20px auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 93%;
+}
+
+.wrapperDialog h1 {
+    font-size: 2.5rem;
+    color: #2A3647;
+    margin: 20px 0 0 0;
+}
 
 .categoryDialog {
     margin-top: 15px;
@@ -287,7 +257,10 @@ input::-webkit-search-cancel-button {
     width: fit-content;
 }
 
-
+.taskDescript {
+    font-size: 1rem;
+    margin: 20px 0;
+}
 
 .dueDate {
     display: flex;
@@ -297,11 +270,14 @@ input::-webkit-search-cancel-button {
 }
 
 .dialogFullCardContent p {
-    font-size: 24px;
+    font-size: 1rem;
     font-weight: bold;
     margin-right: 15px;
 }
 
+.dueDate span {
+    font-size: 1rem;
+}
 
 .priority {
     display: flex;
@@ -319,6 +295,17 @@ input::-webkit-search-cancel-button {
     display: none;
 }
 
+.progressBarSection {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.progressBarSection p {
+    text-align: center;
+}
 
 .progressBar {
 
@@ -328,7 +315,13 @@ input::-webkit-search-cancel-button {
 
 }
 
+.assignedToBoard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
 
+}
 
 .assignedToAvatars {
     display: flex;
@@ -347,7 +340,6 @@ input::-webkit-search-cancel-button {
     font-size: 16px;
     color: white;
     border: 1px solid white;
-    margin-left: -5px;
 
 }
 
@@ -356,39 +348,49 @@ input::-webkit-search-cancel-button {
 }
 
 .priorityImgEdit {
-    width: 60%
+    height: 40px;
 }
 
 .priorityImgEdit:hover {
     cursor: pointer;
 }
 
-.delete {
-    height: 40px;
+.deleteButton {
+    height: 40px
 }
 
-.delete:hover {
+.editButton {
+    height: 40px
+}
+
+.deleteButton:hover {
     cursor: pointer;
     content: url('../assets/img/lightBlueDelete.png');
+    background-color: #29ace2;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
-.edit {
-    height: 40px;
-}
 
-.edit:hover {
+.editButton:hover {
     cursor: pointer;
     content: url('../assets/img/lightBlueEdit.png');
+    background-color: #29ace2;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .editDelete {
     width: 100%;
     display: flex;
-    justify-content: end;
-    position: absolute;
+    justify-content: flex-end;
+
 }
 
 
+.addedSubtaskOnEdit {
+    width: 15px !important;
+}
 
 .boardEditTaskForm {
     width: 80%;
@@ -396,18 +398,25 @@ input::-webkit-search-cancel-button {
     margin: auto;
 }
 
+.boardEditTaskForm div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
 
-/* input {
+
+.boardEditTaskForm input {
     width: 50% !important;
-    padding: 6px !important
-} */
+    padding: 5px 10px !important;
+    font-family: 'Open-sans', sans-serif;
+}
 
 .inputEdit {
     width: 80% !important
 }
 
 
-/* textarea {
+textarea {
     height: 60px;
     width: 50%;
     border-radius: 10px;
@@ -418,19 +427,18 @@ input::-webkit-search-cancel-button {
     line-height: 120%;
     outline: none;
     resize: none;
-} */
+}
 
 .textareaEdit {
-    width: 80% !important;
-    color: #000000;
-    padding: 13px 21px !important;
-
+    padding: 5px 10px !important;
+    font-size: 1rem;
+    width: 80%;
+    font-family: 'Open-sans', sand-serif;
 }
 
-
-.priorities {
+/* .priorities {
     width: 50% !important
-}
+} */
 
 .priorityImg {
     height: 50px;
@@ -439,11 +447,12 @@ input::-webkit-search-cancel-button {
 
 .priorityImgFullCard {
     height: 40px;
+    margin-right: -5px;
 }
 
 .dropdownEditTask {
     position: relative;
-    display: inline-block;
+    display: inline-block !important;
     width: 50%;
     height: 20px;
     border-radius: 10px;
@@ -461,16 +470,16 @@ input::-webkit-search-cancel-button {
 
 
 .dropdown-content {
-    width: 100% !important
+    width: 100% !important;
 }
+
 
 .okButtonDiv {
 
     width: 86%;
     display: flex;
     align-items: end;
-    position: absolute;
-    bottom: 3%
+
 }
 
 .okButton {
@@ -488,20 +497,15 @@ input::-webkit-search-cancel-button {
     cursor: pointer;
 }
 
-.boardEditTaskForm div {
-    margin-bottom: 15px !important;
-}
-
 .boardEditTaskForm label {
     font-weight: bolder;
 }
 
 
-/* .droppedContacts {
+.droppedContacts {
 
     display: flex;
     flex-direction: row;
-
     align-items: center;
     margin-bottom: 3px;
     position: relative;
@@ -512,7 +516,7 @@ input::-webkit-search-cancel-button {
     position: absolute;
     left: 85% !important;
     width: 10px !important
-} */
+}
 
 
 .assignedToFullCard {
@@ -538,9 +542,66 @@ input::-webkit-search-cancel-button {
     width: 83%
 }
 
+.dropdownForMobileDevices {
+    display: none;
+    position: relative;
+    font-size: 18px;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #000000;
+    margin-top: 10px;
+}
+
+.dropdown-contentForMobileDevices {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: -1px;
+    width: 50%;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 10px;
+    z-index: 1;
+    padding: 10px;
+    overflow-y: scroll;
+    z-index: 200;
+}
+
+label:hover {
+    cursor: pointer;
+}
 
 
-@media(max-width:1000px) {
+
+@media(min-width:250px) and (max-width:1000px) {
+
+
+    .editDelete {
+        margin-bottom: 40%
+    }
+
+    .deleteButton:hover {
+        cursor: pointer;
+        content: inherit
+    }
+
+    .editButton {
+        height: 30px;
+    }
+
+    .deleteButton {
+        height: 30px;
+    }
+
+    .editButton:hover {
+        cursor: pointer;
+        content: inherit
+    }
+
+
+
     .wrapper {
         display: flex;
         align-items: center;
@@ -612,7 +673,7 @@ input::-webkit-search-cancel-button {
         display: none;
     }
 
-    /* .buttonPlus {
+    .buttonPlus {
         font-size: 50px;
     }
 
@@ -620,7 +681,7 @@ input::-webkit-search-cancel-button {
         display: flex !important;
         justify-content: center;
         margin: 0
-    } */
+    }
 
 
     .vertLineInput {
@@ -646,7 +707,9 @@ input::-webkit-search-cancel-button {
         width: 60%;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly !important;
+        justify-content: space-evenly;
+        margin-top: 10px;
+        margin-bottom: 80px;
 
     }
 
@@ -664,10 +727,6 @@ input::-webkit-search-cancel-button {
         left: 50%;
     }
 
-    .editDelete {
-        position: unset;
-    }
-
     .closeButtondialogFullCard {
         top: 8%;
     }
@@ -675,8 +734,11 @@ input::-webkit-search-cancel-button {
     .boardEditTaskForm {
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly !important;
+        justify-content: space-evenly;
+        margin-bottom: 70px;
+        margin-top: 100px;
     }
+
 }
 
 @media(max-width:350px) {
@@ -685,9 +747,6 @@ input::-webkit-search-cancel-button {
         height: 15px
     }
 
-    .wrapperDialog {
-        padding-top: 15%;
-    }
 }
 
 @media(min-width:350px) and (max-width:700px) {
@@ -697,13 +756,35 @@ input::-webkit-search-cancel-button {
     }
 
     .wrapperDialog {
-        padding-top: 15%;
+        margin-top: 10px;
+    }
+
+    .boardEditTaskForm {
+
+        margin-bottom: 90px;
+        margin-top: 100px;
     }
 }
 
-@media(min-width:1000px) and (max-width:1300px) {
+/* @media(min-width:1000px) and (max-width:1450px) {
+    .boardSubsectionHeader h2 {
+        font-size: 1rem;
+        white-space: nowrap;
+    }
+
+    .dropdownForMobileDevices {
+        display: none;
+
+    }
 
     .headerForSelectionField {
-        display: block !important
+        display: block !important;
+        width: 100%
+    }
+} */
+
+@media(max-width:600px) {
+    .dropdownForMobileDevices {
+        display: block;
     }
 }
