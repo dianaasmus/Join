@@ -186,6 +186,8 @@ function colorPrios(selectedUrgency, i) {
 
 
 function addCategoryOnTask() {
+    document.getElementById('dropdown').classList.remove('displayNone');
+
     let value = document.getElementById('selectedCategoryInputValue').value;
     if (value) {
         document.getElementById('labelCategory').innerHTML = '';
@@ -200,6 +202,7 @@ function addCategoryOnTask() {
 
 
 function openInputAddCategory() {
+    document.getElementById('dropdown').classList.add('displayNone');
     document.getElementById('selectedCategoryInputValue').value = ''
     document.getElementById('hiddenInputCategory').classList.remove('displayNone')
     document.getElementById('dropdownCategory').style = 'display:none'
@@ -208,6 +211,7 @@ function openInputAddCategory() {
 
 
 function addCategoryColorOnTask(i) {
+
     let value = document.getElementById('selectedCategoryInputValue').value;
     if (value) {
         let color = document.getElementById("color" + i).style.backgroundColor
@@ -238,6 +242,7 @@ function addToAssignedContacts(index) {
 
 
 function closeHiddenInput() {
+    document.getElementById('dropdown').classList.remove('displayNone');
     document.getElementById('hiddenInputCategory').classList.add('displayNone')
     document.getElementById('dropdownCategory').style = 'display:inlineBlock'
 }

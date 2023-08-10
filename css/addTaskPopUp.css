@@ -1,4 +1,4 @@
-/* .wrapperPopUpTask {
+.wrapperPopUpTask {
     position: fixed;
     top: 0;
     right: 0;
@@ -9,6 +9,16 @@
     z-index: 100;
     display: flex;
     align-items: center;
+}
+
+.displayNone {
+    display: none !important;
+}
+
+.label-description,
+.label-category,
+.label-assign {
+    margin-top: 20px;
 }
 
 .openPopUp {
@@ -23,24 +33,27 @@
     width: 100%;
 }
 
-.taskPopUpHeader h1 {
-    font-size: 2.5rem;
-    margin: 30px 0;
-}
-
 .contentPopUpTask {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     background-color: #F6F7F8;
     margin: auto;
     overflow-y: scroll;
-    width: 65%;
-    height: 85%;
+    width: 70%;
+    height: 90%;
     border-radius: 30px;
-    padding: 0 5%;
+    padding: 0 74px;
+
 }
 
-
+h1 {
+    font-size: 2.5rem;
+    /* margin-bottom: 60px; */
+    /* margin-left: 5%; */
+    font-weight: 700;
+    margin: 40px 0;
+}
 
 .taskBoardPopUpTask {
     display: flex;
@@ -53,17 +66,19 @@
     width: 50%;
     display: flex;
     flex-direction: column;
-
+    font-size: 1rem;
+    /* gap: 20px; */
 }
 
 .taskBoardLeftPopUpTask textarea {
-    height: 119px;
+    height: 80px;
     width: 422px;
     border-radius: 10px;
-    padding: 13px 21px 13px 21px;
+    padding: 10px 15px;
     color: #D1D1D1;
     border: 1px solid #D1D1D1;
-    font-size: 21px;
+    font-size: 0.9rem !important;
+    font-family: 'Open-sans', sans-serif;
     line-height: 120%;
     outline: none;
     resize: none;
@@ -80,12 +95,10 @@
 
 }
 
-/* form div {
+form div {
     display: flex;
     flex-direction: column;
-    margin-bottom: 33px;
-
-} 
+}
 
 select {
     border: none;
@@ -111,11 +124,13 @@ form label {
 }
 
 input {
+    width: 90% !important;
     border-radius: 10px;
-    padding: 5px 10px !important;
+    padding: 10px 15px !important;
     color: #000000;
     border: 1px solid #D1D1D1;
     font-size: 1rem;
+    line-height: 120%;
     outline: none;
     resize: none;
 }
@@ -155,17 +170,16 @@ input {
 
 .priorities {
     display: flex;
-    flex-direction: row !important;
+    flex-direction: row;
     width: auto;
-    margin: 0 !important;
+    margin-bottom: 0 !important;
 }
 
-.hiddenInput {
+/* .hiddenInput {
     position: absolute;
     left: 0;
     top: 0;
-
-}
+} */
 
 .assignedCategoryValues {
     display: flex;
@@ -183,54 +197,86 @@ hr {
     background-color: #9e9c9c;
     transform: rotate(90deg);
     height: 1px;
-    width: 30px;
-    position: absolute;
-    right: 35px;
-    top: 15px;
+    width: 25px;
+    position: relative;
+    left: 83%;
+    top: -35px;
     border: none;
+    margin: 0;
 }
 
 .dropdown {
     position: relative;
     display: inline-block;
     width: 422px;
-    height: 26px;
     border-radius: 10px;
     background-color: #ffffff;
-    padding: 13px 21px;
+    padding: 10px 15px;
     color: #000000;
     border: 1px solid #D1D1D1;
     margin-bottom: 0 !important;
-
-
+    cursor: pointer;
 }
 
 .dropdownAssigned {
     position: relative;
     display: inline-block;
     width: 422px;
-    height: 26px;
     border-radius: 10px;
     background-color: #ffffff;
-    padding: 13px 21px;
+    padding: 10px 15px;
     color: #000000;
     border: 1px solid #D1D1D1;
     margin-bottom: 0 !important;
+    cursor: pointer;
+}
 
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: -1px;
+    width: 464px;
+    background-color: #ffffff;
+    color: #D1D1D1;
+    border: 1px solid;
+    border-radius: 10px;
+    z-index: 1;
+    padding-top: 10px;
+    margin-bottom: 15px !important;
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
 
-}*/
+.dropdown-content a:hover {
+    background-color: #D1D1D1;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
 
+.dropdown-content a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #000000;
+}
 
-/*
+.dropdown:hover .dropdown-content {
+    display: block !important;
+    border-top: none;
+}
+
+.dropdown:hover .arrDown {
+    transform: rotate(0deg);
+}
 
 .colorPickers {
     display: flex;
     flex-direction: row;
-    margin-top: 5px;
     margin-bottom: 0 !important;
-
-
-
+    margin-top: -20px;
+    margin-left: 5px;
 }
 
 .colorPicker {
@@ -239,32 +285,34 @@ hr {
     border-radius: 50%;
     margin-right: 15px;
     margin-bottom: 0 !important;
-
+    cursor: pointer;
 }
 
 .arrDown {
     height: 9px;
-    width: 13px;
+    width: 15px;
     position: absolute;
-    top: 24px;
-    right: 10px
+    top: 15px;
+    right: 20px;
+    transform: rotate(180deg);
 }
 
 .closeHiddenInput {
-    height: 18px;
-    width: 18px;
-    position: absolute;
-    right: 62px;
-    top: 18px;
-
+    height: 14px;
+    width: 14px;
+    position: relative;
+    left: 78%;
+    top: -28px;
+    cursor: pointer;
 }
 
 .createInHiddenInput {
-    height: 18px;
-    width: 18px;
-    position: absolute;
-    right: 18px;
-    top: 17px;
+    height: 15px;
+    width: 15px;
+    position: relative;
+    left: 90%;
+    top: -44px;
+    cursor: pointer;
 }
 
 .newContactImgPopUpTask {
@@ -283,7 +331,6 @@ hr {
     color: #000000;
     border: 1px solid #D1D1D1;
     margin-bottom: 0 !important;
-
 }
 
 .dropdown-contentPopUpTask {
@@ -305,8 +352,6 @@ hr {
     padding: 12px 20px;
     text-decoration: none;
     color: #000000;
-
-
 }
 
 
@@ -319,6 +364,11 @@ hr {
 
 .headerForSelectionField:hover {
     cursor: pointer
+}
+
+.headerForSelectionField label,
+.headerForSelectionField label {
+    margin: 0 !important;
 }
 
 .addSubtaskButtonPopUpTask {
@@ -418,7 +468,8 @@ hr {
 
 .closePopUp {
     height: 20px;
-    margin-top: 40px;
+    margin-top: 60px;
+    margin-right: 60px;
 }
 
 .closePopUp:hover {
@@ -437,8 +488,8 @@ hr {
 ::-webkit-scrollbar-thumb {
     background-color: rgba(42, 54, 71, 1);
     border-radius: 10px;
- 
 
+} */
 
 .taskAddedPopUp {
 
@@ -548,9 +599,7 @@ hr {
     }
 
     input {
-        width: 90% !important;
         margin-right: 20px;
-        font-size: 16px;
     }
 
     textarea {
@@ -583,7 +632,7 @@ hr {
     }
 
     .hiddenInput {
-        width: 103% !important
+        width: 90% !important
     }
 
     .headerForSelectionField {
@@ -661,7 +710,7 @@ hr {
     }
 
     input {
-        padding: 16px 21px !important
+        padding: 10px 15px !important
     }
 
     .taskAddedPopUp span {
@@ -672,20 +721,17 @@ hr {
 
 }
 
-/* @media(min-width:1000px) and (max-width:1450px) {
+@media(min-width:1000px) and (max-width:1450px) {
     .dividingHRPopUp {
         display: none !important
     }
 
     input {
-        width: 90% !important;
-        /* margin-right: 20px;
-        font-size: 16px;
-        padding: 16px 21px !important
+        margin-right: 20px;
     }
 
     .hiddenInput {
-        width: 98%;
+        width: 90%;
     }
 
     textarea {
@@ -733,4 +779,4 @@ hr {
         width: 30% !important;
         height: 70%
     }
-} */
+}
