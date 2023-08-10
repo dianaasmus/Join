@@ -1,4 +1,4 @@
-.wrapperPopUpTask {
+/* .wrapperPopUpTask {
     position: fixed;
     top: 0;
     right: 0;
@@ -85,7 +85,7 @@
     flex-direction: column;
     margin-bottom: 33px;
 
-} */
+} 
 
 select {
     border: none;
@@ -218,38 +218,10 @@ hr {
     margin-bottom: 0 !important;
 
 
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 27px;
-    left: -1px;
-    width: 464px;
-    background-color: #ffffff;
-    color: #D1D1D1;
-    border: 1px solid;
-    border-radius: 10px;
-    z-index: 1;
-    padding-top: 10px;
-    margin-bottom: 15px !important;
-    border-top: none;
-}
-
-.dropdown-content a {
-    display: block;
-    padding: 12px 20px;
-    text-decoration: none;
-    color: #000000;
+}*/
 
 
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-    border-top: none;
-}
-
+/*
 
 .colorPickers {
     display: flex;
@@ -465,7 +437,7 @@ hr {
 ::-webkit-scrollbar-thumb {
     background-color: rgba(42, 54, 71, 1);
     border-radius: 10px;
- */
+ 
 
 
 .taskAddedPopUp {
