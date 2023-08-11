@@ -502,12 +502,17 @@ textarea {
     border-top: none;
 }
 
+.dropdownAssigned:hover .dropdown-content {
+    display: block !important;
+
+}
+
 .dropdown-content {
     width: 100% !important;
 }
 
 .dropdown-content {
-    display: none !important;
+    display: none;
     position: absolute;
     top: 33px;
     left: -1px;

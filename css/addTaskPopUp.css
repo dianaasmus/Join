@@ -17,12 +17,13 @@
 
 .label-description,
 .label-category,
-.label-assign {
+.label-assign,
+.label-subtasks,
+.label-prio {
     margin-top: 20px;
 }
 
 .openPopUp {
-
     transform: translateX(0px);
     transition: transform 0.6s ease-in-out;
 }
@@ -40,11 +41,12 @@
     background-color: #F6F7F8;
     margin: auto;
     overflow-y: scroll;
-    width: 70%;
-    height: 90%;
+    width: 80%;
+    height: 83%;
     border-radius: 30px;
-    padding: 0 74px;
-
+    padding: 0px 5%;
+    box-sizing: border-box;
+    
 }
 
 h1 {
@@ -53,17 +55,18 @@ h1 {
     /* margin-left: 5%; */
     font-weight: 700;
     margin: 40px 0;
+
 }
 
 .taskBoardPopUpTask {
     display: flex;
-    justify-content: space-evenly !important;
+    justify-content: space-between !important;
     width: 100%;
 
 }
 
 .taskBoardLeftPopUpTask {
-    width: 50%;
+    width: 45%;
     display: flex;
     flex-direction: column;
     font-size: 1rem;
@@ -85,14 +88,12 @@ h1 {
 }
 
 .taskBoardRightPopUp {
-    width: 50%;
+    width: 45%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    font-size: 21px;
-    font-weight: 400;
-    margin-left: 15px;
-
+    justify-content: space-between;
+    font-size: 1rem;
+    /* margin-left: 4%; */
 }
 
 form div {
@@ -102,7 +103,6 @@ form div {
 
 select {
     border: none;
-
     width: 464px;
     border-radius: 10px;
     padding: 13px 21px 13px 21px;
@@ -114,9 +114,7 @@ select {
 
 
 form span {
-
     line-height: 120%;
-
 }
 
 form label {
@@ -124,7 +122,7 @@ form label {
 }
 
 input {
-    width: 90% !important;
+    /* width: 80% !important; */
     border-radius: 10px;
     padding: 10px 15px !important;
     color: #000000;
@@ -136,8 +134,10 @@ input {
 }
 
 .prioritiesPopUpTask {
+    width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     margin-bottom: 0 !important;
 }
 
@@ -154,18 +154,15 @@ input {
 }
 
 .priorityImg {
-    height: 50px;
-    width: 50%;
+    height: 45px;
+    width: 95px;
     border-radius: 10px;
-    margin-right: 4px;
     border: 1px solid #D1D1D1;
-
 }
 
 .priorityImg:hover {
     cursor: pointer;
     box-shadow: -5px 4px rgba(130, 130, 130, 0.21);
-
 }
 
 .priorities {
@@ -267,8 +264,13 @@ hr {
     border-top: none;
 }
 
-.dropdown:hover .arrDown {
+.dropdown:hover .arrDown,
+.dropdownAssigned:hover .arrDown {
     transform: rotate(0deg);
+}
+
+.select-contact:hover .dropdown-content {
+    display: block !important;
 }
 
 .colorPickers {
@@ -372,11 +374,11 @@ hr {
 }
 
 .addSubtaskButtonPopUpTask {
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     position: absolute;
-    top: 17px;
-    right: 40px
+    top: 13px;
+    left: 90%;
 }
 
 .addSubTaskPopUpTask {
@@ -412,9 +414,9 @@ hr {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    font-size: 21px;
-    font-weight: 400;
-    margin: 0 90px 90px 0
+    font-size: 1rem;
+    /* font-weight: 400; */
+    /* margin: 0 90px 90px 0; */
 }
 
 .buttonCreateTaskPopUpTask {
@@ -423,9 +425,10 @@ hr {
     background-color: rgba(42, 54, 71, 1);
     color: white;
     border-radius: 10px;
-    padding: 0 15px;
-    font-size: 21px;
+    padding: 0px 15px;
+    font-size: 1rem;
     border: none;
+    white-space: nowrap;
 }
 
 .buttonCreateTaskPopUpTask:hover {
@@ -443,8 +446,8 @@ hr {
     border-radius: 10px;
     border: 2px solid rgba(42, 54, 71, 1);
     color: rgba(42, 54, 71, 1);
-    font-size: 21px;
-    background-color: #F6F7F8
+    font-size: 1rem;
+    background-color: #F6F7F8;
 }
 
 .buttonClearTaskPopUpTask:hover {
@@ -455,7 +458,8 @@ hr {
 }
 
 .createTaskPageImgPopUpTask {
-    margin-left: 15px;
+    margin-left: 10px;
+    margin-top: -2px;
 }
 
 .clearTaskPageImgPopUpTask {
@@ -469,7 +473,6 @@ hr {
 .closePopUp {
     height: 20px;
     margin-top: 60px;
-    margin-right: 60px;
 }
 
 .closePopUp:hover {
@@ -510,6 +513,7 @@ hr {
 }
 
 .dividingHRPopUp {
+
     width: 0px;
     height: auto;
     max-height: 1000px;
@@ -598,9 +602,9 @@ hr {
         height: 90%
     }
 
-    input {
+    /* input {
         margin-right: 20px;
-    }
+    } */
 
     textarea {
         width: 90% !important;
@@ -608,15 +612,15 @@ hr {
     }
 
     .dropdown {
-        width: 90% !important
+        width: 100% !important
     }
 
     .dropdownAssigned {
-        width: 90% !important
+        width: 100% !important
     }
 
     form div {
-        width: 90%
+        width: 100%
     }
 
     .categoryContainer {
@@ -726,29 +730,25 @@ hr {
         display: none !important
     }
 
-    input {
-        margin-right: 20px;
-    }
-
     .hiddenInput {
         width: 90%;
     }
 
     textarea {
-        width: 90% !important;
+        width: 89% !important;
         font-size: 16px !important;
     }
 
     .dropdown {
-        width: 90% !important
+        width: 100% !important
     }
 
     .dropdownAssigned {
-        width: 90% !important
+        width: 100% !important
     }
 
     form div {
-        width: 90%
+        width: 100%
     }
 
     .categoryContainer {
@@ -760,10 +760,8 @@ hr {
     }
 
     .prioPopUp {
-        width: 90%;
+        width: 100%;
     }
-
-
 
     .buttonsCreateTaskPopUpTask {
         margin: 0;
