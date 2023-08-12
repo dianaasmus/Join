@@ -8,6 +8,10 @@ body {
     margin: 90px 5% 0 20%;
 }
 
+.hide-overflow {
+    overflow: hidden;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -103,7 +107,7 @@ input::-webkit-search-cancel-button {
 }
 
 .boardSubsectionHeader h2 {
-    font-size: 0.9rem;
+    font-size: 1.4vw;
     color: #2A3647;
 }
 
@@ -176,7 +180,7 @@ input::-webkit-search-cancel-button {
 .boardCard {
     border-radius: 30px;
     background-color: white;
-    padding: 18px 19px;
+    padding: 18px 19px 0 19px;
     width: 76%;
     box-shadow: -2px 0px 6px rgba(0, 0, 0, 0.25);
     overflow-wrap: break-word;
@@ -250,7 +254,11 @@ input::-webkit-search-cancel-button {
 }
 
 #subtasksFullCard {
-    gap: 20px;
+    gap: 10px;
+}
+
+.dialogFullcard-subtasks {
+    margin-bottom: 0;
 }
 
 #subtasksFullCard div{
@@ -259,7 +267,6 @@ input::-webkit-search-cancel-button {
 }
 
 .wrapperDialog {
-
     width: 80%;
     margin: 20px auto;
     position: relative;
@@ -366,14 +373,15 @@ input::-webkit-search-cancel-button {
     width: 35px;
     border-radius: 100%;
     font-size: 16px;
+    /* margin-left: -8px; */
     color: white;
     border: 1px solid white;
 
 }
 
-.priorityImg:hover {
+/* .priorityImg:hover {
     box-shadow: none !important;
-}
+} */
 
 .priorityImgEdit {
     height: 40px;
@@ -430,7 +438,7 @@ input::-webkit-search-cancel-button {
 .boardEditTaskForm div {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 
@@ -487,25 +495,29 @@ textarea {
     position: relative;
     display: inline-block !important;
     width: 50%;
-    height: 20px;
+    height: 16px;
     border-radius: 10px;
     background-color: #ffffff;
-    padding: 13px;
+    padding: 13px 15px;
     color: #000000;
     border: 1px solid #D1D1D1;
     margin-bottom: 0 !important;
+    margin-left: -5px;
     cursor: pointer;
 }
 
 .dropdownEditTask:hover .dropdown-content {
     display: block !important;
     border-top: none;
+    font-size: 0.9rem;
+    max-height: 260%;
+    overflow-y: scroll;
 }
 
-.dropdownAssigned:hover .dropdown-content {
+/* .dropdownAssigned:hover .dropdown-content {
     display: block !important;
 
-}
+} */
 
 .dropdown-content {
     width: 100% !important;
@@ -533,6 +545,7 @@ textarea {
     display: block;
     padding: 10px 15px;
     text-decoration: none;
+    font-size: 0.9rem;
 }
 
 .dropdownEditTask:hover .arrDown {
@@ -573,13 +586,14 @@ textarea {
 .droppedContacts input {
     position: absolute;
     top: 10px;
-    left: 85.5% !important;
+    left: 92% !important;
     width: 10px !important;
 }
 
 
 .assignedToFullCard {
-
+    height: 60%;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     justify-content: center;

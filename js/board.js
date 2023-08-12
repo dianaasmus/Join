@@ -122,6 +122,7 @@ function priorityImageForRenderFullTaskCard(i) {
 
 
 async function renderDialogFullCard(i, colorCircle) {
+    stopScrolling();
 
     let counter = 0
     document.getElementById('dialogFullCard').classList.remove('displayNone')
@@ -137,8 +138,17 @@ async function renderDialogFullCard(i, colorCircle) {
 }
 
 
-function openEditTask(i) {
+function stopScrolling() {
+    document.body.classList.add('hide-overflow');
+}
 
+
+function continueScrolling() {
+    document.body.classList.remove('hide-overflow');
+}
+
+
+function openEditTask(i) {
     document.getElementById('dialogEditCard').classList.remove('displayNone')
     document.getElementById('dialogEditCard').innerHTML = openEditTaskHTML(i)
     document.getElementById(`editedDate`).setAttribute("min", date.toISOString().split("T")[0]);
@@ -151,6 +161,7 @@ async function editTask(i) {
     let title = document.getElementById('editedTask');
     let description = document.getElementById('editedDescription');
     let date = document.getElementById('editedDate');
+    continueScrolling();
 
 
     tasks[i] = {
@@ -240,6 +251,7 @@ function openTask() {
 
 
 function closeTask() {
+    continueScrolling();
     document.getElementById('dialogFullCard').classList.add('displayNone')
     renderTaskCards();
 }
@@ -294,19 +306,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function listenToEvent(i) {
-    var entireEditTaskCard = document.getElementById('entireEditTaskCard');
+    let entireEditTaskCard = document.getElementById('entireEditTaskCard');
     if (entireEditTaskCard) {
-        entireEditTaskCard.addEventListener('mouseenter', function () {
-            let contactList = document.getElementById('reassignContacts');
-            let dropdownAddContact = document.getElementById('editedDropdownAddContact');
-            contactList.addEventListener('mouseenter', function () {
-                dropdownAddContact.innerHTML = ''
-                contacts.forEach((contact, index) => {
-                    dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addDeleteReassignedContacts(${i},${index})" id="checkboxAssigned${index}"  type="checkbox"></div>`;
-                });
-                checkForCheckedAssigned(i)
-            });
+        let dropdownAddContact = document.getElementById('editedDropdownAddContact');
+        dropdownAddContact.innerHTML += ''
+        contacts.forEach((contact, index) => {
+            dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addDeleteReassignedContacts(${i},${index})" id="checkboxAssigned${index}"  type="checkbox"></div>`;
         });
+        checkForCheckedAssigned(i);
     }
 }
 
@@ -355,25 +362,9 @@ function addReassigned(i, index) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function openContactEdit() {
+    // window.location.href = 'contacts.html';
+    // setTimeout(() => {
+        openAddContacts();
+    // }, 1000);
+}

@@ -55,17 +55,15 @@ function HTMLrenderDialogFullCard(i) {
                  </div>
               
                  <div>
-                    <p>Subtasks:</p>
+                    <p class="dialogFullcard-subtasks">Subtasks:</p>
                     <div  id="subtasksFullCard" style="display:flex; flex-direction:column;">
                     </div>
                 </div>
 
                  <div class="assignedTo">
-    
-                      <p>Assigned to:</p>
-                      <div class="assignedToFullCard" id="assignedToFullCard">
-                      </div>
-                     
+                    <p>Assigned to:</p>
+                    <div class="assignedToFullCard" id="assignedToFullCard">
+                    </div>
                  </div>
               <div class="editDelete">
                    <img  class="deleteButton" onclick="deleteTask(${i})"  src="../assets/img/blueDelete.png">
@@ -113,7 +111,6 @@ function openEditTaskHTML(i) {
                         src="../assets/img/lowImg.png">
                 </div>
             </div>
-
              
 
             <div class="AssignedTo" style="padding:6px;"> <!--Assigned to container-->
@@ -122,17 +119,14 @@ function openEditTaskHTML(i) {
                     <div  class="headerForSelectionField">
                         <span style="position: relative;">Reassign contacts</span>
                         <img class="arrDown" src="../assets/img/arrDown.png">
-                        <div>
-                            <input id="editedHiddenInputAddContact" class="hiddenInput displayNone"
-                                placeholder="New category name"> <!--Hidden input addContact-->
-                        </div>
+                        
                     </div>
                     
-                    <div id="editedDropdownAddContact" class="dropdown-content" >
-                  
+                    <div id="editedDropdownAddContact" class="dropdown-content">
                     </div>
                 </section>
             </div><!--Assigned to container closed-->
+
             <div class="okButtonDiv">
                <button class="okButton">Ok  &#10004;</button>
             </div>
@@ -199,6 +193,28 @@ function ifStatusDoneForMobile(i) {
         `
     }
 }
+
+
+function addDropdownContainer() {
+    return `
+        <div id="dropdownContent" class="dropdown-content">
+            <div id="dropdownAddContactPopUp" >
+            </div>
+            <a class="addContactLink" href="#">Add new Contact</a>
+        </div>
+        `;
+}
+
+function addDropdownCategory() {
+    return `
+        <div id="dropdownCategory" class="dropdown-content">
+            <div id="dropdownAddCategoryPopUp">
+            </div>
+            <a class="addContactLink" onclick="openInputAddCategory()">Add Category</a>
+        </div>
+        `;
+}
+
 
 
 function HTMLforRenderAssignedContactsOnBoard(i, colorCircle, contact) {
