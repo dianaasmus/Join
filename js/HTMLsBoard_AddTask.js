@@ -216,6 +216,25 @@ function addDropdownCategory() {
 }
 
 
+function newCategoryHTML(value) {
+    return `
+    <div class="assignedCategoryValues">
+        ${value}
+        <div class="colorPicker colorPickerAssigned" style="background-color: ${colorsCategory}"  id="assignedColor"></div>
+    </div>` ;
+}
+
+
+function selectedCategoryHTML(selectedCategoryValue, selectedCategoryColor) {
+    return `
+    <div class="assignedCategoryValues">
+        <p id="selectedCategoryValue">${selectedCategoryValue}</p>
+        <div class="colorPicker colorPickerAssigned" style="background-color: ${selectedCategoryColor}"  id="assignedColor"></div>
+    </div>
+    `;
+}
+
+
 
 function HTMLforRenderAssignedContactsOnBoard(i, colorCircle, contact) {
     let element = document.getElementById(`colors${colorCircle}`);
