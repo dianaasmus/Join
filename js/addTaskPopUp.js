@@ -29,17 +29,21 @@ async function addToTasks() {
     let description = document.getElementById('description');
     let date = document.getElementById('date');
     let subtasks = subtasksToSave.splice(0, subtasksToSave.length)
-    let category = document.getElementById('selectedCategoryInputValue');
     let assignedTo = assignedContacts.splice(0, assignedContacts.length)
     let prio = prios.slice(0).toString()
     let colorCategory = colorsCategory.slice(0).toString()
 
+    if (document.getElementById('selectedCategoryInputValue')) {
+        category = document.getElementById('selectedCategoryInputValue').value;
+    } else {
+        category = document.getElementById('selectedCategoryValue').innerHTML;
+    }
 
     if (colorPickRequired) {
         let task = {
             title: title.value,
             description: description.value,
-            category: category.value,
+            category: category,
             colorCategory,
             assignedTo: assignedTo.value,
             date: date.value,
@@ -56,6 +60,13 @@ async function addToTasks() {
         await backend.setItem('tasks', JSON.stringify(tasks));
         popTheAddedDesk();
         continueScrolling();
+    } else {
+        setTimeout(() => {
+            for (let i = 1; i <= 3; i++) {
+                const prioElement = document.getElementById('prio' + i);
+                prioElement.classList.add('required-field');
+            }
+        }, 500);
     }
 }
 
@@ -187,20 +198,37 @@ function colorPrios(i) {
 }
 
 
-function addCategoryOnTask() {
+function addCategoryOnTask(categorySelected, i) {
     let value = document.getElementById('selectedCategoryInputValue').value;
     let labelCategory = document.getElementById('labelCategory');
+
     if (value && colorSelected) {
         document.getElementById('dropdown').classList.remove('displayNone');
         labelCategory.classList.add('setlabelCategory');
+
         labelCategory.innerHTML = '';
         labelCategory.innerHTML = `<div class="assignedCategoryValues">
          ${value}
-          <div class="colorPicker colorPickerAssigned" style="background-color: ${colorsCategory}"  id="assignedColor"></div>
-         </div>` ;
-        document.getElementById('hiddenInputCategory').classList.add('displayNone')
-        document.getElementById('dropdownCategory').style = 'none'
+        <div class="colorPicker colorPickerAssigned" style="background-color: ${colorsCategory}"  id="assignedColor"></div>
+        </div>` ;
+
+        document.getElementById('hiddenInputCategory').classList.add('displayNone');
         document.getElementById('assignedColor').classList.add('color-picker-picked');
+
+    } else if (categorySelected === 'categorySelected') {
+        let selectedCategoryValue = document.getElementById(`categoryValue${i}`).innerHTML;
+        let selectedCategoryColor = document.getElementById(`categorColor${i}`).style.backgroundColor;
+
+        labelCategory.innerHTML = '';
+        labelCategory.innerHTML = `
+            <div class="assignedCategoryValues">
+                <p id="selectedCategoryValue">${selectedCategoryValue}</p>
+                <div class="colorPicker colorPickerAssigned" style="background-color: ${selectedCategoryColor}"  id="assignedColor"></div>
+            </div>
+        `;
+
+        document.getElementById('assignedColor').classList.add('color-picker-picked');
+        addSelectedColorToTask(i);
     }
 }
 
@@ -213,20 +241,35 @@ function openInputAddCategory() {
 }
 
 
-function addCategoryColorOnTask(i) {
+function addNewcategoryToTask(i) {
     let value = document.getElementById('selectedCategoryInputValue').value;
+
     colorSelected = true;
     if (value) {
-        let color = document.getElementById("color" + i).style.backgroundColor
+        let color = document.getElementById("color" + i).style.backgroundColor;
         if (colorsCategory.length == 0) {
             colorsCategory.push(color)
         } else {
             colorsCategory = []
             colorsCategory.push(color)
         }
-        addCategoryOnTask()
-    }
+        addCategoryOnTask(value);
+    } 
+    colorSelected = false;
+}
 
+function addSelectedColorToTask(i) {
+    let selectedValue = document.getElementById('selectedCategoryValue').innerHTML;
+    let selectedColor = document.getElementById('assignedColor').style.backgroundColor;
+
+    if (selectedValue) {
+        if (colorsCategory.length == 0) {
+            colorsCategory.push(selectedColor);
+        } else {
+            colorsCategory = []
+            colorsCategory.push(selectedColor);
+        }
+    }
 }
 
 
@@ -239,7 +282,6 @@ function addToAssignedContacts(index) {
         } else {
             assignedContacts.splice(assignedContacts.indexOf(contact), 1);
         }
-
     }
 }
 
@@ -285,7 +327,7 @@ function addDropdownContacts() {
             </div>
             `;
     })
-    
+
 }
 
 
@@ -326,14 +368,25 @@ function dropdownCategory() {
 
 function addDropdownContentCategory() {
     let dropdownAddCategoryPopUp = document.getElementById('dropdownAddCategoryPopUp');
+    const uniqueCategories = new Set();
 
     dropdownAddCategoryPopUp.innerHTML = ''
-    tasks.forEach((task) => {
-        dropdownAddCategoryPopUp.innerHTML += `
-            <div class="dropdownContact">
-                <a>${task.category}</a>
 
-            </div>
-            `;
-    })
+    for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[i];
+        checkAndWriteCategories(dropdownAddCategoryPopUp, uniqueCategories, task, i);
+    }
+}
+
+function checkAndWriteCategories(dropdownAddCategoryPopUp, uniqueCategories, task, i) {
+    if (!uniqueCategories.has(task.category)) {
+        uniqueCategories.add(task.category);
+
+        dropdownAddCategoryPopUp.innerHTML += `
+        <div class="dropdownCategory" onclick="addCategoryOnTask('categorySelected', ${i})">
+            <div id="categorColor${i}" class="colorPicker colorPickerAssigned" style="background-color: ${task.colorCategory}"></div>
+            <a id="categoryValue${i}">${task.category}</a> 
+        </div>
+    `;
+    }
 }

@@ -1,5 +1,6 @@
 <div id="addTaskPopUp" class="wrapperPopUpTask">
     <div class="contentPopUpTask">
+        
         <div class="taskPopUpHeader">
             <h1>Add Task</h1>
             <img onclick="closePopUpAddTask()" class="closePopUp" src="../assets/img/closeButtonBoard.png">
@@ -8,21 +9,21 @@
         <form onsubmit="addToTasks(); setTimeout(function() { window.location.reload(); }, 3000); return false"
             class="taskBoardPopUpTask">
 
-
             <div class="taskBoardLeftPopUpTask">
-                <div class="addTaskContainer"><!--Title container-->
+                <div class="addTaskContainer">
                     <label>Title*</label>
                     <input id="task" type="text" placeholder="Enter a title" required>
                 </div>
 
-                <div class="addTaskContainer"><!--Title container-->
+                <div class="addTaskContainer">
                     <label class="label-description">Description*</label>
                     <textarea id="description" required style="color: #000000;" required type="text"
                         placeholder="Enter a description"></textarea>
                 </div>
 
-                <div class="contactContainer addTaskContainer"> <!--Assigned to container-->
+                <div class="contactContainer addTaskContainer">
                     <label class="label-assign">Assigned to</label>
+
                     <div id="eventLisPopUp" class="dropdownAssigned">
                         <div onclick="contactList()" class="headerForSelectionField">
                             <label style="position: relative;">Select contacts</label>
@@ -33,20 +34,20 @@
 
                 <div class="addTaskContainer">
                     <label class="label-subtasks">Subtasks</label>
+
                     <div class="addSubTaskPopUpTask">
                         <input maxlength="35" id="subtaskPopUp" placeholder="Add new subtask">
                         <img class="addSubtaskButtonPopUpTask" onclick="addSubtaskOnPopUp()"
                             class="addSubtaskButtonPopUpTask" src="../assets/img/addSubtaskButton.png">
                     </div>
-                    <div id="subtasksPopUp" class="checkBoxSubtasksDivPopUp">
 
-                    </div>
+                    <div id="subtasksPopUp" class="checkBoxSubtasksDivPopUp"></div>
                 </div>
-
             </div>
+
             <div class="dividingHRPopUp"></div>
+
             <div class="taskBoardRightPopUp">
-                <!-- <div> -->
 
                 <div class="addTaskContainer">
                     <label>Due date*</label>
@@ -55,16 +56,18 @@
 
                 <div class="prioPopUp addTaskContainer">
                     <label class="label-prio">Prio*</label>
-                    <div class="prioritiesPopUpTask">
 
+                    <div class="prioritiesPopUpTask">
                         <div id="prio1" value="urgent" onclick="addPriority(1)" class="priorityImg">
                             <p>Urgent</p>
                             <img src="../assets/img/urgent.png" class="prio-imgs" id="prio1-img">
                         </div>
+
                         <div id="prio2" value="medium" onclick="addPriority(2)" class="priorityImg">
                             <p>Medium</p>
                             <img src="../assets/img/medium.png" class="prio-imgs" id="prio2-img">
                         </div>
+
                         <div id="prio3" value="low" onclick="addPriority(3)" class="priorityImg">
                             <p>Low</p>
                             <img src="../assets/img/low.png" class="prio-imgs" id="prio3-img">
@@ -72,7 +75,7 @@
                     </div>
                 </div>
 
-                <div class="categoryContainer addTaskContainer"> <!--Category container-->
+                <div class="categoryContainer addTaskContainer">
                     <label class="label-category">Category*</label>
 
                     <div onclick="dropdownCategory()" class="dropdown" id="dropdown">
@@ -80,21 +83,8 @@
                             <label id="labelCategory">Select task category</label>
                             <img class="arrDown" id="categoryArrow" src="../assets/img/arrDown.png">
                         </div>
-                        <!-- <div id="dropdownCategory" class="dropdown-content">
-                            <a onclick="openInputAddCategory()" href="#">Add category</a>
-                        </div> -->
                     </div>
                 </div>
-
-                <!-- <div class="contactContainer addTaskContainer"> 
-                    <label class="label-assign">Assigned to</label>
-                    <div id="eventLisPopUp" class="dropdownAssigned">
-                        <div onclick="contactList()" class="headerForSelectionField">
-                            <label style="position: relative;">Select contacts</label>
-                            <img class="arrDown" id="assignArrow" src="../assets/img/arrDown.png">
-                        </div>
-                    </div>
-                </div> -->
 
                 <div id="hiddenInputCategory" class="hiddenInput displayNone">
 
@@ -103,34 +93,28 @@
                     <hr>
                     <img class="createInHiddenInput" onclick="addCategoryOnTask()" src="../assets/img/check.png">
 
-
                     <div class="colorPickers">
-                        <div onclick="addCategoryColorOnTask(1)" id="color1" class="colorPicker"
+                        <div onclick="addNewcategoryToTask(1)" id="color1" class="colorPicker"
                             style="background-color:#8AA4FF;"></div>
-                        <div onclick="addCategoryColorOnTask(2)" id="color2" class="colorPicker"
+                        <div onclick="addNewcategoryToTask(2)" id="color2" class="colorPicker"
                             style="background-color:#FF0000;"></div>
-                        <div onclick="addCategoryColorOnTask(3)" id="color3" class="colorPicker"
+                        <div onclick="addNewcategoryToTask(3)" id="color3" class="colorPicker"
                             style="background-color:#2AD300 ;"></div>
-                        <div onclick="addCategoryColorOnTask(4)" id="color4" class="colorPicker"
+                        <div onclick="addNewcategoryToTask(4)" id="color4" class="colorPicker"
                             style="background-color:#FF8A00 ;"></div>
-                        <div onclick="addCategoryColorOnTask(5)" id="color5" class="colorPicker"
+                        <div onclick="addNewcategoryToTask(5)" id="color5" class="colorPicker"
                             style="background-color:#E200BE ;"></div>
-                        <div onclick="addCategoryColorOnTask(6)" id="color6" class="colorPicker"
+                        <div onclick="addNewcategoryToTask(6)" id="color6" class="colorPicker"
                             style="background-color:#0038FF ;"></div>
                     </div>
                 </div>
 
-
-                <!-- <div>
-                        <span></span>
-                    </div> -->
-                <!-- </div> -->
                 <div class="buttonsCreateTaskPopUpTask">
                     <button onclick="closePopUpAddTask()" class="buttonClearTaskPopUpTask">
                         <span>Clear</span>
                         <span class="clearTaskPageImgPopUpTask">+</span>
-                        <!-- <img class="clearTaskPageImg" src="./assets/img/clearTaskPage.png"> -->
                     </button>
+
                     <button type="submit" id="buttonCreateTaskPopUpTask" class="buttonCreateTaskPopUpTask">
                         <span>Create Task</span>
                         <img class="createTaskPageImgPopUpTask" src="../assets/img/createTaskPage.png">
@@ -139,9 +123,6 @@
 
         </form>
         <div id="popUpWhenAdded" class="taskAddedPopUp displayNone"><span>Task added to board</span></div>
-    </div><!--taskBoard closed-->
 
-
-
-</div><!--content closed-->
-</div><!--wrapper closed-->
+    </div>
+</div>
