@@ -198,7 +198,7 @@ function ifStatusDoneForMobile(i) {
 function addDropdownContainer() {
     return `
         <div id="dropdownContent" class="dropdown-content">
-            <div id="dropdownAddContactPopUp" >
+            <div id="dropdownAddContactPopUp">
             </div>
             <a class="addNewBtn" href="#">Add new Contact</a>
         </div>
@@ -218,7 +218,7 @@ function addDropdownCategory() {
 
 function newCategoryHTML(value) {
     return `
-    <div class="assignedCategoryValues">
+    <div class="assignedCategoryValues" id="assignedCategoryValues">
         <div class="colorPicker colorPickerAssigned" style="background-color: ${colorsCategory}"  id="assignedColor"></div>
         <p>${value}</p>
     </div>` ;

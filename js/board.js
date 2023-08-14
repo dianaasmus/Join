@@ -66,9 +66,6 @@ function checkForContacts(i) {
 }
 
 
-
-
-
 function hideProgressSection(i) {
     if (tasks[i].subtasks.length == 0) {
         document.getElementById(`progressBarSection${i}`).classList.remove('progressBarSection');
