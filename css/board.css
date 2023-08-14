@@ -291,7 +291,8 @@ input::-webkit-search-cancel-button {
     padding: 8px;
     color: white;
     border-radius: 10px;
-    width: fit-content;
+    width: 35%;
+    text-align: center;
 }
 
 .taskDescript {
@@ -435,11 +436,11 @@ input::-webkit-search-cancel-button {
     height: 90%;
 }
 
-.boardEditTaskForm div {
+/* .boardEditTaskForm div {
     display: flex;
     flex-direction: column;
-    /* margin-top: 20px; */
-}
+    /* margin-top: 20px; 
+} */
 
 
 .boardEditTaskForm input {
@@ -498,7 +499,7 @@ textarea {
     height: 16px;
     border-radius: 10px;
     background-color: #ffffff;
-    padding: 13px 15px;
+    padding: 10px 15px;
     color: #000000;
     border: 1px solid #D1D1D1;
     margin-bottom: 0 !important;
@@ -506,13 +507,13 @@ textarea {
     cursor: pointer;
 }
 
-.dropdownEditTask:hover .dropdown-content {
+/* .dropdownEditTask:hover .dropdown-content {
     display: block !important;
     border-top: none;
     font-size: 0.9rem;
     max-height: 260%;
     overflow-y: scroll;
-}
+} */
 
 /* .dropdownAssigned:hover .dropdown-content {
     display: block !important;
@@ -548,9 +549,9 @@ textarea {
     font-size: 0.9rem;
 }
 
-.dropdownEditTask:hover .arrDown {
+/* .dropdownEditTask:hover .arrDown {
     transform: rotate(0deg) !important;
-}
+} */
 
 .okButtonDiv {
     display: flex;

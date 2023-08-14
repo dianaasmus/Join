@@ -10,8 +10,9 @@ let subtasksToSave = []
 let date = new Date();
 contacts = []
 let colorSelected = false;
-let colorPickRequired = false;
+let prioSelected = false;
 let dropDownCategory = false;
+let categorySelected = false;
 
 
 function disableButtonAddTask() {
@@ -24,16 +25,32 @@ function disableButtonAddTask() {
 }
 
 function addToTasks() {
-    if (colorPickRequired) {
+    if (prioSelected && categoryIsSelected()) {
+        prioSelected = false;
         createTask();
-    } else {
+    } else if (!prioSelected) {
         alertPrioRequired();
+    } 
+    // else {
+    //     categoryIsSelected();
+    // }
+}
+
+function categoryIsSelected() {
+    if (document.getElementById('selectedCategoryInputValue').value === '' && document.getElementById('selectedCategoryValue').innerHTML === '') {
+        
+        document.getElementById('dropdown').classList.add('required-field');
+        document.getElementById('selectedCategoryInputValue').classList.add('required-field');
+        console.log('no category');
+        return false;
+    } else {
+        return true;
     }
 }
 
 
 function setCategory() {
-    if (document.getElementById('selectedCategoryInputValue')) {
+    if (document.getElementById('selectedCategoryInputValue').value) {
         return document.getElementById('selectedCategoryInputValue').value;
     } else {
         return document.getElementById('selectedCategoryValue').innerHTML;
@@ -76,11 +93,19 @@ async function createTask() {
 
 function alertPrioRequired() {
     for (let i = 1; i <= 3; i++) {
-        setTimeout(() => {
+        // setTimeout(() => {
             const prioElement = document.getElementById('prio' + i);
             prioElement.classList.add('required-field');
-        }, 500);
-        prioElement.classList.remove('required-field');
+        // }, 500);
+    }
+}
+
+function removeAlertPrioRequired() {
+    for (let i = 1; i <= 3; i++) {
+        // setTimeout(() => {
+            const prioElement = document.getElementById('prio' + i);
+            prioElement.classList.remove('required-field');
+        // }, 500);
     }
 }
 
@@ -134,7 +159,9 @@ function closePopUpAddTask() {
 
 async function popTheAddedDesk() {
     document.getElementById('popUpWhenAdded').classList.remove('displayNone')
-    setTimeout(function () { document.getElementById('popUpWhenAdded').classList.add('displayNone') }, 2000)
+    // setTimeout(function () { 
+        document.getElementById('popUpWhenAdded').classList.add('displayNone') 
+    // }, 2000)
 }
 
 
@@ -197,6 +224,9 @@ function addPriority(i) {
         // colorPrios(selectedUrgency, i)
         // prios.push(selectedUrgency)
     }
+    if (!prioSelected) {
+        removeAlertPrioRequired();
+    }
     colorPrios(i);
     prios.push(selectedUrgency)
 }
@@ -207,7 +237,7 @@ function colorPrios(i) {
         const prioElement = document.getElementById('prio' + i);
         prioElement.classList.remove('prio' + i + '-clicked');
     }
-    colorPickRequired = true;
+    prioSelected = true;
     document.getElementById('prio' + i).classList.add('prio' + i + '-clicked');
 }
 
@@ -295,6 +325,7 @@ function addToAssignedContacts(index) {
 
 
 function closeHiddenInput() {
+    document.getElementById('selectedCategoryInputValue').value = '';
     document.getElementById('dropdown').classList.remove('displayNone');
     document.getElementById('hiddenInputCategory').classList.add('displayNone')
     // document.getElementById('dropdownCategory').style = 'display:inlineBlock';
@@ -314,10 +345,15 @@ function contactList() {
 
         addDropdownContacts();
     } else {
-        dropdownContent.remove();
-        document.getElementById('assignArrow').style.transform = "rotate(180deg)";
+        checkForCheckedAssignedPopUp();
+        removeAddTaskContactList();
     }
-    checkForCheckedAssignedPopUp()
+}
+
+
+function removeAddTaskContactList() {
+    dropdownContent.remove();
+    document.getElementById('assignArrow').style.transform = "rotate(180deg)";
 }
 
 
@@ -335,7 +371,6 @@ function addDropdownContacts() {
             </div>
             `;
     })
-
 }
 
 
@@ -393,7 +428,7 @@ function checkAndWriteCategories(dropdownAddCategoryPopUp, uniqueCategories, tas
         dropdownAddCategoryPopUp.innerHTML += `
         <div class="dropdownCategory" onclick="addCategoryOnTask('categorySelected', ${i})">
             <div id="categorColor${i}" class="colorPicker colorPickerAssigned" style="background-color: ${task.colorCategory}"></div>
-            <a id="categoryValue${i}">${task.category}</a> 
+            <a class="dropdown-link" id="categoryValue${i}">${task.category}</a> 
         </div>
     `;
     }

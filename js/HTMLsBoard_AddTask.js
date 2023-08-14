@@ -200,7 +200,7 @@ function addDropdownContainer() {
         <div id="dropdownContent" class="dropdown-content">
             <div id="dropdownAddContactPopUp" >
             </div>
-            <a class="addContactLink" href="#">Add new Contact</a>
+            <a class="addNewBtn" href="#">Add new Contact</a>
         </div>
         `;
 }
@@ -210,7 +210,7 @@ function addDropdownCategory() {
         <div id="dropdownCategory" class="dropdown-content">
             <div id="dropdownAddCategoryPopUp">
             </div>
-            <a class="addContactLink" onclick="openInputAddCategory()">Add Category</a>
+            <a class="addNewBtn" onclick="openInputAddCategory()">Add Category</a>
         </div>
         `;
 }
@@ -219,8 +219,8 @@ function addDropdownCategory() {
 function newCategoryHTML(value) {
     return `
     <div class="assignedCategoryValues">
-        ${value}
         <div class="colorPicker colorPickerAssigned" style="background-color: ${colorsCategory}"  id="assignedColor"></div>
+        <p>${value}</p>
     </div>` ;
 }
 
@@ -228,8 +228,8 @@ function newCategoryHTML(value) {
 function selectedCategoryHTML(selectedCategoryValue, selectedCategoryColor) {
     return `
     <div class="assignedCategoryValues">
-        <p id="selectedCategoryValue">${selectedCategoryValue}</p>
         <div class="colorPicker colorPickerAssigned" style="background-color: ${selectedCategoryColor}"  id="assignedColor"></div>
+        <p id="selectedCategoryValue">${selectedCategoryValue}</p>
     </div>
     `;
 }
