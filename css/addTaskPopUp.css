@@ -42,6 +42,11 @@
     transition: transform 0.6s ease-in-out;
 }
 
+.closeAddedPopUp {
+    transform: translateX(2600px);
+    transition: transform 0.6s ease-in-out;
+}
+
 .taskPopUpHeader {
     display: flex;
     justify-content: space-between;
@@ -185,7 +190,7 @@ input {
     width: 15px;
 }
 
-.priorityImg:hover {
+.prio-hover:hover {
     box-shadow: -1px 4px rgba(130, 130, 130, 0.11);
 }
 
@@ -196,30 +201,36 @@ input {
     margin-bottom: 0 !important;
 }
 
-.prio1-clicked {
+.prio1-clicked,
+.prio4-clicked {
     background-color: red !important;
     color: white !important;
 }
 
-.prio1-clicked #prio1-img {
+.prio1-clicked #prio1-img,
+.prio4-clicked #prio1-img {
     filter: invert(100%) sepia(6%) saturate(4%) hue-rotate(54deg) brightness(166%) contrast(129%);
 }
 
-.prio2-clicked {
+.prio2-clicked,
+.prio5-clicked {
     background-color: orange !important;
     color: white !important;
 }
 
-.prio2-clicked #prio2-img {
+.prio2-clicked #prio2-img,
+.prio5-clicked #prio2-img  {
     filter: invert(83%) sepia(6%) saturate(4%) hue-rotate(54deg) brightness(382%) contrast(129%);
 }
 
-.prio3-clicked {
+.prio3-clicked,
+.prio6-clicked  {
     background-color: green !important;
     color: white !important;
 }
 
-.prio3-clicked #prio3-img {
+.prio3-clicked #prio3-img,
+.prio6-clicked #prio3-img {
     filter: invert(83%) sepia(6%) saturate(4%) hue-rotate(54deg) brightness(365%) contrast(129%);
 }
 
@@ -228,6 +239,10 @@ input {
     left: 0;
     top: 0;
 } */
+
+.assignedToContact {
+    gap: 15px;
+}
 
 .assignedCategoryValues {
     display: flex;
@@ -620,24 +635,6 @@ hr {
     animation: taskAddedPopUp ease-in-out 2s;
 }
 
-.taskAddedPopUp span {
-
-    margin-left: -40%;
-    border-radius: 10px;
-    background-color: #2A3647;
-    padding: 30px;
-    width: 60%;
-    color: white;
-    font-size: 26px;
-}
-
-.dividingHRPopUp {
-    width: 0px;
-    height: auto;
-    max-height: 1000px;
-    border: 1px solid #D1D1D1;
-}
-
 @keyframes taskAddedPopUp {
 
     0% {
@@ -655,6 +652,25 @@ hr {
 
     }
 }
+
+.taskAddedPopUp span {
+    margin-left: -40%;
+    border-radius: 10px;
+    background-color: #2A3647;
+    padding: 30px;
+    width: 60%;
+    color: white;
+    font-size: 26px;
+}
+
+.dividingHRPopUp {
+    width: 0px;
+    height: auto;
+    max-height: 1000px;
+    border: 1px solid #D1D1D1;
+}
+
+
 
 @media(max-width:1000px) {
 

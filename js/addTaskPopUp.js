@@ -14,7 +14,7 @@ let prioSelected = false;
 let dropDownCategory = false;
 let existingCategorySelected = false;
 let categorySelected = false;
-
+let setReadinessState;
 
 
 function disableButtonAddTask() {
@@ -26,6 +26,7 @@ function disableButtonAddTask() {
     }, 3000);
 }
 
+
 function addToTasks() {
     if (prioSelected && checkCategorySelect()) {
         prioSelected = false;
@@ -34,6 +35,7 @@ function addToTasks() {
         alertPrioRequired();
     }
 }
+
 
 function checkCategorySelect() {
     let selectedCategoryInputValue = document.getElementById('selectedCategoryInputValue');
@@ -50,8 +52,7 @@ function checkCategorySelect() {
 }
 
 
-
-function createTask() {
+async function createTask() {
     let title = document.getElementById('task');
     let description = document.getElementById('description');
     let date = document.getElementById('date');
@@ -70,13 +71,14 @@ function createTask() {
         date: date.value,
         prio,
         subtasks,
-        readinessState: 'toDo',
+        readinessState: selectedState(),
         assignedTo,
         pace: 0
     };
 
-    addTask(task);
+    await addTask(task);
     clearPopUp();
+    removeAddTaskPopup();
 }
 
 
@@ -85,6 +87,19 @@ function setCategory() {
         return document.getElementById('selectedCategoryInputValue').value;
     } else if (document.getElementById('selectedCategoryValue')) {
         return document.getElementById('selectedCategoryValue').innerHTML;
+    } else {
+        return false;
+    }
+}
+
+
+function selectedState() {
+    if (setReadinessState === 'awaitingFeedback') {
+        return 'awaitingFeedback';
+    } else if (setReadinessState === 'inProgress') {
+        return 'inProgress';
+    } else if (setReadinessState === 'toDo') {
+        return 'toDo';
     }
 }
 
@@ -115,21 +130,21 @@ function clearPopUp() {
     clearValuesOfAddTask(title, description, category, assignedTo, date);
     disableButtonAddTaskBtns();
     emptySubtasks();
-    continueScrolling();
     removePrioColors();
     removecategorySelection();
-    removeAddTaskPopup();
     enableButtonAddTaskBtns();
 }
 
 
 function clearValuesOfAddTask(title, description, category, assignedTo, date) {
-    title.value = '',
-        description.value = '',
-        category.value = '',
-        assignedTo.value = '',
-        date.value = '',
-        assignedContacts = []
+    title.value = '';
+    description.value = '';
+    if (category) {
+        category.innerHTML = '';
+    }
+    assignedTo.value = '';
+    date.value = '';
+    assignedContacts = []
 }
 
 
@@ -145,9 +160,10 @@ function emptySubtasks() {
 
 
 function removePrioColors() {
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 1; i <= 6; i++) {
         const prioElement = document.getElementById('prio' + i);
         prioElement.classList.remove('prio' + i + '-clicked');
+        prioElement.classList.add('prio-hover');
     }
 }
 
@@ -156,7 +172,7 @@ function removecategorySelection() {
     if (document.getElementById('assignedCategoryValues')) {
         document.getElementById('assignedCategoryValues').remove();
     }
-    document.getElementById('selectedCategoryInputValue').value = 'Select task category';
+    document.getElementById('selectedCategoryInputValue').value = '';
     document.getElementById('labelCategory').innerHTML = 'Select task category';
     document.getElementById('dropdown').classList.remove('displayNone');
 }
@@ -165,8 +181,18 @@ function removecategorySelection() {
 function removeAddTaskPopup() {
     let addTaskPopoup = document.getElementById('addTaskPopUp');
     addTaskPopoup.classList.remove('background-aniamtion');
-    addTaskPopoup.classList.remove('openPopUp');
+    addTaskPopoup.classList.add('closeAddedPopUp');
+    removeClassLists(addTaskPopoup);
 }
+
+
+function removeClassLists(addTaskPopoup) {
+    setTimeout(() => {
+        addTaskPopoup.classList.remove('openPopUp');
+        addTaskPopoup.classList.remove('closeAddedPopUp');
+    }, 200);
+}
+
 
 function enableButtonAddTaskBtns() {
     document.getElementById('buttonClearTaskPopUpTask').disabled = false;
@@ -175,12 +201,9 @@ function enableButtonAddTaskBtns() {
 
 
 function closePopUpAddTask() {
-    emptySubtasks();
+    clearPopUp();
     continueScrolling();
-    removePrioColors();
-    removecategorySelection();
     removeAddTaskPopup();
-    enableButtonAddTaskBtns();
 }
 
 
@@ -229,7 +252,8 @@ function deleteSubtask(i) {
 }
 
 
-function openPopUpAddTask() {
+function openPopUpAddTask(state) {
+    setReadinessState = state;
     let addTaskPopoup = document.getElementById('addTaskPopUp');
     addTaskPopoup.classList.add('background-aniamtion');
     addTaskPopoup.classList.add('openPopUp');
@@ -244,36 +268,6 @@ async function deleteTask(i) {
     renderTaskCards();
     document.getElementById('dialogFullCard').classList.add('displayNone');
 }
-
-
-// async function addEditedPriority(i, j) {
-//     let selectedPriority = document.getElementById("prio" + j);
-//     let selectedUrgency = selectedPriority.getAttribute("value")
-//     tasks[i].prio = selectedUrgency
-//     editColorPrios(selectedUrgency, j)
-//     await backend.setItem('tasks', JSON.stringify(tasks))
-// }
-
-
-// function editColorPrios(selectedUrgency, i) {
-
-//     if (selectedUrgency == 'urgent') {
-//         document.getElementById("prio" + i).src = "../assets/img/urgentOnclick.png";
-//         document.getElementById("prio" + 5).src = "../assets/img/mediumImg.png";
-//         document.getElementById("prio" + 6).src = "../assets/img/lowImg.png";
-//     }
-//     if (selectedUrgency == 'medium') {
-//         document.getElementById("prio" + i).src = "../assets/img/mediumOnclick.png"
-//         document.getElementById("prio" + 4).src = "../assets/img/urgentImg.png"
-//         document.getElementById("prio" + 6).src = "../assets/img/lowImg.png"
-//     }
-//     if (selectedUrgency == 'low') {
-//         document.getElementById("prio" + i).src = "../assets/img/lowOnclick.png"
-//         document.getElementById("prio" + 4).src = "../assets/img/urgentImg.png"
-//         document.getElementById("prio" + 5).src = "../assets/img/mediumImg.png"
-//     }
-
-// }
 
 
 function addPriority(i) {
@@ -292,13 +286,13 @@ function addPriority(i) {
 
 
 function colorPrios(i) {
+    let prioElement = document.getElementById('prio' + i);
+
     removePrioColors();
     prioSelected = true;
-    document.getElementById('prio' + i).classList.add('prio' + i + '-clicked');
+    prioElement.classList.add('prio' + i + '-clicked');
+    prioElement.classList.remove('prio-hover');
 }
-
-
-
 
 
 function addCategoryOnTask(existingCategorySelected, i) {
@@ -408,8 +402,9 @@ function contactList() {
     let dropdownAddContactPopUp = document.getElementById('dropdownAddContactPopUp');
     let dropdownContent = document.getElementById('dropdownContent');
 
-    if (!dropdownContent) {
-        document.getElementById('eventLisPopUp').innerHTML += addDropdownContainer();
+    if (dropdownContent.classList.contains('displayNone')) {
+        // document.getElementById('eventLisPopUp').innerHTML += addDropdownContainer();
+        dropdownContent.classList.remove('displayNone');
         document.getElementById('assignArrow').style.transform = "rotate(0deg)";
 
         addDropdownContacts();
@@ -421,7 +416,8 @@ function contactList() {
 
 
 function removeAddTaskContactList() {
-    dropdownContent.remove();
+    let dropdownContent = document.getElementById('dropdownContent');
+    dropdownContent.classList.add('displayNone');
     document.getElementById('assignArrow').style.transform = "rotate(180deg)";
 }
 
@@ -444,7 +440,7 @@ function addDropdownContacts() {
 
 
 function checkForCheckedAssignedPopUp() {
-    let checkedbox
+    let checkedbox;
 
     contacts.forEach((contact, index) => {
 

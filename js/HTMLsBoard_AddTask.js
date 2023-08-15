@@ -44,9 +44,9 @@ function HTMLrenderDialogFullCard(i) {
                       ${tasks[i].category}
                  </div>
                  <h1>${tasks[i].title}</h1>  
-                 <div class="taskDescript">
+                 <p class="taskDescript">
                       ${tasks[i].description}
-                 </div>
+                 </p>
                  <div class="dueDate">
                       <p>Due Date:</p> <span>${tasks[i].date}</span>
                  </div>
@@ -56,27 +56,28 @@ function HTMLrenderDialogFullCard(i) {
               
                  <div>
                     <p class="dialogFullcard-subtasks">Subtasks:</p>
-                    <div  id="subtasksFullCard" style="display:flex; flex-direction:column;">
-                    </div>
+                    <div  id="subtasksFullCard" style="display:flex; flex-direction:column;"></div>
                 </div>
 
                  <div class="assignedTo">
                     <p>Assigned to:</p>
-                    <div class="assignedToFullCard" id="assignedToFullCard">
-                    </div>
+                    <div class="assignedToFullCard" id="assignedToFullCard"></div>
                  </div>
               <div class="editDelete">
                    <img  class="deleteButton" onclick="deleteTask(${i})"  src="../assets/img/blueDelete.png">
-                  <img  class="editButton" onclick="openEditTask(${i})" src="../assets/img/blueEdit.png">   
+                  <img  class="editButton" onclick="openEditTask(${i}, )" src="../assets/img/blueEdit.png">   
              </div>
         </div>
    </div>`
 }
 
 function HTMLrenderSubtasksDialogFullCard(i, subtask, counter) {
-    return `<div class="checkBoxDiv">
-    <span>${subtask.subtask}</span><input type="checkbox" onclick="countTasks(${i},${counter})"  id="checkBox${counter}" class="addedSubtaskOnEdit">
-</div>`}
+    return `
+    <div class="checkBoxDiv">
+        <input type="checkbox" onclick="countTasks(${i},${counter})"  id="checkBox${counter}" class="addedSubtaskOnEdit">
+        <span>${subtask.subtask}</span>
+    </div>`;
+}
 
 
 function openEditTaskHTML(i) {
@@ -102,24 +103,40 @@ function openEditTaskHTML(i) {
 
             <div><!--Prio container-->
                 <label>Prio</label>
-                <div class="priorities">
+               <!-- <div class="priorities">
                     <img id="prio4" value="urgent" onclick="addEditedPriority(${i},${4})" class="priorityImgEdit"
                         src="../assets/img/urgentImg.png">
                     <img id="prio5" value="medium" onclick="addEditedPriority(${i},${5})" class="priorityImgEdit"
                         src="../assets/img/mediumImg.png">
                     <img id="prio6" value="low" onclick="addEditedPriority(${i},${6})" class="priorityImgEdit"
                         src="../assets/img/lowImg.png">
+                </div> -->
+
+                <div class="prioritiesPopUpTask">
+                        <div id="prio4" value="urgent" onclick="addEditedPriority(${i},${4})" class="priorityImg prio-hover">
+                            <p>Urgent</p>
+                            <img src="../assets/img/urgent.png" class="prio-imgs" id="prio1-img">
+                        </div>
+
+                        <div id="prio5" value="medium" onclick="addEditedPriority(${i},${5})" class="priorityImg prio-hover">
+                            <p>Medium</p>
+                            <img src="../assets/img/medium.png" class="prio-imgs" id="prio2-img">
+                        </div>
+
+                        <div id="prio6" value="low" onclick="addEditedPriority(${i},${6})" class="priorityImg prio-hover">
+                            <p>Low</p>
+                            <img src="../assets/img/low.png" class="prio-imgs" id="prio3-img">
+                        </div>
                 </div>
             </div>
              
 
             <div class="AssignedTo" style="padding:6px;"> <!--Assigned to container-->
                 <label>Assigned to</label>
-                <section id="reassignContacts" class="dropdownEditTask">
+                <section id="reassignContacts" class="dropdownEditTask" onclick="opendropdownEditTask()">
                     <div  class="headerForSelectionField">
                         <span style="position: relative;">Reassign contacts</span>
-                        <img class="arrDown" src="../assets/img/arrDown.png">
-                        
+                        <img id="arrowDownEditTask" class="arrDown" src="../assets/img/arrDown.png">
                     </div>
                     
                     <div id="editedDropdownAddContact" class="dropdown-content">

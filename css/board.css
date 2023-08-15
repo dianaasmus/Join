@@ -4,8 +4,8 @@ body {
     overflow-x: hidden;
     font-family: 'Open-sans', sans-serif;
     font-weight: 400;
-    padding-left: 232px;
-    margin: 90px 5% 0 5%;
+    padding-left: 5%;
+    margin: 90px 3% 0 232px;
 }
 
 .hide-overflow {
@@ -17,7 +17,6 @@ body {
     flex-direction: column;
     margin: 0;
     background-color: #F6F7F8;
-    /* width: calc(100% - 232px); */
 }
 
 .boardHeader h1 {
@@ -25,16 +24,6 @@ body {
     font-size: 3rem;
     margin: 0;
 }
-/* 
-h2 {
-    color: #2A3647
-}
-
-h4 {
-    color: #2A3647;
-    margin-bottom: 10px;
-    margin-top: 16px;
-} */
 
 .boardHeader {
     display: flex;
@@ -49,14 +38,13 @@ h4 {
     justify-content: end;
     position: relative;
     gap: 7%;
-
 }
 
 .boardInput {
     height: 45px;
     border-radius: 10px;
     outline: none;
-    border: 2px solid #d1d1d1;
+    border: 1px solid #d1d1d1;
     padding: 5px 10px;
     font-size: 1rem;
 
@@ -77,7 +65,7 @@ input::-webkit-search-cancel-button {
     width: 100%;
     display: flex;
     align-items: flex-start;
-    gap: 2%;
+    gap: 3%;
 }
 
 .boardSubsections {
@@ -93,7 +81,6 @@ input::-webkit-search-cancel-button {
     min-height: 55vh;
     display: flex;
     flex-direction: column;
-    align-items: space-between;
     gap: 30px;
     margin-bottom: 30px;
 }
@@ -149,7 +136,7 @@ input::-webkit-search-cancel-button {
 }
 
 .plusButton {
-   height: 20px;
+    width: 11%;
 }
 
 .plusButton:hover {
@@ -182,9 +169,9 @@ input::-webkit-search-cancel-button {
 }
 
 .boardCard {
-    border-radius: 30px;
+    border-radius: 20px;
     background-color: white;
-    padding: 18px 19px 0 19px;
+    padding: 18px 19px 19px 19px;
     width: 76%;
     box-shadow: -2px 0px 6px rgba(0, 0, 0, 0.25);
     overflow-wrap: break-word;
@@ -231,7 +218,6 @@ input::-webkit-search-cancel-button {
     background-color: #F6F7F8;
     border-radius: 30px;
     overflow-wrap: break-word;
-    overflow-y: auto;
 }
 
 .dialogFullCardContent h1 {
@@ -259,6 +245,7 @@ input::-webkit-search-cancel-button {
 
 #subtasksFullCard {
     gap: 10px;
+    margin-top: 10px;
 }
 
 .dialogFullcard-subtasks {
@@ -267,7 +254,8 @@ input::-webkit-search-cancel-button {
 
 #subtasksFullCard div{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 15px;
 }
 
 .wrapperDialog {
@@ -276,18 +264,19 @@ input::-webkit-search-cancel-button {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     height: 93%;
+    gap: 4%;
 }
 
 .wrapperDialog p {
     color: #2A3647;
+    margin: 0;
 }
 
 .wrapperDialog h1 {
     font-size: 2.5rem;
     color: #2A3647;
-    margin: 20px 0 0 0;
+    margin: 0;
 }
 
 .categoryDialog {
@@ -302,6 +291,7 @@ input::-webkit-search-cancel-button {
 .taskDescript {
     font-size: 1rem;
     margin: 20px 0;
+    font-weight: 400 !important;
 }
 
 .dueDate {
@@ -384,9 +374,6 @@ input::-webkit-search-cancel-button {
 
 }
 
-/* .priorityImg:hover {
-    box-shadow: none !important;
-} */
 
 .priorityImgEdit {
     height: 40px;
@@ -425,9 +412,9 @@ input::-webkit-search-cancel-button {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-
+    position: absolute;
+    bottom: 7px;
 }
-
 
 .addedSubtaskOnEdit {
     width: 15px !important;
@@ -438,14 +425,8 @@ input::-webkit-search-cancel-button {
     flex-direction: column;
     justify-content: space-evenly;
     height: 90%;
+    width: 75%;
 }
-
-/* .boardEditTaskForm div {
-    display: flex;
-    flex-direction: column;
-    /* margin-top: 20px; 
-} */
-
 
 .boardEditTaskForm input {
     width: 50% !important;
@@ -453,7 +434,7 @@ input::-webkit-search-cancel-button {
     font-family: 'Open-sans', sans-serif;
     border: 1px solid #d1d1d1;
     border-radius: 10px;
-    color: #d1d1d1;
+    color: #2A3647;
 }
 
 .inputEdit {
@@ -466,7 +447,7 @@ textarea {
     width: 50%;
     border-radius: 10px;
     padding: 13px 21px;
-    color: #D1D1D1;
+    color: #2A3647;
     border: 1px solid #D1D1D1;
     font-size: 21px;
     line-height: 120%;
@@ -491,9 +472,22 @@ textarea {
     width: 30%
 }
 
+.priorityImg p {
+    margin: 0;
+}
+
 .priorityImgFullCard {
     height: 40px;
     margin-right: -5px;
+}
+
+#editedDropdownAddContact {
+    height: 100px;
+    overflow-y: scroll;
+}
+
+#editedDropdownAddContact .droppedContacts input {
+    left: 88% !important;
 }
 
 .dropdownEditTask {
@@ -510,19 +504,6 @@ textarea {
     margin-left: -5px;
     cursor: pointer;
 }
-
-/* .dropdownEditTask:hover .dropdown-content {
-    display: block !important;
-    border-top: none;
-    font-size: 0.9rem;
-    max-height: 260%;
-    overflow-y: scroll;
-} */
-
-/* .dropdownAssigned:hover .dropdown-content {
-    display: block !important;
-
-} */
 
 .dropdown-content {
     width: 100% !important;
@@ -552,10 +533,6 @@ textarea {
     text-decoration: none;
     font-size: 0.9rem;
 }
-
-/* .dropdownEditTask:hover .arrDown {
-    transform: rotate(0deg) !important;
-} */
 
 .okButtonDiv {
     display: flex;
@@ -597,12 +574,13 @@ textarea {
 
 
 .assignedToFullCard {
-    height: 60%;
+    height: 0%;
+    padding: 26% 0 0 0;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: space-between;
+    margin: 10px 0 0 10px;
 }
 
 .assignedToContact {
@@ -664,10 +642,6 @@ textarea {
     overflow-y: scroll;
     z-index: 200;
 }
-
-/* label:hover {
-    cursor: pointer;
-} */
 
 /* 
 

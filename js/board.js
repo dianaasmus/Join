@@ -44,7 +44,7 @@ async function renderTaskCards(i, j) {
     for (i = 0; i < tasks.length; i++) {
         if (tasks[i].title.toLowerCase().includes(search)) {
             checkForContacts(i)
-            checkForReadiness(i, j)
+            checkForReadiness(i, j);
             document.getElementById('progressBar' + i).style.background = tasks[i].colorOfBar
             renderAssignedContactsOnBoard(i, colorCircle)
             hideProgressSection(i)
@@ -146,10 +146,11 @@ function continueScrolling() {
 
 
 function openEditTask(i) {
-    document.getElementById('dialogEditCard').classList.remove('displayNone')
-    document.getElementById('dialogEditCard').innerHTML = openEditTaskHTML(i)
+    document.getElementById('dialogEditCard').classList.remove('displayNone');
+    document.getElementById('dialogEditCard').innerHTML = openEditTaskHTML(i);
     document.getElementById(`editedDate`).setAttribute("min", date.toISOString().split("T")[0]);
-    listenToEvent(i)
+    listenToEvent(i);
+    getPrio(i);
 }
 
 
@@ -178,7 +179,19 @@ async function editTask(i) {
 
     await backend.setItem('tasks', JSON.stringify(tasks))
     renderTaskCards();
-    closeEditCard()
+    closeEditCard();
+}
+
+
+function getPrio(i) {
+    if (tasks[i].prio == 'urgent') {
+        i = 4;
+    } else if (tasks[i].prio == 'medium') {
+        i = 5;
+    } else if (tasks[i].prio == 'low') {
+        i = 6;
+    }
+    colorPrios(i);
 }
 
 
@@ -362,6 +375,35 @@ function addReassigned(i, index) {
 function openContactEdit() {
     // window.location.href = 'contacts.html';
     // setTimeout(() => {
-        openAddContacts();
+    openAddContacts();
     // }, 1000);
+}
+
+
+async function addEditedPriority(i, j) {
+    let selectedPriority = document.getElementById("prio" + j);
+    let selectedUrgency = selectedPriority.getAttribute("value");
+    tasks[i].prio = selectedUrgency;
+    colorPrios(j);
+    await backend.setItem('tasks', JSON.stringify(tasks));
+}
+
+
+function opendropdownEditTask() {
+    const editedDropdownAddContact = document.getElementById('editedDropdownAddContact');
+    const arrowDownEditTask = document.getElementById('arrowDownEditTask');
+
+    if (editedDropdownAddContact.style.display == "block") {
+        removeEditTaskDropdown(editedDropdownAddContact, arrowDownEditTask);
+    } else {
+        editedDropdownAddContact.style.display = "block";
+        arrowDownEditTask.style.transform = "rotate(0deg)";
+    }
+}
+
+function removeEditTaskDropdown(editedDropdownAddContact, arrowDownEditTask) {
+    // setTimeout(() => {
+    editedDropdownAddContact.style.display = "none";
+    arrowDownEditTask.style.transform = "rotate(180deg)";
+    // }, 3000);
 }

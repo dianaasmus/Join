@@ -6,7 +6,7 @@
             <img onclick="closePopUpAddTask()" class="closePopUp" src="../assets/img/closeButtonBoard.png">
         </div>
 
-        <form onsubmit="addToTasks()" class="taskBoardPopUpTask">
+        <form onsubmit="addToTasks(); return false" class="taskBoardPopUpTask">
 
             <div class="taskBoardLeftPopUpTask">
                 <div class="addTaskContainer">
@@ -27,6 +27,11 @@
                         <div onclick="contactList()" class="headerForSelectionField">
                             <label style="position: relative;">Select contacts</label>
                             <img class="arrDown" id="assignArrow" src="../assets/img/arrDown.png">
+                        </div>
+                        <div id="dropdownContent" class="dropdown-content displayNone">
+                            <div id="dropdownAddContactPopUp">
+                            </div>
+                            <a class="addNewBtn" href="#">Add new Contact</a>
                         </div>
                     </div>
                 </div>
@@ -57,17 +62,17 @@
                     <label class="label-prio">Prio*</label>
 
                     <div class="prioritiesPopUpTask">
-                        <div id="prio1" value="urgent" onclick="addPriority(1)" class="priorityImg">
+                        <div id="prio1" value="urgent" onclick="addPriority(1)" class="priorityImg prio-hover">
                             <p>Urgent</p>
                             <img src="../assets/img/urgent.png" class="prio-imgs" id="prio1-img">
                         </div>
 
-                        <div id="prio2" value="medium" onclick="addPriority(2)" class="priorityImg">
+                        <div id="prio2" value="medium" onclick="addPriority(2)" class="priorityImg prio-hover">
                             <p>Medium</p>
                             <img src="../assets/img/medium.png" class="prio-imgs" id="prio2-img">
                         </div>
 
-                        <div id="prio3" value="low" onclick="addPriority(3)" class="priorityImg">
+                        <div id="prio3" value="low" onclick="addPriority(3)" class="priorityImg prio-hover">
                             <p>Low</p>
                             <img src="../assets/img/low.png" class="prio-imgs" id="prio3-img">
                         </div>
