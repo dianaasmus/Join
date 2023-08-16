@@ -83,7 +83,7 @@ function emailIsRegistered() {
  * @param {string} formData - This enables form data to be sent to a server.
  */
 function action(formData) {
-    const input = 'https://gruppe-559.developerakademie.net/send_mail.php';
+    const input = 'https://diana-asmus.developerakademie.net/Join/send_mail.php';
     const requestInit = {
         method: 'post',
         body: formData

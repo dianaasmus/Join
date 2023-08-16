@@ -217,7 +217,7 @@ function addDropdownContainer() {
         <div id="dropdownContent" class="dropdown-content">
             <div id="dropdownAddContactPopUp">
             </div>
-            <a class="addNewBtn" href="#">Add new Contact</a>
+            <a class="addNewBtn" onclick="addTaskContactPopup()">Add new Contact</a>
         </div>
         `;
 }

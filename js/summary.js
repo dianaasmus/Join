@@ -20,7 +20,7 @@ async function onLoad() {
  * This function sets and downlaods the backend url.
  */
 async function setUrl() {
-    setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
+    setURL("https://diana-asmus.developerakademie.net/Join/smallest_backend_ever-master");
     await downloadFromServer();
     getUsers();
 }

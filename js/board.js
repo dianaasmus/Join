@@ -17,7 +17,7 @@ let checkedInput
 async function initBoard() {
     await initScript();
     try {
-        setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
+        setURL("https://diana-asmus.developerakademie.net/Join/smallest_backend_ever-master");
         await downloadFromServer();
         tasks = await JSON.parse(await backend.getItem('tasks')) || []
         contacts = JSON.parse(backend.getItem('contacts')) || [];

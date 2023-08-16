@@ -1,3 +1,17 @@
+function addContactPopUp() {
+    return `
+        <div class="overlay-container" id="overlayContainer">
+            <div class="add-contact-overlay" id="addContactOverlay">
+                <div class="add-contact-left" id="addContactLeft">
+                </div>
+                <div class="add-contact-right" id="addContactRightContent">
+                </div>
+            </div>
+        </div>
+        `;
+}
+
+
 function generateLeftSideNewContact() {
     return `
                     <span class="close-contact-cross-white d-none" onclick="clearContactCard()">X</span>
@@ -15,7 +29,7 @@ function generateRightSideNewContact() {
     return ` <form class="new-contact-circle-name" onsubmit="addContact(); return false;" id="new-contact-circle-name">
                         <div class="edit-contact-circle">
                             <div class="contact-circle-big contact-circle-card bg0" id="circle-new-contact">
-                                <img src="./assets/img/avatar-white.png">
+                                <img src="../assets/img/avatar-white.png">
                             </div>  
                         </div>
                         <div class="contact-new-inputs" id="contact-new-inputs">

@@ -265,7 +265,7 @@ input::-webkit-search-cancel-button {
     display: flex;
     flex-direction: column;
     height: 93%;
-    gap: 4%;
+    gap: 3%;
 }
 
 .wrapperDialog p {
@@ -274,7 +274,7 @@ input::-webkit-search-cancel-button {
 }
 
 .wrapperDialog h1 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     color: #2A3647;
     margin: 0;
 }
@@ -574,13 +574,12 @@ textarea {
 
 
 .assignedToFullCard {
-    height: 0%;
-    padding: 26% 0 0 0;
-    overflow-y: scroll;
+    height: 80px;
+    max-height: 150px;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: 10px 0 0 10px;
+    margin: 15px 0 0 10px;
 }
 
 .assignedToContact {

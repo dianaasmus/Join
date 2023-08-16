@@ -107,7 +107,7 @@ function selectedState() {
 async function addTask(task) {
     tasks.push(task);
     await backend.setItem('tasks', JSON.stringify(tasks));
-    addedTaskFeedback();
+    // addedTaskFeedback();
     renderTaskCards();
 }
 
@@ -130,7 +130,7 @@ function clearPopUp() {
     clearValuesOfAddTask(title, description, category, assignedTo, date);
     disableButtonAddTaskBtns();
     emptySubtasks();
-    removePrioColors();
+    removePrioColors('addedTask');
     removecategorySelection();
     enableButtonAddTaskBtns();
 }
@@ -159,10 +159,12 @@ function emptySubtasks() {
 }
 
 
-function removePrioColors() {
-    for (let i = 1; i <= 6; i++) {
-        const prioElement = document.getElementById('prio' + i);
-        prioElement.classList.remove('prio' + i + '-clicked');
+function removePrioColors(condition) {
+    const maxPriority = condition ? 3 : 6;
+
+    for (let i = 1; i <= maxPriority; i++) {
+        const prioElement = document.getElementById(`prio${i}`);
+        prioElement.classList.remove(`prio${i}-clicked`);
         prioElement.classList.add('prio-hover');
     }
 }
@@ -183,6 +185,14 @@ function removeAddTaskPopup() {
     addTaskPopoup.classList.remove('background-aniamtion');
     addTaskPopoup.classList.add('closeAddedPopUp');
     removeClassLists(addTaskPopoup);
+}
+
+
+function addTaskContactPopup() {
+    addTaskNewContact = true;
+    let addTaskPopoup = document.getElementById('addTaskPopUp');
+    addTaskPopoup.classList.add('closeAddedPopUp');
+    openAddContacts();
 }
 
 
@@ -280,15 +290,15 @@ function addPriority(i) {
     if (!prioSelected) {
         removeAlertPrioRequired();
     }
-    colorPrios(i);
+    colorPrios(i, 'addedTask');
     prios.push(selectedUrgency)
 }
 
 
-function colorPrios(i) {
+function colorPrios(i, condition) {
     let prioElement = document.getElementById('prio' + i);
 
-    removePrioColors();
+    removePrioColors(condition);
     prioSelected = true;
     prioElement.classList.add('prio' + i + '-clicked');
     prioElement.classList.remove('prio-hover');

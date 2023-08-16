@@ -528,9 +528,9 @@ hr {
     margin: 0 0 10px 15px;
 }
 
-.checkBoxDiv span {
+/* .checkBoxDiv span {
     max-width: 50%;
-}
+} */
 
 .checkBoxDiv img {
     cursor: pointer;

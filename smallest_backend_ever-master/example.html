@@ -9,14 +9,13 @@
 
     <script>
         let users = [];
-        setURL('https://gruppe-559.developerakademie.net/smallest_backend_ever-master/mini_backend.js');
+        setURL('https://diana-asmus.developerakademie.net/Join/smallest_backend_ever-master/mini_backend.js');
 
         async function init() {
-            setURL('https://gruppe-559.developerakademie.net/smallest_backend_ever-master/mini_backend.js');
+            setURL('https://diana-asmus.developerakademie.net/Join/smallest_backend_ever-master/mini_backend.js');
             await downloadFromServer();
             users = JSON.parse(backend.getItem('users')) || [];
         }
-
 
         function addUser() {
             users.push(username.value);

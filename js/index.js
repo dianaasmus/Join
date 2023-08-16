@@ -15,7 +15,7 @@ async function init() {
  * This function loads the specified variables that are stored in the backend.
  */
 async function setUrl() {
-    setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
+    setURL("https://diana-asmus.developerakademie.net/Join/smallest_backend_ever-master");
     await downloadFromServer();
 }
 

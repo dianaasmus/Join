@@ -2,11 +2,12 @@ let contacts = [];
 let contactsLoaded = false; // Globale Variable zur Verfolgung des Ladezustands der Kontakte
 var colors = ["#0048cd", "#81adfd", "#b6fa81", "#f99090", "#845400", "#fac66e", "#07ab1d"];
 let letters = [];
+let addTaskNewContact;
 
 
 async function initContacts() {
     await initScript();
-    setURL("https://gruppe-559.developerakademie.net/smallest_backend_ever-master");
+    setURL("https://diana-asmus.developerakademie.net/Join/smallest_backend_ever-master");
     await downloadFromServer();
     await loadContacts();
     letters = [];
@@ -115,8 +116,7 @@ async function renderContactList(initialLetter, contact, l) {
 
 
 function openAddContacts() {
-    clearContactCard();
-    document.getElementById('overlayContainer').classList.remove('d-none');
+    document.body.innerHTML += addContactPopUp();
     setTimeout(() => {
         let contentleft = document.getElementById('addContactLeft');
         contentleft.innerHTML += generateLeftSideNewContact();
@@ -127,7 +127,8 @@ function openAddContacts() {
 
 
 async function openEditContacts(l) {
-    document.getElementById('overlayContainer').classList.remove('d-none');
+    // document.getElementById('overlayContainer').classList.remove('d-none');
+    document.body.innerHTML += addContactPopUp();
     setTimeout(() => {
         let contentleft = document.getElementById('addContactLeft');
         contentleft.innerHTML += generateLeftSideEditContact();
@@ -142,7 +143,17 @@ async function openEditContacts(l) {
 function clearContactCard() {
     document.getElementById('addContactLeft').innerHTML = '';
     document.getElementById('addContactRightContent').innerHTML = '';
-    document.getElementById('overlayContainer').classList.add('d-none');
+    document.getElementById('overlayContainer').remove();
+    checkOrigin();
+}
+
+
+function checkOrigin() {
+    if (addTaskNewContact) {
+        let addTaskPopoup = document.getElementById('addTaskPopUp');
+        addTaskPopoup.classList.remove('closeAddedPopUp');
+    }
+    addTaskNewContact = false;
 }
 
 
@@ -175,12 +186,15 @@ async function addContact() {
         "firstNameLetter": firstName,
         "lastNameLetter": lastName,
     });
-    contactCreatedSuccessfuly();
+    // contactCreatedSuccessfuly();
     await backend.setItem('contacts', JSON.stringify(contacts));
     clearInput();
-    document.getElementById('contactList').innerHTML = '';
+    if (!addTaskNewContact) {
+        document.getElementById('contactList').innerHTML = '';
+        initContacts();
+
+    }
     clearContactCard();
-    initContacts();
 }
 
 function contactCreatedSuccessfuly() {
