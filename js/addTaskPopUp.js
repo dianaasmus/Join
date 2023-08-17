@@ -79,6 +79,7 @@ async function createTask() {
     await addTask(task);
     clearPopUp();
     removeAddTaskPopup();
+
 }
 
 
@@ -108,7 +109,9 @@ async function addTask(task) {
     tasks.push(task);
     await backend.setItem('tasks', JSON.stringify(tasks));
     // addedTaskFeedback();
-    renderTaskCards();
+    if (!document.getElementById('addTaskPopUp').classList.contains('add-task-html-style')) {
+        renderTaskCards();
+    }
 }
 
 async function addedTaskFeedback() {
@@ -247,7 +250,7 @@ function addSubtaskOnPopUp() {
 
 
 function renderSubtasksOnPopUpAddTask() {
-    document.getElementById('subtasksPopUp').innerHTML = ''
+    document.getElementById('subtasksPopUp').innerHTML = '';
     subtasksToSave.forEach((subtask, index) => {
         document.getElementById('subtasksPopUp').innerHTML += `<div class="checkBoxDiv">
         <label class="subtaskLabel">${subtask.subtask}</label><img src="../assets/img/closeButtonBoard.png" onclick="deleteSubtask(${index})">

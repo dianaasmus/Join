@@ -428,6 +428,10 @@ input::-webkit-search-cancel-button {
     width: 75%;
 }
 
+#editedTask {
+    width: 90% !important;
+}
+
 .boardEditTaskForm input {
     width: 50% !important;
     padding: 5px 10px !important;

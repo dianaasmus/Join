@@ -60,6 +60,7 @@
     background-color: #F6F7F8;
     margin: auto;
     width: 80%;
+    max-width: 800px;
     height: 87%;
     border-radius: 30px;
     padding: 0px 5%;
@@ -860,9 +861,9 @@ hr {
 }
 
 @media(min-width:1000px) and (max-width:1450px) {
-    .dividingHRPopUp {
+    /* .dividingHRPopUp {
         display: none !important
-    }
+    } */
 
     .hiddenInput {
         width: 100%;

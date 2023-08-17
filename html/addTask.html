@@ -8,151 +8,23 @@
     <title>Add task</title>
     <link rel="stylesheet" href="../css/addTask.css">
     <link rel="icon" href="../assets/img/logo-blue.png">
-    <link rel="stylesheet" href="../fonts.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/addTaskPopUp.css">
     <link rel="stylesheet" href="../css/sidebar_header.css">
 
     <script src="../js/mini_backend.js"></script>
     <script src="../js/HTMLsBoard_AddTask.js"></script>
+    <script src="../js/addTaskPopUp.js"></script>
+    <script src="../js/board.js"></script>
     <script src="../js/addTask.js"></script>
     <script src="../js/contacts.js"></script>
-    <script src="../script.js"></script>
+    <script src="../js/script.js"></script>
 </head>
 
 <body onload="initAddTask()">
-
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="header.html"></div>
-    <div class="wrapper">
-
-        <div class="content">
-            <h1>Add Task </h1>
-
-            <form onsubmit="addToTasks(); setTimeout(function() { window.location.reload(); }, 3000); return false "
-                class="taskBoard">
-
-
-                <div class="taskBoardLeft">
-                    <div>
-                        <label>Title</label>
-                        <input id="task" type="text" placeholder="Enter a title" required>
-                    </div>
-
-                    <div>
-                        <label>Description</label>
-                        <textarea id="description" required style="color: #000000;" required type="text"
-                            placeholder="Enter a description"></textarea>
-                    </div>
-
-                    <div class="categoryContainer">
-                        <label>Category</label>
-
-                        <div class="dropdown">
-                            <div class="headerForSelectionField">
-                                <label id="labelCategory">Select task category</label>
-                                <img class="arrDown" src="./assets/img/arrDown.png">
-                                <div id="hiddenInputCategory" class="hiddenInput displayNone">
-
-                                    <input class="selectedCategoryInputValue" maxlength="30"
-                                        id="selectedCategoryInputValue" placeholder="Category name">
-                                    <img onclick="closeHiddenInput()" class="closeHiddenInput"
-                                        src="./assets/img/closeButtonBoard.png">
-                                    <hr>
-                                    <img class="createInHiddenInput" onclick="addCategoryOnTask()"
-                                        src="./assets/img/check.png">
-
-
-                                    <div class="colorPickers">
-                                        <div onclick="addCategoryColorOnTask(1)" id="color1" class="colorPicker"
-                                            style="background-color:#8AA4FF;"></div>
-                                        <div onclick="addCategoryColorOnTask(2)" id="color2" class="colorPicker"
-                                            style="background-color:#FF0000;"></div>
-                                        <div onclick="addCategoryColorOnTask(3)" id="color3" class="colorPicker"
-                                            style="background-color:#2AD300 ;"></div>
-                                        <div onclick="addCategoryColorOnTask(4)" id="color4" class="colorPicker"
-                                            style="background-color:#FF8A00 ;"></div>
-                                        <div onclick="addCategoryColorOnTask(5)" id="color5" class="colorPicker"
-                                            style="background-color:#E200BE ;"></div>
-                                        <div onclick="addCategoryColorOnTask(6)" id="color6" class="colorPicker"
-                                            style="background-color:#0038FF ;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="dropdownCategory" class="dropdown-content">
-                                <a onclick="openInputAddCategory()" href="#">Add category</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label>Assigned to</label>
-                        <div class="dropdown">
-                            <div class="headerForSelectionField">
-                                <label id="eventLis" style="position: relative;">Select contacts</label>
-                                <img class="arrDown" src="./assets/img/arrDown.png">
-                                <div>
-                                    <input id="hiddenInputAddContact" class="hiddenInput displayNone"
-                                        placeholder="New category name">
-
-                                </div>
-                            </div>
-                            <div id="dropdownAddContact" class="dropdown-content">
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="dividingHR"></div>
-                <div class="taskBoardRight">
-
-                    <div>
-                        <label>Due date</label>
-                        <input type="date" id="date" required />
-                    </div>
-
-                    <div>
-                        <label>Prio</label>
-                        <div class="priorities">
-                            <img id="prio1" value="urgent" onclick="addPriority(1)" class="priorityImg"
-                                src="./assets/img/urgentImg.png">
-                            <img id="prio2" value="medium" onclick="addPriority(2)" class="priorityImg"
-                                src="./assets/img/mediumImg.png">
-                            <img id="prio3" value="low" onclick="addPriority(3)" class="priorityImg"
-                                src="./assets/img/lowImg.png">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label>Subtasks</label>
-                        <div class="addSubTask">
-                            <input maxlength="35" id="subtask" placeholder="Add new subtask">
-                            <img onclick="addSubtask()" class="addSubtaskButton"
-                                src="./assets/img/addSubtaskButton.png">
-                        </div>
-                        <div id="subtasksOnAddTask" class="subtasksDiv">
-
-                        </div>
-                    </div>
-
-                    <div>
-                        <span></span>
-                    </div>
-                    <div class="buttonsCreateTask">
-                        <button id="addTaskButton" onclick="window.location.reload();" class="buttonClearTask">
-                            <span>Clear</span>
-                            <span class="clearTaskPageImg">+</span>
-                        </button>
-                        <button class="buttonCreateTask">
-                            <span>Create Task</span>
-                            <img class="createTaskPageImg" src="./assets/img/createTaskPage.png">
-                        </button>
-                    </div>
-
-            </form>
-
-        </div>
-    </div>
-    <div id="popUpWhenAdded" class="taskAddedPopUp displayNone"><span>Task added to board</span></div>
-    </div>
+    <div w3-include-html="addTaskPopUp.html"></div>
 </body>
 
 </html>

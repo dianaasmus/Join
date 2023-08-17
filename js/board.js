@@ -1,17 +1,13 @@
-tasks = []
-assignedContacts = []
-prios = []
-categories = []
-colorsCategory = []
-prioImages = ['../assets/img/urgent.png', '../assets/img/medium.png', '../assets/img/low.png']
-prioImagesFullCard = ['../assets/img/urgentOnclick.png', '../assets/img/mediumOnclick.png', '../assets/img/lowOnclick.png']
-tasksToEdit = []
-subtasksToSave = []
-let currentDragged
-let percentOfDone
-let colorOfBar
-let checkboxState;
-let checkedInput
+tasks = [];
+assignedContacts = [];
+prios = [];
+categories = [];
+colorsCategory = [];
+prioImages = ['../assets/img/urgent.png', '../assets/img/medium.png', '../assets/img/low.png'];
+prioImagesFullCard = ['../assets/img/urgentOnclick.png', '../assets/img/mediumOnclick.png', '../assets/img/lowOnclick.png'];
+tasksToEdit = [];
+subtasksToSave = [];
+let currentDragged;
 
 
 async function initBoard() {
@@ -19,12 +15,12 @@ async function initBoard() {
     try {
         setURL("https://diana-asmus.developerakademie.net/Join/smallest_backend_ever-master");
         await downloadFromServer();
-        tasks = await JSON.parse(await backend.getItem('tasks')) || []
+        tasks = await JSON.parse(await backend.getItem('tasks')) || [];
         contacts = JSON.parse(backend.getItem('contacts')) || [];
-        await renderTaskCards()
+        await renderTaskCards();
 
     } catch (er) {
-        console.error(er)
+        console.error(er);
     }
 }
 

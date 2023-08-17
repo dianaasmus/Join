@@ -302,12 +302,12 @@ body {
 
 /*Sign Up Form */
 #userName {
-    background: url(../assets/img/user-icon.png) no-repeat scroll 350px 11px;
+    background: url(../assets/img/user-icon.png) no-repeat scroll 352px 11px;
 }
 
 #emailLogin,
 #emailSignUp {
-    background: url(../assets/img/email-icon.png) no-repeat scroll 350px 14px;
+    background: url(../assets/img/email-icon.png) no-repeat scroll 350px 13px;
 }
 
 #passwordLogin:focus,
@@ -321,7 +321,7 @@ body {
 
 #password,
 #passwordLogin {
-    background: url(../assets/img/password-icon.png) no-repeat scroll 350px 12px;
+    background: url(../assets/img/password-icon.png) no-repeat scroll 352px 11px;
 }
 
 #registerBtn {
