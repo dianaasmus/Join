@@ -64,8 +64,8 @@ function HTMLrenderDialogFullCard(i) {
                     <div class="assignedToFullCard" id="assignedToFullCard"></div>
                  </div>
               <div class="editDelete">
-                   <img  class="deleteButton" onclick="deleteTask(${i})"  src="../assets/img/blueDelete.png">
-                  <img  class="editButton" onclick="openEditTask(${i}, )" src="../assets/img/blueEdit.png">   
+                <img  class="deleteButton" onclick="deleteTask(${i})"  src="../assets/img/blueDelete.png">
+                <img  class="editButton" onclick="openEditTask(${i})" src="../assets/img/blueEdit.png">   
              </div>
         </div>
    </div>`
@@ -251,6 +251,12 @@ function selectedCategoryHTML(selectedCategoryValue, selectedCategoryColor) {
     `;
 }
 
+
+function addedTaskFeedback() {
+    return `
+        <div id="popUpWhenAdded" class="taskAddedPopUp"><span>Task added to board</span></div>
+    `;
+}
 
 
 function HTMLforRenderAssignedContactsOnBoard(i, colorCircle, contact) {

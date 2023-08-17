@@ -7,11 +7,11 @@ body {
     margin: 90px 3% 0 232px;
 }
 
-/* hr {
+hr {
     height: 59px;
-    border: 3px solid #29ABE2;
+    border: 1px solid #29ABE2;
     margin: 30px;
-} */
+}
 
 
 .contact-list {
@@ -35,7 +35,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 45%;
-   /* height: 80vh; */
+    /* height: 80vh; */
 }
 
 .contact-header {
@@ -61,7 +61,7 @@ body {
 
 .contact-header h2 {
     display: inline;
-    font-size: 21px;
+    font-size: 1rem;
     font-weight: 400;
     line-height: 25px;
 }
@@ -76,7 +76,7 @@ body {
     border: 1px solid #2A3647;
     color: white;
     display: flex;
-    font-size: 21px;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 700;
     gap: 10px;
@@ -125,6 +125,7 @@ body {
     0% {
         transform: translate (500%, -50%);
     }
+
     100% {
         transform: translate(-50%, -50%);
     }
@@ -178,6 +179,7 @@ body {
     0% {
         transform: translate(0, 35px) scale(0)
     }
+
     100% {
         transform: translate(0, 35px) scale(1);
     }
@@ -336,12 +338,15 @@ body {
     0% {
         transform: translate(-50%, 700px);
     }
+
     25% {
         transform: translate(-50%, 0);
     }
+
     75% {
         transform: translate(-50%, 0);
     }
+
     100% {
         transform: translate(-50%, 700px);
     }
@@ -352,35 +357,38 @@ body {
 }
 
 .display-none {
-    display: none;  
+    display: none;
 }
 
 /* ======================= */
+#contactList {
+    padding-left: 10%;
+}
 
 #initialLetterContainer {
-font-size: 20px;
+    font-size: 20px;
     display: flex;
     justify-content: flex-start;
     width: 85%;
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-    padding: 20px 0 10px 0;
-    margin-left: 48px;
+    padding: 15px 0 15px 0;
+    margin-bottom: 15px;
 }
 
 .single-contact-container {
     display: flex;
-    margin-top: 20px;
-    margin-left: 48px;
     cursor: pointer;
     border-radius: 10px;
     background-color: white;
     border: none;
     justify-content: flex-start;
     align-items: center;
-        height: 79px;
+    height: 79px;
+    padding: 0 15px;
+    margin-right: 10px;
 }
 
-.single-contact{
+.single-contact {
     display: block;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -397,7 +405,7 @@ font-size: 20px;
     font-style: normal;
     font-size: x-large;
     font-weight: 400;
-    font-size: 21px;
+    font-size: 1rem;
     line-height: 120%;
     max-width: 200px;
     padding-top: 15px;
@@ -405,7 +413,7 @@ font-size: 20px;
 
 .single-contact-mail {
     height: 19px;
-    font-size: 16px;
+    font-size: 0.9rem;
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
@@ -416,7 +424,7 @@ font-size: 20px;
     cursor: pointer;
 }
 
-.single-contact-bubble{
+.single-contact-bubble {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -426,23 +434,17 @@ font-size: 20px;
     background-color: #810292;
     color: white;
     border-radius: 50%;
-    margin-left: 25px;
 }
 
 /* CONTACT-INFO */
 
-.contact-info{
+.contact-info {
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
-    row-gap: 50px;
-    position: absolute;
-    right: 0;
-    left: 0;
-    top: 200px;
-    bottom: 0;
 }
 
-.contact-info-close{
+.contact-info-close {
     height: 30px;
     object-fit: contain;
     position: absolute;
@@ -451,38 +453,38 @@ font-size: 20px;
     cursor: pointer;
 }
 
-.contact-info-header{
+.contact-info-header {
     display: flex;
     align-items: center;
     column-gap: 80px;
 }
 
-.contact-info-bubble{
-    height: 120px;
-    width: 120px;
+.contact-info-bubble {
+    height: 100px;
+    width: 145px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 100%;
     background-color: #810292;
     color: white;
-    font-size: 47px;
-    font-weight: 500;
+    font-size: 3rem;
+    /* font-weight: 500; */
     border: 1px solid white;
 }
 
-.contact-info-headname h2{
+.contact-info-headname h2 {
     margin: 0 0 2px 0;
     font-size: 47px;
     font-weight: 500;
 }
 
-.contact-info-headname a{
+.contact-info-headname a {
     text-decoration: none;
     color: #29abe2;
 }
 
-.contact-info-headname span{
+.contact-info-headname span {
     font-size: 16px;
     font-weight: 400;
     color: #29abe2;
@@ -492,35 +494,35 @@ font-size: 20px;
     cursor: pointer;
 }
 
-.contact-info-edit{
+.contact-info-edit {
     display: flex;
     align-items: flex-end;
     column-gap: 50px;
 }
 
-.contact-edit-text{
-    font-size: 21px;
+.contact-edit-text {
+    font-size: 1rem;
     font-weight: 400;
 }
 
-.contact-edit-popup{
+.contact-edit-popup {
     font-size: 16px;
     font-weight: 400;
     cursor: pointer;
 }
 
-.open-contact-infos{
+.open-contact-infos {
     display: flex;
     flex-direction: column;
     row-gap: 20px;
 }
 
-.contact-information{
+.contact-information {
     font-size: 16px;
     font-weight: 700;
 }
 
-.contact-mail{
+.contact-mail {
     color: #007cee;
     font-size: 16px;
     font-weight: 400;
@@ -530,7 +532,7 @@ font-size: 20px;
     text-overflow: ellipsis;
 }
 
-.contact-phone{
+.contact-phone {
     font-size: 16px;
     font-weight: 400;
     text-decoration: none;
@@ -539,7 +541,7 @@ font-size: 20px;
 
 /*Edit Contact*/
 
-.edit-contact-left-line{
+.edit-contact-left-line {
     background-color: rgb(11, 173, 221);
     position: absolute;
     transform-origin: left;
@@ -547,10 +549,10 @@ font-size: 20px;
     width: 80px;
     height: 3px;
     animation: blueline 225ms ease-in-out 425ms forwards;
-    margin-top: 30px; 
+    margin-top: 30px;
 }
 
-.edit-contact-circle-for-edit{
+.edit-contact-circle-for-edit {
     margin-left: 29px;
     margin-right: 29px;
     height: 98px;
@@ -564,7 +566,7 @@ font-size: 20px;
     font-size: 45px;
 }
 
-.edit-submit-box button{
+.edit-submit-box button {
     height: 40px;
     cursor: pointer;
     border-radius: 10px;
@@ -578,10 +580,10 @@ font-size: 20px;
 
 .initial-letter-container:last-of-type {
     padding-bottom: 90px;
-  }
-  
+}
 
-  .contact-created {
+
+.contact-created {
     position: fixed;
     bottom: 5%;
     left: 50%;
@@ -609,7 +611,7 @@ font-size: 20px;
 }
 
 .contact-created span {
-    font-size: 21px;
+    font-size: 1rem;
     color: white;
 }
 

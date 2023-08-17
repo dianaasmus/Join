@@ -3,7 +3,7 @@
         
         <div class="taskPopUpHeader">
             <h1>Add Task</h1>
-            <img onclick="closePopUpAddTask()" class="closePopUp" src="../assets/img/closeButtonBoard.png">
+            <img onclick="closePopUpAddTask()" class="closePopUp" src="../assets/img/addSubtaskButton.png">
         </div>
 
         <form onsubmit="addToTasks(); return false" class="taskBoardPopUpTask">
@@ -93,7 +93,7 @@
                 <div id="hiddenInputCategory" class="hiddenInput displayNone">
 
                     <input id="selectedCategoryInputValue" style="position: relative;" placeholder="New category name">
-                    <img onclick="closeHiddenInput()" class="closeHiddenInput" src="../assets/img/closeButtonBoard.png">
+                    <img onclick="closeHiddenInput()" class="closeHiddenInput" src="../assets/img/addSubtaskButton.png">
                     <hr>
                     <img class="createInHiddenInput" onclick="addCategoryOnTask()" src="../assets/img/check.png">
 
@@ -126,7 +126,6 @@
                 </div>
 
         </form>
-        <div id="popUpWhenAdded" class="taskAddedPopUp displayNone"><span>Task added to board</span></div>
 
     </div>
 </div>

@@ -108,17 +108,29 @@ function selectedState() {
 async function addTask(task) {
     tasks.push(task);
     await backend.setItem('tasks', JSON.stringify(tasks));
-    // addedTaskFeedback();
+    addTaskFeedback();
     if (!document.getElementById('addTaskPopUp').classList.contains('add-task-html-style')) {
         renderTaskCards();
     }
 }
 
-async function addedTaskFeedback() {
-    document.getElementById('popUpWhenAdded').classList.remove('displayNone')
-    setTimeout(function () {
-        document.getElementById('popUpWhenAdded').classList.add('displayNone');
-    }, 1000)
+function addTaskFeedback() {
+    if (addTaskPage) {
+        document.body.innerHTML += addedTaskFeedback();
+        document.getElementById('popUpWhenAdded').classList.add('addedTaskAnimtion');
+        // setTimeout(() => {
+            document.getElementById('popUpWhenAdded').classList.add('removeAddedTaskAnimtion');
+        // }, 500);
+
+        // setTimeout(() => {
+
+        //     document.getElementById('popUpWhenAdded').classList.remove('addedTaskAnimtion');
+        //     document.getElementById('popUpWhenAdded').classList.remove('removeAddedTaskAnimtion');
+        // }, 4500);
+
+    }
+    addTaskPage = false;
+
 }
 
 
@@ -253,7 +265,7 @@ function renderSubtasksOnPopUpAddTask() {
     document.getElementById('subtasksPopUp').innerHTML = '';
     subtasksToSave.forEach((subtask, index) => {
         document.getElementById('subtasksPopUp').innerHTML += `<div class="checkBoxDiv">
-        <label class="subtaskLabel">${subtask.subtask}</label><img src="../assets/img/closeButtonBoard.png" onclick="deleteSubtask(${index})">
+        <label class="subtaskLabel">${subtask.subtask}</label><img src="../assets/img/addSubtaskButton.png" onclick="deleteSubtask(${index})">
         </div>`
     });
 }

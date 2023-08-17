@@ -69,12 +69,9 @@
 }
 
 h1 {
-    font-size: 2.5rem;
-    /* margin-bottom: 60px; */
-    /* margin-left: 5%; */
+    font-size: 3rem;
     font-weight: 700;
-    margin: 40px 0;
-
+    margin: 40px 0 30px 0;
 }
 
 .taskBoardPopUpTask {
@@ -220,12 +217,12 @@ input {
 }
 
 .prio2-clicked #prio2-img,
-.prio5-clicked #prio2-img  {
+.prio5-clicked #prio2-img {
     filter: invert(83%) sepia(6%) saturate(4%) hue-rotate(54deg) brightness(382%) contrast(129%);
 }
 
 .prio3-clicked,
-.prio6-clicked  {
+.prio6-clicked {
     background-color: green !important;
     color: white !important;
 }
@@ -272,7 +269,7 @@ hr {
     width: 25px;
     position: relative;
     left: 82%;
-    top: -35px;
+    top: -39px;
     border: none;
     margin: 0;
 }
@@ -305,7 +302,7 @@ hr {
 
 #eventLisPopUp .dropdown-content,
 #dropdown .dropdown-content {
-    height: fit-content  !important; 
+    height: fit-content !important;
 }
 
 #dropdownAddContactPopUp,
@@ -395,7 +392,7 @@ hr {
     display: flex;
     flex-direction: row;
     margin-bottom: 0 !important;
-    margin-top: -20px;
+    margin-top: -25px;
     margin-left: 5px;
 }
 
@@ -423,11 +420,12 @@ hr {
 }
 
 .closeHiddenInput {
-    height: 14px;
-    width: 14px;
+    height: 18px;
+    width: 18px;
     position: relative;
     left: 77%;
-    top: -28px;
+    top: -29px;
+    transform: rotate(45deg);
     cursor: pointer;
 }
 
@@ -436,7 +434,7 @@ hr {
     width: 15px;
     position: relative;
     left: 90%;
-    top: -44px;
+    top: -47px;
     cursor: pointer;
 }
 
@@ -487,8 +485,7 @@ hr {
     /* align-items: center; */
 }
 
-.headerForSelectionField:hover .dropdown-content
-#dropdownCategory .dropdown-content {
+.headerForSelectionField:hover .dropdown-content #dropdownCategory .dropdown-content {
     display: block !important;
 }
 
@@ -521,7 +518,7 @@ hr {
 }
 
 .checkBoxDiv {
-    width: 89%;
+    width: 89.5%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -535,7 +532,8 @@ hr {
 
 .checkBoxDiv img {
     cursor: pointer;
-    height: 13px;
+    height: 17px;
+    transform: rotate(45deg);
 }
 
 .addedSubtask {
@@ -609,7 +607,9 @@ hr {
 
 .closePopUp {
     height: 20px;
-    margin-top: 60px;
+    width: 20px;
+    margin-top: 55px;
+    transform: rotate(45deg);
 }
 
 .closePopUp:hover {
@@ -633,35 +633,54 @@ hr {
 
 .taskAddedPopUp {
     width: 100%;
-    animation: taskAddedPopUp ease-in-out 2s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-12%, 2000%);
+    
 }
 
-@keyframes taskAddedPopUp {
+.addedTaskAnimtion {
+    animation: taskAdded ease-in-out 225ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes taskAdded {
 
     0% {
-        transform: translateY(0vh);
-
-    }
-
-    50% {
-        transform: translateY(-40vh);
-
+        transform: translate(-12%, 2000%);
     }
 
     100% {
-        transform: translateY(-40vh);
-
+        transform: translate(-12%, 0%);
     }
 }
 
+.removeAddedTaskAnimtion {
+    animation: removeTaskAdded 225ms ease-in-out 1000ms;
+    /* animation-delay: 1000ms; */
+    animation-fill-mode: forwards;
+}
+
+@keyframes removeTaskAdded {
+
+    0% {
+        transform: translate(-12%, 0%);
+    }
+
+    100% {
+        transform: translate(-12%, 2000%);
+    }
+}
+
+
 .taskAddedPopUp span {
-    margin-left: -40%;
     border-radius: 10px;
     background-color: #2A3647;
     padding: 30px;
     width: 60%;
     color: white;
-    font-size: 26px;
+    font-size: 1.5rem;
 }
 
 .dividingHRPopUp {
