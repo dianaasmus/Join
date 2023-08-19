@@ -1,5 +1,3 @@
-let addTaskPage = false;
-
 async function initAddTask() {
     await initScript();
     adjustAddTask();
@@ -16,6 +14,7 @@ async function initAddTask() {
 
 function adjustAddTask() {
     document.getElementById('addTaskPopUp').classList.add('add-task-html-style');
+    document.getElementById(`date`).setAttribute("min", date.toISOString().split("T")[0]);
     setReadinessState = 'toDo';
     addTaskPage = true;
 }

@@ -6,11 +6,34 @@ body {
     font-weight: 400;
     padding-left: 5%;
     margin: 90px 3% 0 232px;
+    height: 100vh;
 }
 
 .hide-overflow {
     overflow: hidden;
 }
+
+/* body::-webkit-scrollbar {
+    width: 7px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 3px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #eee;
+    border-radius: 6px;
+}
+
+body::-webkit-scrollbar-track:hover {
+    background-color: #ddd;
+} */
 
 .wrapper {
     display: flex;
@@ -228,7 +251,7 @@ input::-webkit-search-cancel-button {
     color: #2A3647;
 }
 
-.dialogFullCardContent label{
+.dialogFullCardContent label {
     margin-bottom: 10px;
 }
 
@@ -252,7 +275,7 @@ input::-webkit-search-cancel-button {
     margin-bottom: 0;
 }
 
-#subtasksFullCard div{
+#subtasksFullCard div {
     display: flex;
     justify-content: flex-start;
     gap: 15px;

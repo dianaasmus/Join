@@ -15,6 +15,7 @@ let dropDownCategory = false;
 let existingCategorySelected = false;
 let categorySelected = false;
 let setReadinessState;
+let addTaskPage = false;
 
 
 function disableButtonAddTask() {
@@ -79,7 +80,6 @@ async function createTask() {
     await addTask(task);
     clearPopUp();
     removeAddTaskPopup();
-
 }
 
 
@@ -114,22 +114,26 @@ async function addTask(task) {
     }
 }
 
+
 function addTaskFeedback() {
     if (addTaskPage) {
         document.body.innerHTML += addedTaskFeedback();
-        document.getElementById('popUpWhenAdded').classList.add('addedTaskAnimtion');
-        // setTimeout(() => {
-            document.getElementById('popUpWhenAdded').classList.add('removeAddedTaskAnimtion');
-        // }, 500);
-
-        // setTimeout(() => {
-
-        //     document.getElementById('popUpWhenAdded').classList.remove('addedTaskAnimtion');
-        //     document.getElementById('popUpWhenAdded').classList.remove('removeAddedTaskAnimtion');
-        // }, 4500);
-
+        removeAddTaskFeedback();
+    } else {
+        continueScrolling();
     }
     addTaskPage = false;
+}
+
+
+function removeAddTaskFeedback() {
+    // setTimeout(() => {
+    //     document.getElementById('popUpWhenAdded').classList.add('removeAddedTaskAnimtion');
+    // }, 1500);
+    setTimeout(() => {
+        document.getElementById('popUpWhenAdded').remove();
+        window.location.href = 'board.html';
+    }, 1500);
 
 }
 
@@ -292,6 +296,13 @@ async function deleteTask(i) {
     await backend.setItem('tasks', JSON.stringify(tasks))
     renderTaskCards();
     document.getElementById('dialogFullCard').classList.add('displayNone');
+    checkContinueScrolling();
+}
+
+function checkContinueScrolling() {
+    if (!addTaskPage) {
+        continueScrolling();
+    }
 }
 
 
