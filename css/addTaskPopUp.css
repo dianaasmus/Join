@@ -650,7 +650,7 @@ hr {
     justify-content: center;
 
     transform: translate(-50%, 1000%);
-    animation: taskAdded 225ms ease-in-out;
+    animation: taskAdded 800ms ease-in-out;
     animation-fill-mode: forwards;
 
     border: unset;
