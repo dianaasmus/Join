@@ -159,15 +159,19 @@ function checkOrigin() {
 
 async function deleteNewContact(l) {
     contacts.splice(l, 1);
+    await backend.setItem('contacts', JSON.stringify(contacts));
+    initContacts();
+    document.getElementById('contactInfo').innerHTML = '';
+}
+
+function deleteNewContactsSettings(l) {
+    deleteNewContact(l);
     document.getElementById('overlayContainer').classList.add('d-none');
     clearContactCard();
     editing = false;
-    await backend.setItem('contacts', JSON.stringify(contacts));
-    document.getElementById('contactInfo').innerHTML = '';
-    initContacts();
 
     if (window.innerWidth < 1000) {
-        var contactContainer = document.querySelector(".contact-container");
+        let contactContainer = document.querySelector(".contact-container");
         contactContainer.style.display = "none";
     }
 }
@@ -252,15 +256,14 @@ function clearInput() {
 }
 
 
-async function showContacts(l) {
+function showContacts(l) {
     let contactsInfo = document.getElementById('contactInfo');
     contactsInfo.innerHTML = memberInfo(l);
 
     contactsInfo.style.display = "flex";
 
-    var contactContainer = document.querySelector(".contact-container");
+    let contactContainer = document.querySelector(".contact-container");
     contactContainer.style.display = "block";
-
 }
 
 

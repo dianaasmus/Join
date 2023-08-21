@@ -127,9 +127,6 @@ function addTaskFeedback() {
 
 
 function removeAddTaskFeedback() {
-    // setTimeout(() => {
-    //     document.getElementById('popUpWhenAdded').classList.add('removeAddedTaskAnimtion');
-    // }, 1500);
     setTimeout(() => {
         document.getElementById('popUpWhenAdded').remove();
         window.location.href = 'board.html';

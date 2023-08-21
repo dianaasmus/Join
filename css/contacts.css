@@ -8,7 +8,7 @@ body {
 }
 
 hr {
-    height: 59px;
+    height: 50px;
     border: 1px solid #29ABE2;
     margin: 30px;
 }
@@ -47,10 +47,7 @@ hr {
 }
 
 .contact-header h1 {
-    display: inline;
-    font-size: 61px;
-    font-weight: 700;
-    line-height: 120%;
+    font-size: 3rem;
 }
 
 .contact-header p {
@@ -61,15 +58,13 @@ hr {
 }
 
 .contact-header h2 {
-    display: inline;
     font-size: 1rem;
     font-weight: 400;
-    line-height: 25px;
 }
 
 .add-contact-button {
     position: absolute;
-    right: 100px;
+    right: 4%;
     bottom: 50px;
     align-items: center;
     background-color: #2A3647;
@@ -81,10 +76,9 @@ hr {
     font-style: normal;
     font-weight: 700;
     gap: 10px;
-    height: 61px;
     justify-content: center;
     margin-left: 30px;
-    padding: 18px 10px;
+    padding: 15px;
 }
 
 .add-contact-button:hover {
@@ -93,6 +87,10 @@ hr {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: all 225ms;
+}
+
+.add-contact-button img {
+    height: 23px;
 }
 
 
@@ -146,7 +144,7 @@ hr {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
     transition: transform 0.4s;
     transition-delay: 0.4s;
 }
@@ -249,8 +247,8 @@ hr {
 }
 
 .contact-new-inputs button img {
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 12px;
 }
 
 .contact-new-cancel {
@@ -461,23 +459,25 @@ hr {
 }
 
 .contact-info-bubble {
-    height: 100px;
-    width: 145px;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
     border-radius: 100%;
     background-color: #810292;
     color: white;
-    font-size: 3rem;
-    /* font-weight: 500; */
+    font-size: 2rem;
     border: 1px solid white;
 }
 
 .contact-info-headname h2 {
-    margin: 0 0 2px 0;
-    font-size: 47px;
-    font-weight: 500;
+    margin: 0 0 5px 0;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.contact-info-headname img {
+    height: 21px;
 }
 
 .contact-info-headname a {
@@ -488,7 +488,7 @@ hr {
 .contact-info-headname span {
     font-size: 16px;
     font-weight: 400;
-    color: #29abe2;
+    color: #2A3647;
     display: flex;
     align-items: center;
     column-gap: 5px;
@@ -498,12 +498,13 @@ hr {
 .contact-info-edit {
     display: flex;
     align-items: flex-end;
-    column-gap: 50px;
+    gap: 10px;
 }
 
 .contact-edit-text {
     font-size: 1rem;
     font-weight: 400;
+    margin: 20px 0;
 }
 
 .contact-edit-popup {
@@ -512,10 +513,15 @@ hr {
     cursor: pointer;
 }
 
+.contact-edit-popup:hover {
+    filter: invert(66%) sepia(31%) saturate(6436%) hue-rotate(165deg) brightness(101%) contrast(77%);
+}
+
 .open-contact-infos {
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
+    gap: 20px;
+    margin-top: 20px;
 }
 
 .contact-information {

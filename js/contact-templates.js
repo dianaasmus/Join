@@ -103,7 +103,7 @@ function generateRightSideEditContact(l) {
                                 <img src="../assets/img/icon-phone.svg">
                                 </div>
                             <div class="create-cancel-box edit-submit-box" id="create-edit-content">
-                                <button type="button" class="contact-new-cancel" id="contact-new-cancel" onclick="deleteNewContact(${l})">
+                                <button type="button" class="contact-new-cancel" id="contact-new-cancel" onclick="deleteNewContactsSettings(${l})">
                                     <span>Delete</span>
                                 </button>
                                 <button type="submit" class="contact-new-create">
@@ -139,21 +139,19 @@ function memberInfo(l){
     </div>
     <div class="contact-info-headname">
         <h2>${contacts[l].name}</h2>
-        <span>
-            <a href="../addTask.html">
-                <img src="../assets/img/contact-add-task.png">
-                Add Task
-            </a>
-        </span>
+        <div class="contact-info-edit">
+            <span class="contact-edit-popup" onclick="openEditContacts(${l})">
+                <img src="../assets/img/contact-edit.png">
+                Edit
+            </span>
+            <span class="contact-edit-popup" onclick="deleteNewContact(${l})">
+                <img src="../assets/img/trash-img.png">
+                Delete
+            </span>
+        </div>
     </div>
 </div>
-<div class="contact-info-edit">
     <span class="contact-edit-text">Contact Information</span>
-    <span class="contact-edit-popup" onclick="openEditContacts(${l})">
-        <img src="../assets/img/contact-edit.png">
-        Edit Contact
-    </span>
-</div>
 <div class="open-contact-infos">
         <span class="contact-information">Email</span>
         <a class="contact-mail" href="mailto:${contacts[l].email}">${contacts[l].email}</a>
@@ -163,7 +161,7 @@ function memberInfo(l){
 
 
 <div class="responsive-buttons d-none">
-    <img class="trash-can" src="../assets/img/delete-box.png" onclick="deleteNewContact(${l})">
+    <img class="trash-can" src="../assets/img/delete-box.png" onclick="deleteNewContactsSettings(${l})">
     <img class="edit-box" src="../assets/img/edit-box.png" onclick="openEditContacts(${l})">
 </div>
     `;
