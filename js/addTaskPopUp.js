@@ -212,10 +212,10 @@ function addTaskContactPopup() {
 }
 
 
-function removeClassLists(addTaskPopoup) {
+function removeClassLists(element) {
     setTimeout(() => {
-        addTaskPopoup.classList.remove('openPopUp');
-        addTaskPopoup.classList.remove('closeAddedPopUp');
+        element.classList.remove('openPopUp');
+        element.classList.remove('closeAddedPopUp');
     }, 200);
 }
 

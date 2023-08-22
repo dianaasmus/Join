@@ -117,8 +117,7 @@ async function renderDialogFullCard(i, colorCircle) {
     stopScrolling();
 
     let counter = 0
-    document.getElementById('dialogFullCard').classList.remove('displayNone')
-    document.getElementById('dialogFullCard').innerHTML = HTMLrenderDialogFullCard(i)
+    document.body.innerHTML += HTMLrenderDialogFullCard(i);
     priorityImageForRenderFullTaskCard(i)
     tasks[i].subtasks.forEach(subtask => {
         document.getElementById('subtasksFullCard').innerHTML += HTMLrenderSubtasksDialogFullCard(i, subtask, counter)
@@ -127,6 +126,9 @@ async function renderDialogFullCard(i, colorCircle) {
     renderAssignedContactsOnFullCard(i)
     checkForChecked(i, `checkBox${counter}`)
     await backend.setItem('tasks', JSON.stringify(tasks))
+    document.getElementById('dialogFullCard').classList.add('openPopUp');
+    document.getElementById('dialogFullCard').classList.add('background-aniamtion');
+
 }
 
 
@@ -141,8 +143,8 @@ function continueScrolling() {
 
 
 function openEditTask(i) {
-    document.getElementById('dialogEditCard').classList.remove('displayNone');
-    document.getElementById('dialogEditCard').innerHTML = openEditTaskHTML(i);
+    // document.getElementById('dialogEditCard').classList.remove('displayNone');
+    document.getElementById('dialogFullCard').innerHTML = openEditTaskHTML(i);
     document.getElementById(`editedDate`).setAttribute("min", date.toISOString().split("T")[0]);
     listenToEvent(i);
     getPrio(i);
@@ -174,7 +176,7 @@ async function editTask(i) {
 
     await backend.setItem('tasks', JSON.stringify(tasks))
     renderTaskCards();
-    closeEditCard();
+    closeTask();
 }
 
 
@@ -187,12 +189,6 @@ function getPrio(i) {
         i = 6;
     }
     colorPrios(i);
-}
-
-
-function closeEditCard() {
-    document.getElementById('dialogFullCard').classList.add('displayNone')
-    document.getElementById('dialogEditCard').classList.add('displayNone')
 }
 
 
@@ -248,17 +244,15 @@ function checkForReadiness(i, j) {
     }
 }
 
-
-function openTask() {
-    document.getElementById('dialogFullCard').classList.remove('displayNone')
-
-}
-
-
 function closeTask() {
+    let dialogFullCard = document.getElementById('dialogFullCard');
     continueScrolling();
-    document.getElementById('dialogFullCard').classList.add('displayNone')
+    dialogFullCard.classList.remove('background-aniamtion');
+    dialogFullCard.classList.add('closeAddedPopUp');
     renderTaskCards();
+    setTimeout(() => {
+        dialogFullCard.remove()
+    }, 500);
 }
 
 
@@ -397,8 +391,6 @@ function opendropdownEditTask() {
 }
 
 function removeEditTaskDropdown(editedDropdownAddContact, arrowDownEditTask) {
-    // setTimeout(() => {
     editedDropdownAddContact.style.display = "none";
     arrowDownEditTask.style.transform = "rotate(180deg)";
-    // }, 3000);
 }

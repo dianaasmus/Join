@@ -37,6 +37,7 @@ function HTMLrenderTaskCards(i, j) {
 
 function HTMLrenderDialogFullCard(i) {
     return `
+    <div id="dialogFullCard" class="dialogFullCard">
     <div id="dialogFullCardContent" class="dialogFullCardContent">
         <div class="wrapperDialog">
                  <img onclick="closeTask()" class="closeButtondialogFullCard" src="../assets/img/closeButtonBoard.png">
@@ -68,6 +69,8 @@ function HTMLrenderDialogFullCard(i) {
                 <img  class="editButton" onclick="openEditTask(${i})" src="../assets/img/blueEdit.png">   
              </div>
         </div>
+        </div>
+        </div>
    </div>`
 }
 
@@ -82,7 +85,8 @@ function HTMLrenderSubtasksDialogFullCard(i, subtask, counter) {
 
 function openEditTaskHTML(i) {
 
-    return `<div id="entireEditTaskCard" class="dialogFullCardContent"
+    return `
+    <div id="entireEditTaskCard" class="dialogFullCardContent"
         style="display:flex; justify-content: center !important; align-items: center;">
         <form class="boardEditTaskForm" onsubmit="editTask(${i}); return false;">
             <div>

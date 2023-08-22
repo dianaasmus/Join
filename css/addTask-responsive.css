@@ -4,7 +4,7 @@
         margin-left: 0;
         margin-right: 0;
         padding: 0;
-        overflow-y: scroll;
+        /* overflow-y: scroll; */
         margin: 75px 0 0 0;
     }
 
@@ -19,13 +19,15 @@
 
     .wrapperPopUpTask {
         justify-content: center;
+        overflow-y: scroll;
     }
 
     .contentPopUpTask {
         width: 90% !important;
     }
 
-    #dropdownAddContactPopUp, #dropdownAddCategoryPopUp {
+    #dropdownAddContactPopUp,
+    #dropdownAddCategoryPopUp {
         max-height: 90px !important;
     }
 }
@@ -34,7 +36,7 @@
 @media(max-width:800px) {
 
     body {
-        overflow-y: scroll;
+        /* overflow-y: scroll; */
         margin: 70px 0 300px 0;
     }
 
@@ -117,5 +119,29 @@
         border: none;
         margin: 0;
         left: 86%;
+    }
+}
+
+@media(max-width:640px) {
+
+    .taskPopUpHeader {
+        width: unset !important;
+        margin-left: -134px;
+    }
+
+    .taskPopUpHeader hr {
+        background-color: #29ABE2;
+        border: none;
+        height: 3px;
+        width: 80px;
+        margin: 0;
+    }
+}
+
+@media(max-width: 430px) {
+
+    .taskPopUpHeader {
+        margin-left: 0;
+        justify-content: space-between !important;
     }
 }
