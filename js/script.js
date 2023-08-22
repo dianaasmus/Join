@@ -4,7 +4,7 @@
 async function initScript() {
     await includeHTML();
     focusSidebar();
-    responsiveHeaderText();
+    // responsiveHeaderText();
 }
 
 

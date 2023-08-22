@@ -280,11 +280,16 @@ function deleteSubtask(i) {
 
 function openPopUpAddTask(state) {
     setReadinessState = state;
-    let addTaskPopoup = document.getElementById('addTaskPopUp');
-    addTaskPopoup.classList.add('background-aniamtion');
-    addTaskPopoup.classList.add('openPopUp');
-    document.getElementById(`date`).setAttribute("min", date.toISOString().split("T")[0]);
-    stopScrolling();
+
+    if (!window.matchMedia("(max-width: 550px)").matches) {
+        let addTaskPopoup = document.getElementById('addTaskPopUp');
+        addTaskPopoup.classList.add('background-aniamtion');
+        addTaskPopoup.classList.add('openPopUp');
+        document.getElementById(`date`).setAttribute("min", date.toISOString().split("T")[0]);
+        stopScrolling();
+    } else {
+        window.location.href = 'addTask.html';
+    }
 }
 
 

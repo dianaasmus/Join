@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Board</title>
     <link rel="stylesheet" href="../css/board.css">
+    <link rel="stylesheet" href="../css/board-responsive.css">
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="icon" href="../assets/img/logo-blue.png">
     <link rel="stylesheet" href="../css/sidebar_header.css">
@@ -45,7 +46,8 @@
                 <div class="boardSubsections">
                     <div class="boardSubsectionHeader">
                         <h2>To do</h2>
-                        <img class="plusButton" onclick="openPopUpAddTask('toDo')" src="../assets/img/plusButtonBoard.png">
+                        <img class="plusButton" onclick="openPopUpAddTask('toDo')"
+                            src="../assets/img/plusButtonBoard.png">
                     </div>
                     <div ondrop="moveTo('toDo')" ondragover="allowDrop(event)" id="boardSubsectionToDo"
                         class="boardSubsection">
@@ -55,7 +57,8 @@
                 <div class="boardSubsections">
                     <div class="boardSubsectionHeader">
                         <h2>In progress</h2>
-                        <img class="plusButton" onclick="openPopUpAddTask('inProgress')" src="../assets/img/plusButtonBoard.png">
+                        <img class="plusButton" onclick="openPopUpAddTask('inProgress')"
+                            src="../assets/img/plusButtonBoard.png">
                     </div>
                     <div ondrop="moveTo('inProgress')" ondragover="allowDrop(event)" id="boardSubsectionInProgress"
                         class="boardSubsection">
@@ -65,7 +68,8 @@
                 <div class="boardSubsections">
                     <div class="boardSubsectionHeader">
                         <h2>Awaiting Feedback</h2>
-                        <img class="plusButton" onclick="openPopUpAddTask('awaitingFeedback')" src="../assets/img/plusButtonBoard.png">
+                        <img class="plusButton" onclick="openPopUpAddTask('awaitingFeedback')"
+                            src="../assets/img/plusButtonBoard.png">
                     </div>
                     <div ondrop="moveTo('awaitingFeedback')" ondragover="allowDrop(event)" id="boardSubsectionFeedback"
                         class="boardSubsection">

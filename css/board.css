@@ -9,6 +9,12 @@ body {
     height: 100vh;
 }
 
+.responsive-container {
+    display: flex;
+    flex-direction: row;
+    gap: 3%;
+}
+
 .hide-overflow {
     overflow: hidden;
 }
@@ -88,7 +94,7 @@ input::-webkit-search-cancel-button {
     width: 100%;
     display: flex;
     align-items: flex-start;
-    gap: 3%;
+    gap: 1%;
 }
 
 .boardSubsections {
@@ -228,8 +234,7 @@ input::-webkit-search-cancel-button {
     display: flex;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.25);
-    z-index: 80;
-
+    z-index: 100;
 }
 
 .dialogFullCardContent {
@@ -238,7 +243,7 @@ input::-webkit-search-cancel-button {
     margin: auto;
     max-width: 400px;
     width: 100%;
-    background-color: #F6F7F8;
+    background-color: white;
     border-radius: 30px;
     overflow-wrap: break-word;
 }
@@ -300,6 +305,7 @@ input::-webkit-search-cancel-button {
     font-size: 1.5rem;
     color: #2A3647;
     margin: 0;
+    text-align: unset;
 }
 
 .categoryDialog {
@@ -307,8 +313,9 @@ input::-webkit-search-cancel-button {
     padding: 8px;
     color: white;
     border-radius: 10px;
-    width: 35%;
+    width: 40%;
     text-align: center;
+    white-space: nowrap;
 }
 
 .taskDescript {
@@ -514,7 +521,7 @@ textarea {
 }
 
 #editedDropdownAddContact .droppedContacts input {
-    left: 88% !important;
+    left: 91% !important;
 }
 
 .dropdownEditTask {
@@ -668,219 +675,3 @@ textarea {
     overflow-y: scroll;
     z-index: 200;
 }
-
-/* 
-
-@media(min-width:250px) and (max-width:1000px) {
-
-
-    .editDelete {
-        margin-bottom: 40%
-    }
-
-    .deleteButton:hover {
-        cursor: pointer;
-        content: inherit
-    }
-
-    .editButton {
-        height: 30px;
-    }
-
-    .deleteButton {
-        height: 30px;
-    }
-
-    .editButton:hover {
-        cursor: pointer;
-        content: inherit
-    }
-
-
-
-    .wrapper {
-        display: flex;
-        align-items: center;
-        margin: auto;
-    }
-
-    .boardHeader {
-        flex-direction: column;
-        width: 90%;
-        padding: 0;
-        margin: 10px
-    }
-
-    .boardContent {
-        width: 90%;
-        margin: auto;
-    }
-
-    .inputContainer {
-        width: 100% !important;
-        margin: auto;
-    }
-
-    .boardInput {
-        width: 100% !important;
-        margin: auto;
-    }
-
-    h1 {
-        align-self: flex-start;
-    }
-
-    .headings {
-        display: block;
-        padding: 0 0 100px
-    }
-
-    .boardSubsectionHeader {
-        width: 100%;
-    }
-
-    .boardSubsections {
-        flex-direction: column;
-        width: 100%;
-        min-height: fit-content;
-        align-items: center;
-        padding: 10px
-    }
-
-    .boardSubsection {
-        min-height: 20px;
-    }
-
-
-    .wrapper {
-        width: 100%;
-        align-items: center;
-    }
-
-
-    .addTaskButton {
-        width: 30px;
-        display: flex !important;
-        justify-content: center;
-        margin-top: -190px;
-    }
-
-    .addTaskButton span {
-        display: none;
-    }
-
-    .buttonPlus {
-        font-size: 50px;
-    }
-
-    .buttonPlus {
-        display: flex !important;
-        justify-content: center;
-        margin: 0
-    }
-
-
-    .vertLineInput {
-        position: absolute;
-        top: 13px;
-        right: 130px;
-    }
-
-    .searchImgInput {
-        right: 20%
-    }
-
-    .dialogFullCardContent {
-        height: 100%;
-        width: 100%;
-        border-radius: 0;
-
-    }
-
-    .wrapperDialog {
-        height: 100vh;
-        padding-top: 10%;
-        width: 60%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        margin-top: 10px;
-        margin-bottom: 80px;
-
-    }
-
-    .headerForSelectionField span {
-        width: 82%;
-        flex-direction: row;
-    }
-
-
-    .dropdownEditTask {
-        width: 83%
-    }
-
-    .droppedContacts input {
-        left: 50%;
-    }
-
-    .closeButtondialogFullCard {
-        top: 8%;
-    }
-
-    .boardEditTaskForm {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        margin-bottom: 70px;
-        margin-top: 100px;
-    }
-
-}
-
-@media(max-width:350px) {
-    .closeButtondialogFullCard {
-        top: 2%;
-        height: 15px
-    }
-
-}
-
-@media(min-width:350px) and (max-width:700px) {
-    .closeButtondialogFullCard {
-        top: 9%;
-        height: 20px
-    }
-
-    .wrapperDialog {
-        margin-top: 10px;
-    }
-
-    .boardEditTaskForm {
-
-        margin-bottom: 90px;
-        margin-top: 100px;
-    }
-}
-
-/* @media(min-width:1000px) and (max-width:1450px) {
-    .boardSubsectionHeader h2 {
-        font-size: 1rem;
-        white-space: nowrap;
-    }
-
-    .dropdownForMobileDevices {
-        display: none;
-
-    }
-
-    .headerForSelectionField {
-        display: block !important;
-        width: 100%
-    }
-} 
-
-@media(max-width:600px) {
-    .dropdownForMobileDevices {
-        display: block;
-    }
-} */

@@ -1,0 +1,121 @@
+@media(max-width: 1000px) {
+
+    body {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+        overflow: scroll;
+        margin: 75px 0 0 0;
+    }
+
+    .taskBoardPopUpTask {
+        height: 60vh !important;
+    }
+
+    #dropdownAddContactPopUp,
+    #dropdownAddCategoryPopUp {
+        max-height: 90px;
+    }
+
+    .wrapperPopUpTask {
+        justify-content: center;
+    }
+
+    .contentPopUpTask {
+        width: 90% !important;
+    }
+
+    #dropdownAddContactPopUp, #dropdownAddCategoryPopUp {
+        max-height: 90px !important;
+    }
+}
+
+
+@media(max-width:800px) {
+
+    body {
+        overflow: scroll;
+        margin: 70px 0 300px 0;
+    }
+
+    .contentPopUpTask {
+        height: 68%;
+        align-items: center;
+        padding: 0;
+    }
+
+    .taskBoardLeftPopUpTask,
+    .taskBoardRightPopUp {
+        width: 100% !important;
+        max-width: 350px !important;
+    }
+
+    .taskBoardRightPopUp {
+        margin-top: 2%;
+    }
+
+    .createInHiddenInput {
+        left: 92% !important;
+    }
+
+    .hiddenInput hr {
+        left: 85% !important;
+    }
+
+    .closeHiddenInput {
+        left: 80% !important;
+    }
+
+    .checkBoxDiv {
+        width: 90% !important;
+    }
+
+    input,
+    .taskBoardLeftPopUpTask textarea,
+    .dropdownAssigned,
+    .dropdown {
+        width: 100%;
+        max-width: -webkit-fill-available;
+    }
+
+    .taskPopUpHeader {
+        padding: 0px 5%;
+        box-sizing: border-box;
+        justify-content: center !important;
+    }
+
+    .taskBoardPopUpTask {
+        flex-direction: column;
+        padding: 0 5%;
+        box-sizing: border-box;
+        align-items: center !important;
+    }
+
+    .taskBoardLeftPopUpTask textarea {
+        width: 100%;
+    }
+
+    .dividingHRPopUp {
+        display: none;
+    }
+
+    .buttonsCreateTaskPopUpTask {
+        bottom: -90px !important;
+        width: 100%;
+        display: flex;
+        justify-content: center !important;
+    }
+
+    .dropdownContact input {
+        width: 10px;
+        margin-right: 15px;
+    }
+
+    .hiddenInput hr {
+        height: 1px;
+        background-color: #29ABE2;
+        border: none;
+        margin: 0;
+        left: 86%;
+    }
+}
