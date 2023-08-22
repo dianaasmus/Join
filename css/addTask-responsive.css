@@ -4,7 +4,7 @@
         margin-left: 0;
         margin-right: 0;
         padding: 0;
-        overflow: scroll;
+        overflow-y: scroll;
         margin: 75px 0 0 0;
     }
 
@@ -34,7 +34,7 @@
 @media(max-width:800px) {
 
     body {
-        overflow: scroll;
+        overflow-y: scroll;
         margin: 70px 0 300px 0;
     }
 

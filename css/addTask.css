@@ -39,10 +39,12 @@ body {
 input,
 .taskBoardLeftPopUpTask textarea,
 .dropdownAssigned,
-.dropdown,
-.checkBoxDiv {
+.dropdown {
     max-width: 300px;
 }
+
+
+/* .checkBoxDiv  */
 
 .priorityImg {
     max-width: 90px;
