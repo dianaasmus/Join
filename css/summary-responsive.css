@@ -80,42 +80,15 @@
         flex-direction: column;
         align-items: center;
     }
-}
+/* } */
 
-@media (max-width: 640px) {
+/* @media (max-width: 640px) { */
 
     .checkbox-feedback {
         font-size: 17px;
     }
 
-    section {
-        margin-top: 0px;
-    }
-
-    .summary-headline {
-        flex-direction: column;
-        align-items: flex-start;
-        margin-left: -180px !important;
-        margin-top: 20px;
-    }
-
-    .summary-headline h1 {
-        order: 1;
-        margin: 0;
-        font-size: 43px;
-    }
-
-    .summary-headline p {
-        order: 2;
-        font-size: 20px;
-    }
-
-    .summary-headline hr {
-        order: 3;
-        height: 3px;
-        width: 80px;
-        margin: 0;
-    }
+    
 
     .summary-board {
         gap: 20px;
@@ -136,7 +109,7 @@
     #urgent-number,
     #todo-number,
     #done-number {
-        font-size: 40px;
+        font-size: 2.5rem;
     }
 
     .task p,
@@ -164,7 +137,39 @@
 
     .to-do,
     .done {
-        height: 125px;
+        height: 115px;
+    }
+}
+
+@media (max-width: 640px) {
+    
+    section {
+        margin-top: 0px;
+    }
+
+    .summary-headline {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: -180px !important;
+        margin-top: 20px;
+    }
+
+    .summary-headline h1 {
+        order: 1;
+        margin: 0;
+        font-size: 43px;
+    }
+
+    .summary-headline p {
+        order: 2;
+        font-size: 20px;
+    }
+
+    .summary-headline hr {
+        order: 3;
+        height: 3px;
+        width: 80px;
+        margin: 0;
     }
 }
 

@@ -113,22 +113,26 @@ function priorityImageForRenderFullTaskCard(i) {
 }
 
 
-async function renderDialogFullCard(i, colorCircle) {
-    stopScrolling();
-
+async function renderDialogFullCard(i) {
     let counter = 0
     document.body.innerHTML += HTMLrenderDialogFullCard(i);
-    priorityImageForRenderFullTaskCard(i)
+    priorityImageForRenderFullTaskCard(i);
+
+    await renderDialogFullCardContent(i, counter);
+
+    document.getElementById('dialogFullCard').classList.add('openPopUp');
+    document.getElementById('dialogFullCard').classList.add('background-aniamtion');
+}
+
+async function renderDialogFullCardContent(i, counter) {
     tasks[i].subtasks.forEach(subtask => {
         document.getElementById('subtasksFullCard').innerHTML += HTMLrenderSubtasksDialogFullCard(i, subtask, counter)
         counter++
     })
-    renderAssignedContactsOnFullCard(i)
-    checkForChecked(i, `checkBox${counter}`)
-    await backend.setItem('tasks', JSON.stringify(tasks))
-    document.getElementById('dialogFullCard').classList.add('openPopUp');
-    document.getElementById('dialogFullCard').classList.add('background-aniamtion');
-
+    renderAssignedContactsOnFullCard(i);
+    checkForChecked(i, `checkBox${counter}`);
+    await backend.setItem('tasks', JSON.stringify(tasks));
+    stopScrolling();
 }
 
 
@@ -362,10 +366,7 @@ function addReassigned(i, index) {
 
 
 function openContactEdit() {
-    // window.location.href = 'contacts.html';
-    // setTimeout(() => {
     openAddContacts();
-    // }, 1000);
 }
 
 

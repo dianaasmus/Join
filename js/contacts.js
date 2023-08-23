@@ -116,13 +116,17 @@ async function renderContactList(initialLetter, contact, l) {
 
 
 function openAddContacts() {
-    document.body.innerHTML += addContactPopUp();
-    setTimeout(() => {
-        let contentleft = document.getElementById('addContactLeft');
-        contentleft.innerHTML += generateLeftSideNewContact();
-        let contentright = document.getElementById('addContactRightContent');
-        contentright.innerHTML += generateRightSideNewContact();
-    }, 225);
+    if (addTaskPage) {
+        window.location.href = "contacts.html";
+    } else {
+        document.body.innerHTML += addContactPopUp();
+        setTimeout(() => {
+            let contentleft = document.getElementById('addContactLeft');
+            contentleft.innerHTML += generateLeftSideNewContact();
+            let contentright = document.getElementById('addContactRightContent');
+            contentright.innerHTML += generateRightSideNewContact();
+        }, 225);
+    }
 }
 
 

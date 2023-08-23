@@ -4,12 +4,7 @@
         margin-left: 0;
         margin-right: 0;
         padding: 0;
-        /* overflow-y: scroll; */
         margin: 75px 0 0 0;
-    }
-
-    .taskBoardPopUpTask {
-        height: 60vh !important;
     }
 
     #dropdownAddContactPopUp,
@@ -36,12 +31,10 @@
 @media(max-width:800px) {
 
     body {
-        /* overflow-y: scroll; */
-        margin: 70px 0 300px 0;
+        margin: 70px 0 250px 0;
     }
 
     .contentPopUpTask {
-        height: 68%;
         align-items: center;
         padding: 0;
     }
@@ -102,10 +95,11 @@
     }
 
     .buttonsCreateTaskPopUpTask {
-        bottom: -90px !important;
+        bottom: -107px !important;
         width: 100%;
         display: flex;
         justify-content: center !important;
+        padding-bottom: 30px;
     }
 
     .dropdownContact input {
@@ -124,9 +118,13 @@
 
 @media(max-width:640px) {
 
+    .taskPopUpHeader h1 {
+        font-size: 2rem;
+    }
+
     .taskPopUpHeader {
         width: unset !important;
-        margin-left: -134px;
+        margin-left: -167px;
     }
 
     .taskPopUpHeader hr {
