@@ -18,6 +18,7 @@ async function initBoard() {
         tasks = await JSON.parse(await backend.getItem('tasks')) || [];
         contacts = JSON.parse(backend.getItem('contacts')) || [];
         await renderTaskCards();
+        
     } catch (er) {
         console.error(er);
     }
@@ -117,12 +118,15 @@ async function renderDialogFullCard(i) {
     let counter = 0
     document.body.innerHTML += HTMLrenderDialogFullCard(i);
     priorityImageForRenderFullTaskCard(i);
-
     await renderDialogFullCardContent(i, counter);
+    showDialogFullCard();
+}
 
+function showDialogFullCard() {
     document.getElementById('dialogFullCard').classList.add('openPopUp');
     document.getElementById('dialogFullCard').classList.add('background-aniamtion');
 }
+
 
 async function renderDialogFullCardContent(i, counter) {
     tasks[i].subtasks.forEach(subtask => {
@@ -147,7 +151,6 @@ function continueScrolling() {
 
 
 function openEditTask(i) {
-    // document.getElementById('dialogEditCard').classList.remove('displayNone');
     document.getElementById('dialogFullCard').innerHTML = openEditTaskHTML(i);
     document.getElementById(`editedDate`).setAttribute("min", date.toISOString().split("T")[0]);
     listenToEvent(i);
@@ -251,8 +254,9 @@ function checkForReadiness(i, j) {
 function closeTask() {
     let dialogFullCard = document.getElementById('dialogFullCard');
     continueScrolling();
-    dialogFullCard.classList.remove('background-aniamtion');
+    
     dialogFullCard.classList.add('closeAddedPopUp');
+    dialogFullCard.classList.remove('background-aniamtion');
     renderTaskCards();
     setTimeout(() => {
         dialogFullCard.remove()

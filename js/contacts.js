@@ -3,6 +3,7 @@ let contactsLoaded = false; // Globale Variable zur Verfolgung des Ladezustands 
 var colors = ["#0048cd", "#81adfd", "#b6fa81", "#f99090", "#845400", "#fac66e", "#07ab1d"];
 let letters = [];
 let addTaskNewContact;
+let addTaskPage = false;
 
 
 async function initContacts() {
@@ -261,13 +262,16 @@ function clearInput() {
 
 
 function showContacts(l) {
+
+    // if (!window.matchMedia("(max-width: 700px)").matches) {
     let contactsInfo = document.getElementById('contactInfo');
     contactsInfo.innerHTML = memberInfo(l);
 
     contactsInfo.style.display = "flex";
 
     let contactContainer = document.querySelector(".contact-container");
-    contactContainer.style.display = "block";
+    contactContainer.style.display = "flex";
+    
 }
 
 

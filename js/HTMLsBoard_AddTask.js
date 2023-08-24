@@ -74,6 +74,7 @@ function HTMLrenderDialogFullCard(i) {
    </div>`
 }
 
+
 function HTMLrenderSubtasksDialogFullCard(i, subtask, counter) {
     return `
     <div class="checkBoxDiv">

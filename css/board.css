@@ -6,7 +6,7 @@ body {
     font-weight: 400;
     padding-left: 5%;
     margin: 90px 3% 0 232px;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .responsive-container {

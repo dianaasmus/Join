@@ -7,12 +7,11 @@ body {
     margin: 90px 3% 0 232px;
 }
 
-/* hr {
+.contacts-hr-line {
     height: 50px;
     border: 1px solid #29ABE2;
     margin: 30px;
-} */
-
+}
 
 .contact-list {
     padding-top: 12px;
@@ -31,7 +30,7 @@ body {
 
 .contact-container {
     display: block;
-    margin-left: 31%;
+    margin-left: 34%;
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -42,12 +41,13 @@ body {
 .contact-header {
     display: flex;
     align-items: center;
-    height: 73px;
-    margin-top: 40px;
+    /* height: 73px;
+    margin-top: 40px; */
 }
 
 .contact-header h1 {
     font-size: 3rem;
+    /* padding-left: 5%; */
 }
 
 .contact-header p {
@@ -288,7 +288,7 @@ body {
 
 .close-contact-cross {
     position: absolute;
-    transform: translate(250px, -50px);
+    transform: translate(250px, -45px);
     cursor: pointer;
     color: rgb(41, 54, 70);
     font-size: 24px;
@@ -486,7 +486,7 @@ body {
 }
 
 .contact-info-headname span {
-    font-size: 16px;
+    font-size: 0.9rem;
     font-weight: 400;
     color: #2A3647;
     display: flex;
@@ -504,7 +504,7 @@ body {
 .contact-edit-text {
     font-size: 1rem;
     font-weight: 400;
-    margin: 20px 0;
+    margin: 25px 0 10px 0;
 }
 
 .contact-edit-popup {
