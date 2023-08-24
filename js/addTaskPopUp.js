@@ -15,7 +15,7 @@ let dropDownCategory = false;
 let existingCategorySelected = false;
 let categorySelected = false;
 let setReadinessState;
-let addTaskPage = false;
+// let addTaskPage = false;
 
 
 function disableButtonAddTask() {

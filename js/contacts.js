@@ -167,6 +167,9 @@ async function deleteNewContact(l) {
     await backend.setItem('contacts', JSON.stringify(contacts));
     initContacts();
     document.getElementById('contactInfo').innerHTML = '';
+    if (window.matchMedia("(max-width: 850px)").matches) {
+        closeContactInfo();
+    }
 }
 
 function deleteNewContactsSettings(l) {
@@ -201,7 +204,6 @@ async function addContact() {
     if (!addTaskNewContact) {
         document.getElementById('contactList').innerHTML = '';
         initContacts();
-
     }
     clearContactCard();
 }
@@ -262,20 +264,23 @@ function clearInput() {
 
 
 function showContacts(l) {
-
-    // if (!window.matchMedia("(max-width: 700px)").matches) {
     let contactsInfo = document.getElementById('contactInfo');
-    contactsInfo.innerHTML = memberInfo(l);
-
-    contactsInfo.style.display = "flex";
-
     let contactContainer = document.querySelector(".contact-container");
+    let addContactButton = document.getElementById('addContactButton');
+
+    contactsInfo.innerHTML = memberInfo(l);
+    contactsInfo.style.display = "flex";
     contactContainer.style.display = "flex";
-    
+    if (window.matchMedia("(max-width: 700px)").matches) {
+        addContactButton.classList.add('d-none');
+
+    }
 }
 
 
 function closeContactInfo() {
-    var contactContainer = document.querySelector(".contact-container");
+    let contactContainer = document.querySelector(".contact-container");
     contactContainer.style.display = "none";
+    document.getElementById('addContactButton').classList.remove('d-none');
+
 }

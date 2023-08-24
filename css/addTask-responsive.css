@@ -5,7 +5,7 @@
         margin-right: 0;
         padding: 0;
         margin: 75px 0 0 0;
-        overflow: scroll;
+        overflow-y: scroll;
         height: 100vh;
     }
 
@@ -16,7 +16,6 @@
 
     .wrapperPopUpTask {
         justify-content: center;
-        overflow-y: scroll;
     }
 
     .contentPopUpTask {
@@ -116,11 +115,6 @@
         margin: 0;
         left: 86%;
     }
-
-    .taskBoardPopUpTask {
-        /* height: 62vh !important; */
-        margin-bottom: -200px;
-    }
 }
 
 @media(max-width:640px) {
@@ -131,7 +125,7 @@
 
     .taskPopUpHeader {
         width: unset !important;
-        margin-left: -167px;
+        margin-left: -205px;
     }
 
     .taskPopUpHeader hr {
@@ -143,7 +137,7 @@
     }
 }
 
-@media(max-width: 430px) {
+@media(max-width: 440px) {
 
     .taskPopUpHeader {
         margin-left: 0;

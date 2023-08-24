@@ -398,6 +398,7 @@ body {
 .single-contact-container:hover {
     background-color: rgb(41, 54, 70);
     color: white;
+    transition: background-color ease-in-out 125ms;
 }
 
 .single-contact-name {
@@ -438,7 +439,7 @@ body {
 /* CONTACT-INFO */
 
 .contact-info {
-    margin-top: 40px;
+    /* margin-top: 40px; */
     display: flex;
     flex-direction: column;
 }
@@ -514,7 +515,8 @@ body {
 }
 
 .contact-edit-popup:hover {
-    filter: invert(66%) sepia(31%) saturate(6436%) hue-rotate(165deg) brightness(101%) contrast(77%);
+    filter: invert(80%) sepia(99%) saturate(415%) hue-rotate(156deg) brightness(94%) contrast(89%);
+    transition: filter ease-in-out 125ms;
 }
 
 .open-contact-infos {
@@ -543,7 +545,7 @@ body {
     font-size: 16px;
     font-weight: 400;
     text-decoration: none;
-    color: unset;
+    color: #357cee;
 }
 
 /*Edit Contact*/

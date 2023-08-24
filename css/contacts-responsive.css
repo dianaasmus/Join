@@ -4,7 +4,7 @@
 
     .add-contact-button {
         bottom: 100px;
-        right: 4%;
+        right: 30px;
     }
 
     .contact-list {
@@ -90,7 +90,23 @@
         flex-direction: column;
         align-items: center;
         width: 350px;
-        height: 650px;
+        height: 75vh;
+    }
+
+    .contact-left-headline {
+        font-size: 2.2rem;
+    }
+
+    .edit-contact-left-line {
+        top: 65px;
+        left: 81px;
+    }
+
+    .edit-contact-circle-for-edit {
+        background-color: lightgray;
+        position: absolute;
+        top: 155px;
+        left: 94px;
     }
 
     .add-contact-left {
@@ -98,14 +114,14 @@
         border-bottom-left-radius: 0;
         border-top-right-radius: 20px;
         align-items: flex-start;
-        height: 45%;
+        height: 40%;
         box-sizing: border-box;
         padding-left: 30px;
     }
 
     .add-contact-right {
         width: 350px;
-        height: 55%;
+        height: 60%;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
         border-top-right-radius: 0;
@@ -125,16 +141,9 @@
         top: 240px;
         left: 94px;
     }
-
-    .edit-contact-circle-for-edit {
-        background-color: lightgray;
-        position: absolute;
-        top: 240px;
-        left: 94px;
-    }
-
+    
     .contact-new-inputs {
-        margin-top: 40px;
+        margin-top: 45px;
     }
 
     .close-contact-cross {
@@ -158,21 +167,21 @@
         display: none;
     }
 
-    .edit-contact-left-line {
-        top: 110px;
-        left: 72px;
-    }
 
     .new-contact-left-line {
         top: 160px;
         left: 70px;
     }
 
+    .input-form-new-contact {
+        margin: 20px 0;
+    }
+
     .close-contact-cross-white {
         display: block;
         position: absolute;
-        top: 15px;
-        right: 15px;
+        top: 20px;
+        right: 23px;
         font-size: x-large;
         cursor: pointer;
     }
@@ -232,10 +241,23 @@
         right: 40px;
         cursor: pointer;
     }
+    
+
+    .contact-info-close:hover,
+    .trash-can:hover,
+    .edit-box:hover,
+    .contact-edit-popup:hover  {
+        filter: invert(80%) sepia(99%) saturate(415%) hue-rotate(156deg) brightness(94%) contrast(89%);
+        transition: filter ease-in-out 125ms;
+    }
+
+    .contact-info-edit {
+        display: none;
+    }
 
     .trash-can {
-        width: 21px;
-        height: 24px;
+        width: 26px;
+        height: 29px;
         margin-bottom: 20px;
         border: 2px solid #2A3647;
         border-radius: 5px;
@@ -324,7 +346,7 @@
 @media (max-width: 440px) {
 
     .contact-info-headname h2 {
-        font-size: 2rem;
+        font-size: 1.7rem;
     }
 
     .contact-container {
@@ -356,7 +378,7 @@
     }
 
     .edit-contact-circle-for-edit {
-        top: 220px;
+        top: 186px;
         left: 75px;
     }
 
@@ -366,13 +388,17 @@
     }
 
     .edit-contact-left-line {
-        top: 105px;
-        left: 51px;
+        top: 85px;
+        left: 60px;
     }
 
     .new-contact-left-line {
         top: 155px;
         left: 51px;
+    }
+
+    .input-form-new-contact {
+        margin: 30px 0;
     }
 
 }

@@ -251,12 +251,14 @@ function checkForReadiness(i, j) {
     }
 }
 
+
 function closeTask() {
     let dialogFullCard = document.getElementById('dialogFullCard');
     continueScrolling();
-    
+
     dialogFullCard.classList.add('closeAddedPopUp');
     dialogFullCard.classList.remove('background-aniamtion');
+
     renderTaskCards();
     setTimeout(() => {
         dialogFullCard.remove()
