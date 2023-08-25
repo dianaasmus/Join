@@ -35,19 +35,15 @@ body {
     display: flex;
     flex-direction: column;
     width: 45%;
-    /* height: 80vh; */
 }
 
 .contact-header {
     display: flex;
     align-items: center;
-    /* height: 73px;
-    margin-top: 40px; */
 }
 
 .contact-header h1 {
     font-size: 3rem;
-    /* padding-left: 5%; */
 }
 
 .contact-header p {
@@ -95,13 +91,11 @@ body {
 
 
 /*Popup for add Contacts*/
-
 .overlay-container {
     top: 0;
     left: 0;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0.6);
     position: absolute;
     z-index: 200;
 }
@@ -109,20 +103,25 @@ body {
 .add-contact-overlay {
     top: 50%;
     left: 50%;
+    transform: translate(100%, -50%);
     position: absolute;
     display: flex;
-    transform: translate(500%, -50%);
     height: 400px;
     width: 750px;
     color: white;
     box-sizing: border-box;
-    animation: newcontact 275ms ease-in-out forwards;
     z-index: 4;
 }
 
-@keyframes newcontact {
+.openPopUp {
+    animation: popup ease-in-out 1000ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes popup {
+
     0% {
-        transform: translate (500%, -50%);
+        transform: translate(100%, -50%);
     }
 
     100% {
@@ -131,8 +130,38 @@ body {
 }
 
 
-/*ADD Left*/
+.closePopUp {
+    animation: closepopup ease-in-out 1000ms;
+    animation-fill-mode: forwards;
+}
 
+@keyframes closepopup {
+
+    0% {
+        transform: translate(-50%, -50%);
+    }
+
+    100% {
+        transform: translate(1000%, -50%);
+    }
+}
+
+.background-aniamtion {
+    animation: FadeInBackgroundColor ease-in-out 2000ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes FadeInBackgroundColor {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        background-color: rgba(0, 0, 0, 0.25);
+    }
+}
+
+/*ADD Left*/
 .add-contact-left {
     width: 300px;
     height: 100%;
@@ -439,7 +468,6 @@ body {
 /* CONTACT-INFO */
 
 .contact-info {
-    /* margin-top: 40px; */
     display: flex;
     flex-direction: column;
 }
@@ -594,7 +622,7 @@ body {
 
 .contact-created {
     position: fixed;
-    bottom: 5%;
+    bottom: -20%;
     left: 50%;
     transform: translate(-50%);
     width: 360px;
@@ -606,18 +634,28 @@ body {
     padding: 0;
     background-color: #2A3647;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
-    animation: fadeIn 0.8s ease-in-out;
+    animation: fadeIn 2000ms ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 @keyframes fadeIn {
-    from {
+    0% {
         bottom: -20%;
     }
 
-    to {
+    25% {
         bottom: 15%;
     }
+
+    75% {
+        bottom: 15%;
+    }
+
+    100% {
+        bottom: -20%;
+    }
 }
+
 
 .contact-created span {
     font-size: 1rem;

@@ -30,7 +30,7 @@ async function loadContacts() {
  */
 async function sortContacts() {
     contacts.sort(function (a, b) {
-        let nameA = a.name.toUpperCase(); // Großbuchstaben verwenden, um die Sortierung zu vereinheitlichen
+        let nameA = a.name.toUpperCase();
         let nameB = b.name.toUpperCase();
         if (nameA < nameB) {
             return -1;
@@ -57,6 +57,7 @@ async function loadInitialLetters() {
         setInitialLetters(initialLetter, contact, l);
     }
 }
+
 
 /**
  * This funtcion pushes the initial letter in the letters array or executes the function loadContactsLetter().
@@ -117,39 +118,68 @@ async function renderContactList(initialLetter, contact, l) {
 
 
 function openAddContacts() {
+
     if (addTaskPage) {
         window.location.href = "contacts.html";
     } else {
         document.body.innerHTML += addContactPopUp();
-        setTimeout(() => {
-            let contentleft = document.getElementById('addContactLeft');
-            contentleft.innerHTML += generateLeftSideNewContact();
-            let contentright = document.getElementById('addContactRightContent');
-            contentright.innerHTML += generateRightSideNewContact();
-        }, 225);
+
+        let overlayContainer = document.getElementById('overlayContainer');
+        let addContactOverlay = document.getElementById('addContactOverlay');
+        document.getElementById('addContactLeft').innerHTML += generateLeftSideNewContact();
+        document.getElementById('addContactRightContent').innerHTML += generateRightSideNewContact();
+
+        openPopupAnimation(overlayContainer, addContactOverlay);
     }
 }
 
 
 async function openEditContacts(l) {
-    // document.getElementById('overlayContainer').classList.remove('d-none');
     document.body.innerHTML += addContactPopUp();
+    let overlayContainer = document.getElementById('overlayContainer');
+    let addContactOverlay = document.getElementById('addContactOverlay');
+
+    document.getElementById('addContactLeft').innerHTML += generateLeftSideEditContact();
+    for (let i = 0; i < contacts.length; i++) {
+        document.getElementById('addContactRightContent').innerHTML = generateRightSideEditContact(l);
+    }
+
+    openPopupAnimation(overlayContainer, addContactOverlay);
+}
+
+
+function openPopupAnimation(elementContainer, element) {
+    elementContainer.classList.add('background-aniamtion');
+    element.classList.add('openPopUp');
+}
+
+
+function removePopupAnimation(elementContainer, element) {
+    elementContainer.classList.remove('background-aniamtion');
+    element.classList.add('closePopUp');
+
     setTimeout(() => {
-        let contentleft = document.getElementById('addContactLeft');
-        contentleft.innerHTML += generateLeftSideEditContact();
-        let contentright = document.getElementById('addContactRightContent');
-        for (let i = 0; i < contacts.length; i++) {
-            contentright.innerHTML = generateRightSideEditContact(l);
-        }
-    }, 225);
+        element.classList.remove('openPopUp');
+        element.classList.remove('closePopUp');
+    }, 1000);
 }
 
 
 function clearContactCard() {
-    document.getElementById('addContactLeft').innerHTML = '';
-    document.getElementById('addContactRightContent').innerHTML = '';
-    document.getElementById('overlayContainer').remove();
+    let overlayContainer = document.getElementById('overlayContainer');
+    let addContactOverlay = document.getElementById('addContactOverlay');
+    removePopupAnimation(overlayContainer, addContactOverlay);
     checkOrigin();
+    removeClearContactCardContainer();
+}
+
+
+function removeClearContactCardContainer() {
+    setTimeout(() => {
+        document.getElementById('addContactLeft').innerHTML = '';
+        document.getElementById('addContactRightContent').innerHTML = '';
+        document.getElementById('overlayContainer').remove();
+    }, 1000);
 }
 
 
@@ -172,16 +202,11 @@ async function deleteNewContact(l) {
     }
 }
 
+
 function deleteNewContactsSettings(l) {
     deleteNewContact(l);
-    document.getElementById('overlayContainer').classList.add('d-none');
     clearContactCard();
     editing = false;
-
-    if (window.innerWidth < 1000) {
-        let contactContainer = document.querySelector(".contact-container");
-        contactContainer.style.display = "none";
-    }
 }
 
 
@@ -198,7 +223,10 @@ async function addContact() {
         "firstNameLetter": firstName,
         "lastNameLetter": lastName,
     });
-    // contactCreatedSuccessfuly();
+    if (window.matchMedia("(max-width: 700px)").matches) {
+        contactCreatedSuccessfuly();
+
+    }
     await backend.setItem('contacts', JSON.stringify(contacts));
     clearInput();
     if (!addTaskNewContact) {
@@ -208,19 +236,22 @@ async function addContact() {
     clearContactCard();
 }
 
+
 function contactCreatedSuccessfuly() {
     document.getElementById('contactCreated').classList.remove('d-none');
-    document.getElementById('contactCreated').classList.add('contact-created')
+    document.getElementById('contactCreated').classList.add('contact-created');
     setTimeout(() => {
         document.getElementById('contactCreated').classList.remove('contact-created');
         document.getElementById('contactCreated').classList.add('d-none');
-    }, 2000);
+    }, 3000);
 }
+
 
 function getContactBackgroundColor(index) {
     const colorIndex = index % colors.length;
     return colors[colorIndex];
 }
+
 
 async function editContact(l) {
     const editedFullName = contactNameEdit.value;
@@ -265,15 +296,12 @@ function clearInput() {
 
 function showContacts(l) {
     let contactsInfo = document.getElementById('contactInfo');
-    let contactContainer = document.querySelector(".contact-container");
-    let addContactButton = document.getElementById('addContactButton');
 
     contactsInfo.innerHTML = memberInfo(l);
     contactsInfo.style.display = "flex";
-    contactContainer.style.display = "flex";
+    document.querySelector(".contact-container").style.display = "flex";
     if (window.matchMedia("(max-width: 700px)").matches) {
-        addContactButton.classList.add('d-none');
-
+        document.getElementById('addContactButton').classList.add('d-none');
     }
 }
 
@@ -282,5 +310,4 @@ function closeContactInfo() {
     let contactContainer = document.querySelector(".contact-container");
     contactContainer.style.display = "none";
     document.getElementById('addContactButton').classList.remove('d-none');
-
 }
