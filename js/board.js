@@ -8,6 +8,7 @@ prioImagesFullCard = ['../assets/img/urgentOnclick.png', '../assets/img/mediumOn
 tasksToEdit = [];
 subtasksToSave = [];
 let currentDragged;
+const filteredTasksArray = [];
 
 
 async function initBoard() {
@@ -18,7 +19,7 @@ async function initBoard() {
         tasks = await JSON.parse(await backend.getItem('tasks')) || [];
         contacts = JSON.parse(backend.getItem('contacts')) || [];
         await renderTaskCards();
-        
+
     } catch (er) {
         console.error(er);
     }
@@ -31,22 +32,37 @@ function getTheDate() {
 }
 
 
-async function renderTaskCards(i, j) {
-    clearSubsections()
-
-    let search = filterTasks()
+async function renderTaskCards() {
+    clearSubsections();
     j = 0;
     let colorCircle = 0
-    for (i = 0; i < tasks.length; i++) {
-        if (tasks[i].title.toLowerCase().includes(search)) {
-            checkForContacts(i)
-            checkForReadiness(i, j);
-            document.getElementById('progressBar' + i).style.background = tasks[i].colorOfBar
-            renderAssignedContactsOnBoard(i, colorCircle)
-            hideProgressSection(i)
-            j++
+    let search = filterTasks();
+
+    for (let i = 0; i < tasks.length; i++) {
+        let taskTitle = tasks[i].title.toLowerCase();
+        let taskDescription = tasks[i].description.toLowerCase();
+
+        if (taskTitle.includes(search) || taskDescription.includes(search)) {
+            renderSingleTask(i, j, colorCircle);
         }
     }
+}
+
+
+function renderSingleTask(i, j, colorCircle) {
+    checkForContacts(i);
+    checkForReadiness(i, j);
+    document.getElementById('progressBar' + i).style.background = tasks[i].colorOfBar;
+    renderAssignedContactsOnBoard(i, colorCircle);
+    hideProgressSection(i);
+    j++;
+}
+
+
+function filterTasks() {
+    let search = document.getElementById('findATask').value
+    search = search.toLowerCase()
+    return search
 }
 
 
@@ -122,9 +138,10 @@ async function renderDialogFullCard(i) {
     showDialogFullCard();
 }
 
+
 function showDialogFullCard() {
-    document.getElementById('dialogFullCard').classList.add('openPopUp');
-    document.getElementById('dialogFullCard').classList.add('background-aniamtion');
+    document.getElementById('dialogFullCard').classList.add('openPopUpAddTask');
+    document.getElementById('dialogFullCard').classList.add('background-aniamtion-addTask');
 }
 
 
@@ -217,13 +234,6 @@ function allowDrop(ev) {
 }
 
 
-function filterTasks() {
-    let search = document.getElementById('findATask').value
-    search = search.toLowerCase()
-    return search
-}
-
-
 function clearSubsections() {
     document.getElementById('boardSubsectionToDo').innerHTML = ''
     document.getElementById('boardSubsectionInProgress').innerHTML = ''
@@ -235,19 +245,19 @@ function clearSubsections() {
 function checkForReadiness(i, j) {
     if (tasks[i].readinessState == 'toDo') {
         document.getElementById('boardSubsectionToDo').innerHTML += HTMLrenderTaskCards(i, j)
-        priorityImageForRenderTaskCards(i, j)
+        // priorityImageForRenderTaskCards(i, j)
     }
     if (tasks[i].readinessState == 'inProgress') {
         document.getElementById('boardSubsectionInProgress').innerHTML += HTMLrenderTaskCards(i, j)
-        priorityImageForRenderTaskCards(i, j)
+        // priorityImageForRenderTaskCards(i, j)
     }
     if (tasks[i].readinessState == 'awaitingFeedback') {
         document.getElementById('boardSubsectionFeedback').innerHTML += HTMLrenderTaskCards(i, j)
-        priorityImageForRenderTaskCards(i, j)
+        // priorityImageForRenderTaskCards(i, j)
     }
     if (tasks[i].readinessState == 'done') {
         document.getElementById('boardSubsectionDone').innerHTML += HTMLrenderTaskCards(i, j)
-        priorityImageForRenderTaskCards(i, j)
+        // priorityImageForRenderTaskCards(i, j)
     }
 }
 
@@ -256,12 +266,12 @@ function closeTask() {
     let dialogFullCard = document.getElementById('dialogFullCard');
     continueScrolling();
 
-    dialogFullCard.classList.add('closeAddedPopUp');
-    dialogFullCard.classList.remove('background-aniamtion');
+    dialogFullCard.classList.add('closeAddedPopUpAddTask');
+    dialogFullCard.classList.remove('background-aniamtion-addTask');
 
     renderTaskCards();
     setTimeout(() => {
-        dialogFullCard.remove()
+        dialogFullCard.remove();
     }, 500);
 }
 

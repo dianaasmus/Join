@@ -1,6 +1,7 @@
 @media (max-width: 1000px) {
     body {
         margin-left: 0 !important;
+        margin-bottom: 100px !important;
     }
 
     body::-webkit-scrollbar {

@@ -15,7 +15,6 @@ let dropDownCategory = false;
 let existingCategorySelected = false;
 let categorySelected = false;
 let setReadinessState;
-// let addTaskPage = false;
 
 
 function disableButtonAddTask() {
@@ -198,8 +197,8 @@ function removecategorySelection() {
 
 function removeAddTaskPopup() {
     let addTaskPopoup = document.getElementById('addTaskPopUp');
-    addTaskPopoup.classList.remove('background-aniamtion');
-    addTaskPopoup.classList.add('closeAddedPopUp');
+    addTaskPopoup.classList.remove('background-aniamtion-addTask');
+    addTaskPopoup.classList.add('closeAddedPopUpAddTask');
     removeClassLists(addTaskPopoup);
 }
 
@@ -214,8 +213,8 @@ function addTaskContactPopup() {
 
 function removeClassLists(element) {
     setTimeout(() => {
-        element.classList.remove('openPopUp');
-        element.classList.remove('closeAddedPopUp');
+        element.classList.remove('openPopUpAddTask');
+        element.classList.remove('closeAddedPopUpAddTask');
     }, 200);
 }
 
@@ -283,8 +282,8 @@ function openPopUpAddTask(state) {
 
     if (!window.matchMedia("(max-width: 550px)").matches) {
         let addTaskPopoup = document.getElementById('addTaskPopUp');
-        addTaskPopoup.classList.add('background-aniamtion');
-        addTaskPopoup.classList.add('openPopUp');
+        addTaskPopoup.classList.add('background-aniamtion-addTask');
+        addTaskPopoup.classList.add('openPopUpAddTask');
         document.getElementById(`date`).setAttribute("min", date.toISOString().split("T")[0]);
         stopScrolling();
     } else {
@@ -297,7 +296,7 @@ async function deleteTask(i) {
     tasks.splice(i, 1);
     await backend.setItem('tasks', JSON.stringify(tasks))
     renderTaskCards();
-    document.getElementById('dialogFullCard').classList.add('displayNone');
+    closeTask();
     checkContinueScrolling();
 }
 

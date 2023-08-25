@@ -225,7 +225,6 @@ async function addContact() {
     });
     if (window.matchMedia("(max-width: 700px)").matches) {
         contactCreatedSuccessfuly();
-
     }
     await backend.setItem('contacts', JSON.stringify(contacts));
     clearInput();

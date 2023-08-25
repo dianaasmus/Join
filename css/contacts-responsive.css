@@ -323,11 +323,6 @@
         column-gap: 20px;
     }
 
-    .contact-info-headname h2 {
-        font-size: 40px;
-    }
-
-
     .contact-edit-popup {
         display: none;
     }

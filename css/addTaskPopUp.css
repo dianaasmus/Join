@@ -10,12 +10,12 @@
     align-items: center;
 }
 
-.background-aniamtion {
-    animation: FadeInBackgroundColor ease-in-out 3000ms;
+.background-aniamtion-addTask {
+    animation: FadeInBackgroundColorAddTask ease-in-out 3000ms;
     animation-fill-mode: forwards;
 }
 
-@keyframes FadeInBackgroundColor {
+@keyframes FadeInBackgroundColorAddTask {
     0% {
         background-color: rgba(0, 0, 0, 0);
     }
@@ -29,13 +29,13 @@
     display: none !important;
 }
 
-.openPopUp {
+.openPopUpAddTask {
     transform: translateX(0px);
     transition: transform 600ms ease-in-out;
     transition-duration: 500ms;
 }
 
-.closeAddedPopUp {
+.closeAddedPopUpAddTask {
     transform: translateX(2600px) !important;
     transition: transform 600s ease-in-out;
     transition-duration: 500ms;
@@ -570,14 +570,14 @@ input {
     transform: rotate(45deg);
 }
 
-.closePopUp {
+.closePopUpBtn {
     height: 20px;
     width: 20px;
     margin-top: 55px;
     transform: rotate(45deg);
 }
 
-.closePopUp:hover {
+.closePopUpBtn:hover {
     cursor: pointer;
 }
 
