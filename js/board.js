@@ -44,6 +44,7 @@ async function renderTaskCards() {
 
         if (taskTitle.includes(search) || taskDescription.includes(search)) {
             renderSingleTask(i, j, colorCircle);
+            j++;
         }
     }
 }
@@ -55,7 +56,6 @@ function renderSingleTask(i, j, colorCircle) {
     document.getElementById('progressBar' + i).style.background = tasks[i].colorOfBar;
     renderAssignedContactsOnBoard(i, colorCircle);
     hideProgressSection(i);
-    j++;
 }
 
 
@@ -116,10 +116,10 @@ function renderAssignedContactsOnFullCard(i) {
 }
 
 
-function priorityImageForRenderTaskCards(i) {
-    if (tasks[i].prio == 'urgent') { document.getElementById(`urgencyBoard${i}`).src = prioImages[0] }
-    if (tasks[i].prio == 'medium') { document.getElementById(`urgencyBoard${i}`).src = prioImages[1] }
-    if (tasks[i].prio == 'low') { document.getElementById(`urgencyBoard${i}`).src = prioImages[2] }
+function priorityImageForRenderTaskCards(i, j) {
+    if (tasks[j].prio == 'urgent') { document.getElementById(`urgencyBoard${j}`).src = prioImages[0] }
+    if (tasks[j].prio == 'medium') { document.getElementById(`urgencyBoard${j}`).src = prioImages[1] }
+    if (tasks[j].prio == 'low') { document.getElementById(`urgencyBoard${j}`).src = prioImages[2] }
 }
 
 
@@ -245,19 +245,19 @@ function clearSubsections() {
 function checkForReadiness(i, j) {
     if (tasks[i].readinessState == 'toDo') {
         document.getElementById('boardSubsectionToDo').innerHTML += HTMLrenderTaskCards(i, j)
-        // priorityImageForRenderTaskCards(i, j)
+        priorityImageForRenderTaskCards(i, j)
     }
     if (tasks[i].readinessState == 'inProgress') {
         document.getElementById('boardSubsectionInProgress').innerHTML += HTMLrenderTaskCards(i, j)
-        // priorityImageForRenderTaskCards(i, j)
+        priorityImageForRenderTaskCards(i, j)
     }
     if (tasks[i].readinessState == 'awaitingFeedback') {
         document.getElementById('boardSubsectionFeedback').innerHTML += HTMLrenderTaskCards(i, j)
-        // priorityImageForRenderTaskCards(i, j)
+        priorityImageForRenderTaskCards(i, j)
     }
     if (tasks[i].readinessState == 'done') {
         document.getElementById('boardSubsectionDone').innerHTML += HTMLrenderTaskCards(i, j)
-        // priorityImageForRenderTaskCards(i, j)
+        priorityImageForRenderTaskCards(i, j)
     }
 }
 
@@ -410,4 +410,54 @@ function opendropdownEditTask() {
 function removeEditTaskDropdown(editedDropdownAddContact, arrowDownEditTask) {
     editedDropdownAddContact.style.display = "none";
     arrowDownEditTask.style.transform = "rotate(180deg)";
+}
+
+
+function openChangeStatus(i, event) {
+    let changeStatus = document.getElementById(`dropdown-contentForMobileDevices${i}`);
+
+    if (changeStatus.style.display === 'block') {
+        changeStatus.style.display = 'none';
+    } else {
+        changeStatus.style.display = 'block'
+    }
+    
+    event = event || window.event;
+    event.stopPropagation();
+    openChangeStatusContent(i);
+    let droppedContent = document.getElementById(`statusesDropdown${i}`);
+    if (changeStatus.style.display === 'none') {
+        droppedContent.style.display = 'none'
+    }
+}
+
+function openChangeStatusContent(i) {
+    ifStatusToDoForMobile(i)
+    ifStatusInProgressForMobile(i)
+    ifStatusAwaitingFeedbackForMobile(i)
+    ifStatusDoneForMobile(i)
+}
+
+async function statusInProgress(i) {
+    tasks[i].readinessState = "inProgress"
+    await backend.setItem('tasks', JSON.stringify(tasks))
+    renderTaskCards(i)
+}
+
+async function statusAwaitingFeedback(i) {
+    tasks[i].readinessState = "awaitingFeedback"
+    await backend.setItem('tasks', JSON.stringify(tasks))
+    renderTaskCards(i)
+}
+
+async function statusDone(i) {
+    tasks[i].readinessState = "done"
+    await backend.setItem('tasks', JSON.stringify(tasks))
+    renderTaskCards(i)
+}
+
+async function statusToDo(i) {
+    tasks[i].readinessState = "toDo"
+    await backend.setItem('tasks', JSON.stringify(tasks))
+    renderTaskCards(i)
 }

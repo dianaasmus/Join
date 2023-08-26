@@ -103,7 +103,7 @@ body {
 .add-contact-overlay {
     top: 50%;
     left: 50%;
-    transform: translate(100%, -50%);
+    transform: translate(500%, -50%);
     position: absolute;
     display: flex;
     height: 400px;
@@ -114,14 +114,14 @@ body {
 }
 
 .openPopUp {
-    animation: popup ease-in-out 1000ms;
+    animation: popup ease-in-out 600ms;
     animation-fill-mode: forwards;
 }
 
 @keyframes popup {
 
     0% {
-        transform: translate(100%, -50%);
+        transform: translate(500%, -50%);
     }
 
     100% {
@@ -457,8 +457,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
+    padding: 10px;
     border: 1px solid #FFFFFF;
     background-color: #810292;
     color: white;
@@ -466,7 +465,6 @@ body {
 }
 
 /* CONTACT-INFO */
-
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -577,7 +575,6 @@ body {
 }
 
 /*Edit Contact*/
-
 .edit-contact-left-line {
     background-color: rgb(11, 173, 221);
     position: absolute;

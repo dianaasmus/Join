@@ -31,7 +31,7 @@ body {
     max-width: 750px;
 }
 
-.closePopUp {
+.closePopUpBtn {
     display: none !important;
 }
 
@@ -44,7 +44,6 @@ input,
 
 
 /* .checkBoxDiv  */
-
 .priorityImg {
     max-width: 90px;
 }

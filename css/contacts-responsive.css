@@ -1,6 +1,8 @@
-/* MEDIA Responsive */
-
 @media (max-width: 1000px) {
+
+    .overlay-container {
+        overflow: hidden;
+    }
 
     .add-contact-button {
         bottom: 100px;
@@ -10,7 +12,6 @@
     .contact-list {
         display: flex;
         left: 0;
-        max-height: 85vh;
         bottom: 0;
         top: 70px;
         width: 35vw;
@@ -97,11 +98,6 @@
         font-size: 2.2rem;
     }
 
-    .edit-contact-left-line {
-        top: 65px;
-        left: 81px;
-    }
-
     .edit-contact-circle-for-edit {
         background-color: lightgray;
         position: absolute;
@@ -128,6 +124,10 @@
         transition: unset;
     }
 
+    .edit-contact-left-line {
+        margin-top: 5px;
+    }
+
     .new-contact-circle-name {
         flex-direction: column;
         width: 350px;
@@ -137,13 +137,11 @@
 
     .edit-contact-circle {
         background-color: lightgray;
-        position: absolute;
-        top: 240px;
-        left: 94px;
-    }
-    
-    .contact-new-inputs {
-        margin-top: 45px;
+        top: -33px;
+        margin-top: -50px;
+        height: unset;
+        width: 60px;
+        padding: 20px;
     }
 
     .close-contact-cross {
@@ -161,16 +159,16 @@
     .add-contact-left {
         padding-left: 0;
         align-items: center;
+        gap: 10px;
     }
 
     .add-contact-logo {
         display: none;
     }
 
-
     .new-contact-left-line {
-        top: 160px;
-        left: 70px;
+        top: 129px;
+        left: 75px;
     }
 
     .input-form-new-contact {
@@ -199,7 +197,6 @@
         left: 0;
         right: 0;
         width: 100vw;
-        /* display: flex; */
         align-items: center;
     }
 
@@ -241,12 +238,12 @@
         right: 40px;
         cursor: pointer;
     }
-    
+
 
     .contact-info-close:hover,
     .trash-can:hover,
     .edit-box:hover,
-    .contact-edit-popup:hover  {
+    .contact-edit-popup:hover {
         filter: invert(80%) sepia(99%) saturate(415%) hue-rotate(156deg) brightness(94%) contrast(89%);
         transition: filter ease-in-out 125ms;
     }
@@ -316,7 +313,6 @@
 
     .contact-info {
         top: 160px;
-        /* padding-left: 20px; */
     }
 
     .contact-info-header {
@@ -345,15 +341,13 @@
     }
 
     .contact-container {
-        height: 82%;
         align-items: unset;
         padding-left: 8%;
     }
 
     .responsive-buttons {
-        bottom: 45px;
+        bottom: 100px;
     }
-
 
     .add-contact-overlay {
         width: 310px;
@@ -383,7 +377,7 @@
     }
 
     .edit-contact-left-line {
-        top: 85px;
+        top: 105px;
         left: 60px;
     }
 
@@ -395,5 +389,4 @@
     .input-form-new-contact {
         margin: 30px 0;
     }
-
 }

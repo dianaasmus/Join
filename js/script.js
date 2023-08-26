@@ -65,19 +65,19 @@ function focusSidebar() {
     const pathName = window.location.pathname;
 
     switch (pathName) {
-        case '/html/summary.html':
+        case 'Join/html/summary.html':
             document.getElementById('summary-props').classList.add('clicked');
             break;
-        case '/html/board.html':
+        case 'Join/html/board.html':
             document.getElementById('board-props').classList.add('clicked');
             break;
-        case '/html/addTask.html':
+        case 'Join/html/addTask.html':
             document.getElementById('addTask-props').classList.add('clicked');
             break;
-        case '/html/contacts.html':
+        case 'Join/html/contacts.html':
             document.getElementById('contacts-props').classList.add('clicked');
             break;
-        case '/html/legal-notice.html':
+        case 'Join/html/legal-notice.html':
             document.getElementById('legal-props').classList.add('clicked');
             break;
     }

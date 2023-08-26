@@ -36,6 +36,7 @@
         left: 86%;
     }
 
+    
 }
 
 @media (max-width: 890px) {
@@ -50,7 +51,7 @@
         min-height: unset;
         margin-bottom: unset;
         flex-direction: row;
-        overflow-x: scroll;
+        /* overflow-x: scroll; */
         padding: 5px;
     }
 
@@ -60,9 +61,12 @@
 
     .boardCard {
         min-width: 200px;
-        max-width: 250px;
-        width: 42%;
+        max-width: 200px;     
         justify-content: space-between;
+    }
+
+    .dropdownForMobileDevices {
+        width: 100%;
     }
 
     .boardSubsectionHeader h2 {
@@ -71,6 +75,69 @@
 
     .plusButton {
         width: 3vw;
+    }
+
+    .dropdownForMobileDevices {
+        display: block;
+        position: relative;
+        font-size: 18px;
+        width: 100%;
+        height: 20px;
+        border-radius: 10px;
+        background-color: #ffffff;
+        color: #000000;
+        margin-top: -5px !important;
+        margin-left: -7px !important;
+        box-shadow: -2px 0px 6px rgba(0, 0, 0, 0.25);
+    }
+
+    .headerForSelectionField {
+        align-items: center !important;
+        background-color: #F6F7F8;
+        padding: 5px;
+        border-radius: 10px;
+        z-index: 40;
+        position: absolute;
+        width: 100%;
+    }
+
+    .dropdown-contentForMobileDevices {
+        display: none;
+        position: absolute;
+        top: 23px;
+        left: 1px;
+        width: 104%;
+        font-size: 1rem;
+        background-color: #F6F7F8;
+        color: #000000;
+        border-radius: 10px;
+        z-index: 1;
+        padding: 0;
+        z-index: 39;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        box-shadow: -2px 0px 6px rgba(0, 0, 0, 0.25);
+    }
+
+    .headerForSelectionField label {
+        font-size: 1rem;
+        padding: 0 5px;
+    }
+
+    .statusesDropdown p {
+        box-sizing: border-box;
+        padding: 11px;
+        margin: 0;
+    }
+
+    .statusesDropdown p:hover {
+        background-color: lightgray;
+    }
+
+    .board-change-status {
+        width: 20px;
+        height: 15px;
+        filter: invert(15%) sepia(7%) saturate(3610%) hue-rotate(176deg) brightness(40%) contrast(80%);
     }
 }
 
@@ -91,6 +158,10 @@
 }
 
 @media (max-width: 550px) {
+
+    body {
+        margin-bottom: 0 !important;
+    }
 
     .boardHeader {
         flex-direction: column;

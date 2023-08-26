@@ -37,6 +37,7 @@ function generateRightSideNewContact() {
                                 <div class="warning-message" id="warning-contact-new-edit">
                                 </div>
                                 <div class="input-form-new-contact">
+                                    
                                     <input required type="text" id="contactName" placeholder ="first and last name">
                                     <img src="../assets/img/name_input.svg">
                                 </div>
@@ -45,7 +46,7 @@ function generateRightSideNewContact() {
                                     <img src="../assets/img/email_input.svg">
                                 </div>
                                 <div class="input-form-new-contact">
-                                <input required type="tel" pattern="[0-9]+" id="contactPhone" placeholder ="phone">
+                                <input required type="number"  pattern="[0-9]+" id="contactPhone" placeholder ="phone">
                                 <img src="../assets/img/icon-phone.svg">
                                 </div>
                             <div class="create-cancel-box" id="create-edit-content">

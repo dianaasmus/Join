@@ -267,7 +267,7 @@ async function editContact(l) {
     contacts[l].lastNameLetter = editedLastName;
 
     await backend.setItem('contacts', JSON.stringify(contacts));
-    clearEditContacCard();
+    clearContactCard();
     showContacts(l);
     initContacts();
 }
@@ -278,13 +278,6 @@ function clearEditContactInput() {
     document.getElementById('contactMailEdit').value = '';
     document.getElementById('contactPhoneEdit').value = '';
 }
-
-
-function clearEditContacCard() {
-    document.getElementById('overlayContainer').classList.add('d-none');
-    document.getElementById('contactInfo').innerHTML = '';
-}
-
 
 function clearInput() {
     document.getElementById('contactName').value = '';

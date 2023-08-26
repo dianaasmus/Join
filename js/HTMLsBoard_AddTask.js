@@ -21,7 +21,7 @@ function HTMLrenderTaskCards(i, j) {
                 <div  id="dropdownForMobileDevices${i}" class="dropdownForMobileDevices">
                     <div class="headerForSelectionField">
                         <label id="statusForMobileDevices" style="position: relative;">Change status</label>
-                        <img class="arrDownStatus" src="../assets/img/arrDown.png">
+                        <img class="board-change-status" src="../assets/img/board-icon.svg">
                     </div>
 
                     <div id="dropdown-contentForMobileDevices${i}" class="dropdown-contentForMobileDevices">
