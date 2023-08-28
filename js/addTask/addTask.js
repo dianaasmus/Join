@@ -14,7 +14,7 @@ let prioSelected = false;
 let isDropDownCategory = false;
 let existingCategorySelected = false;
 let categorySelected = false;
-let setReadinessState;
+// let setReadinessState;
 
 
 /**
@@ -24,8 +24,22 @@ let setReadinessState;
 function adjustAddTask() {
     document.getElementById('addTaskPopUp').classList.add('add-task-html-style');
     document.getElementById(`date`).setAttribute("min", date.toISOString().split("T")[0]);
-    setReadinessState = 'toDo';
     addTaskPage = true;
+    getReadinessStateFromLocalS();
+}
+
+
+function getReadinessStateFromLocalS() {
+    localReadinessState = localStorage.getItem('setReadinessState');
+
+    if (localReadinessState) {
+        let readinessStateWithoutQuotes = localReadinessState.replace(/"/g, '');
+
+        setReadinessState = readinessStateWithoutQuotes;
+    } else {
+        setReadinessState = 'toDo';
+    }
+    localStorage.removeItem('setReadinessState');
 }
 
 
@@ -122,6 +136,8 @@ function openPopUpAddTask(state) {
     if (!window.matchMedia("(max-width: 1000px)").matches) {
         openPopUpMedia();
     } else {
+        localStorage.setItem('setReadinessState', JSON.stringify(state));
+
         window.location.href = 'addTask.html';
     }
 }
@@ -265,7 +281,6 @@ function resetCheckboxStates() {
 
 function getCheckedContact() {
     for (let index = 0; index < contacts.length; index++) {
-        // const element = array[index];
         const checkedState = localStorage.getItem(`checkboxAssigned${index}`);
         if (checkedState !== null) {
             document.getElementById(`checkboxAssigned${index}`).checked = checkedState === 'true';

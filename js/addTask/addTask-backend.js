@@ -60,8 +60,10 @@ async function createTask() {
     };
 
     await addTask(task);
-    clearPopUp();
-    removeAddTaskPopup();
+    if (addTaskPage) {
+        clearPopUp();
+        removeAddTaskPopup();
+    }
 }
 
 

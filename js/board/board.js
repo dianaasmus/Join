@@ -9,6 +9,7 @@ tasksToEdit = [];
 subtasksToSave = [];
 let currentDragged;
 const filteredTasksArray = [];
+let setReadinessState;
 
 
 /**
