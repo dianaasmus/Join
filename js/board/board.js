@@ -187,7 +187,7 @@ function continueScrolling() {
 function openEditTask(i) {
     document.getElementById('dialogFullCard').innerHTML = openEditTaskHTML(i);
     document.getElementById(`editedDate`).setAttribute("min", date.toISOString().split("T")[0]);
-    listenToEvent(i);
+    toggleDropdownAddContact(i);
     getPrio(i);
 }
 
@@ -271,34 +271,11 @@ function closeTask() {
 }
 
 
-document.addEventListener('DOMContentLoaded', function () {
-
-    const fullCard = document.getElementById('dialogFullCard');
-    const fullCardEdit = document.getElementById('dialogEditCard');
-    var fileName = 'addTask.html';
-
-    if (fullCard) {
-        fullCard.addEventListener('click', function (event) {
-            if (event.target === fileName) {
-                fileName.classList.add('displayNone');
-                renderTaskCards();
-            }
-        });
-    }
-
-    if (fullCardEdit) {
-        fullCardEdit.addEventListener('click', function (event) {
-            if (event.target === fileName) {
-                fileName.classList.add('displayNone');
-                fullCard.classList.add('displayNone');
-                renderTaskCards();
-            }
-        });
-    }
-});
-
-
-function listenToEvent(i) {
+/**
+ * Toggles the visibility of the dropdown for adding contacts during task editing.
+ * @param {number} i - The index of the task being edited.
+ */
+function toggleDropdownAddContact(i) {
     let entireEditTaskCard = document.getElementById('entireEditTaskCard');
     if (entireEditTaskCard) {
         let dropdownAddContact = document.getElementById('editedDropdownAddContact');
@@ -311,6 +288,11 @@ function listenToEvent(i) {
 }
 
 
+/**
+ * Checks and updates the checkboxes for subtasks' checked values.
+ * @param {number} i - The index of the task being edited.
+ * @param {string} checkedbox - The ID of the checkbox element.
+ */
 function checkForChecked(i, checkedbox) {
     for (let counter = 0; counter < tasks[i].subtasks.length; counter++) {
         checkedbox = document.getElementById(`checkBox${counter}`)
@@ -322,6 +304,10 @@ function checkForChecked(i, checkedbox) {
 }
 
 
+/**
+ * Checks and updates the checkboxes for assigned contacts during task editing.
+ * @param {number} i - The index of the task being edited.
+ */
 function checkForCheckedAssigned(i) {
     let checkedbox
 
@@ -338,10 +324,13 @@ function checkForCheckedAssigned(i) {
 
 
 function openContactEdit() {
-    openAddContacts();
+    openAddContacts()
 }
 
 
+/**
+ * Toggles the visibility of the dropdown for adding contacts during task editing.
+ */
 function opendropdownEditTask() {
     const editedDropdownAddContact = document.getElementById('editedDropdownAddContact');
     const arrowDownEditTask = document.getElementById('arrowDownEditTask');
@@ -354,12 +343,23 @@ function opendropdownEditTask() {
     }
 }
 
+
+/**
+ * Removes the dropdown for adding contacts during task editing.
+ * @param {HTMLElement} editedDropdownAddContact - The element of the edited dropdown.
+ * @param {HTMLElement} arrowDownEditTask - The element of the arrow indicating dropdown state.
+ */
 function removeEditTaskDropdown(editedDropdownAddContact, arrowDownEditTask) {
     editedDropdownAddContact.style.display = "none";
     arrowDownEditTask.style.transform = "rotate(180deg)";
 }
 
 
+/**
+ * Opens the change status dropdown for a task.
+ * @param {number} i - The index of the task.
+ * @param {Event} event - The event triggering the function.
+ */
 function openChangeStatus(i, event) {
     let changeStatus = document.getElementById(`dropdown-contentForMobileDevices${i}`);
 
@@ -378,6 +378,11 @@ function openChangeStatus(i, event) {
     }
 }
 
+
+/**
+ * Opens the content of the change status dropdown for a task.
+ * @param {number} i - The index of the task.
+ */
 function openChangeStatusContent(i) {
     ifStatusToDoForMobile(i)
     ifStatusInProgressForMobile(i)

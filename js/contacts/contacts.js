@@ -6,6 +6,10 @@ let addTaskNewContact;
 let addTaskPage = false;
 
 
+/**
+ * Initializes the contacts by loading them from the backend and sorting them.
+ * @returns {Promise<void>}
+ */
 async function initContacts() {
     await initScript();
     setURL("https://diana-asmus.developerakademie.net/Join/smallest_backend_ever-master");
@@ -16,6 +20,9 @@ async function initContacts() {
 }
 
 
+/**
+ * Loads contacts from the backend and handles any loading errors.
+ */
 async function loadContacts() {
     try {
         contacts = JSON.parse(await backend.getItem('contacts')) || [];
@@ -106,17 +113,26 @@ function loadContactsLetter(initialLetter, contact, l) {
 
     if (initialLetter === nameFirstLetter) {
         renderContactList(initialLetter, contact, l);
-        contactsLoaded = true; // Setze den Ladezustand auf true, um die Endlosschleife zu verhindern
+        contactsLoaded = true;
     }
 }
 
 
+/**
+ * Renders a contact in the contact list container for the specified initial letter.
+ * @param {string} initialLetter - The initial letter of the contact's name.
+ * @param {object} contact - The contact to be rendered.
+ * @param {number} l - Index or counter for the contact.
+ */
 async function renderContactList(initialLetter, contact, l) {
     let contactContainer = document.getElementById(`initialLetterContacts${initialLetter}`);
     contactContainer.innerHTML += memberHTML(l);
 }
 
 
+/**
+ * Opens the add contacts popup, either redirecting to the contacts page or showing the popup.
+ */
 function openAddContacts() {
 
     if (addTaskPage) {
@@ -134,6 +150,10 @@ function openAddContacts() {
 }
 
 
+/**
+ * Opens the edit contacts popup and populates it with the contact information.
+ * @param {number} l - Index or counter for the contact.
+ */
 async function openEditContacts(l) {
     document.body.innerHTML += addContactPopUp();
     let overlayContainer = document.getElementById('overlayContainer');
@@ -148,12 +168,22 @@ async function openEditContacts(l) {
 }
 
 
+/**
+ * Animates the opening of a popup by adding appropriate CSS classes.
+ * @param {HTMLElement} elementContainer - The container element.
+ * @param {HTMLElement} element - The element to be animated.
+ */
 function openPopupAnimation(elementContainer, element) {
     elementContainer.classList.add('background-aniamtion');
     element.classList.add('openPopUp');
 }
 
 
+/**
+ * Removes animation classes from an element after a certain time interval.
+ * @param {HTMLElement} elementContainer - The container element.
+ * @param {HTMLElement} element - The element to be animated.
+ */
 function removePopupAnimation(elementContainer, element) {
     elementContainer.classList.remove('background-aniamtion');
     element.classList.add('closePopUp');
@@ -165,6 +195,9 @@ function removePopupAnimation(elementContainer, element) {
 }
 
 
+/**
+ * Clears the contact card and removes the popup container after a certain time interval.
+ */
 function clearContactCard() {
     let overlayContainer = document.getElementById('overlayContainer');
     let addContactOverlay = document.getElementById('addContactOverlay');
@@ -174,6 +207,9 @@ function clearContactCard() {
 }
 
 
+/**
+ * Removes the container for clearing the contact card after a certain time interval.
+ */
 function removeClearContactCardContainer() {
     setTimeout(() => {
         document.getElementById('addContactLeft').innerHTML = '';
@@ -183,6 +219,9 @@ function removeClearContactCardContainer() {
 }
 
 
+/**
+ * Checks the origin of the action and adjusts the class of the add task popup.
+ */
 function checkOrigin() {
     if (addTaskNewContact) {
         let addTaskPopoup = document.getElementById('addTaskPopUp');
@@ -192,6 +231,10 @@ function checkOrigin() {
 }
 
 
+/**
+ * Deletes a new contact from the contacts list.
+ * @param {number} l - The index of the contact to be deleted.
+ */
 async function deleteNewContact(l) {
     contacts.splice(l, 1);
     await backend.setItem('contacts', JSON.stringify(contacts));
@@ -203,6 +246,10 @@ async function deleteNewContact(l) {
 }
 
 
+/**
+ * Deletes a new contact and clears the contact card.
+ * @param {number} l - The index of the contact to be deleted.
+ */
 function deleteNewContactsSettings(l) {
     deleteNewContact(l);
     clearContactCard();
@@ -210,6 +257,9 @@ function deleteNewContactsSettings(l) {
 }
 
 
+/**
+ * Adds a new contact to the contacts list.
+ */
 async function addContact() {
     const fullName = contactName.value;
     const names = fullName.split(' ');
@@ -236,6 +286,9 @@ async function addContact() {
 }
 
 
+/**
+ * Displays a success message when a new contact is created.
+ */
 function contactCreatedSuccessfuly() {
     document.getElementById('contactCreated').classList.remove('d-none');
     document.getElementById('contactCreated').classList.add('contact-created');
@@ -246,12 +299,21 @@ function contactCreatedSuccessfuly() {
 }
 
 
+/**
+ * Retrieves the background color for a contact based on its index.
+ * @param {number} index - The index of the contact.
+ * @returns {string} The background color for the contact.
+ */
 function getContactBackgroundColor(index) {
     const colorIndex = index % colors.length;
     return colors[colorIndex];
 }
 
 
+/**
+ * Edits an existing contact in the contacts list.
+ * @param {number} l - The index of the contact to be edited.
+ */
 async function editContact(l) {
     const editedFullName = contactNameEdit.value;
     const editedMail = contactMailEdit.value;
@@ -273,12 +335,19 @@ async function editContact(l) {
 }
 
 
+/**
+ * Clears the input fields in the edit contact form.
+ */
 function clearEditContactInput() {
     document.getElementById('contactNameEdit').value = '';
     document.getElementById('contactMailEdit').value = '';
     document.getElementById('contactPhoneEdit').value = '';
 }
 
+
+/**
+ * Clears the input fields in the add contact form.
+ */
 function clearInput() {
     document.getElementById('contactName').value = '';
     document.getElementById('contactMail').value = '';
@@ -286,6 +355,10 @@ function clearInput() {
 }
 
 
+/**
+ * Displays detailed information about a contact.
+ * @param {number} l - The index of the contact to display information for.
+ */
 function showContacts(l) {
     let contactsInfo = document.getElementById('contactInfo');
 
@@ -298,6 +371,10 @@ function showContacts(l) {
 }
 
 
+
+/**
+ * Closes the displayed contact information.
+ */
 function closeContactInfo() {
     let contactContainer = document.querySelector(".contact-container");
     contactContainer.style.display = "none";

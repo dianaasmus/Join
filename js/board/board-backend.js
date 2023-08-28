@@ -94,27 +94,80 @@ async function moveTo(readinessState) {
 }
 
 
+/**
+ * Counts tasks, updating pace, progress bar, and checked value for subtasks.
+ * @param {number} i - Index of the task.
+ * @param {number} j - Index of the subtask.
+ */
 async function countTasks(i, j) {
     tasks = JSON.parse(await backend.getItem('tasks'))
     let addedSubtaskCheckboxes = document.getElementsByClassName('addedSubtaskOnEdit')
 
-    if (tasks[i].subtasks[j].checkedValue == 0 && tasks[i].pace < tasks[i].subtasks.length) {
-        tasks[i].pace++
-        percentOfDone = tasks[i].pace / addedSubtaskCheckboxes.length * 100
-        tasks[i].subtasks[j].checkedValue = 1
+    if (checkSubtasksCheckedValues(i, j)) {
+        increasePaceSubtask(addedSubtaskCheckboxes, i, j);
     } else {
-        if (tasks[i].pace > 0)
-            tasks[i].pace--
-        percentOfDone = tasks[i].pace / addedSubtaskCheckboxes.length * 100
-        tasks[i].subtasks[j].checkedValue = 0
+        decreasePaceSubtask(addedSubtaskCheckboxes, i, j);
     }
-    colorOfBar = document.getElementById('progressBar' + i).style.background = `linear-gradient(to right, #29ABE2 ${percentOfDone}%, #e9e7e7 ${percentOfDone}%)`;
-    tasks[i].colorOfBar = colorOfBar
-    tasks[i].percentOfDone = percentOfDone
-    await backend.setItem('tasks', JSON.stringify(tasks))
+    await updateSubtask(i);
 }
 
 
+/**
+ * Checks if the checked value for subtasks needs to be increased.
+ * @param {number} i - Index of the task.
+ * @param {number} j - Index of the subtask.
+ * @returns {boolean} - Whether the checked value needs to be increased.
+ */
+function checkSubtasksCheckedValues(i, j) {
+    return tasks[i].subtasks[j].checkedValue == 0 && tasks[i].pace < tasks[i].subtasks.length;
+}
+
+
+/**
+ * Increases pace and updates percent of done for subtasks.
+ * @param {HTMLCollectionOf<Element>} addedSubtaskCheckboxes - Collection of checkboxes for subtasks.
+ * @param {number} i - Index of the task.
+ * @param {number} j - Index of the subtask.
+ */
+function increasePaceSubtask(addedSubtaskCheckboxes, i, j) {
+    tasks[i].pace++
+    percentOfDone = tasks[i].pace / addedSubtaskCheckboxes.length * 100
+    tasks[i].subtasks[j].checkedValue = 1
+}
+
+
+/**
+ * Decreases pace and updates percent of done for subtasks.
+ * @param {HTMLCollectionOf<Element>} addedSubtaskCheckboxes - Collection of checkboxes for subtasks.
+ * @param {number} i - Index of the task.
+ * @param {number} j - Index of the subtask.
+ */
+function decreasePaceSubtask(addedSubtaskCheckboxes, i, j) {
+    if (tasks[i].pace > 0) {
+        tasks[i].pace--
+        percentOfDone = tasks[i].pace / addedSubtaskCheckboxes.length * 100
+        tasks[i].subtasks[j].checkedValue = 0
+    }
+}
+
+
+/**
+ * Updates subtask information and progress bar on task.
+ * @param {number} i - Index of the task.
+ */
+async function updateSubtask(i) {
+    colorOfBar = document.getElementById('progressBar' + i).style.background = `linear-gradient(to right, #29ABE2 ${percentOfDone}%, #e9e7e7 ${percentOfDone}%)`;
+    tasks[i].colorOfBar = colorOfBar;
+    tasks[i].percentOfDone = percentOfDone;
+    await backend.setItem('tasks', JSON.stringify(tasks));
+}
+
+
+/**
+ * Adds or deletes reassigned contacts for a task based on checkbox state.
+ * @param {number} i - Index of the task.
+ * @param {number} index - Index of the contact.
+ */
 async function addDeleteReassignedContacts(i, index) {
     let checkedbox = document.getElementById(`checkboxAssigned${index}`)
     if (checkedbox.checked == true) { addReassigned(i, index) }
@@ -123,16 +176,31 @@ async function addDeleteReassignedContacts(i, index) {
 }
 
 
+/**
+ * Deletes a reassigned contact from a task.
+ * @param {number} i - Index of the task.
+ * @param {number} index - Index of the contact.
+ */
 function deleteReassigned(i, index) {
     tasks[i].assignedTo.splice(tasks[i].assignedTo[index], 1);
 }
 
 
+/**
+ * Adds a reassigned contact to a task.
+ * @param {number} i - Index of the task.
+ * @param {number} index - Index of the contact.
+ */
 function addReassigned(i, index) {
     tasks[i].assignedTo.push(contacts[index])
 }
 
 
+/**
+ * Adds edited priority to a task and updates its color.
+ * @param {number} i - Index of the task.
+ * @param {number} j - Index of the priority.
+ */
 async function addEditedPriority(i, j) {
     let selectedPriority = document.getElementById("prio" + j);
     let selectedUrgency = selectedPriority.getAttribute("value");
@@ -142,24 +210,43 @@ async function addEditedPriority(i, j) {
 }
 
 
+/**
+ * Updates task's readiness state to 'inProgress' and saves changes.
+ * @param {number} i - Index of the task.
+ */
 async function statusInProgress(i) {
     tasks[i].readinessState = "inProgress"
     await backend.setItem('tasks', JSON.stringify(tasks))
     renderTaskCards(i)
 }
 
+
+/**
+ * Updates task's readiness state to 'awaitingFeedback' and saves changes.
+ * @param {number} i - Index of the task.
+ */
 async function statusAwaitingFeedback(i) {
     tasks[i].readinessState = "awaitingFeedback"
     await backend.setItem('tasks', JSON.stringify(tasks))
     renderTaskCards(i)
 }
 
+
+/**
+ * Updates task's readiness state to 'done' and saves changes.
+ * @param {number} i - Index of the task.
+ */
 async function statusDone(i) {
     tasks[i].readinessState = "done"
     await backend.setItem('tasks', JSON.stringify(tasks))
     renderTaskCards(i)
 }
 
+
+/**
+ * Updates task's readiness state to 'toDo' and saves changes.
+ * @param {number} i - Index of the task.
+ */
 async function statusToDo(i) {
     tasks[i].readinessState = "toDo"
     await backend.setItem('tasks', JSON.stringify(tasks))
