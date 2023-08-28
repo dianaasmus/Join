@@ -246,9 +246,53 @@ function contactList() {
         dropdownContent.classList.remove('displayNone');
         document.getElementById('assignArrow').style.transform = "rotate(0deg)";
         addDropdownContacts();
+        removeIfDropdownNotClosed(dropdownContent);
+        getCheckedContact();
     } else {
         checkForCheckedAssignedPopUp();
         removeAddTaskContactList();
+    }
+    addSelectedContactAfterClosedDropdown(dropdownContent);
+}
+
+
+function resetCheckboxStates() {
+    for (let index = 0; index < contacts.length; index++) {
+        localStorage.removeItem(`checkboxAssigned${index}`);
+    }
+}
+
+
+function getCheckedContact() {
+    for (let index = 0; index < contacts.length; index++) {
+        // const element = array[index];
+        const checkedState = localStorage.getItem(`checkboxAssigned${index}`);
+        if (checkedState !== null) {
+            document.getElementById(`checkboxAssigned${index}`).checked = checkedState === 'true';
+        }
+    }
+}
+
+/**
+ * Checks if a dropdown is not closed and takes specific actions after a timeout.
+ */
+function removeIfDropdownNotClosed(dropdownContent) {
+    setTimeout(() => {
+        if (!dropdownContent.classList.contains('displayNone')) {
+            checkForCheckedAssignedPopUp();
+            removeAddTaskContactList();
+            addSelectedContactAfterClosedDropdown(dropdownContent);
+        }
+    }, 4000);
+}
+
+
+/**
+ * Executes addSelectedContactToPopUp() if dropdownContent is not diaplayed.
+ */
+function addSelectedContactAfterClosedDropdown(dropdownContent) {
+    if (dropdownContent.classList.contains('displayNone')) {
+        addSelectedContactToPopUp();
     }
 }
 
@@ -386,10 +430,7 @@ function addTaskFeedback() {
  * Initiates the process of adding a task contact, triggers animations and UI updates.
  */
 function addTaskContactPopup() {
-    addTaskNewContact = true;
-    let addTaskPopoup = document.getElementById('addTaskPopUp');
-    addTaskPopoup.classList.add('closeAddedPopUp');
-    openAddContacts();
+    window.location.href = 'contacts.html';
 }
 
 

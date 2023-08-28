@@ -27,7 +27,6 @@ function getTheDate() {
 async function renderTaskCards() {
     clearSubsections();
     j = 0;
-    let colorCircle = 0
     let search = filterTasks();
 
     for (let i = 0; i < tasks.length; i++) {
@@ -35,7 +34,7 @@ async function renderTaskCards() {
         let taskDescription = tasks[i].description.toLowerCase();
 
         if (taskTitle.includes(search) || taskDescription.includes(search)) {
-            renderSingleTask(i, j, colorCircle);
+            renderSingleTask(i, j);
             j++;
         }
     }
@@ -46,13 +45,12 @@ async function renderTaskCards() {
  * Renders a single task on the board by performing various checks and UI updates.
  * @param {number} i - The index of the task to be rendered.
  * @param {number} j - The index for tracking task rendering order.
- * @param {number} colorCircle - The color index for circle indicators.
  */
-function renderSingleTask(i, j, colorCircle) {
+function renderSingleTask(i, j) {
     checkForContacts(i);
     checkForReadiness(i, j);
     document.getElementById('progressBar' + i).style.background = tasks[i].colorOfBar;
-    renderAssignedContactsOnBoard(i, colorCircle);
+    renderAssignedContactsOnBoard(i);
     hideProgressSection(i);
 }
 
@@ -84,17 +82,15 @@ function hideProgressSection(i) {
 /**
  * Renders assigned contacts with colored circles on the board for a specific task.
  * @param {number} i - The index of the task.
- * @param {number} colorCircle - The color circle index.
  */
-function renderAssignedContactsOnBoard(i, colorCircle) {
+function renderAssignedContactsOnBoard(i) {
     if (tasks[i].assignedTo) {
-        document.getElementById(`assignedToCircles${i}`).innerHTML = ''
-        for (let contact = 0; contact < tasks[i].assignedTo.length; contact++) {
-            let element = document.getElementById(`colors${colorCircle}`);
-            let backgroundColorCircle = element.style.backgroundColor;
-            document.getElementById(`assignedToCircles${i}`).innerHTML += `<span style="background-color:${backgroundColorCircle}" class="assignedToAvatar">${tasks[i].assignedTo[contact].firstNameLetter}${tasks[i].assignedTo[contact].lastNameLetter}</span>`
-            colorCircle++
-            if (colorCircle == 6) { colorCircle = 0 }
+        document.getElementById(`assignedToCircles${i}`).innerHTML = '';
+        for (let c = 0; c < tasks[i].assignedTo.length; c++) {
+            const contact = tasks[i].assignedTo[c];
+            const contactColor = contact.color;
+
+            document.getElementById(`assignedToCircles${i}`).innerHTML += `<span style="background-color:${contactColor}" class="assignedToAvatar">${tasks[i].assignedTo[c].firstNameLetter}${tasks[i].assignedTo[c].lastNameLetter}</span>`
         }
     }
 }
@@ -105,15 +101,15 @@ function renderAssignedContactsOnBoard(i, colorCircle) {
  * @param {number} i - The index of the task.
  */
 function renderAssignedContactsOnFullCard(i) {
-    let colorCircle = 0
+    let container = document.getElementById(`assignedToFullCard`);
+
     if (tasks[i].assignedTo) {
-        document.getElementById(`assignedToFullCard`).innerHTML = ''
-        for (let contact = 0; contact < tasks[i].assignedTo.length; contact++) {
-            let element = document.getElementById(`colors${colorCircle}`);
-            let backgroundColorCircle = element.style.backgroundColor;
-            document.getElementById(`assignedToFullCard`).innerHTML += `<div class="assignedToContact"><span style="background-color:${backgroundColorCircle}" class="assignedToAvatar">${tasks[i].assignedTo[contact].firstNameLetter}${tasks[i].assignedTo[contact].lastNameLetter}</span><p>${tasks[i].assignedTo[contact].name}</p><div>`
-            colorCircle++
-            if (colorCircle == 6) { colorCircle = 0 }
+        container.innerHTML = '';
+        for (let c = 0; c < tasks[i].assignedTo.length; c++) {
+            const contact = tasks[i].assignedTo[c];
+            const contactColor = contact.color;
+
+            container.innerHTML += `<div class="assignedToContact"><span style="background-color:${contactColor}" class="assignedToAvatar">${tasks[i].assignedTo[c].firstNameLetter}${tasks[i].assignedTo[c].lastNameLetter}</span><p>${tasks[i].assignedTo[c].name}</p><div>`;
         }
     }
 }

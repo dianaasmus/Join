@@ -183,13 +183,34 @@ function addSelectedColorToTask(i) {
  * @param {number} index - The index of the contact in the contacts array.
  */
 function addToAssignedContacts(index) {
+    let checkedbox = document.getElementById(`checkboxAssigned${index}`);
+
     if (index >= 0 && index < contacts.length) {
         let contact = contacts[index];
 
-        if (!assignedContacts.includes(contact)) {
+        if (checkedbox.checked == true) {
             assignedContacts.push(contact);
         } else {
             assignedContacts.splice(assignedContacts.indexOf(contact), 1);
         }
+
+        localStorage.setItem(`checkboxAssigned${index}`, checkedbox.checked);
+    }
+}
+
+
+/**
+ * Adds selected contacts to a specified container in a pop-up.
+ * This function is designed to populate a container with selected contacts.
+ * @param {Array} assignedContacts - An array of contacts to be added.
+ */
+function addSelectedContactToPopUp() {
+    let checkedContacts = document.getElementById('checkedContacts');
+    checkedContacts.innerHTML = '';
+
+    for (let i = 0; i < assignedContacts.length; i++) {
+        checkedContacts.innerHTML += `
+            <span id="assignedToCircles${i}" style="background-color: ${assignedContacts[i].color}" class="assignedToAvatar">${assignedContacts[i].firstNameLetter}${assignedContacts[i].lastNameLetter}</span>
+        `;
     }
 }

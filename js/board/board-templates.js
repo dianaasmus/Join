@@ -214,17 +214,3 @@ function ifStatusDoneForMobile(i) {
         `
     }
 }
-
-
-// function HTMLforRenderAssignedContactsOnBoard(i, colorCircle, contact) {
-//     let element = document.getElementById(`colors${colorCircle}`);
-//     let backgroundColorCircle = element.style.backgroundColor;
-//     document.getElementById(`assignedToCircles${i}`).innerHTML += `<span style="background-color:${backgroundColorCircle}" class="assignedToAvatar">${tasks[i].assignedTo[contact].firstNameLetter}${tasks[i].assignedTo[contact].lastNameLetter}</span>`
-// }
-
-
-// function HTMLforRenderAssignedContactsOnFullCard(i, colorCircle, contact) {
-//     let element = document.getElementById(`colors${colorCircle}`);
-//     let backgroundColorCircle = element.style.backgroundColor;
-//     document.getElementById(`assignedToFullCard`).innerHTML += `<div class="assignedToContact"><span style="background-color:${backgroundColorCircle}" class="assignedToAvatar">${tasks[i].assignedTo[contact].firstNameLetter}${tasks[i].assignedTo[contact].lastNameLetter}</span><p>${tasks[i].assignedTo[contact].name}</p><div>`
-// }

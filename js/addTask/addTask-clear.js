@@ -10,6 +10,8 @@ function clearPopUp() {
 
     clearValuesOfAddTask(title, description, category, assignedTo, date);
     disableButtonAddTaskBtns();
+    resetCheckboxStates();
+    removeCheckedContactsContainer();
     emptySubtasks();
     removePrioColors('addedTask');
     removecategorySelection();
@@ -170,4 +172,12 @@ function closePopUpAddTask() {
     clearPopUp();
     continueScrolling();
     removeAddTaskPopup();
+}
+
+
+/**
+ * Clears the checked Contacts Container.
+ */
+function removeCheckedContactsContainer() {
+    document.getElementById('checkedContacts').innerHTML = '';
 }

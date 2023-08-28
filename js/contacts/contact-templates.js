@@ -79,7 +79,7 @@ function generateLeftSideEditContact() {
 
 
 function generateRightSideEditContact(l) {
-    const backgroundColor = getContactBackgroundColor(l);
+    const backgroundColor = contacts[l].color;
 
     return ` <form class="new-contact-circle-name" onsubmit="editContact(${l}); return false;" id="new-contact-circle-name">
                         <div class="edit-contact-circle-for-edit contact-bubble-BG" style="background-color: ${backgroundColor};">
@@ -117,7 +117,7 @@ function generateRightSideEditContact(l) {
 }
 
 function memberHTML(l) {
-    const backgroundColor = getContactBackgroundColor(l);
+    const backgroundColor = contacts[l].color;
 
     return ` 
                 <div class="single-contact-container" id="singleConactContainer" onclick="showContacts(${l})">
@@ -131,7 +131,7 @@ function memberHTML(l) {
 }
 
 function memberInfo(l){
-    const backgroundColor = getContactBackgroundColor(l);
+    const backgroundColor = contacts[l].color;
 
     return `
 <div class="contact-info-header">

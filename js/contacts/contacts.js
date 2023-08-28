@@ -1,8 +1,6 @@
 let contacts = [];
-let contactsLoaded = false; // Globale Variable zur Verfolgung des Ladezustands der Kontakte
-var colors = ["#0048cd", "#81adfd", "#b6fa81", "#f99090", "#845400", "#fac66e", "#07ab1d"];
+let contactsLoaded = false;
 let letters = [];
-let addTaskNewContact;
 let addTaskPage = false;
 
 
@@ -202,7 +200,7 @@ function clearContactCard() {
     let overlayContainer = document.getElementById('overlayContainer');
     let addContactOverlay = document.getElementById('addContactOverlay');
     removePopupAnimation(overlayContainer, addContactOverlay);
-    checkOrigin();
+    // checkOrigin();
     removeClearContactCardContainer();
 }
 
@@ -219,16 +217,16 @@ function removeClearContactCardContainer() {
 }
 
 
-/**
- * Checks the origin of the action and adjusts the class of the add task popup.
- */
-function checkOrigin() {
-    if (addTaskNewContact) {
-        let addTaskPopoup = document.getElementById('addTaskPopUp');
-        addTaskPopoup.classList.remove('closeAddedPopUp');
-    }
-    addTaskNewContact = false;
-}
+// /**
+//  * Checks the origin of the action and adjusts the class of the add task popup.
+//  */
+// function checkOrigin() {
+//     if (addTaskNewContact) {
+//         let addTaskPopoup = document.getElementById('addTaskPopUp');
+//         addTaskPopoup.classList.remove('closeAddedPopUp');
+//     }
+//     addTaskNewContact = false;
+// }
 
 
 /**
@@ -272,16 +270,13 @@ async function addContact() {
         "phone": contactPhone.value,
         "firstNameLetter": firstName,
         "lastNameLetter": lastName,
+        "color" : getRandomColor()
     });
     if (window.matchMedia("(max-width: 700px)").matches) {
         contactCreatedSuccessfuly();
     }
     await backend.setItem('contacts', JSON.stringify(contacts));
     clearInput();
-    if (!addTaskNewContact) {
-        document.getElementById('contactList').innerHTML = '';
-        initContacts();
-    }
     clearContactCard();
 }
 
@@ -371,7 +366,6 @@ function showContacts(l) {
 }
 
 
-
 /**
  * Closes the displayed contact information.
  */
@@ -379,4 +373,16 @@ function closeContactInfo() {
     let contactContainer = document.querySelector(".contact-container");
     contactContainer.style.display = "none";
     document.getElementById('addContactButton').classList.remove('d-none');
+}
+
+
+function getRandomColor() {
+    const letters = '0123456789ABCDEF'; // Zeichen für Farbwerte
+    let color = '#';
+
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)]; // Wähle zufälliges Zeichen
+    }
+
+    return color;
 }
