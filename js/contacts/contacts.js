@@ -217,18 +217,6 @@ function removeClearContactCardContainer() {
 }
 
 
-// /**
-//  * Checks the origin of the action and adjusts the class of the add task popup.
-//  */
-// function checkOrigin() {
-//     if (addTaskNewContact) {
-//         let addTaskPopoup = document.getElementById('addTaskPopUp');
-//         addTaskPopoup.classList.remove('closeAddedPopUp');
-//     }
-//     addTaskNewContact = false;
-// }
-
-
 /**
  * Deletes a new contact from the contacts list.
  * @param {number} l - The index of the contact to be deleted.
@@ -376,12 +364,15 @@ function closeContactInfo() {
 }
 
 
+/**
+ * Chose a random color for every new contact.
+ */
 function getRandomColor() {
-    const letters = '0123456789ABCDEF'; // Zeichen für Farbwerte
+    const letters = '0123456789ABCDEF';
     let color = '#';
 
     for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)]; // Wähle zufälliges Zeichen
+        color += letters[Math.floor(Math.random() * 16)];
     }
 
     return color;

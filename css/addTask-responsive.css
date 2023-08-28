@@ -36,7 +36,7 @@
 @media(max-width:800px) {
 
     body {
-        margin: 70px 0 250px 0;
+        margin: 70px 0 100px 0;
     }
 
     .contentPopUpTask {
@@ -85,6 +85,7 @@
         padding: 0 5%;
         box-sizing: border-box;
         align-items: center !important;
+        margin-bottom: 70px;
     }
 
     .taskBoardLeftPopUpTask textarea {
@@ -96,7 +97,8 @@
     }
 
     .buttonsCreateTaskPopUpTask {
-        bottom: -107px !important;
+        position: relative !important;
+        bottom: unset !important;
         width: 100%;
         display: flex;
         justify-content: center !important;

@@ -64,8 +64,12 @@ function HTMLrenderDialogFullCard(i) {
                     <div class="assignedToFullCard" id="assignedToFullCard"></div>
                  </div>
               <div class="editDelete">
-                <img  class="deleteButton" onclick="deleteTask(${i})"  src="../assets/img/blueDelete.png">
-                <img  class="editButton" onclick="openEditTask(${i})" src="../assets/img/blueEdit.png">   
+                <button onclick="deleteTask(${i})">
+                    <img  class="deleteButton"   src="../assets/img/blueDelete.png">
+                </button>
+                <button  onclick="openEditTask(${i})">
+                    <img  class="editButton" src="../assets/img/blueEdit.png">  
+                </button> 
              </div>
         </div>
         </div>
@@ -138,8 +142,8 @@ function openEditTaskHTML(i) {
             <div class="AssignedTo" style="padding:6px;"> <!--Assigned to container-->
                 <label>Assigned to</label>
                 <section id="reassignContacts" class="dropdownEditTask" onclick="opendropdownEditTask()">
-                    <div  class="headerForSelectionField">
-                        <span style="position: relative;">Reassign contacts</span>
+                    <div  class="headerForSelectionField" id="editTaskDropdown">
+                        <span style="position: relative !important;">Reassign contacts</span>
                         <img id="arrowDownEditTask" class="arrDown" src="../assets/img/arrDown.png">
                     </div>
                     

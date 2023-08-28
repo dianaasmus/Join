@@ -28,6 +28,22 @@
         min-height: 0;
     }
 
+    .boardSubsection {
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+
+    #editTaskDropdown {
+        position: relative !important;
+        background-color: unset !important;
+        padding: 0 !important;
+    }
+
+    #editTaskDropdown .arrDown {
+        top: 5px;
+        right: 0px;
+    }
+
     #editedDropdownAddContact {
         height: 90px;
     }
@@ -35,8 +51,6 @@
     #editedDropdownAddContact .droppedContacts input {
         left: 86%;
     }
-
-    
 }
 
 @media (max-width: 890px) {
@@ -61,7 +75,7 @@
 
     .boardCard {
         min-width: 200px;
-        max-width: 200px;     
+        max-width: 200px;
         justify-content: space-between;
     }
 
@@ -86,7 +100,7 @@
         border-radius: 10px;
         background-color: #ffffff;
         color: #000000;
-        margin-top: -5px !important;
+        margin-top: 0px !important;
         margin-left: -7px !important;
         box-shadow: -2px 0px 6px rgba(0, 0, 0, 0.25);
     }
@@ -195,6 +209,10 @@
 
     }
 
+    .dialogFullCardContent {
+        width: 85%;
+    }
+
     .addTaskButton span:nth-child(1) {
         display: none;
     }
@@ -221,5 +239,9 @@
         width: unset;
         justify-content: unset;
         right: 0;
+    }
+
+    .editDelete button {
+        all: unset;
     }
 }

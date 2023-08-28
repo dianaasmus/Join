@@ -398,11 +398,11 @@ input::-webkit-search-cancel-button {
 }
 
 .deleteButton {
-    height: 40px
+    height: 45px
 }
 
 .editButton {
-    height: 40px
+    height: 45px
 }
 
 .deleteButton:hover {
