@@ -11,6 +11,9 @@ let currentDragged;
 const filteredTasksArray = [];
 
 
+/**
+ * Initializes the board by executing necessary scripts and loading data from the server.
+ */
 async function initBoard() {
     await initScript();
     try {
@@ -26,12 +29,19 @@ async function initBoard() {
 }
 
 
+/**
+ * Sets the minimum date for the calendar input and returns the formatted date string.
+ * @returns {string} - The formatted date string.
+ */
 function getTheDate() {
     let forCalender = document.getElementById("date").setAttribute("min", date.toISOString().split("T")[0]);
     return (forCalender)
 }
 
 
+/**
+ * Renders task cards on the board, based on the search filter.
+ */
 async function renderTaskCards() {
     clearSubsections();
     j = 0;
@@ -50,6 +60,12 @@ async function renderTaskCards() {
 }
 
 
+/**
+ * Renders a single task on the board by performing various checks and UI updates.
+ * @param {number} i - The index of the task to be rendered.
+ * @param {number} j - The index for tracking task rendering order.
+ * @param {number} colorCircle - The color index for circle indicators.
+ */
 function renderSingleTask(i, j, colorCircle) {
     checkForContacts(i);
     checkForReadiness(i, j);
@@ -59,6 +75,11 @@ function renderSingleTask(i, j, colorCircle) {
 }
 
 
+
+/**
+ * Filters tasks based on the search input and returns the formatted search string.
+ * @returns {string} - The formatted search string.
+ */
 function filterTasks() {
     let search = document.getElementById('findATask').value
     search = search.toLowerCase()
@@ -66,6 +87,10 @@ function filterTasks() {
 }
 
 
+/**
+ * Checks assigned contacts of a task and removes contacts not present in the contacts list.
+ * @param {number} i - The index of the task to be checked.
+ */
 function checkForContacts(i) {
     if (tasks[i].assignedTo) {
         for (let k = 0; k < tasks[i].assignedTo.length; k++) {
@@ -78,6 +103,10 @@ function checkForContacts(i) {
 }
 
 
+/**
+ * Hides the progress section of a task if it has no subtasks.
+ * @param {number} i - The index of the task.
+ */
 function hideProgressSection(i) {
     if (tasks[i].subtasks.length == 0) {
         document.getElementById(`progressBarSection${i}`).classList.remove('progressBarSection');
@@ -86,7 +115,11 @@ function hideProgressSection(i) {
 }
 
 
-
+/**
+ * Renders assigned contacts with colored circles on the board for a specific task.
+ * @param {number} i - The index of the task.
+ * @param {number} colorCircle - The color circle index.
+ */
 function renderAssignedContactsOnBoard(i, colorCircle) {
     if (tasks[i].assignedTo) {
         document.getElementById(`assignedToCircles${i}`).innerHTML = ''
@@ -101,6 +134,10 @@ function renderAssignedContactsOnBoard(i, colorCircle) {
 }
 
 
+/**
+ * Renders assigned contacts with colored circles on the full task card.
+ * @param {number} i - The index of the task.
+ */
 function renderAssignedContactsOnFullCard(i) {
     let colorCircle = 0
     if (tasks[i].assignedTo) {
@@ -116,6 +153,11 @@ function renderAssignedContactsOnFullCard(i) {
 }
 
 
+/**
+ * Sets the priority image for a task to be rendered on the board.
+ * @param {number} i - The index of the task.
+ * @param {number} j - The index for tracking task rendering order.
+ */
 function priorityImageForRenderTaskCards(i, j) {
     if (tasks[j].prio == 'urgent') { document.getElementById(`urgencyBoard${j}`).src = prioImages[0] }
     if (tasks[j].prio == 'medium') { document.getElementById(`urgencyBoard${j}`).src = prioImages[1] }
@@ -123,6 +165,10 @@ function priorityImageForRenderTaskCards(i, j) {
 }
 
 
+/**
+ * Sets the priority image for a task to be rendered on the full task card.
+ * @param {number} i - The index of the task.
+ */
 function priorityImageForRenderFullTaskCard(i) {
     if (tasks[i].prio == 'urgent') { document.getElementById(`urgencyFullCard${i}`).src = prioImagesFullCard[0] }
     if (tasks[i].prio == 'medium') { document.getElementById(`urgencyFullCard${i}`).src = prioImagesFullCard[1] }
@@ -130,6 +176,10 @@ function priorityImageForRenderFullTaskCard(i) {
 }
 
 
+/**
+ * Renders the content for a full dialog card associated with a task.
+ * @param {number} i - The index of the task.
+ */
 async function renderDialogFullCard(i) {
     let counter = 0
     document.body.innerHTML += HTMLrenderDialogFullCard(i);
@@ -139,12 +189,20 @@ async function renderDialogFullCard(i) {
 }
 
 
+/**
+ * Displays the full task card dialog.
+ */
 function showDialogFullCard() {
     document.getElementById('dialogFullCard').classList.add('openPopUpAddTask');
     document.getElementById('dialogFullCard').classList.add('background-aniamtion-addTask');
 }
 
 
+/**
+ * Renders the content for a full dialog card associated with a task.
+ * @param {number} i - The index of the task.
+ * @param {number} counter - The counter for subtask rendering.
+ */
 async function renderDialogFullCardContent(i, counter) {
     tasks[i].subtasks.forEach(subtask => {
         document.getElementById('subtasksFullCard').innerHTML += HTMLrenderSubtasksDialogFullCard(i, subtask, counter)
@@ -157,16 +215,26 @@ async function renderDialogFullCardContent(i, counter) {
 }
 
 
+/**
+ * Stops scrolling on the body element to prevent background scrolling.
+ */
 function stopScrolling() {
     document.body.classList.add('hide-overflow');
 }
 
 
+/**
+ * Resumes scrolling on the body element.
+ */
 function continueScrolling() {
     document.body.classList.remove('hide-overflow');
 }
 
 
+/**
+ * Opens the edit task dialog for a specific task.
+ * @param {number} i - The index of the task to be edited.
+ */
 function openEditTask(i) {
     document.getElementById('dialogFullCard').innerHTML = openEditTaskHTML(i);
     document.getElementById(`editedDate`).setAttribute("min", date.toISOString().split("T")[0]);
@@ -175,6 +243,10 @@ function openEditTask(i) {
 }
 
 
+/**
+ * Edits a task based on the provided index and updated information.
+ * @param {number} i - The index of the task to be edited.
+ */
 async function editTask(i) {
     tasks = JSON.parse(await backend.getItem('tasks'))
     let title = document.getElementById('editedTask');
@@ -204,6 +276,10 @@ async function editTask(i) {
 }
 
 
+/**
+ * Gets the priority index for colorPrios based on the priority of a task.
+ * @param {number} i - The index of the task.
+ */
 function getPrio(i) {
     if (tasks[i].prio == 'urgent') {
         i = 4;
@@ -216,11 +292,19 @@ function getPrio(i) {
 }
 
 
+/**
+ * Initiates the dragging process for a task.
+ * @param {number} i - The index of the task being dragged.
+ */
 function startDragging(i) {
     currentDragged = i
 }
 
 
+/**
+ * Moves a task to a new readiness state.
+ * @param {string} readinessState - The new readiness state.
+ */
 async function moveTo(readinessState) {
     tasks = JSON.parse(await backend.getItem('tasks'))
     tasks[currentDragged].readinessState = readinessState
@@ -229,11 +313,18 @@ async function moveTo(readinessState) {
 }
 
 
+/**
+ * Allows dropping elements during a drag-and-drop operation.
+ * @param {Event} ev - The drag event.
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
 
+/**
+ * Clears the subsections of the board.
+ */
 function clearSubsections() {
     document.getElementById('boardSubsectionToDo').innerHTML = ''
     document.getElementById('boardSubsectionInProgress').innerHTML = ''
@@ -242,26 +333,26 @@ function clearSubsections() {
 }
 
 
+/**
+ * Checks the readiness state of a task and renders it in the appropriate subsection of the board.
+ * @param {number} i - The index of the task.
+ * @param {number} j - The index for rendering purposes.
+ */
 function checkForReadiness(i, j) {
-    if (tasks[i].readinessState == 'toDo') {
-        document.getElementById('boardSubsectionToDo').innerHTML += HTMLrenderTaskCards(i, j)
-        priorityImageForRenderTaskCards(i, j)
-    }
-    if (tasks[i].readinessState == 'inProgress') {
-        document.getElementById('boardSubsectionInProgress').innerHTML += HTMLrenderTaskCards(i, j)
-        priorityImageForRenderTaskCards(i, j)
-    }
-    if (tasks[i].readinessState == 'awaitingFeedback') {
-        document.getElementById('boardSubsectionFeedback').innerHTML += HTMLrenderTaskCards(i, j)
-        priorityImageForRenderTaskCards(i, j)
-    }
-    if (tasks[i].readinessState == 'done') {
-        document.getElementById('boardSubsectionDone').innerHTML += HTMLrenderTaskCards(i, j)
-        priorityImageForRenderTaskCards(i, j)
-    }
+    let localReadiness;
+    if (tasks[i].readinessState == 'toDo') { localReadiness = 'boardSubsectionToDo'; }
+    if (tasks[i].readinessState == 'inProgress') { localReadiness = 'boardSubsectionInProgress'; }
+    if (tasks[i].readinessState == 'awaitingFeedback') { localReadiness = 'boardSubsectionFeedback'; }
+    if (tasks[i].readinessState == 'done') { localReadiness = 'boardSubsectionDone'; }
+
+    document.getElementById(localReadiness).innerHTML += HTMLrenderTaskCards(i, j);
+    priorityImageForRenderTaskCards(i, j);
 }
 
 
+/**
+ * Closes the task dialog, resumes scrolling, and updates the task board.
+ */
 function closeTask() {
     let dialogFullCard = document.getElementById('dialogFullCard');
     continueScrolling();
@@ -295,6 +386,7 @@ async function countTasks(i, j) {
     tasks[i].percentOfDone = percentOfDone
     await backend.setItem('tasks', JSON.stringify(tasks))
 }
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -421,7 +513,7 @@ function openChangeStatus(i, event) {
     } else {
         changeStatus.style.display = 'block'
     }
-    
+
     event = event || window.event;
     event.stopPropagation();
     openChangeStatusContent(i);

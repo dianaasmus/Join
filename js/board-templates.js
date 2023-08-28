@@ -31,7 +31,6 @@ function HTMLrenderTaskCards(i, j) {
             </div>
 
             </div>`
-
 }
 
 
@@ -217,65 +216,15 @@ function ifStatusDoneForMobile(i) {
 }
 
 
-function addDropdownContainer() {
-    return `
-        <div id="dropdownContent" class="dropdown-content">
-            <div id="dropdownAddContactPopUp">
-            </div>
-            <a class="addNewBtn" onclick="addTaskContactPopup()">Add new Contact</a>
-        </div>
-        `;
-}
-
-function addDropdownCategory() {
-    return `
-        <div id="dropdownCategory" class="dropdown-content">
-            <div id="dropdownAddCategoryPopUp">
-            </div>
-            <a class="addNewBtn" onclick="openInputAddCategory()">Add Category</a>
-        </div>
-        `;
-}
+// function HTMLforRenderAssignedContactsOnBoard(i, colorCircle, contact) {
+//     let element = document.getElementById(`colors${colorCircle}`);
+//     let backgroundColorCircle = element.style.backgroundColor;
+//     document.getElementById(`assignedToCircles${i}`).innerHTML += `<span style="background-color:${backgroundColorCircle}" class="assignedToAvatar">${tasks[i].assignedTo[contact].firstNameLetter}${tasks[i].assignedTo[contact].lastNameLetter}</span>`
+// }
 
 
-function newCategoryHTML(value) {
-    return `
-    <div class="assignedCategoryValues" id="assignedCategoryValues">
-        <div class="colorPicker colorPickerAssigned" style="background-color: ${colorsCategory}"  id="assignedColor"></div>
-        <p>${value}</p>
-    </div>` ;
-}
-
-
-function selectedCategoryHTML(selectedCategoryValue, selectedCategoryColor) {
-    return `
-    <div class="assignedCategoryValues">
-        <div class="colorPicker colorPickerAssigned" style="background-color: ${selectedCategoryColor}"  id="assignedColor"></div>
-        <p id="selectedCategoryValue">${selectedCategoryValue}</p>
-    </div>
-    `;
-}
-
-
-function addedTaskFeedback() {
-    return `
-        <div id="popUpWhenAdded" class="taskAddedPopUp">
-            <span>Task added to Board</span>
-            <img src="../assets/img/board-icon.svg" class="sidebar-icon-2">
-        </div>
-    `;
-}
-
-
-function HTMLforRenderAssignedContactsOnBoard(i, colorCircle, contact) {
-    let element = document.getElementById(`colors${colorCircle}`);
-    let backgroundColorCircle = element.style.backgroundColor;
-    document.getElementById(`assignedToCircles${i}`).innerHTML += `<span style="background-color:${backgroundColorCircle}" class="assignedToAvatar">${tasks[i].assignedTo[contact].firstNameLetter}${tasks[i].assignedTo[contact].lastNameLetter}</span>`
-}
-
-
-function HTMLforRenderAssignedContactsOnFullCard(i, colorCircle, contact) {
-    let element = document.getElementById(`colors${colorCircle}`);
-    let backgroundColorCircle = element.style.backgroundColor;
-    document.getElementById(`assignedToFullCard`).innerHTML += `<div class="assignedToContact"><span style="background-color:${backgroundColorCircle}" class="assignedToAvatar">${tasks[i].assignedTo[contact].firstNameLetter}${tasks[i].assignedTo[contact].lastNameLetter}</span><p>${tasks[i].assignedTo[contact].name}</p><div>`
-}
+// function HTMLforRenderAssignedContactsOnFullCard(i, colorCircle, contact) {
+//     let element = document.getElementById(`colors${colorCircle}`);
+//     let backgroundColorCircle = element.style.backgroundColor;
+//     document.getElementById(`assignedToFullCard`).innerHTML += `<div class="assignedToContact"><span style="background-color:${backgroundColorCircle}" class="assignedToAvatar">${tasks[i].assignedTo[contact].firstNameLetter}${tasks[i].assignedTo[contact].lastNameLetter}</span><p>${tasks[i].assignedTo[contact].name}</p><div>`
+// }
