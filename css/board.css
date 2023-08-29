@@ -582,13 +582,12 @@ textarea {
     display: flex;
     flex-direction: row;
     position: relative;
+    justify-content: space-between;
 }
 
 .droppedContacts input {
-    position: absolute;
-    top: 10px;
-    left: 92% !important;
     width: 10px !important;
+    margin-right: 18px;
 }
 
 
@@ -640,4 +639,8 @@ textarea {
 
 .dropdown-contentForMobileDevices {
     display: none;
+}
+
+.editDelete button {
+    all: unset;
 }

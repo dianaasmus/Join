@@ -117,6 +117,10 @@
         margin: 0;
         left: 86%;
     }
+
+    .margin-bottom {
+        margin-bottom: 0 !important;
+    }
 }
 
 @media(max-width:640px) {
@@ -144,5 +148,16 @@
     .taskPopUpHeader {
         margin-left: 0;
         justify-content: space-between !important;
+    }
+
+    @keyframes taskAdded {
+
+        0% {
+            transform: translate(-50%, 1000%);
+        }
+    
+        100% {
+            transform: translate(-50%, 702%);
+        }
     }
 }

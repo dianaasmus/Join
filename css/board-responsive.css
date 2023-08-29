@@ -65,7 +65,6 @@
         min-height: unset;
         margin-bottom: unset;
         flex-direction: row;
-        /* overflow-x: scroll; */
         padding: 5px;
     }
 
@@ -239,9 +238,5 @@
         width: unset;
         justify-content: unset;
         right: 0;
-    }
-
-    .editDelete button {
-        all: unset;
     }
 }

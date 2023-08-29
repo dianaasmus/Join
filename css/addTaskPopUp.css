@@ -11,7 +11,7 @@
 }
 
 .background-aniamtion-addTask {
-    animation: FadeInBackgroundColorAddTask ease-in-out 3000ms;
+    animation: FadeInBackgroundColorAddTask ease-in-out 2000ms;
     animation-fill-mode: forwards;
 }
 
@@ -364,7 +364,7 @@ input {
     display: flex;
     flex-direction: row;
     margin-bottom: 0 !important;
-    margin-top: -25px;
+    margin-top: -10px;
     margin-left: 5px;
 }
 
@@ -395,7 +395,7 @@ input {
     height: 18px;
     width: 18px;
     position: relative;
-    left: 77%;
+    left: 88%;
     top: -29px;
     transform: rotate(45deg);
     cursor: pointer;
@@ -474,7 +474,7 @@ input {
     width: 15px;
     position: absolute;
     top: 13px;
-    right: 21px;
+    right: 15px;
     cursor: pointer;
 }
 
@@ -498,7 +498,7 @@ input {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0px 20px 10px 18px;
+    padding: 0px 14px 10px 18px;
     box-sizing: border-box;
 }
 
@@ -520,7 +520,7 @@ input {
     justify-content: flex-end;
     font-size: 1rem;
     position: absolute;
-    bottom: -80px;
+    bottom: 0px;
     right: 0;
 }
 
@@ -618,7 +618,7 @@ input {
     }
 
     100% {
-        transform: translate(-50%, 702%);
+        transform: translate(-50%, -30%);
     }
 }
 
@@ -628,4 +628,8 @@ input {
     height: auto;
     max-height: 1000px;
     border: 1px solid #D1D1D1;
+}
+
+.margin-bottom {
+    margin-bottom: -80px;
 }

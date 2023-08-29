@@ -85,8 +85,6 @@
 
                     <input id="selectedCategoryInputValue" style="position: relative;" placeholder="New category name">
                     <img onclick="closeHiddenInput()" class="closeHiddenInput" src="../assets/img/addSubtaskButton.png">
-                    <hr>
-                    <img class="createInHiddenInput" onclick="addCategoryOnTask()" src="../assets/img/check.png">
 
                     <div class="colorPickers">
                         <div onclick="addNewcategoryToTask(1)" id="color1" class="colorPicker"
@@ -116,7 +114,7 @@
                     <div id="subtasksPopUp" class="checkBoxSubtasksDivPopUp"></div>
                 </div>
 
-                <div class="buttonsCreateTaskPopUpTask">
+                <div class="buttonsCreateTaskPopUpTask" id="buttonsCreateTaskPopUpTask">
                     <button onclick="clearPopUp()" class="buttonClearTaskPopUpTask" id="buttonClearTaskPopUpTask">
                         <span>Clear</span>
                         <span class="clearTaskPageImgPopUpTask">+</span>

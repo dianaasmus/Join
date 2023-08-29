@@ -26,6 +26,7 @@ function adjustAddTask() {
     document.getElementById(`date`).setAttribute("min", date.toISOString().split("T")[0]);
     addTaskPage = true;
     getReadinessStateFromLocalS();
+    document.getElementById('buttonsCreateTaskPopUpTask').classList.add('margin-bottom');
 }
 
 
