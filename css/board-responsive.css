@@ -151,7 +151,6 @@
         height: 15px;
         filter: invert(15%) sepia(7%) saturate(3610%) hue-rotate(176deg) brightness(40%) contrast(80%);
     }
-    
 }
 
 @media (max-width: 650px) {

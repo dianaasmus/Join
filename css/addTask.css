@@ -2,16 +2,6 @@
     font-size: 1rem;
 }
 
-body {
-    background-color: #F6F7F8;
-    display: flex;
-    overflow: hidden;
-    font-family: 'Open-sans', sans-serif;
-    font-weight: 400;
-    padding-left: 5%;
-    margin: 90px 3% 0 232px;
-}
-
 .add-task-html-style {
     position: unset !important;
     transform: none !important;

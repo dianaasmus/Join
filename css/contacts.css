@@ -173,7 +173,7 @@ body {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
     transition: transform 0.4s;
     transition-delay: 0.4s;
 }
@@ -457,7 +457,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    height: 40px;
+    width: 40px;
     border: 1px solid #FFFFFF;
     background-color: #810292;
     color: white;
@@ -489,7 +490,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    height: 90px;
+    width: 90px;
     border-radius: 100%;
     background-color: #810292;
     color: white;
@@ -583,7 +585,7 @@ body {
     width: 80px;
     height: 3px;
     animation: blueline 225ms ease-in-out 425ms forwards;
-    margin-top: 30px;
+    margin-top: 55px;
 }
 
 .edit-contact-circle-for-edit {

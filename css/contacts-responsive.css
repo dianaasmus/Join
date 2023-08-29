@@ -1,3 +1,9 @@
+@media (min-width: 1300px) {
+    .contact-container {
+        margin-left: 400px;
+    }
+}
+
 @media (max-width: 1000px) {
 
     .overlay-container {

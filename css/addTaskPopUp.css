@@ -56,8 +56,9 @@
     width: 80%;
     max-width: 800px;
     height: 87%;
+    max-height: 650px;
     border-radius: 30px;
-    padding: 0px 5%;
+    padding: 0px 50px;
     box-sizing: border-box;
 }
 
@@ -276,10 +277,6 @@ input {
     border: 1px solid #D1D1D1;
     margin-bottom: 0 !important;
     cursor: pointer;
-}
-
-.dropdownContact input {
-    margin-right: 13px;
 }
 
 #eventLisPopUp .dropdown-content,

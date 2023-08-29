@@ -100,7 +100,7 @@ input::-webkit-search-cancel-button {
 }
 
 .boardSubsectionHeader h2 {
-    font-size: 1.4vw;
+    font-size: 1rem;
     color: #2A3647;
 }
 
@@ -143,8 +143,7 @@ input::-webkit-search-cancel-button {
 }
 
 .plusButton {
-    width: 11%;
-    max-width: 15%;
+    width: 1.5rem;
 }
 
 .plusButton:hover {
@@ -225,6 +224,7 @@ input::-webkit-search-cancel-button {
 .dialogFullCardContent {
     position: relative;
     height: 90%;
+    max-height: 650px;
     margin: auto;
     max-width: 400px;
     width: 100%;
@@ -588,9 +588,7 @@ textarea {
 
 .droppedContacts input {
     width: 10px !important;
-    margin-right: 18px;
 }
-
 
 .assignedToFullCard {
     height: 80px;

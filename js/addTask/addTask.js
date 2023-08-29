@@ -61,6 +61,7 @@ function checkCategorySelect() {
         categorySelected = false;
         return false;
     } else {
+        categorySelected = false;
         return true;
     }
 }
