@@ -266,6 +266,7 @@ async function addContact() {
     await backend.setItem('contacts', JSON.stringify(contacts));
     clearInput();
     clearContactCard();
+    initContacts();
 }
 
 

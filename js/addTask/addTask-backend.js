@@ -6,6 +6,7 @@
 async function initAddTask() {
     await initScript();
     adjustAddTask();
+    removeCheckedContacts();
     try {
         setURL("https://diana-asmus.developerakademie.net/Join/smallest_backend_ever-master");
         await downloadFromServer();

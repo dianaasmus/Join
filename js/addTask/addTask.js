@@ -14,7 +14,7 @@ let prioSelected = false;
 let isDropDownCategory = false;
 let existingCategorySelected = false;
 let categorySelected = false;
-// let setReadinessState;
+let contactListDropped = false;
 
 
 /**
@@ -29,6 +29,9 @@ function adjustAddTask() {
 }
 
 
+/**
+ * Retrieves the readiness state from local storage and sets it for further use.
+ */
 function getReadinessStateFromLocalS() {
     localReadinessState = localStorage.getItem('setReadinessState');
 
@@ -230,18 +233,6 @@ function addSelectedCategory(labelCategory, i) {
 
 
 /**
- * Applies new styling to a newly created category.
- * @param {HTMLElement} labelCategory - The label element for displaying the selected category.
- */
-function newCategoryStyle(labelCategory) {
-    document.getElementById('dropdown').classList.remove('displayNone');
-    labelCategory.classList.add('setlabelCategory');
-    document.getElementById('hiddenInputCategory').classList.add('displayNone');
-    document.getElementById('assignedColor').classList.add('color-picker-picked');
-}
-
-
-/**
  * Opens the input for adding a new category and hides the dropdown.
  */
 function openInputAddCategory() {
@@ -259,11 +250,7 @@ function contactList() {
     let dropdownContent = document.getElementById('dropdownContent');
 
     if (dropdownContent.classList.contains('displayNone')) {
-        dropdownContent.classList.remove('displayNone');
-        document.getElementById('assignArrow').style.transform = "rotate(0deg)";
-        addDropdownContacts();
-        removeIfDropdownNotClosed(dropdownContent);
-        getCheckedContact();
+        addContactList(dropdownContent);
     } else {
         checkForCheckedAssignedPopUp();
         removeAddTaskContactList();
@@ -272,13 +259,23 @@ function contactList() {
 }
 
 
-function resetCheckboxStates() {
-    for (let index = 0; index < contacts.length; index++) {
-        localStorage.removeItem(`checkboxAssigned${index}`);
-    }
+/**
+ * Displays a list of contacts in a dropdown and handles selection.
+ * @param {HTMLElement} dropdownContent - The container for the contact list dropdown.
+ */
+function addContactList(dropdownContent) {
+    dropdownContent.classList.remove('displayNone');
+    document.getElementById('assignArrow').style.transform = "rotate(0deg)";
+    addDropdownContacts();
+    removeIfDropdownNotClosed(dropdownContent);
+    getCheckedContact();
+    removeCheckedContactsCheckbox();
 }
 
 
+/**
+ * Retrieves and sets the checked state of contact checkboxes from local storage.
+ */
 function getCheckedContact() {
     for (let index = 0; index < contacts.length; index++) {
         const checkedState = localStorage.getItem(`checkboxAssigned${index}`);
@@ -286,19 +283,6 @@ function getCheckedContact() {
             document.getElementById(`checkboxAssigned${index}`).checked = checkedState === 'true';
         }
     }
-}
-
-/**
- * Checks if a dropdown is not closed and takes specific actions after a timeout.
- */
-function removeIfDropdownNotClosed(dropdownContent) {
-    setTimeout(() => {
-        if (!dropdownContent.classList.contains('displayNone')) {
-            checkForCheckedAssignedPopUp();
-            removeAddTaskContactList();
-            addSelectedContactAfterClosedDropdown(dropdownContent);
-        }
-    }, 4000);
 }
 
 
@@ -446,13 +430,4 @@ function addTaskFeedback() {
  */
 function addTaskContactPopup() {
     window.location.href = 'contacts.html';
-}
-
-
-/**
- * Enables the "Clear" and "Add Task" buttons in the add task popup.
- */
-function enableButtonAddTaskBtns() {
-    document.getElementById('buttonClearTaskPopUpTask').disabled = false;
-    document.getElementById('buttonCreateTaskPopUpTask').disabled = false;
 }

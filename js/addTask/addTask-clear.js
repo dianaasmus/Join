@@ -181,3 +181,70 @@ function closePopUpAddTask() {
 function removeCheckedContactsContainer() {
     document.getElementById('checkedContacts').innerHTML = '';
 }
+
+
+/**
+ * Resets the stored checkbox states for assigned contacts in local storage.
+ */
+function resetCheckboxStates() {
+    for (let index = 0; index < contacts.length; index++) {
+        localStorage.removeItem(`checkboxAssigned${index}`);
+    }
+}
+
+
+/**
+ * Removes the checked state from assigned contacts checkboxes.
+ */
+function removeCheckedContactsCheckbox() {
+    if (!contactListDropped) {
+        removeCheckedContacts();
+        resetCheckboxStates();
+        contactListDropped = true;
+    }
+}
+
+
+/**
+ * Removes the checked state from assigned contacts checkboxes.
+ */
+function removeCheckedContacts() {
+    for (let index = 0; index < contacts.length; index++) {
+        document.getElementById(`checkboxAssigned${index}`).checked = false;
+    }
+}
+
+
+/**
+ * Checks if a dropdown is not closed and takes specific actions after a timeout.
+ */
+function removeIfDropdownNotClosed(dropdownContent) {
+    setTimeout(() => {
+        if (!dropdownContent.classList.contains('displayNone')) {
+            checkForCheckedAssignedPopUp();
+            removeAddTaskContactList();
+            addSelectedContactAfterClosedDropdown(dropdownContent);
+        }
+    }, 9000);
+}
+
+
+/**
+ * Enables the "Clear" and "Add Task" buttons in the add task popup.
+ */
+function enableButtonAddTaskBtns() {
+    document.getElementById('buttonClearTaskPopUpTask').disabled = false;
+    document.getElementById('buttonCreateTaskPopUpTask').disabled = false;
+}
+
+
+/**
+ * Applies new styling to a newly created category.
+ * @param {HTMLElement} labelCategory - The label element for displaying the selected category.
+ */
+function newCategoryStyle(labelCategory) {
+    document.getElementById('dropdown').classList.remove('displayNone');
+    labelCategory.classList.add('setlabelCategory');
+    document.getElementById('hiddenInputCategory').classList.add('displayNone');
+    document.getElementById('assignedColor').classList.add('color-picker-picked');
+}
