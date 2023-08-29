@@ -238,7 +238,6 @@ async function deleteNewContact(l) {
  */
 function deleteNewContactsSettings(l) {
     deleteNewContact(l);
-    clearContactCard();
     editing = false;
 }
 
