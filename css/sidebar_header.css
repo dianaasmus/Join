@@ -221,6 +221,10 @@ a {
         height: 75px;
     }
 
+    .img-drop-down {
+        top: 75px;
+    }
+
     .sidebar-logo,
     .sidebar-legal-notice {
         display: none;
