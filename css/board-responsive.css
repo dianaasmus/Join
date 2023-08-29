@@ -117,18 +117,17 @@
     .dropdown-contentForMobileDevices {
         display: none;
         position: absolute;
-        top: 23px;
-        left: 1px;
+        bottom: 0;
         width: 104%;
         font-size: 1rem;
         background-color: #F6F7F8;
         color: #000000;
         border-radius: 10px;
         z-index: 1;
-        padding: 0;
+        padding: 0 0 20px 0;
         z-index: 39;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
         box-shadow: -2px 0px 6px rgba(0, 0, 0, 0.25);
     }
 
@@ -152,6 +151,7 @@
         height: 15px;
         filter: invert(15%) sepia(7%) saturate(3610%) hue-rotate(176deg) brightness(40%) contrast(80%);
     }
+    
 }
 
 @media (max-width: 650px) {

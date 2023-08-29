@@ -1,9 +1,9 @@
 function HTMLrenderTaskCards(i, j) {
 
-    return `<div draggable="true" ondragstart="startDragging(${i})" onclick="renderDialogFullCard(${i})" class="boardCard" >
-                <div class="category" style="background-color: ${tasks[i].colorCategory}">
-                   ${tasks[i].category}
-                </div>
+    return `<div draggable="true" ondragstart="startDragging(${i})" onclick="renderDialogFullCard(${i})" class="boardCard">
+                    <div class="category" style="background-color: ${tasks[i].colorCategory}">
+                    ${tasks[i].category}
+                    </div>
                 <h4 >${tasks[i].title}
                 </h4>
                 <div class="task">${tasks[i].description}
@@ -15,21 +15,20 @@ function HTMLrenderTaskCards(i, j) {
                 <div  class="assignedToBoard">
                     <span id="assignedToCircles${i}" class="assignedToAvatars" ></span>
                     <img id="urgencyBoard${j}" src=" ">
-                </div>
-
-                <div onclick="openChangeStatus(${i})"> <!--For mobile devices-->
-                <div  id="dropdownForMobileDevices${i}" class="dropdownForMobileDevices">
+                </div>      
+                
+                <div id="changeStatusEditTask">
+                <div onclick="openChangeStatus(${i})" id="dropdownForMobileDevices${i}" class="dropdownForMobileDevices">
                     <div class="headerForSelectionField">
                         <label id="statusForMobileDevices" style="position: relative;">Change status</label>
-                        <img class="board-change-status" src="../assets/img/board-icon.svg">
+                        <img class="board-change-status" src="../assets/img/board-icon.svg"/>
                     </div>
-
+        
                     <div id="dropdown-contentForMobileDevices${i}" class="dropdown-contentForMobileDevices">
                     </div>
-
                 </div>
             </div>
-
+                
             </div>`
 }
 
