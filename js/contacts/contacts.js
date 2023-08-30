@@ -263,7 +263,7 @@ async function addContact() {
         contactCreatedSuccessfuly();
     }
     await backend.setItem('contacts', JSON.stringify(contacts));
-    clearInput();
+    clearValues('contactName', 'contactMail', 'contactPhone');
     clearContactCard();
     initContacts();
 }
@@ -321,20 +321,10 @@ async function editContact(l) {
 /**
  * Clears the input fields in the edit contact form.
  */
-function clearEditContactInput() {
-    document.getElementById('contactNameEdit').value = '';
-    document.getElementById('contactMailEdit').value = '';
-    document.getElementById('contactPhoneEdit').value = '';
-}
-
-
-/**
- * Clears the input fields in the add contact form.
- */
-function clearInput() {
-    document.getElementById('contactName').value = '';
-    document.getElementById('contactMail').value = '';
-    document.getElementById('contactPhone').value = '';
+function clearValues(...inputIds) {
+    for (const inputId of inputIds) {
+        document.getElementById(inputId).value = '';
+    }
 }
 
 

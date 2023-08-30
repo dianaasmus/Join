@@ -179,7 +179,7 @@
     font-weight: 400;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     font-size: 15px;
     padding: 10px;
 }
@@ -187,6 +187,7 @@
 .contact-new-inputs button img {
     width: 15px;
     height: 12px;
+    margin-left: 4px;
 }
 
 .contact-new-cancel {
@@ -200,6 +201,10 @@
 .contact-new-cancel:hover {
     border: 2px solid rgb(11, 173, 221);
     color: rgb(11, 173, 221);
+}
+
+.contact-new-cancel span:nth-child(2) {
+    margin-left: 4px;
 }
 
 .contact-new-create {

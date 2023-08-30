@@ -63,7 +63,7 @@ function adjustMedia() {
  */
 function focusSidebar() {
     const pathName = window.location.pathname;
-
+    
     switch (pathName) {
         case '/Join/html/summary.html':
             document.getElementById('summary-props').classList.add('clicked');
