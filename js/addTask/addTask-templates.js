@@ -30,7 +30,7 @@ function selectedCategoryHTML(selectedCategoryValue, selectedCategoryColor) {
 
 function addedTaskFeedback() {
     return `
-        <div id="popUpWhenAdded" class="taskAddedPopUp">
+        <div id="popUpWhenAdded">
             <span>Task added to Board</span>
             <img src="../assets/img/board-icon.svg" class="sidebar-icon-2">
         </div>

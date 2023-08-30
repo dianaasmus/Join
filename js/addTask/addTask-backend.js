@@ -63,6 +63,8 @@ async function createTask() {
     if (!addTaskPage) {
         clearPopUp();
         removeAddTaskPopup();
+    } else {
+        addTaskPage = false;
     }
 }
 

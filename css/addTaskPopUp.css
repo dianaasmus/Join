@@ -581,7 +581,7 @@ input {
     cursor: pointer;
 }
 
-.taskAddedPopUp {
+#popUpWhenAdded {
     position: absolute;
     z-index: 4;
     top: 50%;
@@ -590,10 +590,7 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
-
     transform: translate(-50%, 1000%);
-    animation: taskAdded 800ms ease-in-out;
-    animation-fill-mode: forwards;
 
     border: unset;
     border-radius: 8px;
@@ -606,6 +603,11 @@ input {
     gap: 20px;
     color: #fff;
     background-color: #2a3647;
+}
+
+.taskAddedPopUp {
+    animation: taskAdded 800ms ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 @keyframes taskAdded {

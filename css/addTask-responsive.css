@@ -26,7 +26,7 @@
     #dropdownAddCategoryPopUp {
         max-height: 90px !important;
     }
-    
+
     .taskBoardPopUpTask {
         height: unset !important;
     }
@@ -36,7 +36,7 @@
 @media(max-width:800px) {
 
     body {
-        margin: 70px 0 100px 0;
+        margin: 70px 0 70px 0;
     }
 
     .contentPopUpTask {
@@ -119,7 +119,24 @@
     }
 
     .margin-bottom {
-        margin-bottom: 0 !important;
+        margin-bottom: 100px !important;
+    }
+
+    .taskAddedPopUpMobile {
+        transform: translate(-50%, 1000%);
+        animation: taskAddedMobile 800ms ease-in-out;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes taskAddedMobile {
+
+        0% {
+            transform: translate(-50%, 1000%);
+        }
+
+        100% {
+            transform: translate(-50%, 180%);
+        }
     }
 }
 
@@ -148,16 +165,5 @@
     .taskPopUpHeader {
         margin-left: 0;
         justify-content: space-between !important;
-    }
-
-    @keyframes taskAdded {
-
-        0% {
-            transform: translate(-50%, 1000%);
-        }
-    
-        100% {
-            transform: translate(-50%, 702%);
-        }
     }
 }

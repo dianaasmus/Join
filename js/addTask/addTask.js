@@ -419,11 +419,15 @@ function disableButtonAddTask() {
 function addTaskFeedback() {
     if (addTaskPage) {
         document.body.innerHTML += addedTaskFeedback();
+        if (window.matchMedia("(max-width: 800px)").matches) {
+            document.getElementById('popUpWhenAdded').classList.add('taskAddedPopUpMobile');
+        } else {
+            document.getElementById('popUpWhenAdded').classList.add('taskAddedPopUp');
+        }
         removeAddTaskFeedback();
     } else {
         continueScrolling();
     }
-    addTaskPage = false;
 }
 
 
