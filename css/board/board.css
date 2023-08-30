@@ -1,0 +1,259 @@
+body {
+    background-color: #F6F7F8;
+    display: flex;
+    overflow-x: hidden;
+    font-family: 'Open-sans', sans-serif;
+    font-weight: 400;
+    padding-left: 5%;
+    margin: 90px 3% 0 232px;
+}
+
+.responsive-container {
+    display: flex;
+    flex-direction: row;
+    gap: 3%;
+}
+
+.hide-overflow {
+    overflow: hidden;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: #F6F7F8;
+}
+
+.boardHeader h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    margin: 0;
+}
+
+.boardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.inputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    position: relative;
+    gap: 7%;
+}
+
+.boardInput {
+    height: 45px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #d1d1d1;
+    padding: 5px 10px;
+    font-size: 1rem;
+
+}
+
+input::-webkit-search-cancel-button {
+    display: none;
+}
+
+.searchImgInput {
+    position: absolute;
+    right: 48%;
+    height: 17px;
+    cursor: pointer;
+}
+
+.headings {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 1%;
+}
+
+.boardSubsections {
+    min-height: 55vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    font-size: 1rem;
+}
+
+.boardSubsection {
+    min-height: 55vh;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+
+.boardSubsectionHeader {
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.boardSubsectionHeader h2 {
+    font-size: 1rem;
+    color: #2A3647;
+}
+
+.addTaskButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    position: relative;
+    height: 11px;
+    background-color: #2A3647;
+    color: white;
+    Padding: 18px 10px;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    font-size: 1rem;
+    border: none;
+}
+
+.addTaskButton:hover {
+    cursor: pointer;
+    background-color: #29ABE2;
+    box-shadow: -2px 0px 6px rgba(0, 0, 0, 0.25);
+    transition: 75ms ease-in-out;
+}
+
+.buttonPlus {
+    font-size: 25px;
+    font-weight: lighter;
+    margin-left: 10px;
+    margin-top: -4px;
+}
+
+.category {
+    color: white;
+    border-radius: 8px;
+    padding: 4px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.plusButton {
+    width: 1.5rem;
+}
+
+.plusButton:hover {
+    cursor: pointer;
+    content: url('../../assets/img/plusButtonBoardLightBlue.png');
+}
+
+.design {
+    background-color: #FF7A00;
+}
+
+.sales {
+    background-color: #FC71FF;
+}
+
+.backoffice {
+    background-color: #1FD7C1
+}
+
+.marketing {
+    background-color: #0038FF;
+}
+
+.boardCards {
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 40px;
+
+
+}
+
+.boardCard {
+    border-radius: 20px;
+    background-color: white;
+    padding: 18px 19px 19px 19px;
+    width: 76%;
+    box-shadow: -2px 0px 6px rgba(0, 0, 0, 0.25);
+    overflow-wrap: break-word;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+.boardCard:hover {
+    cursor: pointer;
+}
+
+.boardCard h4 {
+    margin: 0;
+}
+
+.task {
+    color: #9e9d9d;
+    font-size: smaller;
+    word-wrap: wrap;
+    overflow-y: hidden;
+}
+
+.displayNone {
+    display: none;
+}
+
+.progressBarSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.progressBarSection p {
+    text-align: center;
+    margin: 0;
+}
+
+.progressBar {
+    height: 5px;
+    width: 100%;
+    margin-right: 20%;
+    background: linear-gradient(to right, #29ABE2 0%, #e9e7e7 0%);
+}
+
+.deleteButton {
+    height: 45px
+}
+
+.editButton {
+    height: 45px
+}
+
+.deleteButton:hover {
+    cursor: pointer;
+    content: url('../../assets/img/lightBlueDelete.png');
+    background-color: #29ace2;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+
+.editButton:hover {
+    cursor: pointer;
+    content: url('../../assets/img/lightBlueEdit.png');
+    background-color: #29ace2;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.addedSubtaskOnEdit {
+    width: 15px !important;
+}
+
+.boardEditTaskForm label {
+    font-weight: bolder;
+}

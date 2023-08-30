@@ -1,0 +1,388 @@
+/* Left Side */
+.taskBoardLeftPopUpTask {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    gap: 1rem;
+}
+
+.taskBoardLeftPopUpTask textarea {
+    height: 80px;
+    width: 90%;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: #D1D1D1;
+    border: 1px solid #D1D1D1;
+    font-size: 0.9rem !important;
+    font-family: 'Open-sans', sans-serif;
+    line-height: 120%;
+    outline: none;
+    resize: none;
+}
+
+.addTaskContainer {
+    gap: 0.5rem;
+}
+
+#eventLisPopUp .dropdown-content,
+#dropdown .dropdown-content {
+    height: fit-content !important;
+}
+
+.headerForSelectionField {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.headerForSelectionField:hover .dropdown-content #dropdownCategory .dropdown-content {
+    display: block !important;
+}
+
+.headerForSelectionField:hover {
+    cursor: pointer
+}
+
+.headerForSelectionField label {
+    margin: 0 !important;
+    cursor: pointer;
+}
+
+.arrDown {
+    height: 9px;
+    width: 15px;
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    transform: rotate(180deg);
+}
+
+.rotateArrow {
+    transform: rotate(0deg);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: -1px;
+    width: 464px;
+    background-color: #ffffff;
+    color: #D1D1D1;
+    border: 1px solid;
+    border-radius: 10px;
+    z-index: 1;
+    padding-top: 3px;
+    margin-bottom: 15px !important;
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.dropdownContact:hover,
+.dropdownCategory:hover {
+    background-color: #D1D1D1;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #000000;
+}
+
+.select-contact:hover .dropdown-content {
+    display: block !important;
+}
+
+.dropdown-contentPopUpTask {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: -1px;
+    width: 464px;
+    background-color: #ffffff;
+    color: #D1D1D1;
+    border: 1px solid;
+    border-radius: 10px;
+    z-index: 1;
+    padding-top: 10px;
+}
+
+.dropdown-contentPopUpTask a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #000000;
+}
+
+#dropdownAddContactPopUp,
+#dropdownAddCategoryPopUp {
+    overflow-y: scroll;
+    max-height: 106px;
+    height: 100%;
+}
+
+.addNewBtn {
+    background-color: rgba(42, 54, 71, 1);
+    color: white !important;
+    border-radius: 10px;
+}
+
+.buttonCreateTaskPopUpTask:hover,
+.addNewBtn:hover {
+    cursor: pointer;
+    background-color: #29ABE2;
+    transition: 75ms ease-in-out;
+    border: none;
+}
+
+#checkedContacts {
+    display: flex;
+    flex-direction: row;
+}
+
+/* HR  */
+.dividingHRPopUp {
+    width: 0px;
+    height: auto;
+    max-height: 1000px;
+    border: 1px solid #D1D1D1;
+}
+
+/* Right Side */
+.taskBoardRightPopUp {
+    width: 44%;
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    gap: 1rem;
+    position: relative;
+}
+
+.priorityImg {
+    height: 40px;
+    width: 30%;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: white;
+    cursor: pointer;
+}
+
+.prio-imgs {
+    width: 15px;
+}
+
+.prio-hover:hover {
+    box-shadow: -1px 4px rgba(130, 130, 130, 0.11);
+}
+
+.prioPopUp {
+    width: 100%;
+}
+
+.prioritiesPopUpTask {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0 !important;
+}
+
+.priorityPopUpTask:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: 0px 6px 7px -3px #6d6969;
+}
+
+.priorities {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    margin-bottom: 0 !important;
+}
+
+.prio1-clicked,
+.prio4-clicked {
+    background-color: red !important;
+    color: white !important;
+}
+
+.prio1-clicked #prio1-img,
+.prio4-clicked #prio1-img {
+    filter: invert(100%) sepia(6%) saturate(4%) hue-rotate(54deg) brightness(166%) contrast(129%);
+}
+
+.prio2-clicked,
+.prio5-clicked {
+    background-color: orange !important;
+    color: white !important;
+}
+
+.prio2-clicked #prio2-img,
+.prio5-clicked #prio2-img {
+    filter: invert(83%) sepia(6%) saturate(4%) hue-rotate(54deg) brightness(382%) contrast(129%);
+}
+
+.prio3-clicked,
+.prio6-clicked {
+    background-color: green !important;
+    color: white !important;
+}
+
+.prio3-clicked #prio3-img,
+.prio6-clicked #prio3-img {
+    filter: invert(83%) sepia(6%) saturate(4%) hue-rotate(54deg) brightness(365%) contrast(129%);
+}
+
+.dropdown-link {
+    padding: 10px 0 !important;
+}
+
+.dropdownPopUpTask {
+    position: relative;
+    display: inline-block;
+    width: 422px;
+    height: 26px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 13px 21px;
+    color: #000000;
+    border: 1px solid #D1D1D1;
+    margin-bottom: 0 !important;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 90%;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 10px 15px;
+    color: #000000;
+    border: 1px solid #D1D1D1;
+    margin-bottom: 0 !important;
+    cursor: pointer;
+}
+
+.dropdownAssigned {
+    position: relative;
+    display: inline-block;
+    width: 90%;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 10px 15px;
+    color: #000000;
+    border: 1px solid #D1D1D1;
+    margin-bottom: 0 !important;
+    cursor: pointer;
+}
+
+.dropdownContact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 3px;
+    box-sizing: border-box;
+}
+
+.dropdownCategory {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.hiddenInput hr {
+    background-color: #9e9c9c;
+    transform: rotate(90deg);
+    height: 1px;
+    width: 25px;
+    position: relative;
+    left: 82.5%;
+    top: -39px;
+    border: none;
+    margin: 0;
+}
+
+.closeHiddenInput {
+    height: 18px;
+    width: 18px;
+    position: relative;
+    left: 88%;
+    top: -29px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.addSubTaskPopUpTask {
+    position: relative;
+}
+
+.addSubtaskButtonPopUpTask {
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    top: 13px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.checkBoxSubtasksDivPopUp {
+    display: flex;
+    flex-direction: column;
+}
+
+.addedSubtask {
+    width: 20px;
+    height: 20px;
+    font-size: 18px;
+}
+
+.buttonsCreateTaskPopUpTask {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+}
+
+.buttonCreateTaskPopUpTask {
+    display: flex;
+    align-items: center;
+    background-color: rgba(42, 54, 71, 1);
+    color: white;
+    border-radius: 10px;
+    padding: 0px 15px;
+    font-size: 1rem;
+    border: none;
+    white-space: nowrap;
+}
+
+.buttonClearTaskPopUpTask {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    padding: 0 15px;
+    border-radius: 10px;
+    border: 2px solid rgba(42, 54, 71, 1);
+    color: rgba(42, 54, 71, 1);
+    font-size: 1rem;
+    background-color: #F6F7F8;
+}
+
+.buttonClearTaskPopUpTask:hover {
+    cursor: pointer;
+    border-color: #29ABE2;
+    color: #29ABE2;
+}
+
+.createTaskPageImgPopUpTask {
+    margin-left: 10px;
+    margin-top: -2px;
+}

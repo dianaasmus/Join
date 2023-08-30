@@ -1,0 +1,62 @@
+@keyframes backgroundFadeOut {
+    from {
+        position: absolute;
+    }
+
+    to {
+        position: unset;
+    }
+}
+
+@keyframes Logo-Animation {
+    from {
+        top: 50%;
+        left: 50%;
+        transition: transform 100ms ease-in-out 300ms;
+    }
+
+    to {
+        top: -61px;
+        left: -23px;
+        transform: scale(0.35);
+    }
+}
+
+@keyframes slideInBackground {
+    from {
+        background-color: rgba(160, 160, 160, 0);
+    }
+
+    to {
+        background-color: rgba(160, 160, 160, 0.6);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translate(-50%, 1000%);
+    }
+
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+@keyframes shake {
+
+    0%,
+    100% {
+        translate: 0;
+    }
+
+    25% {
+        translate: 0.125rem;
+        border-color: red;
+    }
+
+    75% {
+        translate: -0.125rem;
+        border-color: red;
+    }
+}
