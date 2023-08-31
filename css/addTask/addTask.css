@@ -201,6 +201,10 @@ input {
     cursor: pointer;
 }
 
+#popUpWhenAdded body {
+    overflow: hidden;
+}
+
 #popUpWhenAdded {
     position: absolute;
     z-index: 4;

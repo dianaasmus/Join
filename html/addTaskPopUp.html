@@ -6,7 +6,7 @@
             <img onclick="closePopUpAddTask()" class="closePopUpBtn" src="../assets/img/addSubtaskButton.png">
         </div>
 
-        <form onsubmit="addToTasks(); return false" class="taskBoardPopUpTask">
+        <form onsubmit="addToTasks(); return false" class="taskBoardPopUpTask" id="addTaskForm">
 
             <div class="taskBoardLeftPopUpTask">
                 <div class="addTaskContainer">
@@ -16,7 +16,7 @@
 
                 <div class="addTaskContainer">
                     <label class="label-description">Description*</label>
-                    <textarea id="description" required style="color: #000000;" required type="text"
+                    <textarea id="description" required style="color: #000000;" type="text"
                         placeholder="Enter a description"></textarea>
                 </div>
 
