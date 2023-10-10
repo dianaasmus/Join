@@ -9,10 +9,10 @@
 
     <script>
         let users = [];
-        setURL('https://diana-asmus.developerakademie.net/Join/smallest_backend_ever-master/mini_backend.js');
+        setURL('https://join.dianaasmus.com/js/mini_backend.js');
 
         async function init() {
-            setURL('https://diana-asmus.developerakademie.net/Join/smallest_backend_ever-master/mini_backend.js');
+            setURL('https://join.dianaasmus.com/js/mini_backend.js');
             await downloadFromServer();
             users = JSON.parse(backend.getItem('users')) || [];
         }

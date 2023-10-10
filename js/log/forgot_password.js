@@ -1,5 +1,5 @@
 /**
- * This function displays the Forgot-Password form and hides the Login form.
+ * Displays the Forgot-Password form and hides the Login form.
  */
 function openForgotPassword() {
     document.getElementById('login-main').classList.add('d-none');
@@ -10,7 +10,7 @@ function openForgotPassword() {
 
 
 /**
- * This function returns the Forgot-Password form.
+ * Returns the Forgot-Password form.
  */
 function returnForgotPasswordForm() {
     return `
@@ -29,7 +29,7 @@ function returnForgotPasswordForm() {
 
 
 /**
- * This function checks whether the email has been sent or not.
+ * Checks whether the email has been sent or not.
  * @param {string} event - This refers to an event object that contains information about the triggered event.
  */
 async function onSubmit(event) {
@@ -47,7 +47,7 @@ async function onSubmit(event) {
 
 
 /**
- * This function hands over data and checks the response of the php file.
+ * Hands over data and checks the response of the php file.
  * @param {string} event - This refers to an event object that contains information about the triggered event.
  */
 async function sendMailToServer(event) {
@@ -63,7 +63,7 @@ async function sendMailToServer(event) {
 
 
 /**
- * This function picks the user email in the array.
+ * Picks the user email in the array.
  */
 function emailIsRegistered() {
     for (let i = 0; i < joinUsers.length; i++) {
@@ -79,11 +79,12 @@ function emailIsRegistered() {
 
 
 /**
- * This function directs the email to the php file to send a message to it.
+ * Directs the email to the php file to send a message to it.
  * @param {string} formData - This enables form data to be sent to a server.
  */
 function action(formData) {
-    const input = 'https://diana-asmus.developerakademie.net/Join/send_mail.php';
+    const input = 'https://join.dianaasmus.com/send_mail.php';
+
     const requestInit = {
         method: 'post',
         body: formData
@@ -93,7 +94,7 @@ function action(formData) {
 
 
 /**
- * This function opens a container that confirms the sending of the email.
+ * Opens a container that confirms the sending of the email.
  */
 function sentMailContainer() {
     document.getElementById('signup-forgotPsw-container').innerHTML += `
@@ -148,7 +149,7 @@ function sendForgotFeedback() {
 
 
 /**
- * This function opens back the login container.
+ * Opens back the login container.
  */
 function backToLogin() {
     document.getElementById('login-main').classList.remove('d-none');

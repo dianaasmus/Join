@@ -6,7 +6,7 @@ let done = [];
 let urgent = [];
 
 /**
- * This function executes of functions when loading the page.
+ * Executes of functions when loading the page.
  */
 async function onLoad() {
     await initScript();
@@ -17,17 +17,17 @@ async function onLoad() {
 
 
 /**
- * This function sets and downlaods the backend url.
+ * Sets and downlaods the backend url.
  */
 async function setUrl() {
-    setURL("https://diana-asmus.developerakademie.net/Join/smallest_backend_ever-master");
+    setURL("https://join.dianaasmus.com/smallest_backend_ever-master");
     await downloadFromServer();
     getUsers();
 }
 
 
 /**
- * This function parses the json array from the backend.
+ * Parses the json array from the backend.
  */
 async function getUsers() {
     try {
@@ -39,7 +39,7 @@ async function getUsers() {
 
 
 /**
- * This function gets the current time and displays it.
+ * Gets the current time and displays it.
  */
 function getTime() {
     let loignBtnClick = localStorage.getItem('LoginBtn');
@@ -63,7 +63,7 @@ function getTime() {
 
 
 /**
- * This function greets the logged user.
+ * Greets the logged user.
  */
 function greetUser() {
     let loginValue = localStorage.getItem('LogIn');
@@ -77,7 +77,7 @@ function greetUser() {
 
 
 /**
- * This function displays logged user name.
+ * Displays logged user name.
  */
 function greetUserName() {
     loggedUser = localStorage.getItem('Logged User');
@@ -96,7 +96,7 @@ function greetUserName() {
 
 
 /**
- * This function checks the checkboxs value.
+ * Checks the checkboxs value.
  */
 function getCheckboxFeedback() {
     let checkedBox = localStorage.getItem('checkedBox');
@@ -106,6 +106,9 @@ function getCheckboxFeedback() {
 }
 
 
+/**
+ * Returns HTML Checkbox Feedback.
+ */
 function returnCheckboxFeedback() {
     return `
                 <div class="checkbox-feedback">
@@ -116,7 +119,7 @@ function returnCheckboxFeedback() {
 
 
 /**
- * This function adds a hover effect on the 'todo' Container.
+ * Adds a hover effect on the 'todo' Container.
  */
 function hoverTodoOn() {
     document.getElementById('todo-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
@@ -125,7 +128,7 @@ function hoverTodoOn() {
 
 
 /**
- * This function adds a hover effect on the 'done' Container.
+ * Adds a hover effect on the 'done' Container.
  */
 function hoverDoneOn() {
     document.getElementById('done-icon').style = "filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(280deg) brightness(104%) contrast(104%);";
@@ -134,7 +137,7 @@ function hoverDoneOn() {
 
 
 /**
- * This function removes the hover effect on the 'todo' + 'done' Container.
+ * Removes the hover effect on the 'todo' + 'done' Container.
  */
 function hoverOff() {
     document.getElementById('todo-icon').style = "filter: none;";
@@ -145,7 +148,7 @@ function hoverOff() {
 
 
 /**
- * This function sets saved tasks.
+ * Sets saved tasks.
  */
 async function getTasks() {
     tasks = await JSON.parse(backend.getItem('tasks')) || [];
@@ -162,7 +165,7 @@ async function getTasks() {
 
 
 /**
- * This function saves the readiness state in the backend.
+ * Saves the readiness state in the backend.
  * 
  * @param {string} taskReadinessState - repsective readiness state from tasts.
  */
@@ -189,8 +192,8 @@ async function setTaskStates(taskReadinessState) {
 
 
 /**
- * This function saves the prio task 'urgent' in the backend.
- * @param {string} taskPrio - This variable carries the value from the key-value pair task['prio'].
+ * Saves the prio task 'urgent' in the backend.
+ * @param {string} taskPrio - carries the value from the key-value pair task['prio'].
  */
 async function setUrgetState(taskPrio) {
     if (taskPrio == 'urgent') {
@@ -201,7 +204,7 @@ async function setUrgetState(taskPrio) {
 
 
 /**
- * This function parses the task in respective container.
+ * Parses the task in respective container.
  */
 function parseTaskStates() {
     tasksInBoard.innerHTML = tasks.length;

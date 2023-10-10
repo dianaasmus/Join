@@ -1,9 +1,8 @@
 let email = '';
-// let joinUsers;
 
 
 /**
- * This function generates the values of the variables as soon as the page loads.
+ * Generates the values of the variables as soon as the page loads.
  */
 async function onPageLoad() {
     await setUrl();
@@ -14,16 +13,16 @@ async function onPageLoad() {
 
 
 /**
- * This function loads the specified variables that are stored in the backend.
+ * Loads the specified variables that are stored in the backend.
  */
 async function setUrl() {
-    setURL("https://diana-asmus.developerakademie.net/Join/smallest_backend_ever-master");
+    setURL("https://join.dianaasmus.com/smallest_backend_ever-master");
     await downloadFromServer();
 }
 
 
 /**
- * This function takes the email from the search parameter.
+ * Takes the email from the search parameter.
  */
 function getEmailUrlParameter() {
     const queryString = window.location.search;
@@ -34,7 +33,7 @@ function getEmailUrlParameter() {
 
 
 /**
- * This function parses the json array from the backend.
+ * Parses the json array from the backend.
  */
 async function getUsers() {
     joinUsers = JSON.parse(await backend.getItem('joinUsers')) || [];
@@ -42,7 +41,7 @@ async function getUsers() {
 
 
 /**
- * This function opens the summary.html for the guest user.
+ * Opens the summary.html for the guest user.
  */
 function linkToLogin() {
     window.open("index.html", "_self");
@@ -50,7 +49,7 @@ function linkToLogin() {
 
 
 /**
- * This function checks if both entered passwords are the same.
+ * Checks if both entered passwords are the same.
  */
 async function checkUserPassword() {
     resetPasswordBtn.disabled = true;
@@ -64,7 +63,7 @@ async function checkUserPassword() {
 
 
 /**
- * This function sends a feedback if the passwords do not match.
+ * Sends a feedback if the passwords do not match.
  */
 function sendPasswordFeedback() {
     feedbackContainer.innerHTML += `
@@ -76,7 +75,7 @@ function sendPasswordFeedback() {
 
 
 /**
- * This function selects the user in the json array 'joinUsers'.
+ * Selects the user in the json array 'joinUsers'.
  */
 function changePassword() {
     for (let i = 0; i < joinUsers.length; i++) {
@@ -90,7 +89,7 @@ function changePassword() {
 
 
 /**
- * This function checks when the email matches the email input and sets the new user password.
+ * Checks when the email matches the email input and sets the new user password.
  * @param {string} userEmail - This parameter has the email of the user as value.
  */
 async function checkEmail(user, userEmail) {
@@ -104,7 +103,7 @@ async function checkEmail(user, userEmail) {
 
 
 /**
- * This function resets the password inputs.
+ * Resets the password inputs.
  */
 function resetPasswordFrom() {
     emailResetPassword.value = '';
@@ -112,6 +111,9 @@ function resetPasswordFrom() {
 }
 
 
+/**
+ * Returns HTML Reset Fedback
+ */
 function sendResetFeedback() {
     document.getElementById('wider-container-style').innerHTML += `
     <div class="sent-mail-container" onclick="linkToLogin()">

@@ -31,8 +31,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
             exit;
         }
 
-        $message = "Hello, \n\nFollow this link to reset your JOIN password for your " . $email . " account.\n\nhttps://diana-asmus.developerakademie.net/Join/html/reset_password.html?email=" . $email . "\n\nIf you didn't ask to reset your password, you can ignore this email.\n\nThanks,\n\nYour Join-Team\n";
-
+        $message = "Hello, \n\nFollow this link to reset your JOIN password for your " . $email . " account.\n\nhttps://join.dianaasmus.com/html/reset_password.html?email=" . $email . "\n\nIf you didn't ask to reset your password, you can ignore this email.\n\nThanks,\n\nYour Join-Team\n";
+            
         $recipient = $email;
         $subject = "Reset your password for JOIN App";
         $headers = "From: JOIN <noreply@example.com>";

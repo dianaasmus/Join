@@ -2,7 +2,7 @@ let joinUsers = [];
 
 
 /**
- * This function displays the Sign Up form and hides the Login form.
+ * Displays the Sign Up form and hides the Login form.
  */
 function openSignUpContainer() {
     document.getElementById('signup-btn').disabled = true; // disable while loading
@@ -14,7 +14,7 @@ function openSignUpContainer() {
 
 
 /**
- * This function returns the Sign up Form.
+ * Returns the Sign up Form.
  */
 function returnSignupForm() {
     return `
@@ -33,7 +33,7 @@ function returnSignupForm() {
 
 
 /**
- * This function pushes the new registered users and saves them.
+ * Pushes the new registered users and saves them.
  */
 async function register() {
     pushNewUser();
@@ -41,7 +41,7 @@ async function register() {
 
 
 /**
- * This function creates a new user and saves it in backend.
+ * Creates a new user and saves it in backend.
  */
 async function pushNewUser() {
     registerBtn.disabled = true;
@@ -56,7 +56,7 @@ async function pushNewUser() {
 
 
 /**
- * This function creates a Feedback container for successfull registration.
+ * Creates a Feedback container for successfull registration.
  */
 function setSignUpFeedback() {
     document.getElementById('signup-forgotPsw-container').innerHTML += `
@@ -72,7 +72,7 @@ function setSignUpFeedback() {
 
 
 /**
- * This function resets all the inputs and enables the register button.
+ * Resets all the inputs and enables the register button.
  */
 function resetForm() {
     userName.value = '';
@@ -83,7 +83,7 @@ function resetForm() {
 
 
 /**
- * This function displays the Login form and hides the Sign up form.
+ * Displays the Login form and hides the Sign up form.
  */
 function backToLogin() {
     document.getElementById('signup-forgotPsw-container').classList.remove('container-style');

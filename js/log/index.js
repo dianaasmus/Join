@@ -3,7 +3,7 @@ let checkedBox;
 let loggedUser;
 
 /**
- * This function is executed as soon as the html page loads and initialises a new function.
+ * Is executed as soon as the html page loads and initialises a new function.
  */
 async function init() {
     await setUrl();
@@ -12,16 +12,16 @@ async function init() {
 
 
 /**
- * This function loads the specified variables that are stored in the backend.
+ * Loads the specified variables that are stored in the backend.
  */
 async function setUrl() {
-    setURL("https://diana-asmus.developerakademie.net/Join/smallest_backend_ever-master");
+    setURL("https://join.dianaasmus.com/smallest_backend_ever-master");
     await downloadFromServer();
 }
 
 
 /**
- * This function loads all the registered users or displays an error.
+ * Loads all the registered users or displays an error.
  */
 async function loadUsers() {
     try {
@@ -34,7 +34,7 @@ async function loadUsers() {
 
 
 /**
- * this function executes the function checkUser() as soon as the enter button is pressed.
+ * Executes the function checkUser() as soon as the enter button is pressed.
  * @param {string} event - This refers to an event object that contains information about the triggered event.
  */
 function enter(event, i) {
@@ -45,7 +45,7 @@ function enter(event, i) {
 
 
 /**
- * This function checks whether the login can take place or not.
+ * Checks whether the login can take place or not.
  */
 function checkUser() {
     if (userIsRegistered()) {
@@ -56,7 +56,7 @@ function checkUser() {
 }
 
 /**
- * This function disables a button during the loading process.
+ * Disables a button during the loading process.
  */
 function disableBtn() {
     loginBtn.disabled = true;
@@ -65,7 +65,7 @@ function disableBtn() {
 
 
 /**
- * This function checks whether the user email and password are registered and whether they match.
+ * Checks whether the user email and password are registered and whether they match.
  */
 function userIsRegistered() {
     for (let i = 0; i < joinUsers.length; i++) {
@@ -81,7 +81,7 @@ function userIsRegistered() {
 
 
 /**
- * This function saves the Boolean Value of the checkbox.
+ * Saves the Boolean Value of the checkbox.
  */
 function rememberMe() {
     checkbox = document.getElementById('checkbox');
@@ -93,7 +93,7 @@ function rememberMe() {
 
 
 /**
- * This function saves the input values and saves them remote.
+ * Saves the input values and saves them remote.
  */
 async function saveLastUser() {
     let lastUserData = 0;
@@ -109,7 +109,7 @@ async function saveLastUser() {
 
 
 /**
- * This function saves the last user who logged in.
+ * Saves the last user who logged in.
  */
 async function saveLastUserBackend(lastUserData) {
     let lastUserAsString = JSON.stringify(lastUserData);
@@ -119,7 +119,7 @@ async function saveLastUserBackend(lastUserData) {
 
 
 /**
- * This function deletes the entered values of the input field.
+ * Deletes the entered values of the input field.
  */
 function resetLoginForm() {
     let loggedUser = emailLogin.value;
@@ -132,7 +132,7 @@ function resetLoginForm() {
 
 
 /**
- * This function adds an animation when the user email and/or password is wrong.
+ * Adds an animation when the user email and/or password is wrong.
  */
 function invalidInput() {
     emailLogin.classList.add('shake-animation');
@@ -142,7 +142,7 @@ function invalidInput() {
 
 
 /**
- * This function resets the inputs and animations.
+ * Resets the inputs and animations.
  */
 function resetValues() {
     emailLogin.value = '';
@@ -156,7 +156,7 @@ function resetValues() {
 
 
 /**
- * This function checks onload if the checkbox is checked.
+ * Checks onload if the checkbox is checked.
  */
 async function parseCheckbox() {
     let checkedBox = localStorage.getItem('checkedBox');
@@ -170,7 +170,7 @@ async function parseCheckbox() {
 
 
 /**
- * This function parses the last Users email and password, if ,remember me' checkbox is checked.
+ * Parses the last Users email and password, if ,remember me' checkbox is checked.
  */
 async function parseLastUser() {
     let lastUserAsString = localStorage.getItem('lastUsers')
@@ -183,7 +183,7 @@ async function parseLastUser() {
 
 
 /**
- * This function opens the Guest Login.
+ * Opens the Guest Login.
  */
 function openGuestLogin() {
     loginGuest.disableBtn = true;
@@ -193,7 +193,7 @@ function openGuestLogin() {
 
 
 /**
- * This function adds an animation when a user logs is.
+ * Adds an animation when a user logs is.
  */
 async function logIn() {
     localStorage.setItem('LogIn', 'User');

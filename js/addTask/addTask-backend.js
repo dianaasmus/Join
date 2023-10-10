@@ -7,7 +7,7 @@ async function initAddTask() {
     await initScript();
     adjustAddTask();
     try {
-        setURL("https://diana-asmus.developerakademie.net/Join/smallest_backend_ever-master");
+        setURL("https://join.dianaasmus.com/smallest_backend_ever-master");
         await downloadFromServer();
         tasks = await JSON.parse(await backend.getItem('tasks')) || [];
         contacts = JSON.parse(backend.getItem('contacts')) || [];
@@ -205,7 +205,6 @@ function addToAssignedContacts(index) {
 
 /**
  * Adds selected contacts to a specified container in a pop-up.
- * This function is designed to populate a container with selected contacts.
  * @param {Array} assignedContacts - An array of contacts to be added.
  */
 function addSelectedContactToPopUp() {

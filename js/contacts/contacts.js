@@ -10,7 +10,7 @@ let addTaskPage = false;
  */
 async function initContacts() {
     await initScript();
-    setURL("https://diana-asmus.developerakademie.net/Join/smallest_backend_ever-master");
+    setURL("https://join.dianaasmus.com/smallest_backend_ever-master");
     await downloadFromServer();
     await loadContacts();
     letters = [];
@@ -31,7 +31,7 @@ async function loadContacts() {
 
 
 /**
- * This function sorts the keys 'name' in the json object 'conatcts' in an alphabetic order.
+ * Sorts the keys 'name' in the json object 'conatcts' in an alphabetic order.
  */
 async function sortContacts() {
     contacts.sort(function (a, b) {
@@ -51,7 +51,7 @@ async function sortContacts() {
 
 
 /**
- * This function generates for each contact its inital letter.
+ * Generates for each contact its inital letter.
  */
 async function loadInitialLetters() {
     document.getElementById('contactList').innerHTML = '';
@@ -65,7 +65,7 @@ async function loadInitialLetters() {
 
 
 /**
- * This funtcion pushes the initial letter in the letters array or executes the function loadContactsLetter().
+ * Pushes the initial letter in the letters array or executes the function loadContactsLetter().
  * @param {string} initialLetter - carries the value of the current inital letter.
  * @param {string} contact - carries all the data of the contact.
  * @param {string} l - carries the nummber of the current contact in the json object.
@@ -81,7 +81,7 @@ function setInitialLetters(initialLetter, contact, l) {
 
 
 /**
- * This function creates a container with the inital letter of a new added contact.
+ * Creates a container with the inital letter of a new added contact.
  * @param {string} initialLetter - carries the value of the current inital letter.
  * @param {string} contact - carries all the data of the contact.
  * @param {string} l - carries the nummber of the current contact in the json object.
@@ -101,7 +101,7 @@ function addInitalLetterContainer(initialLetter, contact, l) {
 
 
 /**
- * This function checks if the generated inital letter is already in the letters array.
+ * Checks if the generated inital letter is already in the letters array.
  * @param {string} initialLetter - carries the value of the current inital letter.
  * @param {string} contact - carries all the data of the contact.
  * @param {string} l - carries the nummber of the current contact in the json object.
