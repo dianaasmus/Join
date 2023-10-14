@@ -200,7 +200,6 @@ function clearContactCard() {
     let overlayContainer = document.getElementById('overlayContainer');
     let addContactOverlay = document.getElementById('addContactOverlay');
     removePopupAnimation(overlayContainer, addContactOverlay);
-    // checkOrigin();
     removeClearContactCardContainer();
 }
 

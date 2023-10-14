@@ -5,7 +5,7 @@ let joinUsers = [];
  * Displays the Sign Up form and hides the Login form.
  */
 function openSignUpContainer() {
-    document.getElementById('signup-btn').disabled = true; // disable while loading
+    document.getElementById('signup-btn').disabled = true; 
     document.getElementById('login-main').classList.add('d-none');
     document.getElementById('signup-forgotPsw-container').classList.add('container-style');
     document.getElementById('signup-forgotPsw-container').innerHTML = returnSignupForm();

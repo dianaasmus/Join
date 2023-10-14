@@ -55,6 +55,7 @@ function checkUser() {
     }
 }
 
+
 /**
  * Disables a button during the loading process.
  */

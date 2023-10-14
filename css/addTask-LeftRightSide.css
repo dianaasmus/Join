@@ -352,6 +352,9 @@
 .checkBoxSubtasksDivPopUp {
     display: flex;
     flex-direction: column;
+    max-height: 50px;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 .addedSubtask {

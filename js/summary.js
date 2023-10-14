@@ -5,6 +5,7 @@ let inProgress = [];
 let done = [];
 let urgent = [];
 
+
 /**
  * Executes of functions when loading the page.
  */

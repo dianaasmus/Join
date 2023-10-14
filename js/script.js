@@ -90,7 +90,7 @@ function openImgDropDoen() {
     let dropdown = document.querySelector('.img-drop-down');
 
     if (dropdown) {
-        dropdown.remove(); // Remove dropdown if it's already visible
+        dropdown.remove();
     } else {
         setDropdownContent();
     }
