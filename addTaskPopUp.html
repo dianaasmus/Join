@@ -3,7 +3,7 @@
         
         <div class="taskPopUpHeader">
             <h1>Add Task</h1>
-            <img onclick="closePopUpAddTask()" class="closePopUpBtn" src="../assets/img/addSubtaskButton.png">
+            <img onclick="closePopUpAddTask()" class="closePopUpBtn" src="assets/img/addSubtaskButton.png">
         </div>
 
         <form onsubmit="addToTasks(); return false" class="taskBoardPopUpTask" id="addTaskForm">
@@ -26,7 +26,7 @@
                     <div id="eventLisPopUp" class="dropdownAssigned">
                         <div onclick="contactList()" class="headerForSelectionField">
                             <label style="position: relative;">Select contacts</label>
-                            <img class="arrDown" id="assignArrow" src="../assets/img/arrDown.png">
+                            <img class="arrDown" id="assignArrow" src="assets/img/arrDown.png">
                         </div>
                         <div id="dropdownContent" class="dropdown-content displayNone">
                             <div id="dropdownAddContactPopUp">
@@ -55,17 +55,17 @@
                     <div class="prioritiesPopUpTask">
                         <div id="prio1" value="urgent" onclick="addPriority(1)" class="priorityImg prio-hover">
                             <p>Urgent</p>
-                            <img src="../assets/img/urgent.png" class="prio-imgs" id="prio1-img">
+                            <img src="assets/img/urgent.png" class="prio-imgs" id="prio1-img">
                         </div>
 
                         <div id="prio2" value="medium" onclick="addPriority(2)" class="priorityImg prio-hover">
                             <p>Medium</p>
-                            <img src="../assets/img/medium.png" class="prio-imgs" id="prio2-img">
+                            <img src="assets/img/medium.png" class="prio-imgs" id="prio2-img">
                         </div>
 
                         <div id="prio3" value="low" onclick="addPriority(3)" class="priorityImg prio-hover">
                             <p>Low</p>
-                            <img src="../assets/img/low.png" class="prio-imgs" id="prio3-img">
+                            <img src="assets/img/low.png" class="prio-imgs" id="prio3-img">
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                     <div onclick="dropdownCategory()" class="dropdown" id="dropdown">
                         <div class="headerForSelectionField" id="headerForSelectionField">
                             <label id="labelCategory">Select task category</label>
-                            <img class="arrDown" id="categoryArrow" src="../assets/img/arrDown.png">
+                            <img class="arrDown" id="categoryArrow" src="assets/img/arrDown.png">
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                 <div id="hiddenInputCategory" class="hiddenInput displayNone">
 
                     <input id="selectedCategoryInputValue" style="position: relative;" placeholder="New category name">
-                    <img onclick="closeHiddenInput()" class="closeHiddenInput" src="../assets/img/addSubtaskButton.png">
+                    <img onclick="closeHiddenInput()" class="closeHiddenInput" src="assets/img/addSubtaskButton.png">
 
                     <div class="colorPickers">
                         <div onclick="addNewcategoryToTask(1)" id="color1" class="colorPicker"
@@ -108,7 +108,7 @@
                     <div class="addSubTaskPopUpTask">
                         <input maxlength="35" id="subtaskPopUp" placeholder="Add new subtask">
                         <img class="addSubtaskButtonPopUpTask" onclick="addSubtaskOnPopUp()"
-                            class="addSubtaskButtonPopUpTask" src="../assets/img/addSubtaskButton.png">
+                            class="addSubtaskButtonPopUpTask" src="assets/img/addSubtaskButton.png">
                     </div>
 
                     <div id="subtasksPopUp" class="checkBoxSubtasksDivPopUp"></div>
@@ -122,7 +122,7 @@
 
                     <button type="submit" id="buttonCreateTaskPopUpTask" class="buttonCreateTaskPopUpTask">
                         <span>Create Task</span>
-                        <img class="createTaskPageImgPopUpTask" src="../assets/img/createTaskPage.png">
+                        <img class="createTaskPageImgPopUpTask" src="assets/img/createTaskPage.png">
                     </button>
                 </div>
 

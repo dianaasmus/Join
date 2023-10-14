@@ -4,7 +4,6 @@
 async function initScript() {
     await includeHTML();
     focusSidebar();
-    // responsiveHeaderText();
 }
 
 
@@ -16,7 +15,7 @@ async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
         const element = includeElements[i];
-        file = element.getAttribute("w3-include-html"); // "includes/header.html"
+        file = element.getAttribute("w3-include-html");
         let resp = await fetch(file);
         if (resp.ok) {
             element.innerHTML = await resp.text();
@@ -47,10 +46,10 @@ function responsiveHeaderText() {
  */
 function adjustMedia() {
     const pathName = window.location.pathname;
-    if (pathName === '/html/legal-notice.html') {
+    if (pathName === 'legal-notice.html') {
         document.querySelector('.kanban-text-container-2').classList.add('responsiveHeader');
     } 
-    if (pathName == '/html/help.html') {
+    if (pathName == 'help.html') {
         document.querySelector('.kanban-text-container-2').classList.add('responsiveHeader');
     }   else {
         document.querySelector('.kanban-text-container-2').classList.remove('responsiveHeader');
@@ -65,19 +64,19 @@ function focusSidebar() {
     const pathName = window.location.pathname;
     
     switch (pathName) {
-        case '/Join/html/summary.html':
+        case '/summary.html':
             document.getElementById('summary-props').classList.add('clicked');
             break;
-        case '/Join/html/board.html':
+        case '/board.html':
             document.getElementById('board-props').classList.add('clicked');
             break;
-        case '/Join/html/addTask.html':
+        case '/addTask.html':
             document.getElementById('addTask-props').classList.add('clicked');
             break;
-        case '/Join/html/contacts.html':
+        case '/contacts.html':
             document.getElementById('contacts-props').classList.add('clicked');
             break;
-        case '/Join/html/legal-notice.html':
+        case '/legal-notice.html':
             document.getElementById('legal-props').classList.add('clicked');
             break;
     }

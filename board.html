@@ -6,30 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join - Board</title>
-    <link rel="stylesheet" href="../css/board/board.css">
-    <link rel="stylesheet" href="../css/board/board-popups.css">
-    <link rel="stylesheet" href="../css/board/board-responsive.css">
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/board-popups.css">
+    <link rel="stylesheet" href="css/board-responsive.css">
 
-    <link rel="stylesheet" href="../css/fonts.css">
-    <link rel="icon" href="../assets/img/logo-blue.png">
-    <link rel="stylesheet" href="../css/sidebar_header.css">
-    <link rel="stylesheet" href="../css/addTask/addTask.css">
-    <link rel="stylesheet" href="../css/addTask/addTask-LeftRightSide.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="icon" href="assets/img/logo-blue.png">
+    <link rel="stylesheet" href="css/sidebar_header.css">
+    <link rel="stylesheet" href="css/addTask.css">
+    <link rel="stylesheet" href="css/addTask-LeftRightSide.css">
 
-    <script src="../js/script.js"></script>
-    <script src="../js/mini_backend.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/mini_backend.js"></script>
 
-    <script src="../js/board/board.js"></script>
-    <script src="../js/board/board-backend.js"></script>
-    <script src="../js/board/board-templates.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/board-backend.js"></script>
+    <script src="js/board-templates.js"></script>
 
-    <script src="../js/addTask/addTask.js"></script>
-    <script src="../js/addTask/addTask-templates.js"></script>
-    <script src="../js/addTask/addTask-clear.js"></script>
-    <script src="../js/addTask/addTask-backend.js"></script>
+    <script src="js/addTask.js"></script>
+    <script src="js/addTask-templates.js"></script>
+    <script src="js/addTask-clear.js"></script>
+    <script src="js/addTask-backend.js"></script>
 
-    <script src="../js/contacts/contact-templates.js"></script>
-    <script src="../js/contacts/contacts.js"></script>
+    <script src="js/contact-templates.js"></script>
+    <script src="js/contacts.js"></script>
 
 </head>
 
@@ -42,7 +42,7 @@
         <div class="boardHeader">
             <h1>Board</h1>
             <div class="inputContainer">
-                <img class="searchImgInput" src="../assets/img/search.png">
+                <img class="searchImgInput" src="assets/img/search.png">
                 <input onkeyup="renderTaskCards()" id="findATask" required class="boardInput" type="search"
                     placeholder="Find Task" maxlength="21">
                 <div onclick="openPopUpAddTask('toDo')" class="addTaskButton">
@@ -57,7 +57,7 @@
                     <div class="boardSubsectionHeader">
                         <h2>To do</h2>
                         <img class="plusButton" onclick="openPopUpAddTask('toDo')"
-                            src="../assets/img/plusButtonBoard.png">
+                            src="assets/img/plusButtonBoard.png">
                     </div>
                     <div ondrop="moveTo('toDo')" ondragover="allowDrop(event)" id="boardSubsectionToDo"
                         class="boardSubsection">
@@ -68,7 +68,7 @@
                     <div class="boardSubsectionHeader">
                         <h2>In progress</h2>
                         <img class="plusButton" onclick="openPopUpAddTask('inProgress')"
-                            src="../assets/img/plusButtonBoard.png">
+                            src="assets/img/plusButtonBoard.png">
                     </div>
                     <div ondrop="moveTo('inProgress')" ondragover="allowDrop(event)" id="boardSubsectionInProgress"
                         class="boardSubsection">
@@ -79,7 +79,7 @@
                     <div class="boardSubsectionHeader">
                         <h2>Awaiting Feedback</h2>
                         <img class="plusButton" onclick="openPopUpAddTask('awaitingFeedback')"
-                            src="../assets/img/plusButtonBoard.png">
+                            src="assets/img/plusButtonBoard.png">
                     </div>
                     <div ondrop="moveTo('awaitingFeedback')" ondragover="allowDrop(event)" id="boardSubsectionFeedback"
                         class="boardSubsection">
