@@ -174,14 +174,29 @@ input {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0px 14px 10px 18px;
+    padding: 5px 14px 5px 18px;
     box-sizing: border-box;
+}
+
+.checkBoxDiv:hover {
+    background-color: #D1D1D1;
+    border-radius: 10px;
 }
 
 .checkBoxDiv img {
     cursor: pointer;
     height: 17px;
     transform: rotate(45deg);
+}
+
+.checkBoxDiv input {
+    cursor: pointer;
+}
+
+.checkBoxDiv label {
+    margin: 0;
+    cursor: pointer;
+    width: inherit;
 }
 
 .clearTaskPageImgPopUpTask {

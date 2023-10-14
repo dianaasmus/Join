@@ -294,6 +294,12 @@
     box-sizing: border-box;
 }
 
+.dropdownContact label {
+    padding: 10px 0 10px 17px;
+    color: #000000;
+    width: 100%;
+}
+
 .dropdownCategory {
     display: flex;
     flex-direction: row;

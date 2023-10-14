@@ -310,7 +310,7 @@ function addDropdownContacts() {
     contacts.forEach((contact, index) => {
         dropdownAddContactPopUp.innerHTML += `
             <div class="dropdownContact">
-            <a>${contact.name}</a>
+            <label for="checkboxAssigned${index}">${contact.name}</label>
             <input id="checkboxAssigned${index}" onclick="addToAssignedContacts('${index}')" type="checkbox">
             </div>
             `;

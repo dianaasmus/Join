@@ -80,8 +80,8 @@ function HTMLrenderDialogFullCard(i) {
 function HTMLrenderSubtasksDialogFullCard(i, subtask, counter) {
     return `
     <div class="checkBoxDiv">
-        <input type="checkbox" onclick="countTasks(${i},${counter})"  id="checkBox${counter}" class="addedSubtaskOnEdit">
-        <span>${subtask.subtask}</span>
+        <input type="checkbox" name="checkAssign" onclick="countTasks(${i},${counter})" id="checkBox${counter}" class="addedSubtaskOnEdit">
+        <label for="checkBox${counter}">${subtask.subtask}</label>
     </div>`;
 }
 
