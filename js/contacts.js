@@ -257,7 +257,7 @@ async function addContact() {
         "phone": contactPhone.value,
         "firstNameLetter": firstName,
         "lastNameLetter": lastName,
-        "color" : getRandomColor()
+        "color": getRandomDarkColor()
     });
     if (window.matchMedia("(max-width: 700px)").matches) {
         contactCreatedSuccessfuly();
@@ -355,15 +355,37 @@ function closeContactInfo() {
 
 
 /**
- * Chose a random color for every new contact.
+ * Generates a random dark color.
+ * @returns {string} A dark color in the RGB format.
  */
-function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
+function getRandomDarkColor() {
+    let color;
+    do {
+        color = getRandomColor();
+    } while (getBrightness(color) > 128);
 
     return color;
+}
+
+
+/**
+ * Generates a random color in RGB format.
+ * @returns {string} A random color in the RGB format.
+ */
+function getRandomColor() {
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+    return `rgb(${red}, ${green}, ${blue})`;
+}
+
+
+/**
+ * Calculates the brightness of a color.
+ * @param {string} color - The color in RGB format.
+ * @returns {number} The brightness value of the color (0-255).
+ */
+function getBrightness(color) {
+    const rgb = color.match(/\d+/g);
+    return 0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2];
 }

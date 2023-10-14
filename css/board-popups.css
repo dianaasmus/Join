@@ -365,14 +365,3 @@ textarea {
     width: 15px;
     transform: rotate(180deg);
 }
-
-.droppedContacts {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    justify-content: space-between;
-}
-
-.droppedContacts input {
-    width: 10px !important;
-}

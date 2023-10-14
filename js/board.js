@@ -278,7 +278,11 @@ function toggleDropdownAddContact(i) {
         let dropdownAddContact = document.getElementById('editedDropdownAddContact');
         dropdownAddContact.innerHTML += ''
         contacts.forEach((contact, index) => {
-            dropdownAddContact.innerHTML += `<div class="droppedContacts"><a>${contact.name}</a><input onclick="addDeleteReassignedContacts(${i},${index})" id="checkboxAssigned${index}"  type="checkbox"></div>`;
+            dropdownAddContact.innerHTML += `
+            <div class="dropdownContact">
+                <label for="checkboxAssigned${index}">${contact.name}</label>
+                <input onclick="addDeleteReassignedContacts( ${i},${index})" id="checkboxAssigned${index}" type="checkbox">
+            </div>`;
         });
         checkForCheckedAssigned(i);
     }
@@ -320,11 +324,6 @@ function checkForCheckedAssigned(i) {
 }
 
 
-function openContactEdit() {
-    openAddContacts()
-}
-
-
 /**
  * Toggles the visibility of the dropdown for adding contacts during task editing.
  */
@@ -334,7 +333,8 @@ function opendropdownEditTask() {
 
     if (editedDropdownAddContact.style.display == "block") {
         removeEditTaskDropdown(editedDropdownAddContact, arrowDownEditTask);
-    } else {
+    } 
+    else {
         editedDropdownAddContact.style.display = "block";
         arrowDownEditTask.style.transform = "rotate(0deg)";
     }
@@ -360,11 +360,7 @@ function removeEditTaskDropdown(editedDropdownAddContact, arrowDownEditTask) {
 function openChangeStatus(i, event) {
     let changeStatus = document.getElementById(`dropdown-contentForMobileDevices${i}`);
 
-    if (changeStatus.style.display === 'block') {
-        changeStatus.style.display = 'none';
-    } else {
-        changeStatus.style.display = 'block'
-    }
+    changeStatus.style.display = (changeStatus.style.display === 'block') ? 'none' : 'block';
 
     event = event || window.event;
     event.stopPropagation();
