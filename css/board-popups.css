@@ -170,16 +170,26 @@
     font-weight: lighter !important;
 }
 
+.edit-delete-hr {
+    border: 0;
+    margin: 10px;
+    height: 25px;
+    width: 1px;
+    background-color: rgba(42, 54, 71, 1);
+}
+
 .editDelete {
-    width: 100%;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     position: absolute;
-    bottom: 7px;
+    bottom: 0;
+    right: 0;
 }
 
 .editDelete button {
     all: unset;
+    cursor: pointer;
 }
 
 /* Edit Task */

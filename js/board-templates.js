@@ -64,10 +64,11 @@ function HTMLrenderDialogFullCard(i) {
                  </div>
               <div class="editDelete">
                 <button onclick="deleteTask(${i})">
-                    <img class="deleteButton" src="../assets/img/blueDelete.png">
-                </button>
+                    <img class="deleteButton" src="../assets/img/delete.png">
+                </button> 
+                <hr class="edit-delete-hr">
                 <button  onclick="openEditTask(${i})">
-                    <img  class="editButton" src="../assets/img/blueEdit.png">  
+                    <img  class="editButton" src="../assets/img/edit.png">  
                 </button> 
              </div>
         </div>

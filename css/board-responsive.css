@@ -220,6 +220,12 @@
         padding: 0 5px;
     }
 
+    .edit-delete-hr {
+        border: 0;
+        height: 1px;
+        width: 25px;
+    }
+
     .boardSubsectionHeader {
         height: 70px;
     }

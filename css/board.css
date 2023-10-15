@@ -225,29 +225,9 @@ input::-webkit-search-cancel-button {
     background: linear-gradient(to right, #29ABE2 0%, #e9e7e7 0%);
 }
 
-.deleteButton {
-    height: 45px
-}
-
-.editButton {
-    height: 45px
-}
-
-.deleteButton:hover {
-    cursor: pointer;
-    content: url('../../assets/img/lightBlueDelete.png');
-    background-color: #29ace2;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-
-
+.deleteButton:hover,
 .editButton:hover {
-    cursor: pointer;
-    content: url('../../assets/img/lightBlueEdit.png');
-    background-color: #29ace2;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    filter: invert(58%) sepia(73%) saturate(1199%) hue-rotate(164deg) brightness(92%) contrast(91%);
 }
 
 .addedSubtaskOnEdit {
