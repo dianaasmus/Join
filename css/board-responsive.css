@@ -237,5 +237,11 @@
         width: unset;
         justify-content: unset;
         right: 0;
+        flex-direction: column;
+        bottom: 0px;
+    }
+
+    .wrapperDialog h1 {
+        font-size: 1.3rem;
     }
 }
