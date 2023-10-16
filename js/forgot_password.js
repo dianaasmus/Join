@@ -120,7 +120,7 @@ function removeFeedback() {
  * Add the shake animation.
  */
 function addShakeAnimation() {
-    email.classList.add('shake-animation');
+    document.getElementById('email').classList.add('shake-animation');
     removeShakeAnimation();
 }
 
@@ -129,6 +129,7 @@ function addShakeAnimation() {
  * Remove the shake animation
  */
 function removeShakeAnimation() {
+    email = document.getElementById('email');
     email.value = '';
 
     setTimeout(function () {

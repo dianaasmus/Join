@@ -401,7 +401,7 @@ body {
 #feedbackContainer,
 #feedbackForgotPsw {
     position: absolute;
-    bottom: 93px;
+    bottom: 80px;
     color: red;
     font-size: 14px;
 }
