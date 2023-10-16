@@ -87,6 +87,7 @@ input::-webkit-search-cancel-button {
     min-height: 55vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 30px;
     margin-bottom: 30px;
 }
@@ -179,6 +180,7 @@ input::-webkit-search-cancel-button {
     border-radius: 20px;
     background-color: white;
     padding: 18px 19px 19px 19px;
+    margin-top: 5px;
     width: 76%;
     box-shadow: -2px 0px 6px rgba(0, 0, 0, 0.25);
     overflow-wrap: break-word;
