@@ -9,7 +9,6 @@ async function initBoard() {
         tasks = await JSON.parse(await backend.getItem('tasks')) || [];
         contacts = JSON.parse(backend.getItem('contacts')) || [];
         await renderTaskCards();
-
     } catch (er) {
         console.error(er);
     }

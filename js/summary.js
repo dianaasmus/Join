@@ -73,7 +73,6 @@ function greetUser() {
     }
 
     localStorage.setItem('LoginBtn', false);
-
 }
 
 

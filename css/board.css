@@ -92,6 +92,18 @@ input::-webkit-search-cancel-button {
     margin-bottom: 30px;
 }
 
+.no-tasks-container {
+    width: 100%;
+    background-color: #e1e0e0;
+    height: 50px;
+    border: 1px dashed #9b9b9b;
+    border-radius: 15px;
+    margin-top: 5px;
+    color: #9b9b9b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .boardSubsectionHeader {
     height: 90px;
@@ -172,8 +184,6 @@ input::-webkit-search-cancel-button {
     display: flex;
     justify-content: space-evenly;
     margin-left: 40px;
-
-
 }
 
 .boardCard {

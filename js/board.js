@@ -39,6 +39,8 @@ async function renderTaskCards() {
             j++;
         }
     }
+
+    checkEmptyReadinessContainer();
 }
 
 
@@ -55,6 +57,22 @@ function renderSingleTask(i, j) {
     hideProgressSection(i);
 }
 
+
+/**
+ * Adds a Feedback container for an empty subsection.
+ */
+function checkEmptyReadinessContainer() {
+    const subsections = ['boardSubsectionToDo', 'boardSubsectionInProgress', 'boardSubsectionFeedback', 'boardSubsectionDone'];
+
+    subsections.forEach((subsection) => {
+        const subsectionContainer = document.getElementById(subsection);
+        if (!subsectionContainer.innerHTML) {
+            subsectionContainer.innerHTML += `
+                <div class="no-tasks-container">No Tasks</div>
+            `;
+        } 
+    });
+}
 
 
 /**
@@ -227,10 +245,11 @@ function allowDrop(ev) {
  * Clears the subsections of the board.
  */
 function clearSubsections() {
-    document.getElementById('boardSubsectionToDo').innerHTML = ''
-    document.getElementById('boardSubsectionInProgress').innerHTML = ''
-    document.getElementById('boardSubsectionFeedback').innerHTML = ''
-    document.getElementById('boardSubsectionDone').innerHTML = ''
+    const subsections = ['boardSubsectionToDo', 'boardSubsectionInProgress', 'boardSubsectionFeedback', 'boardSubsectionDone'];
+
+    subsections.forEach((subsection) => {
+        document.getElementById(subsection).innerHTML = '';
+    });
 }
 
 
@@ -241,10 +260,15 @@ function clearSubsections() {
  */
 function checkForReadiness(i, j) {
     let localReadiness;
-    if (tasks[i].readinessState == 'toDo') { localReadiness = 'boardSubsectionToDo'; }
-    if (tasks[i].readinessState == 'inProgress') { localReadiness = 'boardSubsectionInProgress'; }
-    if (tasks[i].readinessState == 'awaitingFeedback') { localReadiness = 'boardSubsectionFeedback'; }
-    if (tasks[i].readinessState == 'done') { localReadiness = 'boardSubsectionDone'; }
+    const readinessMappings = {
+        'toDo': 'boardSubsectionToDo',
+        'inProgress': 'boardSubsectionInProgress',
+        'awaitingFeedback': 'boardSubsectionFeedback',
+        'done': 'boardSubsectionDone'
+    };
+
+    const readinessState = tasks[i].readinessState;
+    localReadiness = readinessMappings[readinessState];
 
     document.getElementById(localReadiness).innerHTML += HTMLrenderTaskCards(i, j);
     priorityImageForRenderTaskCards(i, j);
@@ -333,7 +357,7 @@ function opendropdownEditTask() {
 
     if (editedDropdownAddContact.style.display == "block") {
         removeEditTaskDropdown(editedDropdownAddContact, arrowDownEditTask);
-    } 
+    }
     else {
         editedDropdownAddContact.style.display = "block";
         arrowDownEditTask.style.transform = "rotate(0deg)";
