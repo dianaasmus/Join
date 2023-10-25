@@ -44,7 +44,6 @@ async function renderTaskCards() {
 }
 
 
-
 /**
  * Renders a single task on the board by performing various checks and UI updates.
  * @param {number} i - The index of the task to be rendered.
@@ -155,15 +154,6 @@ function priorityImageForRenderFullTaskCard(i) {
     if (tasks[i].prio == 'urgent') { document.getElementById(`urgencyFullCard${i}`).src = prioImagesFullCard[0] }
     if (tasks[i].prio == 'medium') { document.getElementById(`urgencyFullCard${i}`).src = prioImagesFullCard[1] }
     if (tasks[i].prio == 'low') { document.getElementById(`urgencyFullCard${i}`).src = prioImagesFullCard[2] }
-}
-
-
-/**
- * Renders the content for a full dialog card associated with a task.
- * @param {number} i - The index of the task.
- */
-async function renderDialogFullCard(i) {
-    await openDialog(i);
 }
 
 

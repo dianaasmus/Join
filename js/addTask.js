@@ -145,6 +145,7 @@ function openPopUpAddTask(state) {
 
         window.location.href = 'addTask.html';
     }
+    addTaskEventListener = addEventListenerForElement("contentPopUpTask", closePopUpAddTask);
 }
 
 

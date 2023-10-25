@@ -1,6 +1,7 @@
 let eventListener;
 let editEventListener;
 let dialogEventListener;
+let addTaskEventListener;
 
 
 /**
@@ -23,10 +24,12 @@ function addEventListenerForElement(elementId, actionOnOutsideClick) {
 
 
 /**
- * Removes the event listener added to handle clicks outside the dialogFullCardContent element.
+ * Removes the event listener added to handle clicks outside the eventListener element.
  */
 function removeDialogEventListener() {
     if (dialogEventListener) {
         document.body.removeEventListener("click", dialogEventListener);
+    } else if (addTaskEventListener) {
+        document.body.removeEventListener("click", addTaskEventListener);
     }
 }
