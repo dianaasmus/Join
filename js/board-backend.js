@@ -251,3 +251,24 @@ async function statusToDo(i) {
     await backend.setItem('tasks', JSON.stringify(tasks))
     renderTaskCards(i)
 }
+
+/**
+ * Checks the readiness state of a task and renders it in the appropriate subsection of the board.
+ * @param {number} i - The index of the task.
+ * @param {number} j - The index for rendering purposes.
+ */
+function checkForReadiness(i, j) {
+    let localReadiness;
+    const readinessMappings = {
+        'toDo': 'boardSubsectionToDo',
+        'inProgress': 'boardSubsectionInProgress',
+        'awaitingFeedback': 'boardSubsectionFeedback',
+        'done': 'boardSubsectionDone'
+    };
+
+    const readinessState = tasks[i].readinessState;
+    localReadiness = readinessMappings[readinessState];
+
+    document.getElementById(localReadiness).innerHTML += HTMLrenderTaskCards(i, j);
+    priorityImageForRenderTaskCards(i, j);
+}

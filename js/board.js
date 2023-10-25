@@ -10,6 +10,7 @@ subtasksToSave = [];
 let currentDragged;
 const filteredTasksArray = [];
 let setReadinessState;
+let dialogEventListener;
 
 
 /**
@@ -44,6 +45,7 @@ async function renderTaskCards() {
 }
 
 
+
 /**
  * Renders a single task on the board by performing various checks and UI updates.
  * @param {number} i - The index of the task to be rendered.
@@ -70,7 +72,7 @@ function checkEmptyReadinessContainer() {
             subsectionContainer.innerHTML += `
                 <div class="no-tasks-container">No Tasks</div>
             `;
-        } 
+        }
     });
 }
 
@@ -162,11 +164,48 @@ function priorityImageForRenderFullTaskCard(i) {
  * @param {number} i - The index of the task.
  */
 async function renderDialogFullCard(i) {
+    removeDialogEventListener();
+    await openDialog(i);
+}
+
+
+/**
+ * Adds an event listener to handle clicks outside the dialogFullCardContent element.
+ * @param {Event} event - The click event.
+ */
+function addDialogEventListener() {
+    dialogEventListener = function (event) {
+        const dialogFullCardContent = document.getElementById("dialogFullCardContent");
+        if (!dialogFullCardContent.contains(event.target)) {
+            closeTask();
+        }
+    };
+
+    document.body.addEventListener("click", dialogEventListener);
+}
+
+
+/**
+ * Removes the event listener added to handle clicks outside the dialogFullCardContent element.
+ */
+function removeDialogEventListener() {
+    if (dialogEventListener) {
+        document.body.removeEventListener("click", dialogEventListener);
+    }
+}
+
+
+/**
+ * Opens the dialog for a specific task.
+ * @param {number} i - The index of the task to be displayed in the dialog.
+ */
+async function openDialog(i) {
     let counter = 0
     document.body.innerHTML += HTMLrenderDialogFullCard(i);
     priorityImageForRenderFullTaskCard(i);
     await renderDialogFullCardContent(i, counter);
     showDialogFullCard();
+    addDialogEventListener();
 }
 
 
@@ -254,28 +293,6 @@ function clearSubsections() {
 
 
 /**
- * Checks the readiness state of a task and renders it in the appropriate subsection of the board.
- * @param {number} i - The index of the task.
- * @param {number} j - The index for rendering purposes.
- */
-function checkForReadiness(i, j) {
-    let localReadiness;
-    const readinessMappings = {
-        'toDo': 'boardSubsectionToDo',
-        'inProgress': 'boardSubsectionInProgress',
-        'awaitingFeedback': 'boardSubsectionFeedback',
-        'done': 'boardSubsectionDone'
-    };
-
-    const readinessState = tasks[i].readinessState;
-    localReadiness = readinessMappings[readinessState];
-
-    document.getElementById(localReadiness).innerHTML += HTMLrenderTaskCards(i, j);
-    priorityImageForRenderTaskCards(i, j);
-}
-
-
-/**
  * Closes the task dialog, resumes scrolling, and updates the task board.
  */
 function closeTask() {
@@ -286,6 +303,7 @@ function closeTask() {
     dialogFullCard.classList.remove('background-aniamtion-addTask');
 
     renderTaskCards();
+    removeDialogEventListener();
     setTimeout(() => {
         dialogFullCard.remove();
     }, 500);
