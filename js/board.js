@@ -10,7 +10,6 @@ subtasksToSave = [];
 let currentDragged;
 const filteredTasksArray = [];
 let setReadinessState;
-let dialogEventListener;
 
 
 /**
@@ -164,34 +163,7 @@ function priorityImageForRenderFullTaskCard(i) {
  * @param {number} i - The index of the task.
  */
 async function renderDialogFullCard(i) {
-    removeDialogEventListener();
     await openDialog(i);
-}
-
-
-/**
- * Adds an event listener to handle clicks outside the dialogFullCardContent element.
- * @param {Event} event - The click event.
- */
-function addDialogEventListener() {
-    dialogEventListener = function (event) {
-        const dialogFullCardContent = document.getElementById("dialogFullCardContent");
-        if (!dialogFullCardContent.contains(event.target)) {
-            closeTask();
-        }
-    };
-
-    document.body.addEventListener("click", dialogEventListener);
-}
-
-
-/**
- * Removes the event listener added to handle clicks outside the dialogFullCardContent element.
- */
-function removeDialogEventListener() {
-    if (dialogEventListener) {
-        document.body.removeEventListener("click", dialogEventListener);
-    }
 }
 
 
@@ -205,7 +177,7 @@ async function openDialog(i) {
     priorityImageForRenderFullTaskCard(i);
     await renderDialogFullCardContent(i, counter);
     showDialogFullCard();
-    addDialogEventListener();
+    dialogEventListener = addEventListenerForElement("dialogFullCardContent", closeTask);
 }
 
 
@@ -243,6 +215,7 @@ function openEditTask(i) {
     document.getElementById(`editedDate`).setAttribute("min", date.toISOString().split("T")[0]);
     toggleDropdownAddContact(i);
     getPrio(i);
+    editEventListener = addEventListenerForElement("entireEditTaskCard", closeTask);
 }
 
 

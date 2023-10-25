@@ -67,8 +67,8 @@ function HTMLrenderDialogFullCard(i) {
                     <img class="deleteButton" src="../assets/img/delete.png">
                 </button> 
                 <hr class="edit-delete-hr">
-                <button  onclick="openEditTask(${i})">
-                    <img  class="editButton" src="../assets/img/edit.png">  
+                <button id="editBtn" onclick="openEditTask(${i}); event.stopPropagation();">
+                    <img class="editButton" src="../assets/img/edit.png">  
                 </button> 
              </div>
         </div>
