@@ -15,10 +15,6 @@ const eventListenerElements = {
     'entireEditTaskCard': 'editEventListener',
     'dialogFullCardContent': 'dialogEventListener',
     'contentPopUpTask': 'addTaskEventListener',
-
-    'addContactOverlay': 'contactsEventListener',
-    'addContactOverlay': 'editContactsEventListener',
-
     'reassignContacts': 'assignDropdownEventListener',
     'eventLisPopUp': 'assignTaskEventListener',
     'dropdown': 'categoryEventListener',
@@ -49,7 +45,15 @@ function addEventListenerForElement(elementId, actionOnOutsideClick) {
  */
 function removeEventListeners(elementId) {
     const listener = eventListenerElements[elementId];
+    const eventListeners = [contactsEventListener, editContactsEventListener];
+
     if (listener) {
         document.body.removeEventListener("click", window[listener]);
+    } else {
+        eventListeners.forEach((eventListener) => {
+            if (eventListener) {
+                document.body.removeEventListener("click", eventListener);
+            }
+        });
     }
 }
