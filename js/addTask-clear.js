@@ -123,10 +123,14 @@ function removeAddTaskContactList() {
  * Removes the category dropdown from the UI.
  * @param {HTMLElement} dropdownCategory - The dropdown category element.
  */
-function removeDropdownCategory(dropdownCategory) {
-    isDropDownCategory = false;
-    dropdownCategory.remove();
-    document.getElementById('categoryArrow').style.transform = "rotate(180deg)";
+function removeDropdownCategory() {
+    let dropdownCategory = document.getElementById('dropdownCategory');
+
+    if (dropdownCategory) {
+        isDropDownCategory = false;
+        dropdownCategory.remove();
+        document.getElementById('categoryArrow').style.transform = "rotate(180deg)";
+    }
 }
 
 
@@ -212,20 +216,6 @@ function removeCheckedContacts() {
     for (let index = 0; index < contacts.length; index++) {
         document.getElementById(`checkboxAssigned${index}`).checked = false;
     }
-}
-
-
-/**
- * Checks if a dropdown is not closed and takes specific actions after a timeout.
- */
-function removeIfDropdownNotClosed(dropdownContent) {
-    setTimeout(() => {
-        if (!dropdownContent.classList.contains('displayNone')) {
-            checkForCheckedAssignedPopUp();
-            removeAddTaskContactList();
-            addSelectedContactAfterClosedDropdown(dropdownContent);
-        }
-    }, 9000);
 }
 
 

@@ -141,8 +141,8 @@ function openEditTaskHTML(i) {
 
             <div class="AssignedTo" style="padding:6px;"> <!--Assigned to container-->
                 <label>Assigned to</label>
-                <section id="reassignContacts" class="dropdownEditTask">
-                    <div  class="headerForSelectionField" id="editTaskDropdown" onclick="opendropdownEditTask()">
+                <section id="reassignContacts" class="dropdownEditTask" onclick="dropdownEditTask()">
+                    <div  class="headerForSelectionField" id="editTaskDropdown">
                         <span style="position: relative !important;">Reassign contacts</span>
                         <img id="arrowDownEditTask" class="arrDown" src="../assets/img/arrDown.png">
                     </div>

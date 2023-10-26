@@ -38,7 +38,6 @@ function getReadinessStateFromLocalS() {
 
     if (localReadinessState) {
         let readinessStateWithoutQuotes = localReadinessState.replace(/"/g, '');
-
         setReadinessState = readinessStateWithoutQuotes;
     } else {
         setReadinessState = 'toDo';
@@ -142,7 +141,6 @@ function openPopUpAddTask(state) {
         openPopUpMedia();
     } else {
         localStorage.setItem('setReadinessState', JSON.stringify(state));
-
         window.location.href = 'addTask.html';
     }
     addTaskEventListener = addEventListenerForElement("contentPopUpTask", closePopUpAddTask);
@@ -254,11 +252,20 @@ function contactList() {
 
     if (dropdownContent.classList.contains('displayNone')) {
         addContactList(dropdownContent);
+        assignTaskEventListener = addEventListenerForElement("eventLisPopUp", removeAssignOnPopUp);
     } else {
-        checkForCheckedAssignedPopUp();
-        removeAddTaskContactList();
+        removeAssignOnPopUp();
     }
     addSelectedContactAfterClosedDropdown(dropdownContent);
+}
+
+
+/**
+ * Removes the Assign-Contact-Dropdown in Add-Task.
+ */
+function removeAssignOnPopUp() {
+    checkForCheckedAssignedPopUp();
+    removeAddTaskContactList();
 }
 
 
@@ -270,7 +277,6 @@ function addContactList(dropdownContent) {
     dropdownContent.classList.remove('displayNone');
     document.getElementById('assignArrow').style.transform = "rotate(0deg)";
     addDropdownContacts();
-    removeIfDropdownNotClosed(dropdownContent);
     getCheckedContact();
     removeCheckedContactsCheckbox();
 }
@@ -340,13 +346,12 @@ function checkForCheckedAssignedPopUp() {
 /**
  * Toggles the visibility of the category dropdown and manages its content.
  */
-function dropdownCategory() {
-    let dropdownCategory = document.getElementById('dropdownCategory');
-
+function categoryDropdown() {
     if (!isDropDownCategory) {
         addDropdownCategory();
+        categoryEventListener = addEventListenerForElement("dropdown", removeDropdownCategory);
     } else {
-        removeDropdownCategory(dropdownCategory);
+        removeDropdownCategory();
     }
 }
 

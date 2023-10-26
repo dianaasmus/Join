@@ -331,17 +331,18 @@ function checkForCheckedAssigned(i) {
 /**
  * Toggles the visibility of the dropdown for adding contacts during task editing.
  */
-function opendropdownEditTask() {
+function dropdownEditTask() {
     const editedDropdownAddContact = document.getElementById('editedDropdownAddContact');
     const arrowDownEditTask = document.getElementById('arrowDownEditTask');
 
     if (editedDropdownAddContact.style.display == "block") {
         removeEditTaskDropdown(editedDropdownAddContact, arrowDownEditTask);
-    }
-    else {
+    } else {
         editedDropdownAddContact.style.display = "block";
         arrowDownEditTask.style.transform = "rotate(0deg)";
+        assignDropdownEventListener = addEventListenerForElement("reassignContacts", dropdownEditTask);
     }
+
 }
 
 

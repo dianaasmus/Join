@@ -23,8 +23,8 @@
                 <div class="contactContainer addTaskContainer">
                     <label class="label-assign">Assigned to</label>
 
-                    <div id="eventLisPopUp" class="dropdownAssigned">
-                        <div onclick="contactList()" class="headerForSelectionField">
+                    <div onclick="contactList()" id="eventLisPopUp" class="dropdownAssigned">
+                        <div class="headerForSelectionField">
                             <label style="position: relative;">Select contacts</label>
                             <img class="arrDown" id="assignArrow" src="assets/img/arrDown.png">
                         </div>
@@ -73,7 +73,7 @@
                 <div class="categoryContainer addTaskContainer">
                     <label class="label-category">Category*</label>
 
-                    <div onclick="dropdownCategory()" class="dropdown" id="dropdown">
+                    <div onclick="categoryDropdown(); event.stopPropagation();" class="dropdown" id="dropdown">
                         <div class="headerForSelectionField" id="headerForSelectionField">
                             <label id="labelCategory">Select task category</label>
                             <img class="arrDown" id="categoryArrow" src="assets/img/arrDown.png">
