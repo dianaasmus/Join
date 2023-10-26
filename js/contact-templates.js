@@ -14,7 +14,7 @@ function addContactPopUp() {
 
 function generateLeftSideNewContact() {
     return `
-                    <span class="close-contact-cross-white d-none" onclick="clearContactCard()">X</span>
+                    <span class="close-contact-cross-white d-none" onclick="clearContactCard(); event.stopPropagation();">X</span>
                     <div class="add-contact-logo" id="contact-logo">
                         <img src="../assets/img/logo-white.png">
                     </div>
@@ -33,7 +33,7 @@ function generateRightSideNewContact() {
                             </div>  
                         </div>
                         <div class="contact-new-inputs" id="contact-new-inputs">
-                            <span class="close-contact-cross" onclick="clearContactCard()">X</span>
+                            <span class="close-contact-cross" onclick="clearContactCard(); event.stopPropagation();">X</span>
                                 <div class="warning-message" id="warning-contact-new-edit">
                                 </div>
                                 <div class="input-form-new-contact">
@@ -67,7 +67,7 @@ function generateRightSideNewContact() {
 
 function generateLeftSideEditContact() {
     return `
-                    <span class="close-contact-cross-white d-none" onclick="clearContactCard()">X</span>
+                    <span class="close-contact-cross-white d-none" onclick="clearContactCard(); event.stopPropagation();">X</span>
                     <div class="add-contact-logo" id="contact-logo">
                         <img src="../assets/img/logo-white.png">
                     </div>
@@ -88,7 +88,7 @@ function generateRightSideEditContact(l) {
                             </div>  
                         </div>
                         <div class="contact-new-inputs" id="contact-new-inputs">
-                            <span class="close-contact-cross" onclick="clearContactCard()">&#10005;</span>
+                            <span class="close-contact-cross" onclick="clearContactCard(); event.stopPropagation();">&#10005;</span>
                                 <div class="warning-message" id="warning-contact-new-edit">
                                 </div>
                                 <div class="input-form-new-contact">
@@ -141,7 +141,7 @@ function memberInfo(l){
     <div class="contact-info-headname">
         <h2>${contacts[l].name}</h2>
         <div class="contact-info-edit">
-            <span class="contact-edit-popup" onclick="openEditContacts(${l})">
+            <span class="contact-edit-popup" onclick="openEditContacts(${l}); event.stopPropagation();">
                 <img src="../assets/img/contact-edit.png">
                 Edit
             </span>
@@ -163,7 +163,7 @@ function memberInfo(l){
 
 <div class="responsive-buttons d-none">
     <img class="trash-can" src="../assets/img/delete-box.png" onclick="deleteNewContactsSettings(${l})">
-    <img class="edit-box" src="../assets/img/edit-box.png" onclick="openEditContacts(${l})">
+    <img class="edit-box" src="../assets/img/edit-box.png" onclick="openEditContacts(${l}); event.stopPropagation();">
 </div>
     `;
 }

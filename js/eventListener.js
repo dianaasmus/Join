@@ -2,6 +2,8 @@ let eventListener;
 let editEventListener;
 let dialogEventListener;
 let addTaskEventListener;
+let contactsEventListener;
+let editContactsEventListener;
 
 
 /**
@@ -14,6 +16,7 @@ function addEventListenerForElement(elementId, actionOnOutsideClick) {
         const element = document.getElementById(elementId);
         if (element && !element.contains(event.target)) {
             actionOnOutsideClick();
+            removeEventListeners();
         }
     };
 
@@ -24,12 +27,14 @@ function addEventListenerForElement(elementId, actionOnOutsideClick) {
 
 
 /**
- * Removes the event listener added to handle clicks outside the eventListener element.
+ * Removes the specified event listeners from the document body.
  */
-function removeDialogEventListener() {
-    if (dialogEventListener) {
-        document.body.removeEventListener("click", dialogEventListener);
-    } else if (addTaskEventListener) {
-        document.body.removeEventListener("click", addTaskEventListener);
-    }
+function removeEventListeners() {
+    const eventListeners = [dialogEventListener, addTaskEventListener, contactsEventListener, editContactsEventListener];
+
+    eventListeners.forEach((listener) => {
+        if (listener) {
+            document.body.removeEventListener("click", listener);
+        }
+    });
 }

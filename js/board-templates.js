@@ -1,6 +1,6 @@
 function HTMLrenderTaskCards(i, j) {
 
-    return `<div draggable="true" ondragstart="startDragging(${i})" onclick="openDialog(${i})" class="boardCard">
+    return `<div draggable="true" ondragstart="startDragging(${i})" onclick="openDialog(${i}); event.stopPropagation();" class="boardCard">
                     <div class="category" style="background-color: ${tasks[i].colorCategory}">
                     ${tasks[i].category}
                     </div>
@@ -92,7 +92,7 @@ function openEditTaskHTML(i) {
     return `
     <div id="entireEditTaskCard" class="dialogFullCardContent"
         style="display:flex; justify-content: center !important; align-items: center;">
-        <form class="boardEditTaskForm" onsubmit="editTask(${i}); return false;">
+        <form class="boardEditTaskForm" onsubmit="editTask(${i}, 'dialog'); return false;">
             <div>
                 <label>Title</label>
                 <input class="inputEdit" id="editedTask" type="text" placeholder="Enter a title" required value="${tasks[i].title}">

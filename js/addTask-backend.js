@@ -117,7 +117,7 @@ async function deleteTask(i) {
     tasks.splice(i, 1);
     await backend.setItem('tasks', JSON.stringify(tasks))
     renderTaskCards();
-    closeTask();
+    closeTask('addTask');
     checkContinueScrolling();
 }
 

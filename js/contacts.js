@@ -131,7 +131,7 @@ async function renderContactList(initialLetter, contact, l) {
 /**
  * Opens the add contacts popup, either redirecting to the contacts page or showing the popup.
  */
-function openAddContacts() {
+function openAddContacts() { 
 
     if (addTaskPage) {
         window.location.href = "contacts.html";
@@ -145,6 +145,8 @@ function openAddContacts() {
 
         openPopupAnimation(overlayContainer, addContactOverlay);
     }
+
+    contactsEventListener = addEventListenerForElement("addContactOverlay", clearContactCard);
 }
 
 
@@ -163,6 +165,7 @@ async function openEditContacts(l) {
     }
 
     openPopupAnimation(overlayContainer, addContactOverlay);
+    editContactsEventListener = addEventListenerForElement("addContactOverlay", clearContactCard);
 }
 
 
@@ -212,7 +215,7 @@ function removeClearContactCardContainer() {
         document.getElementById('addContactLeft').innerHTML = '';
         document.getElementById('addContactRightContent').innerHTML = '';
         document.getElementById('overlayContainer').remove();
-    }, 1000);
+    }, 500);
 }
 
 
@@ -263,7 +266,6 @@ async function addContact() {
     }
     await backend.setItem('contacts', JSON.stringify(contacts));
     clearValues('contactName', 'contactMail', 'contactPhone');
-    clearContactCard();
     initContacts();
 }
 
@@ -311,7 +313,6 @@ async function editContact(l) {
     contacts[l].lastNameLetter = editedLastName;
 
     await backend.setItem('contacts', JSON.stringify(contacts));
-    clearContactCard();
     showContacts(l);
     initContacts();
 }

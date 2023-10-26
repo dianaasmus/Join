@@ -266,7 +266,6 @@ function closeTask() {
     dialogFullCard.classList.remove('background-aniamtion-addTask');
 
     renderTaskCards();
-    removeDialogEventListener();
     setTimeout(() => {
         dialogFullCard.remove();
     }, 500);
